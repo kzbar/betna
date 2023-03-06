@@ -55,4 +55,10 @@ class MainProvider with ChangeNotifier {
     }
   }
 
+  changeCurrency(Currency? _currency, Map map) async {
+    currency = _currency;
+    currencyMap = map;
+    notifyListeners();
+  }
+
 }

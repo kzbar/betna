@@ -1,15 +1,19 @@
 import 'package:betna/setup/enumerators.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/style/custom_text.dart';
+import 'package:betna/style/popover/popover_notifications.dart';
+import 'package:betna/style/popover/popover_region.dart';
 import 'package:betna/style/responsive/screen_type_layout.dart';
 import 'package:betna/style/style.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:betna/generated/l10n.dart';
 
 class CustomBar extends StatefulWidget {
   const CustomBar({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _CustomBar();
 }
@@ -18,123 +22,212 @@ class _CustomBar extends State<CustomBar> {
   @override
   Widget build(BuildContext context) {
     return const ScreenTypeLayout(
-      desktop: Desktop(),
+      desktop: DesktopOrTablet(
+        isTablet: false,
+      ),
+      tablet: DesktopOrTablet(
+        isTablet: true,
+      ),
     );
   }
 }
 
-class Desktop extends StatelessWidget {
-  const Desktop({Key? key}) : super(key: key);
-  static const List<Map> genderOptions = [{'title':'English','value':Lang.EN},{'title':'Arabic','value':Lang.AR},{'title':'Turkish','value':Lang.TR}];
+class DesktopOrTablet extends StatelessWidget {
+  final bool isTablet;
+
+  const DesktopOrTablet({Key? key, required this.isTablet}) : super(key: key);
+
+  static const List<Map> langs = [
+    {'title': 'English', 'value': Lang.EN},
+    {'title': 'Arabic', 'value': Lang.AR},
+    {'title': 'Turkish', 'value': Lang.TR}
+  ];
+  static const List<Map> currency = [
+    {'title': 'TRY', 'value': Currency.TRY},
+    {'title': 'USD', 'value': Currency.USD},
+    {'title': 'EUR', 'value': Currency.EUR},
+    {'title': 'SAR', 'value': Currency.SAR},
+    {'title': 'AED', 'value': Currency.AED}
+  ];
+  static const List<Map> socials = [
+    {
+      'title': 'facebook',
+      'icon': FontAwesomeIcons.facebook,
+      'value': 'https://'
+    },
+    {'title': 'twitter', 'icon': FontAwesomeIcons.twitter, 'value': 'https://'},
+    {
+      'title': 'instagram',
+      'icon': FontAwesomeIcons.instagram,
+      'value': 'https://'
+    },
+    {
+      'title': 'telegram',
+      'icon': FontAwesomeIcons.telegram,
+      'value': 'https://'
+    },
+    {
+      'title': 'whatsapp',
+      'icon': FontAwesomeIcons.whatsapp,
+      'value': 'https://'
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      color: Style.lavenderBlack,
-      width: MediaQuery.of(context).size.width,
-      child: Row(
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 48),
-            height: 70,
-            width: 200,
-            child: Image.asset(
-              'assets/logo/logo_no_background_en.png',
-              fit: BoxFit.fill,
-            ),
-          ),
-          const SizedBox(
-            width: 150,
-          ),
-          TextButton(
-            style: ButtonStyle(
-              backgroundColor:MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.hovered)) {
-                    return Style.lavender.withOpacity(0.4);
-                  }
-                  if (states.contains(MaterialState.focused) ||
-                      states.contains(MaterialState.pressed)) return Colors.transparent;
-                  return Colors.transparent; // Defer to the widget's default.
-                },
+    Lang? lang = Provider.of<MainProvider>(context, listen: false).currentLang;
+    Currency? kCurrency =
+        Provider.of<MainProvider>(context, listen: true).currency;
+    String logo = lang == Lang.AR
+        ? 'assets/logo/logo_no_background_ar.png'
+        : 'assets/logo/logo_no_background_en.png';
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        //top
+        Container(
+          height: 60,
+          padding: EdgeInsets.symmetric(
+              horizontal:
+                  MediaQuery.of(context).size.width * (isTablet ? 0.05 : 0.19)),
+          color: Style.lavenderBlack,
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 48, vertical: 6),
+                child: Image.asset(
+                  logo,
+                  fit: BoxFit.contain,
+                ),
               ),
-            ),
-            onPressed: () {  },
-            child: Container(
-              width: 150,
-              padding: const EdgeInsets.all(12),
-              alignment: Alignment.center,
-              child: CustomText(
-                text: 'Contact us',
-                color: Colors.white,
-                size: 24,
-                height: 2,
-              ),
-            ),
-          ),
-          Container(
-            width: 150,
-            padding: const EdgeInsets.all(12),
-            alignment: Alignment.center,
-            child: CustomText(
-              text: 'projects',
-              color: Colors.white,
-              size: 24,
-              height: 2,
-            ),
-          ),
-          Container(
-            width: 150,
-            padding: const EdgeInsets.all(12),
-            alignment: Alignment.center,
-            child: CustomText(
-              text: 'Resale',
-              color: Colors.white,
-              size: 24,
-              height: 2,
-            ),
-          ),
-          const SizedBox(
-            width: 150,
-          ),
-          //git config --global gpg.program C:\Program Files (x86)\Gpg4win\bin
-          SizedBox(
-            width: 150,
-            child: FormBuilderDropdown<Map>(
-              name: 'lang',
-              initialValue: const {'title':'English','value':Lang.EN},
-              dropdownColor: Style.orchid,
-              iconSize: 36,
-              decoration: const InputDecoration(
-                hoverColor: Colors.white,
-                iconColor: Colors.white,
-                hintText: 'Select Gender',
-              ),
-              items: genderOptions
-                  .map((gender) => DropdownMenuItem(
-                alignment: AlignmentDirectional.center,
-                value: gender,
-                onTap: () async {
-                  await Provider.of<MainProvider>(context,listen: false).changeCurrentLang(gender['value']);
-                },
-                child: Container(
-                  width: 100,
-                  color: Colors.transparent,
-                  alignment: Alignment.center,
-                  child: CustomText(
-                    text: gender['title'],
-                    color: Colors.white,
-                    size: 24,
-                    height: 2,
+              Expanded(child: Row()),
+              PopOverRegion.hoverWithClick(
+                time: 1,
+                child: const Icon(
+                  Icons.language,
+                  color: Colors.white,
+                ),
+                clickPopChild: Card(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ...langs.map((gender) => GestureDetector(
+                            child: Container(
+                              width: 100,
+                              height: 36,
+                              color: lang == gender['value']
+                                  ? Colors.black26
+                                  : Colors.transparent,
+                              alignment: Alignment.center,
+                              child: CustomText(
+                                text: gender['title'],
+                                color: Colors.black,
+                                size: 16,
+                                height: 1,
+                              ),
+                            ),
+                            onTap: () async {
+                              await Provider.of<MainProvider>(context,
+                                      listen: false)
+                                  .changeCurrentLang(gender['value']);
+                              // ignore: use_build_context_synchronously
+                              ClosePopoverNotification().dispatch(context);
+                            },
+                          ))
+                    ],
                   ),
                 ),
-              ))
-                  .toList(),
-            ),
+                hoverPopChild: Container(
+                  padding: const EdgeInsets.all(6.0),
+                  color: Colors.black12,
+                  margin: const EdgeInsets.all(12),
+                  child: CustomText(
+                    text: S.of(context).kChangeLang,
+                    size: 12,
+                  ),
+                ),
+              ),
+              const Padding(padding: EdgeInsets.all(12)),
+              PopOverRegion.hoverWithClick(
+                time: 1,
+                child: const Icon(
+                  Icons.currency_exchange,
+                  color: Colors.white,
+                ),
+                clickPopChild: Card(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ...currency.map((gender) => GestureDetector(
+                            child: Container(
+                              width: 100,
+                              height: 36,
+                              color: kCurrency == gender['value']
+                                  ? Colors.black26
+                                  : Colors.transparent,
+                              alignment: Alignment.center,
+                              child: CustomText(
+                                text: gender['title'],
+                                color: Colors.black,
+                                size: 16,
+                                height: 1,
+                              ),
+                            ),
+                            onTap: () async {
+                              await Provider.of<MainProvider>(context,
+                                      listen: false)
+                                  .changeCurrency(gender['value'], {});
+                              if (kDebugMode) {
+                                print(gender['value']);
+                              }
+                              ClosePopoverNotification().dispatch(context);
+                            },
+                          ))
+                    ],
+                  ),
+                ),
+                hoverPopChild: Container(
+                  padding: const EdgeInsets.all(6.0),
+                  color: Colors.black12,
+                  margin: const EdgeInsets.all(12),
+                  child: CustomText(
+                    text: S.of(context).kChangeCurrency,
+                    size: 12,
+                  ),
+                ),
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+        //social
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 12),
+          padding: EdgeInsets.symmetric(horizontal: 12),
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(6),
+                  bottomRight: Radius.circular(6))),
+          height: 40,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ...socials.map(
+                (icon) => IconButton(
+                  padding: EdgeInsets.all(6),
+                  onPressed: () {},
+                  icon: Icon(
+                    icon['icon'],
+                    size: 20,
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }
