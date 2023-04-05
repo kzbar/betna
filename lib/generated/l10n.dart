@@ -1760,6 +1760,46 @@ class S {
     );
   }
 
+  /// `-Urgent sale-`
+  String get kUrgent {
+    return Intl.message(
+      '-Urgent sale-',
+      name: 'kUrgent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-Urgent-`
+  String get kUrgent1 {
+    return Intl.message(
+      '-Urgent-',
+      name: 'kUrgent1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-Opportunity-`
+  String get kUrgent2 {
+    return Intl.message(
+      '-Opportunity-',
+      name: 'kUrgent2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-Urgent Offers`
+  String get kUrgentTitle {
+    return Intl.message(
+      '-Urgent Offers',
+      name: 'kUrgentTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-Contract`
   String get appName {
     return Intl.message(

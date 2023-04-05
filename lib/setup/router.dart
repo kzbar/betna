@@ -2,6 +2,10 @@ import 'package:betna/home.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:maker/main.dart';
+import 'package:maker/web_control_panal/pages/home_page.dart';
+import 'package:maker/web_control_panal/provider/app_provider.dart';
+import 'package:maker/web_control_panal/provider/auth.dart';
 import 'package:provider/provider.dart';
 import '../page_404.dart';
 import 'enumerators.dart';
@@ -21,9 +25,15 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
   change(param1, context);
   PageRoute pageRoute =
       MaterialPageRoute(builder: (BuildContext context) => Page404());
+
   switch (path) {
     case '/':
       pageRoute = _buildRouteFade(settings, const Home());
+      break;
+    case '/page':
+      pageRoute =_buildRouteFade(settings,  AppPagesController(
+        page: HomePageControl(),
+      ));
       break;
   }
   return pageRoute;

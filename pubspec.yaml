@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -29,8 +29,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  maker:
+   path: /Users/ahmadkazbar/Desktop/contract_maker
 
-  intl: ^0.17.0 # Add this line
+#  intl: ^0.17.0 # Add this line
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,12 +41,12 @@ dependencies:
   http: ^0.13.5
 
   # firebase packages
-  cloud_firestore: ^3.5.1
-  firebase_storage: ^10.3.11
-  firebase_core: ^1.24.0
-  firebase_auth: ^3.11.2
+  cloud_firestore: ^4.5.0
+  firebase_storage: ^11.1.0
+  firebase_core: ^2.9.0
+  firebase_auth: ^4.4.0
   firebase: ^9.0.3
-  firebase_crashlytics: ^2.8.13
+#  firebase_crashlytics: ^2.8.13
   # firebase packages
 
   # tools
@@ -57,20 +59,23 @@ dependencies:
   open_file: ^3.2.1
   flutter_local_notifications: ^12.0.1+1
   universal_html: ^2.0.8
-  webview_flutter: ^3.0.4
   flutter_screenutil: ^5.5.4
   form_builder_validators: ^8.3.0
   rxdart: ^0.27.5
-  pdf: ^3.8.3
+  pdf: ^3.3.0
   get: ^4.6.5
   get_it: ^7.2.0
   translator: ^0.1.7
   carousel_slider: ^4.1.1
   permission_handler: ^10.1.0
   provider: ^6.0.4
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.3
   font_awesome_flutter: ^10.1.0
+  animated_text_kit: ^4.2.2
 
+  printing: ^5.2.1
+  meta_seo: ^3.0.5
+  flutter_svg: ^1.1.6
 
 
 # Run this script to generate the app icon: flutter pub run flutter_launcher_icons:main
@@ -84,7 +89,9 @@ flutter_icons:
     background_color: "#211522"
     theme_color: "#740247"
 
-
+dependency_overrides:
+  intl: 0.18.0
+#  {  "message_type": "bot",  "bot_id": 10927605,  "email_token": "de9755ee-89cf-40a7-a6a8-d75a6da70a76",  "delay_seconds": 0}
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -110,5 +117,31 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo/
+    - assets/images/
+    - assets/flags/
+    - assets/flags/
+    - assets/PNG/
+
+  fonts:
+    - family: Arbutusslab
+      fonts:
+        - asset: assets/fonts/Arbutusslabre.ttf
+    - family: HEL
+      fonts:
+        - asset: assets/fonts/Helvetica.ttf
+    - family: AEOB
+      fonts:
+        - asset: assets/fonts/Aeonikbold.ttf
+    - family: AEO
+      fonts:
+        - asset: assets/fonts/Aileronaegular.ttf
+    - family: LBC
+      fonts:
+        - asset: assets/fonts/Lbc.ttf
+    - family: AMRI
+      fonts:
+        - asset: assets/fonts/Amiri.ttf
+
+
 flutter_intl:
   enabled: true

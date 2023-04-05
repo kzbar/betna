@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:betna/setup/enumerators.dart';
+import 'package:betna/setup/main_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 
 import 'popover_notifications.dart';
 
@@ -65,7 +68,7 @@ class PopOverControllerState extends State<PopOverController> {
             );
           },
         );
-        Overlay.of(n.context)?.insert(barrierOverlay!);
+        Overlay.of(n.context).insert(barrierOverlay!);
       }
 
       /// Main Content Overlay
@@ -79,13 +82,20 @@ class PopOverControllerState extends State<PopOverController> {
             child: ValueListenableBuilder<Size?>(
                 valueListenable: _sizeNotifier,
                 builder: (_, size, __) {
+                  Lang? lang =
+                      Provider.of<MainProvider>(context, listen: true).currentLang;
+
                   // Calculate the normalized offset, from a top-left starting point
                   // This means a top-left align is 0,0, and bottom-right is -1,-1 as we shift left and up
-                  double ox = -(n.popAnchor.x + 1) / 2; // Normalize from 0-1
-                  double oy = -(n.popAnchor.y + 0.8) / 2; // Normalize from 0-1
+                  double xx = lang == Lang.AR ? 0.5 : 1;
+                  double ox = -(n.popAnchor.x + xx) / 2; // Normalize from 0-1
+                  double oy = -(n.popAnchor.y + 1) / 2; // Normalize from 0-1
+
                   // Guard against null size
                   size ??= Size.zero;
-                  print("BUILD OVERLAY: $size");
+                  if (kDebugMode) {
+                    print("BUILD OVERLAY: $size");
+                  }
                   return CompositedTransformFollower(
                     offset: Offset(ox * size.width, oy * size.height),
                     targetAnchor: n.anchor,
@@ -105,7 +115,7 @@ class PopOverControllerState extends State<PopOverController> {
           ),
         );
       });
-      Overlay.of(n.context)?.insert(mainContentOverlay!);
+      Overlay.of(n.context).insert(mainContentOverlay!);
       return true;
     }
     return false;

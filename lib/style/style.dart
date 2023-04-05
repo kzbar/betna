@@ -2,10 +2,12 @@
 
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class Style {
   static Color primaryColors = HexColor("#740247");
   static Color lavender = HexColor('#C197D2');
-  static Color lavenderBlack = HexColor('#211522');
+  static Color? lavenderBlack = HexColor('#211522');
   static Color orchid = HexColor('#613659');
   static String logoNoBackgroundAr = 'logo_no_background_ar';
   static String logoNoBackgroundTr = 'logo_no_background_tr';
@@ -23,4 +25,76 @@ class HexColor extends Color {
   }
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+}
+
+class Shadows {
+  static List<BoxShadow> get universal => [
+    BoxShadow(
+        color: Color(0xff333333).withOpacity(0.4),
+        spreadRadius: 2,
+        blurRadius: 10),
+  ];
+
+  static List<BoxShadow> get universal2 => [
+    BoxShadow(
+        color: Colors.grey.withOpacity(0.7),
+        spreadRadius: 2,
+        blurRadius: 2,
+        offset: Offset(0.5, 0)),
+  ];
+
+  static List<BoxShadow> get small => [
+    BoxShadow(
+        color: Color(0xff333333).withOpacity(.15),
+        spreadRadius: 0,
+        blurRadius: 3,
+        offset: Offset(0, 1)),
+  ];
+}
+
+class Corners {
+  static const double sm = 3;
+  static const BorderRadius smBorder = const BorderRadius.all(smRadius);
+  static const BorderRadius smBorderTop =
+  const BorderRadius.only(topLeft: smRadius, topRight: smRadius);
+  static const Radius smRadius = const Radius.circular(sm);
+
+  static const double med = 5;
+  static const BorderRadius medBorder = const BorderRadius.all(medRadius);
+  static const BorderRadius medBorderTop =
+  const BorderRadius.only(topLeft: medRadius, topRight: medRadius);
+
+  static const Radius medRadius = const Radius.circular(med);
+
+  static const double lg = 8;
+  static const BorderRadius lgBorder = const BorderRadius.all(lgRadius);
+  static const BorderRadius lgBorderTop =
+  const BorderRadius.only(topLeft: lgRadius, topRight: lgRadius);
+
+  static const Radius lgRadius = const Radius.circular(lg);
+}
+
+class ButtonStyles {
+  static ButtonStyle style = ButtonStyle(
+    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          (Set<MaterialState> states) {
+        if (states.contains(MaterialState.hovered))
+          return Style.lavenderBlack!.withOpacity(0.4);
+        if (states.contains(MaterialState.focused) ||
+            states.contains(MaterialState.pressed)) return Style.lavenderBlack!;
+        return Style.lavenderBlack!; // Defer to the widget's default.
+      },
+    ),
+  );
+  static ButtonStyle styleWhite = ButtonStyle(
+    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          (Set<MaterialState> states) {
+        if (states.contains(MaterialState.hovered))
+          return Style.lavenderBlack!.withOpacity(0.4);
+        if (states.contains(MaterialState.focused) ||
+            states.contains(MaterialState.pressed)) return Style.lavenderBlack!;
+        return Colors.white; // Defer to the widget's default.
+      },
+    ),
+  );
 }
