@@ -87,7 +87,7 @@ class PopOverControllerState extends State<PopOverController> {
 
                   // Calculate the normalized offset, from a top-left starting point
                   // This means a top-left align is 0,0, and bottom-right is -1,-1 as we shift left and up
-                  double xx = lang == Lang.AR ? 0.5 : 1;
+                  double xx = lang == Lang.AR ? 0.5 : 1.5;
                   double ox = -(n.popAnchor.x + xx) / 2; // Normalize from 0-1
                   double oy = -(n.popAnchor.y + 1) / 2; // Normalize from 0-1
 

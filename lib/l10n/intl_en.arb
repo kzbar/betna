@@ -171,11 +171,12 @@
   "kDescription": "Description",
   "kMessageContact": "You can contact us through the following links by clicking on the appropriate communication icon for you",
   "kMessageContactToHelp": "Contact Us for help",
+
   "kCommunication": "Communication",
-  "kUrgent": "-Urgent sale-",
-  "kUrgent1": "-Urgent-",
-  "kUrgent2": "-Opportunity-",
-  "kUrgentTitle": "-Urgent Offers",
+  "kUrgent": "Urgent sale",
+  "kUrgent1": "Urgent",
+  "kUrgent2": "Opportunity",
+  "kUrgentTitle": "Urgent Offers",
 
 
 

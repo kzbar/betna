@@ -1,4 +1,5 @@
 import 'package:betna/generated/l10n.dart';
+import 'package:betna/setup/confing/web_mobile_calss.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/setup/router.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,8 +15,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:maker/generated/l10n.dart' as makr;
+import 'package:flutter/services.dart';
+import 'dart:ui' as ui;
 
 Future<void> main() async {
+  WM().configureApp();
+
   WidgetsFlutterBinding.ensureInitialized();
   debugDefaultTargetPlatformOverride = TargetPlatform.android;
   //Provider.debugCheckInvalidValueType = null;
@@ -34,18 +39,20 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     return GetMaterialApp(
       localizationsDelegates: const [
-        makr.S.delegate,
         S.delegate,
         ...GlobalMaterialLocalizations.delegates,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         FormBuilderLocalizations.delegate,
+        makr.S.delegate,
+
       ],
       supportedLocales: const [
         Locale('en', ''),
@@ -57,6 +64,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       title: 'Betna real estate',
       builder: (context, child) {
+
         return Directionality(
           textDirection: Provider.of<MainProvider>(context).textDecoration,
           child: child!,

@@ -26,10 +26,10 @@ class ImageView extends StatelessWidget {
       errorWidget: (context, string, error) {
         return Container(
           child: Image.asset(
-            'assets/images/no_image.png',
+            'assets/images/with_text.png',
             height: height,
             width: width,
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
           ),
         );
       },

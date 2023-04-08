@@ -1760,40 +1760,40 @@ class S {
     );
   }
 
-  /// `-Urgent sale-`
+  /// `Urgent sale`
   String get kUrgent {
     return Intl.message(
-      '-Urgent sale-',
+      'Urgent sale',
       name: 'kUrgent',
       desc: '',
       args: [],
     );
   }
 
-  /// `-Urgent-`
+  /// `Urgent`
   String get kUrgent1 {
     return Intl.message(
-      '-Urgent-',
+      'Urgent',
       name: 'kUrgent1',
       desc: '',
       args: [],
     );
   }
 
-  /// `-Opportunity-`
+  /// `Opportunity`
   String get kUrgent2 {
     return Intl.message(
-      '-Opportunity-',
+      'Opportunity',
       name: 'kUrgent2',
       desc: '',
       args: [],
     );
   }
 
-  /// `-Urgent Offers`
+  /// `Urgent Offers`
   String get kUrgentTitle {
     return Intl.message(
-      '-Urgent Offers',
+      'Urgent Offers',
       name: 'kUrgentTitle',
       desc: '',
       args: [],

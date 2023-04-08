@@ -34,7 +34,8 @@ class SaleAdModel {
     this.view,
     this.transportation,
     this.affordableHomes,
-    this.luxuryHomes
+    this.luxuryHomes,
+    this.videoUrl
 
   });
 
@@ -56,6 +57,7 @@ class SaleAdModel {
   String? bathrooms;
   dynamic typesHeating;
   String? propertyCase;
+  String? videoUrl;
   String? affordableHomes;
   String? luxuryHomes;
 
@@ -92,6 +94,7 @@ class SaleAdModel {
     propertyCase: json["property_case"],
     room: json["room"],
     floor: json["floor"],
+    videoUrl: json['videoUrl'],
     available: json["available"] ?? true,
     urgent: json["urgent"] ?? true,
     address: json["address"],
@@ -135,7 +138,8 @@ class SaleAdModel {
     "view": view == null ? null : List<dynamic>.from(view!.map((x) => x)),
     "neighborhood": neighborhood == null ? null : List<dynamic>.from(neighborhood!.map((x) => x)),
     'affordableHomes':affordableHomes ?? false,
-    'luxuryHomes':luxuryHomes ?? false
+    'luxuryHomes':luxuryHomes ?? false,
+    'videoUrl':videoUrl,
   };
 
 }

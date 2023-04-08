@@ -1,8 +1,8 @@
-import 'package:betna/items/page_row_item.dart';
 import 'package:betna/models/project_model.dart';
+import 'package:betna/rowsItems/page_row_item.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/style/widget/list_items_empty.dart';
-import 'package:betna/style/widget/row_item_empty.dart';
+import 'package:betna/rowsItems/row_item_empty.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +26,7 @@ class ProjectsListWidget extends StatelessWidget {
                     shrinkWrap: true,
                     //just set this property
                     padding: const EdgeInsets.only(
-                        bottom: 0, top: 12, right: 12, left: 12),
+                        bottom: 0, top: 12, right: 6, left: 6),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, itemCount) {
                       ProjectModel _model = listResult[itemCount];
@@ -44,7 +44,7 @@ class ProjectsListWidget extends StatelessWidget {
                 shrinkWrap: true,
                 //just set this property
                 padding: const EdgeInsets.only(
-                    bottom: 50, top: 12, right: 12, left: 12),
+                    bottom: 0, top: 12, right: 12, left: 12),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, itemCount) {
                   return const EmptyRowItem();
@@ -59,7 +59,7 @@ class ProjectsListWidget extends StatelessWidget {
                 shrinkWrap: true,
                 //just set this property
                 padding: const EdgeInsets.only(
-                    bottom: 50, top: 12, right: 12, left: 12),
+                    bottom: 0, top: 12, right: 12, left: 12),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, itemCount) {
                   return const EmptyRowItem();
@@ -73,7 +73,7 @@ class ProjectsListWidget extends StatelessWidget {
                   shrinkWrap: true,
                   //just set this property
                   padding: const EdgeInsets.only(
-                      bottom: 50, top: 12, right: 12, left: 12),
+                      bottom: 0, top: 12, right: 12, left: 12),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, itemCount) {
                     return const EmptyRowItem();

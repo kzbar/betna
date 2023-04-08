@@ -1,15 +1,15 @@
 import 'package:betna/home.dart';
+import 'package:betna/page_404.dart';
 import 'package:betna/setup/main_provider.dart';
+import 'package:betna/pages/details_sale_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:maker/main.dart';
-import 'package:maker/web_control_panal/pages/home_page.dart';
-import 'package:maker/web_control_panal/provider/app_provider.dart';
-import 'package:maker/web_control_panal/provider/auth.dart';
-import 'package:provider/provider.dart';
-import '../page_404.dart';
-import 'enumerators.dart';
 
+import 'package:maker/web_control_panal/pages/home_page.dart';
+import 'package:provider/provider.dart';
+import 'enumerators.dart';
+import 'dart:ui' as ui;
 
 Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
   //AuthProvider authProvider = Provider.of<AuthProvider>(context, listen: false);
@@ -21,19 +21,35 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
   if (kDebugMode) {
     print('path: ${path}');
   }
-  String? param1 = uri.queryParameters['lang'];
-  change(param1, context);
   PageRoute pageRoute =
       MaterialPageRoute(builder: (BuildContext context) => Page404());
+  String lang = ui.window.locale.toString();
+  if (lang.contains('en')) {
+    change('en', context);
+  }
+  if (lang.contains('tr')) {
+    change('tr', context);
+  }
+  if (lang.contains('ar')) {
+    change('ar', context);
+  }
 
   switch (path) {
     case '/':
       pageRoute = _buildRouteFade(settings, const Home());
       break;
     case '/page':
-      pageRoute =_buildRouteFade(settings,  AppPagesController(
-        page: HomePageControl(),
-      ));
+      pageRoute = _buildRouteFade(
+          settings,
+          AppPagesController(
+            page: HomePageControl(),
+          ));
+      break;
+    case '/sale':
+      String? param1 = uri.queryParameters['id'];
+      pageRoute = MaterialPageRoute(builder: (BuildContext context) {
+        return DetailsSale(fromUrl: true, id: param1);
+      });
       break;
   }
   return pageRoute;
@@ -77,7 +93,7 @@ class _FadedTransitionRoute extends PageRouteBuilder {
 }
 
 Future change(param1, context) async {
-  Future.delayed(const Duration(milliseconds: 300), () {
+  Future.delayed(const Duration(milliseconds: 100), () {
     //print(param1);
     if (param1 == 'ar') {
       Provider.of<MainProvider>(context, listen: false)

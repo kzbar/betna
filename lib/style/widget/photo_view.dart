@@ -68,6 +68,7 @@ class _PhotosView extends State<PhotosView> {
                     alignment: Alignment.center,
                     height: 150,
                     child: ImageList(
+                      adId: widget.flatId!,
                       controller: controller,
                       photosList: widget.images,
                       valueChanged: (index) {

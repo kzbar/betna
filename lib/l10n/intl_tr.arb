@@ -180,7 +180,10 @@
   "kMessageContact": "Aşağıdaki linklerden size uygun olan iletişim ikonuna tıklayarak bizimle iletişime geçebilirsiniz.",
   "kMessageContactToHelp": "Yardım için Bize Ulaşın",
   "kCommunication": "iletişim",
-
+  "kUrgent": "Acil satılık",
+  "kUrgent1": "Acil",
+  "kUrgent2": "Fırsat",
+  "kUrgentTitle": "Acil Fırsatlar",
 
 
 

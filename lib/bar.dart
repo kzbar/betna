@@ -50,7 +50,6 @@ class _CustomBar extends State<CustomBar> with TickerProviderStateMixin {
     );
   }
 }
-
 class DesktopOrTablet extends StatelessWidget {
   final bool isTablet;
 
@@ -337,14 +336,14 @@ class Mobile extends StatelessWidget {
         logo = 'assets/logo/logoAR.png';
         break;
       case Lang.EN:
-        logo = 'assets/logo/logoEN.png';
+        logo = 'assets/logo/logoEn.png';
         break;
       case Lang.TR:
         logo = 'assets/logo/logoTR.png';
         break;
       default:
         {
-          logo = 'assets/logo/logoEN.png';
+          logo = 'assets/logo/logoEe.png';
         }
     }
     return Column(

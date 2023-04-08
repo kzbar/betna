@@ -26,16 +26,46 @@ class ListViewItems extends StatelessWidget {
       contextMenu: Container(),
       child: ResponsiveBuilder(
         builder: (context, size) {
-          double _w = MediaQuery.of(context).size.width * 0.65;
-          double m = MediaQuery.of(context).size.width * 0.15;
+          double height = 0.0;
+          double heightListBox = 0.0;
+          double width = 0.0;
+          double vertical = 0.0;
+          switch(size.deviceScreenType){
+            case DeviceScreenType.Mobile:
+              height = 325;
+              width = MediaQuery.of(context).size.width * 0.90;
+              vertical = 3;
+              heightListBox  = 250;
+
+              break;
+            case DeviceScreenType.Tablet:
+              height = 450;
+              heightListBox  = 350;
+              width = MediaQuery.of(context).size.width * 0.85;
+              vertical = 12;
+              break;
+            case DeviceScreenType.Desktop:
+              height = 450;
+              heightListBox  = 350;
+              width = MediaQuery.of(context).size.width * 0.65;
+              vertical = 12;
+
+              break;
+            default:
+              height = 450;
+              heightListBox  = 350;
+              width = MediaQuery.of(context).size.width * 0.65;
+              vertical = 12;
+              break;
+          }
           return Container(
-              margin: const EdgeInsets.symmetric(vertical: 12),
-              padding: const EdgeInsets.only(top: 24,right: 12,left: 12),
-              decoration:  BoxDecoration(
+              margin:  EdgeInsets.symmetric(vertical: vertical),
+              padding:  EdgeInsets.only(top: 24,right: vertical,left: vertical),
+              decoration:  const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(6)),
                   color: Colors.white70),
-              width: _w,
-              height: 450,
+              width: width,
+              height: height,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -54,14 +84,12 @@ class ListViewItems extends StatelessWidget {
                   //     text: titleAction,
                   //     size: 14,
                   //     color: Colors.blue,
+                  //     color: Colors.blue,
                   //   ),
                   // ),
-                  const SizedBox(
-                    height: 12.0,
-                  ),
-                  Container(
+                  SizedBox(
                     width: double.infinity,
-                    height: 350,
+                    height: heightListBox,
                     child: list,
                   ),
                 ],

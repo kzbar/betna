@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:betna/generated/l10n.dart';
 import 'package:betna/models/address_model.dart';
 import 'package:betna/models/sale_ad_model.dart';
@@ -8,17 +9,17 @@ import 'package:betna/style/style.dart';
 import 'package:betna/style/widget/ImageView.dart';
 import 'package:flutter/material.dart';
 
-class SaleRowItem extends StatefulWidget {
+class UrgentRowItem extends StatefulWidget {
   final SaleAdModel? model;
   final String? tag;
 
-  const SaleRowItem({Key? key, this.model, this.tag}) : super(key: key);
+  const UrgentRowItem({Key? key, this.model, this.tag}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _SaleRowItem();
+  State<StatefulWidget> createState() => _UrgentRowItem();
 }
 
-class _SaleRowItem extends State<SaleRowItem> {
+class _UrgentRowItem extends State<UrgentRowItem> {
   bool isShare = false;
   final GlobalKey _globalKey = GlobalKey();
 
@@ -73,23 +74,23 @@ class _SaleRowItem extends State<SaleRowItem> {
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 12.0),
             decoration: BoxDecoration(
-                color: Colors.grey.shade300,
+                color: Colors.white,
                 borderRadius: Corners.lgBorder,
                 boxShadow: Shadows.small),
-            width: 300,
+            width: 150,
             child: Stack(
               children: [
                 Column(
                   mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Hero(
                       tag: '${widget.model!.adId!}${widget.tag}',
                       child: ClipRRect(
                         borderRadius: Corners.lgBorderTop,
                         child: ImageView(
-                          height: 300 * 0.75,
-                          width: 300,
+                          height: 150 ,
+                          width: 150,
                           image: widget.model!.images!.isNotEmpty
                               ? widget.model!.images![0]
                               : '',
@@ -98,20 +99,20 @@ class _SaleRowItem extends State<SaleRowItem> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(
-                        top: 20,
+                        top: 3
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InfoTextWidget(
                             text1: S.of(context).rooms,
                             text2: widget.model!.room,
                           ),
-                          InfoTextWidget(
-                            text1: S.of(context).kArea,
-                            text2: widget.model!.area,
-                          ),
+                          // InfoTextWidget(
+                          //   text1: S.of(context).kArea,
+                          //   text2: widget.model!.area,
+                          // ),
                           InfoTextWidget(
                             text1: S.of(context).kFloor,
                             text2: widget.model!.floor,
@@ -120,7 +121,7 @@ class _SaleRowItem extends State<SaleRowItem> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.symmetric(vertical: 12.0),
+                      margin: const EdgeInsets.symmetric(vertical: 2.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -128,7 +129,7 @@ class _SaleRowItem extends State<SaleRowItem> {
                           InfoTextWidget(
                             text1: S.of(context).kCity,
                             text2:
-                                '${Address.fromMap(widget.model!.address!).city!.name}/${Address.fromMap(widget.model!.address!).town!.name}',
+                            '${Address.fromMap(widget.model!.address!).city!.name}/${Address.fromMap(widget.model!.address!).town!.name}',
                           ),
                         ],
                       ),
@@ -136,86 +137,28 @@ class _SaleRowItem extends State<SaleRowItem> {
                     Container(padding: const EdgeInsets.only(left: 6,right: 6),child: CustomText(
                       text: Constants.convertPrice(
                           context, widget.model!.price!),
-                      size: 24,
+                      size: 12,
                       color: Style.primaryColors,
                       weight: FontWeight.bold,
                       textDirection: TextDirection.ltr,
                     ),)
                   ],
                 ),
-                Positioned(
-                  top: 12,
-                  left: 12,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                    margin: const EdgeInsets.only(),
-                    height: 20,
-                    decoration: BoxDecoration(
-                        borderRadius: Corners.medBorder, color: Style.primaryColors),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        if (Constants.checkIsNewItem(
-                            DateTime.fromMillisecondsSinceEpoch(
-                                    widget.model!.date!.millisecondsSinceEpoch)
-                                .toIso8601String())) ...[
-                          CustomText(
-                            text: S.of(context).kNew.toUpperCase(),
-                            size: 10,
-                            color: Colors.white,
-                          ),
-                          CustomText(
-                            text: ' - ',
-                            size: 10,
-                            color: Colors.white,
-                          ),
-                        ],
-                        CustomText(
-                          text: Constants.timeAgoSinceDate(
-                                  DateTime.fromMillisecondsSinceEpoch(widget
-                                          .model!.date!.millisecondsSinceEpoch)
-                                      .toIso8601String(),
-                                  context: context)
-                              .toUpperCase(),
-                          size: 10,
-                          color: Colors.white,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 124,
-                  left: 12,
-                  child: Column(
-                    textDirection: TextDirection.ltr,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                        text: widget.model!.affordableHomes! == 'yes'
-                            ? S.of(context).kAffordableHomes
-                            : S.of(context).kLuxuryHomes,
-                        size: 12,
-                        color: Colors.white,
-                      ),
 
-                    ],
-                  ),
-                ),
                 Positioned(
                   top: 12,
                   right: 12,
                   child: Container(
                     color: Colors.white70,
                     alignment: Alignment.center,
-                    padding: EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4),
                     margin: const EdgeInsets.only(),
                     child: CustomText(
                       text: widget.model!.adId,
                       color: Style.lavenderBlack,
                       weight: FontWeight.bold,
                       height: 1,
-                      size: 18,
+                      size: 12,
                     ),
                   ),
                 ),
@@ -242,17 +185,17 @@ class InfoTextWidget extends StatelessWidget {
         children: [
           CustomText(
             text: text1,
-            color: Colors.black45,
-            size: 16,
+            color: Colors.black,
+            size: 8,
           ),
           const SizedBox(
-            width: 4,
+            width: 2,
           ),
           CustomText(
             text: text2,
             color: Style.primaryColors,
             weight: FontWeight.bold,
-            size: 16,
+            size: 10,
           ),
         ],
       ),
