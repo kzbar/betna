@@ -7,14 +7,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:get/get.dart';
-import 'package:maker/models/contract_object.dart';
-import 'package:maker/web_control_panal/provider/app_provider.dart';
-import 'package:maker/web_control_panal/provider/auth.dart';
 import 'services/firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:maker/generated/l10n.dart' as makr;
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
 
@@ -28,9 +24,6 @@ Future<void> main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider.value(value: MainProvider.init()),
-      ChangeNotifierProvider.value(value: AppProvider.init()),
-      ChangeNotifierProvider.value(value: AuthProvider.initialize()),
-      ChangeNotifierProvider.value(value: ModelContract()),
     ],
     child: const MyApp(),
   ));
@@ -51,8 +44,6 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         FormBuilderLocalizations.delegate,
-        makr.S.delegate,
-
       ],
       supportedLocales: const [
         Locale('en', ''),

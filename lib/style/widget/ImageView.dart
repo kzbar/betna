@@ -29,7 +29,7 @@ class ImageView extends StatelessWidget {
             'assets/images/with_text.png',
             height: height,
             width: width,
-            fit: BoxFit.contain,
+            fit: fit,
           ),
         );
       },

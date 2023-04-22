@@ -62,7 +62,7 @@ class SaleAdModel {
   String? luxuryHomes;
 
   bool? available;
-  bool? urgent;
+  String? urgent;
   List<dynamic>? images = [];
   List<dynamic>? internalFeatures;
   List<dynamic>? externalFeatures;
@@ -96,7 +96,7 @@ class SaleAdModel {
     floor: json["floor"],
     videoUrl: json['videoUrl'],
     available: json["available"] ?? true,
-    urgent: json["urgent"] ?? true,
+    urgent: json["urgent"],
     address: json["address"],
     images: json["images"] == null ? [] : List<dynamic>.from(json["images"].map((x) => x)),
     internalFeatures: json["internal_features"] == null ? [] : List<dynamic>.from(json["internal_features"].map((x) => x)),

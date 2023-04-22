@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:betna/setup/enumerators.dart';
 import 'package:betna/setup/main_provider.dart';
@@ -7,10 +6,7 @@ import 'package:betna/style/popover/popover_region.dart';
 import 'package:betna/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/parser.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
-import 'package:html/parser.dart';
 import '../popover/popover_notifications.dart';
 
 class CurrencyWidget extends StatefulWidget {
@@ -103,20 +99,24 @@ class _CurrencyWidget extends State<CurrencyWidget> {
                             const SizedBox(
                               width: 6,
                             ),
-                            // ClipOval(
-                            //   child: Image.asset(
-                            //     'assets/flags/${initData['short_name']}.png',
-                            //     height: 24,
-                            //     width: 24,
-                            //     fit: BoxFit.fill,
-                            //   ),
-                            // ),
+                            Container(
+                              padding: EdgeInsets.all(3),
+
+                              child: ClipOval(
+                                child: Image.asset(
+                                  'assets/flags/${initData['short_name']}.png',
+                                  height: 24,
+                                  width: 24,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
                             if (widget.withName!) ...[
-                              CustomText(
-                                text: '${initData['short_name']}',
-                                size: 14.0,
-                                height: 2,
-                              )
+                              // CustomText(
+                              //   text: '${initData['short_name']}',
+                              //   size: 14.0,
+                              //   height: 2,
+                              // )
                             ],
                             CustomText(
                               text: '${initData['symbol']}',
@@ -159,6 +159,7 @@ class _CurrencyWidget extends State<CurrencyWidget> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
+                              padding: EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(color: Colors.white)),

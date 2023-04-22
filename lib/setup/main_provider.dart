@@ -1,3 +1,4 @@
+import 'package:betna/models/company_profile.dart';
 import 'package:betna/models/project_model.dart';
 import 'package:betna/models/sale_ad_model.dart';
 import 'package:betna/services/firebase_collections_names.dart';
@@ -15,11 +16,13 @@ class MainProvider with ChangeNotifier {
   String kArabic = 'العربية';
   Lang? currentLang;
   DisplayedPage? currentPage = DisplayedPage.HOME;
+
   ///
   Currency? currency;
   Map? currencyMap;
   Map? currencyMapUSD;
   List<QueryDocumentSnapshot> currencyList = [];
+
   ///
   TextDirection textDecoration = TextDirection.ltr;
   String kLang = 'en';
@@ -27,21 +30,22 @@ class MainProvider with ChangeNotifier {
   /// fetch data from firebase
   FetchDataState fetchDataState = FetchDataState.none;
   ListNotifier<ProjectModel> projectList =
-      ListNotifier(fetchDataState: FetchDataState.wait);
+      ListNotifier(fetchDataState: Future.value(FetchDataState.wait));
+
+  Future<CompanyProfile?>? profile;
 
   ListNotifier<SaleAdModel> saleList =
-  ListNotifier(fetchDataState: FetchDataState.wait);
-
+      ListNotifier(fetchDataState: Future.value(FetchDataState.wait));
 
   MainProvider.init() {
     if (kDebugMode) {
       print('AppProvider inti');
     }
+
     currentPage = DisplayedPage.HOME;
     currency = Currency.TRY;
     changeCurrentLang(Lang.EN);
     notifyListeners();
-
     getDataList();
     getCurrent();
   }
@@ -73,6 +77,7 @@ class MainProvider with ChangeNotifier {
     }
   }
 
+
   getCurrent() async {
     DocumentSnapshot snapshot = await FirebaseMethod.get(
         co: FirebaseCollectionNames.CurrencyCollection, doc: 'USD');
@@ -95,6 +100,7 @@ class MainProvider with ChangeNotifier {
 
   getDataList() async {
     fetchDataState = FetchDataState.wait;
+
     /// for projects data
     FirebaseMethod.streams(co: FirebaseCollectionNames.ProjectsCollection)
         .listen((event) {
@@ -102,17 +108,17 @@ class MainProvider with ChangeNotifier {
         return ProjectModel.fromJson(e.data());
       }).toList();
       projectList =
-          ListNotifier<ProjectModel>.init(project, FetchDataState.done);
+          ListNotifier<ProjectModel>.init(project, Future.value(FetchDataState.done),null);
       notifyListeners();
     });
+
     /// for resale data
     FirebaseMethod.streams(co: FirebaseCollectionNames.SalesCollection)
         .listen((event) {
       List<SaleAdModel> saleAdList = event.docs.map((e) {
         return SaleAdModel.fromMap(e.data());
       }).toList();
-      saleList =
-      ListNotifier<SaleAdModel>.init(saleAdList, FetchDataState.done);
+      saleList = ListNotifier<SaleAdModel>.init(saleAdList, Future.value(FetchDataState.done),event);
       notifyListeners();
     });
 
@@ -125,9 +131,11 @@ enum FetchDataState { done, wait, error, none }
 
 class ListNotifier<T> {
   List<T>? list = [];
-  FetchDataState? fetchDataState;
+  Future<FetchDataState>? fetchDataState;
 
-  ListNotifier({required FetchDataState this.fetchDataState});
+  QuerySnapshot? querySnapshot;
 
-  ListNotifier.init(this.list, FetchDataState this.fetchDataState);
+  ListNotifier({required Future<FetchDataState> this.fetchDataState});
+
+  ListNotifier.init(this.list, Future<FetchDataState> this.fetchDataState ,this.querySnapshot);
 }

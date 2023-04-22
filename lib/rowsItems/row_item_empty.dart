@@ -33,26 +33,31 @@ class EmptyRowItem extends StatelessWidget {
           double fontSizePrice = 20;
           double bottom = 0.0;
           double top = 0.0;
-          switch(size.deviceScreenType){
+          switch (size.deviceScreenType) {
             case DeviceScreenType.Mobile:
-              width = 210;
+              width = 180;
               imageHeight = 190;
-              fontSizePrice = 20;
-              fontSize = 12;
+              fontSizePrice = 15;
+              fontSize = 10;
               bottom = 100;
               top = 12;
               break;
             case DeviceScreenType.Tablet:
-            // TODO: Handle this case.
-              break;
-            case DeviceScreenType.Desktop:
-              width = 300;
+              width = 250;
               imageHeight = 280;
               fontSize = 16;
-              bottom = 124;
+              bottom = 130;
               fontSizePrice = 24;
               top = 20;
 
+              break;
+            case DeviceScreenType.Desktop:
+              width = 250;
+              imageHeight = 280;
+              fontSize = 16;
+              bottom = 130;
+              fontSizePrice = 24;
+              top = 20;
 
               break;
             default:
@@ -63,10 +68,7 @@ class EmptyRowItem extends StatelessWidget {
               fontSizePrice = 24;
               top = 20;
 
-
               break;
-
-
           }
 
           return Container(
@@ -121,7 +123,7 @@ class EmptyRowItem extends StatelessWidget {
                     CustomText(
                       text: Constants.convertPrice(context, "1000000"),
                       size: fontSizePrice,
-                      color: Colors.white,
+                      color: Style.lavenderBlack,
                       weight: FontWeight.bold,
                       textDirection: TextDirection.ltr,
                     ),

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:betna/models/sale_ad_model.dart';
 import 'package:betna/style/widget/ImageView.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -83,7 +84,7 @@ class _ViedoPlayerViewState extends State<ViedoPlayerView> {
             height: MediaQuery.of(context).size.height,
             color: Colors.white.withOpacity(0.5),
           ),
-          if (!_controller.value.hasError) ...[
+          if (!_controller.value.hasError && !kDebugMode) ...[
             VideoPlayer(_controller),
             ClosedCaption(text: _controller.value.caption.text),
             _ControlsOverlay(controller: _controller),
@@ -109,6 +110,7 @@ class _ControlsOverlay extends StatelessWidget {
     Duration(seconds: 3),
     Duration(seconds: 10),
   ];
+
   static const List<double> _examplePlaybackRates = <double>[
     0.25,
     0.5,
@@ -121,7 +123,6 @@ class _ControlsOverlay extends StatelessWidget {
   ];
 
   final VideoPlayerController controller;
-
   @override
   Widget build(BuildContext context) {
     return Stack(

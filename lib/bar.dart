@@ -1,5 +1,6 @@
 import 'package:betna/setup/enumerators.dart';
 import 'package:betna/setup/main_provider.dart';
+import 'package:betna/setup/tools.dart';
 import 'package:betna/style/custom_text.dart';
 import 'package:betna/style/popover/popover_notifications.dart';
 import 'package:betna/style/popover/popover_region.dart';
@@ -12,6 +13,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:betna/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'style/widget/logo_widget.dart';
 
 class CustomBar extends StatefulWidget {
   const CustomBar({Key? key}) : super(key: key);
@@ -99,17 +102,17 @@ class DesktopOrTablet extends StatelessWidget {
     String logo;
     switch (lang) {
       case Lang.AR:
-        logo = 'assets/logo/logoAR.png';
+        logo = 'assets/logo/logoA.png';
         break;
       case Lang.EN:
-        logo = 'assets/logo/logoEn.png';
+        logo = 'assets/logo/logoE.png';
         break;
       case Lang.TR:
-        logo = 'assets/logo/logoTR.png';
+        logo = 'assets/logo/logoT.png';
         break;
       default:
         {
-          logo = 'assets/logo/logoEn.png';
+          logo = 'assets/logo/logoE.png';
         }
     }
     return Column(
@@ -201,22 +204,22 @@ class DesktopOrTablet extends StatelessWidget {
           ),
         ),
         Container(
-          height: 80,
+          height: 100,
           decoration: const BoxDecoration(
               color: Colors.white,
               boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0, 1))]),
           padding: EdgeInsets.symmetric(
-              horizontal:
-                  MediaQuery.of(context).size.width * (isTablet ? 0.05 : 0.19)),
+              horizontal: MediaQuery.of(context).size.width * (isTablet ? 0.05 : 0.19)),
           width: MediaQuery.of(context).size.width,
           child: Row(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 6),
+                margin: const EdgeInsets.only(bottom: 6),
                 child: Image.asset(
                   logo,
-                  width: 250,
-                  fit: BoxFit.cover,
+                  width: 200,
+                  height: 80,
+                  fit: BoxFit.contain,
                 ),
               ),
               Expanded(child: Row()),
@@ -333,17 +336,17 @@ class Mobile extends StatelessWidget {
     String logo;
     switch (lang) {
       case Lang.AR:
-        logo = 'assets/logo/logoAR.png';
+        logo = 'assets/logo/logoA.png';
         break;
       case Lang.EN:
-        logo = 'assets/logo/logoEn.png';
+        logo = 'assets/logo/logoE.png';
         break;
       case Lang.TR:
-        logo = 'assets/logo/logoTR.png';
+        logo = 'assets/logo/logoT.png';
         break;
       default:
         {
-          logo = 'assets/logo/logoEe.png';
+          logo = 'assets/logo/logoE.png';
         }
     }
     return Column(
@@ -360,14 +363,7 @@ class Mobile extends StatelessWidget {
               horizontal: MediaQuery.of(context).size.width * 0.05),
           child: Row(
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 6),
-                child: Image.asset(
-                  logo,
-                  width: 150,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              const Logo(withBackground: true,),
               Expanded(child: Row()),
               PopOverRegion.hoverWithClick(
                 time: 1,

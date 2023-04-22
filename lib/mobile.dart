@@ -1,14 +1,20 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:betna/bar.dart';
 import 'package:betna/generated/l10n.dart';
+import 'package:betna/models/company_profile.dart';
 import 'package:betna/section/projects_section.dart';
-import 'package:betna/section/resale_section.dart';
+import 'package:betna/section/sale_section_.dart';
 import 'package:betna/section/urgent_section.dart';
+import 'package:betna/setup/enumerators.dart';
+import 'package:betna/setup/main_provider.dart';
+import 'package:betna/style/custom_text.dart';
 import 'package:betna/style/style.dart';
+import 'package:betna/style/widget/about_as.dart';
 import 'package:betna/style/widget/list_view_items.dart';
+import 'package:betna/style/widget/note_exchange_rate.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:maker/widget/custom_text.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MobilePage extends StatefulWidget {
@@ -47,6 +53,8 @@ class _Mobile extends State<MobilePage> {
 
   @override
   Widget build(BuildContext context) {
+    Lang? lang = Provider.of<MainProvider>(context, listen: false).currentLang;
+
     return SafeArea(
         child: Material(
       color: Colors.grey.shade300,
@@ -62,91 +70,33 @@ class _Mobile extends State<MobilePage> {
             key: _key,
             body: Column(
               children: [
+                ///main
                 Expanded(
                     child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.95,
                   child: SingleChildScrollView(
                     child: Column(
-                      children: [
-                        ///title
-                        Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(1),
-                              color: Style.primaryColors.withOpacity(0.075)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.only(left: 12,right: 12,top: 6),
-                                child: SizedBox(
-                                  height: 40,
-                                  child: DefaultTextStyle(
-                                    style:  const TextStyle(
-                                      fontFamily: 'LBC',
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      shadows: [
-                                        Shadow(
-                                          blurRadius: 8.0,
-                                          color: Colors.white,
-                                          offset: Offset(0, 0),
-                                        ),
-                                      ],
-                                    ),
-                                    child: AnimatedTextKit(
-                                      repeatForever: true,
-                                      animatedTexts: [
-                                        FlickerAnimatedText(S.of(context).kUrgent),
-                                        FlickerAnimatedText(S.of(context).kUrgent1),
-                                        FlickerAnimatedText(S.of(context).kUrgent2),
-                                      ],
-                                      onTap: () {
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.symmetric(vertical: 6),
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.95,
-                                height: 200,
-                                child: const UrgentListWidget(),
-                              ),
-                            ],
-                          ),
-                        ),
+                      children:  [
+                        const NoteExchangeRate(edgeInsetsGeometry: EdgeInsets.symmetric(horizontal: 12),textSize: 8,),
+
+                        const UrgentSection(),
+
                         ///resale list
-                        Container(
-                          margin: const EdgeInsets.only(top: 12),
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListViewItems(
-                            title: S.of(context).kSale,
-                            titleAction: S.of(context).kSeeAllListing,
-                            function: () {},
-                            list: const SaleListWidget(),
-                          ),
-                        ),
+                        const NewSaleSection(),
+
+
                         ///projects list
-                        Container(
-                          margin: const EdgeInsets.only(top: 12),
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListViewItems(
-                            title: S.of(context).kProjectAll,
-                            titleAction: S.of(context).kSeeAllListing,
-                            function: () {},
-                            list: const ProjectsListWidget(),
-                          ),
-                        ),
+                        const ProjectsSection(),
+
+                        ///about us
+                        AboutAs(edgeInsetsGeometry: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.25, bottom: 24),textSize: 10,),
 
                       ],
                     ),
                   ),
                 )),
+
+                /// contact
                 Row(
                   children: [
                     Container(
@@ -163,6 +113,9 @@ class _Mobile extends State<MobilePage> {
                             (icon) => IconButton(
                               padding: const EdgeInsets.all(10),
                               onPressed: () {
+                                // ChatGPT().result().then((value) {
+                                //   print(value!.choices[0].text);
+                                // });
                                 launchURL(icon['value'], context);
                               },
                               icon: Icon(
@@ -189,17 +142,5 @@ class _Mobile extends State<MobilePage> {
     try {
       await launchUrl(Uri.parse(data));
     } catch (error) {}
-  }
-
-  _launchInstagram() async {
-    const nativeUrl = "instagram://user?betnatr=severinas_app";
-    const webUrl = "https://www.instagram.com/betnatr/";
-    if (await canLaunchUrl(Uri.parse(nativeUrl))) {
-      await launchUrl(Uri.parse(nativeUrl));
-    } else if (await canLaunchUrl(Uri.parse(webUrl))) {
-      await launchUrl(Uri.parse(webUrl));
-    } else {
-      print("can't open Instagram");
-    }
   }
 }

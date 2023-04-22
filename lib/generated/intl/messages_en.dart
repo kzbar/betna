@@ -26,25 +26,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(value) => "${value} Hours Ago";
 
-  static String m3(value) => "${value} Minutes Ago";
+  static String m3(path) => "The image has been saved successfully ${path}";
 
-  static String m4(value) => "${value} Months Ago";
+  static String m4(value) => "${value} Minutes Ago";
 
-  static String m5(number) => "Number of ads ${number}";
+  static String m5(value) => "${value} Months Ago";
 
-  static String m6(value) => "Number contracts ${value}";
+  static String m6(number) => "Number of ads ${number}";
 
-  static String m7(value) => "Search by ${value}";
+  static String m7(value) => "Number contracts ${value}";
 
-  static String m8(value) => "Search by ${value}";
+  static String m8(count) => "Number of offers ${count}";
 
-  static String m9(number) => "Title ${number}";
+  static String m9(value) => "Search by ${value}";
 
-  static String m10(value) => "${value} Weeks Ago";
+  static String m10(value) => "Search by ${value}";
 
-  static String m11(value) => "${value} years ago";
+  static String m11(number) => "Title ${number}";
 
-  static String m12(value) => "Must make an appointment ${value}";
+  static String m12(value) => "${value} Weeks Ago";
+
+  static String m13(value) => "${value} years ago";
+
+  static String m14(value) => "Must make an appointment ${value}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -185,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Currency"),
         "kChangeLang": MessageLookupByLibrary.simpleMessage("Change Language"),
         "kCity": MessageLookupByLibrary.simpleMessage("City"),
+        "kClose": MessageLookupByLibrary.simpleMessage("Close"),
         "kCommunication": MessageLookupByLibrary.simpleMessage("Communication"),
         "kConstructionYear":
             MessageLookupByLibrary.simpleMessage("Construction Year"),
@@ -265,10 +270,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "You can contact us through the following links by clicking on the appropriate communication icon for you"),
         "kMessageContactToHelp":
             MessageLookupByLibrary.simpleMessage("Contact Us for help"),
+        "kMessageSaveImageTrue": m3,
         "kMessenger": MessageLookupByLibrary.simpleMessage("Messenger chat"),
-        "kMinutesAgo": m3,
+        "kMinutesAgo": m4,
         "kMonthlyRent": MessageLookupByLibrary.simpleMessage("Monthly rent"),
-        "kMonthsAgo": m4,
+        "kMonthsAgo": m5,
         "kNameSurname": MessageLookupByLibrary.simpleMessage("Name Surname"),
         "kNeighborhood": MessageLookupByLibrary.simpleMessage("Neighborhood"),
         "kNew": MessageLookupByLibrary.simpleMessage("New"),
@@ -277,8 +283,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "kNoOffer": MessageLookupByLibrary.simpleMessage(
             "There are no offers currently"),
         "kNote": MessageLookupByLibrary.simpleMessage("Notes"),
-        "kNumberAds": m5,
-        "kNumberContracts": m6,
+        "kNoteExchangeRate": MessageLookupByLibrary.simpleMessage(
+            "The offers on the site are priced on the Turkish lira. When the currency changes from the Turkish currency to another currency, the exchange rate is roughly calculated on the basis of the exchange rates of the World Central Bank."),
+        "kNumberAds": m6,
+        "kNumberContracts": m7,
+        "kOfferLength": m8,
         "kOffers": MessageLookupByLibrary.simpleMessage("Offers"),
         "kOldLess": MessageLookupByLibrary.simpleMessage("Old/Less"),
         "kOwnerID": MessageLookupByLibrary.simpleMessage("ID-Owner No."),
@@ -325,8 +334,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kRoomPlan": MessageLookupByLibrary.simpleMessage("Apartment Models"),
         "kSale": MessageLookupByLibrary.simpleMessage("For Sale"),
         "kSaleList": MessageLookupByLibrary.simpleMessage("Sale list"),
-        "kSearch": m7,
-        "kSearchBy": m8,
+        "kSearch": m9,
+        "kSearchBy": m10,
         "kSeeAllListing":
             MessageLookupByLibrary.simpleMessage("See All listing"),
         "kSelect": MessageLookupByLibrary.simpleMessage("Select"),
@@ -342,7 +351,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "kThereIs": MessageLookupByLibrary.simpleMessage("Yes"),
         "kThereIsNot": MessageLookupByLibrary.simpleMessage("No"),
         "kThings": MessageLookupByLibrary.simpleMessage("Things"),
-        "kTitle": m9,
+        "kTitle": m11,
         "kTown": MessageLookupByLibrary.simpleMessage("Town"),
         "kTransportation":
             MessageLookupByLibrary.simpleMessage("Transportation"),
@@ -355,16 +364,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "kUrgentTitle": MessageLookupByLibrary.simpleMessage("Urgent Offers"),
         "kUsersList": MessageLookupByLibrary.simpleMessage("Users list"),
         "kView": MessageLookupByLibrary.simpleMessage("View"),
-        "kWeeksAgo": m10,
+        "kWeeksAgo": m12,
         "kWelcomeMessage": MessageLookupByLibrary.simpleMessage(
             "Welcome to our home site. The site is currently under construction. For more information, please contact the following number"),
         "kWhatsApp": MessageLookupByLibrary.simpleMessage("whatsApp chat"),
         "kWithBackground": MessageLookupByLibrary.simpleMessage("Background"),
         "kWithLogo": MessageLookupByLibrary.simpleMessage("With Logo"),
-        "kYearsAgo": m11,
+        "kYearsAgo": m13,
         "kYes": MessageLookupByLibrary.simpleMessage("Yse"),
         "kYesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
-        "kYouShouldTakeDate": m12,
+        "kYouShouldTakeDate": m14,
         "kira": MessageLookupByLibrary.simpleMessage("RENT : "),
         "kira_title": MessageLookupByLibrary.simpleMessage("RENTAL CONTRACT"),
         "leaseContracts":

@@ -26,25 +26,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(value) => "${value} Saatler önce";
 
-  static String m3(value) => "${value} Dakika önce";
+  static String m3(path) => "Resim başarıyla kaydedildi ${path}";
 
-  static String m4(value) => "${value} Aylar önce";
+  static String m4(value) => "${value} Dakika önce";
 
-  static String m5(number) => "İlan sayısı ${number}";
+  static String m5(value) => "${value} Aylar önce";
 
-  static String m6(value) => "Sözleşme sayısı ${value}";
+  static String m6(number) => "İlan sayısı ${number}";
 
-  static String m7(value) => "Arama ${value}";
+  static String m7(value) => "Sözleşme sayısı ${value}";
 
-  static String m8(value) => "Şuna göre ara ${value}";
+  static String m8(count) => "Teklif sayısı ${count}";
 
-  static String m9(number) => "Başlık ${number}";
+  static String m9(value) => "Arama ${value}";
 
-  static String m10(value) => "${value} Haftalar önceo";
+  static String m10(value) => "Şuna göre ara ${value}";
 
-  static String m11(value) => "${value} Yıllar önce";
+  static String m11(number) => "Başlık ${number}";
 
-  static String m12(value) => "Randevu almalı ${value}";
+  static String m12(value) => "${value} Haftalar önceo";
+
+  static String m13(value) => "${value} Yıllar önce";
+
+  static String m14(value) => "Randevu almalı ${value}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -187,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Değişim Döviz"),
         "kChangeLang": MessageLookupByLibrary.simpleMessage("Dili değiştir"),
         "kCity": MessageLookupByLibrary.simpleMessage("Il"),
+        "kClose": MessageLookupByLibrary.simpleMessage("Kapat"),
         "kCommunication": MessageLookupByLibrary.simpleMessage("iletişim"),
         "kConstructionYear":
             MessageLookupByLibrary.simpleMessage("Inşaat yılı"),
@@ -270,10 +275,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Aşağıdaki linklerden size uygun olan iletişim ikonuna tıklayarak bizimle iletişime geçebilirsiniz."),
         "kMessageContactToHelp":
             MessageLookupByLibrary.simpleMessage("Yardım için Bize Ulaşın"),
+        "kMessageSaveImageTrue": m3,
         "kMessenger": MessageLookupByLibrary.simpleMessage("Messenger sohbeti"),
-        "kMinutesAgo": m3,
+        "kMinutesAgo": m4,
         "kMonthlyRent": MessageLookupByLibrary.simpleMessage("Aylık kira"),
-        "kMonthsAgo": m4,
+        "kMonthsAgo": m5,
         "kNameSurname": MessageLookupByLibrary.simpleMessage("Adı Soyadı"),
         "kNeighborhood": MessageLookupByLibrary.simpleMessage("Mahlle"),
         "kNew": MessageLookupByLibrary.simpleMessage("Yeni"),
@@ -281,8 +287,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "kNo": MessageLookupByLibrary.simpleMessage("Hayır"),
         "kNoOffer": MessageLookupByLibrary.simpleMessage("Şu anda teklif yok"),
         "kNote": MessageLookupByLibrary.simpleMessage("Notlar"),
-        "kNumberAds": m5,
-        "kNumberContracts": m6,
+        "kNoteExchangeRate": MessageLookupByLibrary.simpleMessage(
+            "Sitedeki teklifler Türk Lirası üzerinden fiyatlandırılmaktadır.Para birimi Türk para biriminden başka bir para birimine geçtiğinde, döviz kuru Dünya Merkez Bankası döviz kurları baz alınarak kabaca hesaplanmaktadır."),
+        "kNumberAds": m6,
+        "kNumberContracts": m7,
+        "kOfferLength": m8,
         "kOffers": MessageLookupByLibrary.simpleMessage("Teklifler"),
         "kOldLess": MessageLookupByLibrary.simpleMessage("En eski/Daha az"),
         "kOwnerID":
@@ -332,8 +341,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kRoomPlan": MessageLookupByLibrary.simpleMessage("Daire Modelleri"),
         "kSale": MessageLookupByLibrary.simpleMessage("Satılık"),
         "kSaleList": MessageLookupByLibrary.simpleMessage("satış listesi"),
-        "kSearch": m7,
-        "kSearchBy": m8,
+        "kSearch": m9,
+        "kSearchBy": m10,
         "kSeeAllListing":
             MessageLookupByLibrary.simpleMessage("Tüm listeyi gör"),
         "kSelect": MessageLookupByLibrary.simpleMessage("Seçiniz"),
@@ -349,7 +358,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "kThereIs": MessageLookupByLibrary.simpleMessage("var"),
         "kThereIsNot": MessageLookupByLibrary.simpleMessage("Yok"),
         "kThings": MessageLookupByLibrary.simpleMessage("şeyler"),
-        "kTitle": m9,
+        "kTitle": m11,
         "kTown": MessageLookupByLibrary.simpleMessage("ilce"),
         "kTransportation": MessageLookupByLibrary.simpleMessage("taşımacılık"),
         "kType": MessageLookupByLibrary.simpleMessage("Reklam türü"),
@@ -361,16 +370,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "kUrgentTitle": MessageLookupByLibrary.simpleMessage("Acil Fırsatlar"),
         "kUsersList": MessageLookupByLibrary.simpleMessage("Kullanıcı listesi"),
         "kView": MessageLookupByLibrary.simpleMessage("Manzara"),
-        "kWeeksAgo": m10,
+        "kWeeksAgo": m12,
         "kWelcomeMessage": MessageLookupByLibrary.simpleMessage(
             "Ana sitemize hoş geldiniz. Site şu anda yapım aşamasındadır. Daha fazla bilgi için lütfen aşağıdaki numarayla iletişime geçin"),
         "kWhatsApp": MessageLookupByLibrary.simpleMessage("whatsApp sohbet"),
         "kWithBackground": MessageLookupByLibrary.simpleMessage("Arka fon"),
         "kWithLogo": MessageLookupByLibrary.simpleMessage("Logo ile"),
-        "kYearsAgo": m11,
+        "kYearsAgo": m13,
         "kYes": MessageLookupByLibrary.simpleMessage("Evet"),
         "kYesterday": MessageLookupByLibrary.simpleMessage("Dün"),
-        "kYouShouldTakeDate": m12,
+        "kYouShouldTakeDate": m14,
         "kira": MessageLookupByLibrary.simpleMessage("KIRA : "),
         "kira_title": MessageLookupByLibrary.simpleMessage("KİRA SÖZLEŞMESİ"),
         "leaseContracts":

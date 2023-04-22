@@ -1,3 +1,5 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:betna/generated/l10n.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/style/widget/list_items_empty.dart';
 import 'package:flutter/material.dart';
@@ -13,93 +15,136 @@ import '../style/widget/skeleton.dart';
 
 enum FilterList { seeAll, affordableHomes, luxuryHomes }
 
-class UrgentListWidget extends StatelessWidget {
-  final FilterList filterList;
+class UrgentSection extends StatefulWidget {
+  const UrgentSection({super.key});
 
-  const UrgentListWidget({
-    Key? key,
-    this.filterList = FilterList.seeAll,
-  }) : super(key: key);
+  @override
+  State<StatefulWidget> createState() => _UrgentSection();
+}
 
+class _UrgentSection extends State<UrgentSection> {
   @override
   Widget build(BuildContext context) {
     ListNotifier<SaleAdModel> notifier =
         Provider.of<MainProvider>(context, listen: true).saleList;
-    List<SaleAdModel> listResult = notifier.list!.where((element) => element.urgent == true).toList();
-    switch (notifier.fetchDataState) {
-      case FetchDataState.done:
-        return listResult.isNotEmpty
-            ? Scrollbar(
-                child: ListView.builder(
-                    itemCount: listResult.length,
-                    primary: true,
-                    shrinkWrap: true,
-                    //just set this property
-                    padding: const EdgeInsets.only(
-                        bottom: 0, top: 0, right: 0, left: 0),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, itemCount) {
-                      SaleAdModel _model = listResult[itemCount];
-                      return UrgentRowItem(
-                        model: _model,
-                        tag: '${filterList.index}',
-                      );
-                    }))
-            : ListItemsEmpty();
-      case FetchDataState.wait:
-        return Scrollbar(
-            child: ListView.builder(
-                itemCount: 1,
-                primary: true,
-                shrinkWrap: true,
-                //just set this property
-                padding:
-                    const EdgeInsets.only(bottom: 0, top: 12, right: 12, left: 12),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, itemCount) {
-                  return const EmptyRowItem();
-                }));
-      case FetchDataState.error:
-        return Container();
-      case FetchDataState.none:
-        return Scrollbar(
-            child: ListView.builder(
-                itemCount: 1,
-                primary: true,
-                shrinkWrap: true,
-                //just set this property
-                padding:
-                    const EdgeInsets.only(bottom: 0, top: 12, right: 12, left: 12),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, itemCount) {
-                  return const EmptyRowItem();
-                }));
-      default:
-        {
-          return Scrollbar(
-              child: ListView.builder(
-                  itemCount: 1,
-                  primary: true,
-                  shrinkWrap: true,
-                  //just set this property
-                  padding:
-                      const EdgeInsets.only(bottom: 0, top: 12, right: 12, left: 12),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, itemCount) {
-                    return const EmptyRowItem();
-                  }));
+    List<SaleAdModel> listResult =
+        notifier.list!.where((element) => element.urgent == 'yes').toList();
+    listResult.sort(
+        (a, b) => b.available.toString().compareTo(a.available.toString()));
+    double h1 = 200;
+
+    return FutureBuilder(
+      future: notifier.fetchDataState,
+      builder: (BuildContext context, AsyncSnapshot<FetchDataState> snapshot) {
+        if(snapshot.hasData){
+
+          if(snapshot.data! == FetchDataState.wait){
+            return AnimatedContainer(
+              height: h1,
+              duration: const Duration(milliseconds: 2000),
+              child:  AnimatedContainer(
+                height: h1,
+                width: MediaQuery.of(context).size.width,
+                duration: Duration(milliseconds: 2000),
+                child: Scrollbar(
+                    child: ListView.builder(
+                        itemCount: 5,
+                        primary: true,
+                        shrinkWrap: true,
+                        //just set this property
+                        padding: const EdgeInsets.only(
+                            bottom: 0, top: 12, right: 12, left: 12),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, itemCount) {
+                          return const EmptyRowItem();
+                        })),
+              ),
+            );
+          }else if(snapshot.data! == FetchDataState.done){
+            double h1 = 0;
+
+            double h = listResult.isEmpty ? 0 : 220;
+            return AnimatedContainer(
+              height: h,
+              padding: const EdgeInsets.only(left: 48, right: 48, bottom: 12),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(1),
+                  color: Style.primaryColors.withOpacity(0.075)),
+              duration: Duration(milliseconds: 500),
+              child: ListView(
+                children: [
+                  Container(
+                    padding:
+                    const EdgeInsets.only(left: 12, right: 12, top: 6),
+                    child: SizedBox(
+                      height: 40,
+                      child: DefaultTextStyle(
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontFamily: 'LBC',
+                          color: Colors.black,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 8.0,
+                              color: Colors.grey,
+                              offset: Offset(0, 1),
+                            ),
+                          ],
+                        ),
+                        child: AnimatedTextKit(
+                          repeatForever: true,
+                          animatedTexts: [
+                            FlickerAnimatedText(S.of(context).kUrgent,
+                                textAlign: TextAlign.center),
+                            FlickerAnimatedText(S.of(context).kUrgent1),
+                            FlickerAnimatedText(S.of(context).kUrgent2),
+                          ],
+                          onTap: () {},
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                    ),
+                    width: MediaQuery.of(context).size.width,
+                    height: 150,
+                    child: ListView.builder(
+                        itemCount: listResult.length,
+                        primary: true,
+                        shrinkWrap: true,
+                        //just set this property
+                        padding: const EdgeInsets.only(
+                            bottom: 10, top: 0, right: 0, left: 0),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, itemCount) {
+                          SaleAdModel _model = listResult[itemCount];
+                          return UrgentRowItem(
+                            model: _model,
+                            tag: '_urgent',
+                          );
+                        }),
+                  ),
+                ],
+              ),
+            );
+          }
         }
-    }
+        return Container();
+      },
+    );
   }
 }
-class EmptyRowItem extends StatelessWidget {
 
+class EmptyRowItem extends StatelessWidget {
   const EmptyRowItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 100,
       child: ContextMenuRegion(
         contextMenu: TextButton(
           onPressed: () {},
@@ -111,7 +156,7 @@ class EmptyRowItem extends StatelessWidget {
               color: Colors.white,
               borderRadius: Corners.lgBorder,
               boxShadow: Shadows.small),
-          width: 150,
+          width: 130,
           child: Stack(
             children: [
               Column(
@@ -122,14 +167,14 @@ class EmptyRowItem extends StatelessWidget {
                     borderRadius: Corners.lgBorderTop,
                     child: Skeleton(
                       cornerRadius: 0.0,
-                      height: 150,
-                      width: 150,
+                      height: 90,
+                      width: 130,
                       showCircular: false,
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                      top: 0,
+                      top: 6,
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -146,24 +191,12 @@ class EmptyRowItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        InfoTextWidget(
-                          text1: 'Loading',
-                          text2:
-                          '',
-                        ),
-                        InfoTextWidget(
-                          text1: 'Loading',
-                          text2:
-                          '',
-                        ),
-                      ],
-                    ),
+                  CustomText(
+                    text: Constants.convertPrice(context, "1000000"),
+                    size: 15,
+                    color: Style.lavenderBlack,
+                    weight: FontWeight.bold,
+                    textDirection: TextDirection.ltr,
                   ),
                 ],
               ),
@@ -175,7 +208,8 @@ class EmptyRowItem extends StatelessWidget {
                   margin: const EdgeInsets.only(),
                   height: 20,
                   decoration: BoxDecoration(
-                      borderRadius: Corners.medBorder, color: Style.primaryColors),
+                      borderRadius: Corners.medBorder,
+                      color: Style.primaryColors),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -191,38 +225,16 @@ class EmptyRowItem extends StatelessWidget {
                       ),
                       CustomText(
                         text: Constants.timeAgoSinceDate(
-                            DateTime.fromMillisecondsSinceEpoch(
-                                DateTime.now().millisecondsSinceEpoch)
-                                .toIso8601String(),context: context)
+                                DateTime.fromMillisecondsSinceEpoch(
+                                        DateTime.now().millisecondsSinceEpoch)
+                                    .toIso8601String(),
+                                context: context)
                             .toUpperCase(),
-
                         size: 10,
                         color: Colors.white,
                       )
                     ],
                   ),
-                ),
-              ),
-              Positioned(
-                bottom: 90,
-                left: 12,
-                child: Column(
-                  textDirection: TextDirection.ltr,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(
-                      text: 'Home',
-                      size: 12,
-                      color: Colors.white,
-                    ),
-                    CustomText(
-                      text: Constants.convertPrice(context, "1000000"),
-                      size: 20,
-                      color: Colors.white,
-                      weight: FontWeight.bold,
-                      textDirection: TextDirection.ltr,
-                    ),
-                  ],
                 ),
               ),
             ],
@@ -232,6 +244,7 @@ class EmptyRowItem extends StatelessWidget {
     );
   }
 }
+
 class InfoTextWidget extends StatelessWidget {
   final String? text1;
   final String? text2;

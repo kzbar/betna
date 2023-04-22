@@ -4,21 +4,24 @@ import 'package:betna/generated/l10n.dart';
 import 'package:betna/models/address_model.dart';
 import 'package:betna/models/sale_ad_model.dart';
 import 'package:betna/services/firebase_collections_names.dart';
+import 'package:betna/setup/general.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/setup/tools.dart';
 import 'package:betna/style/custom_text.dart';
 import 'package:betna/style/responsive/device_screen_type.dart';
 import 'package:betna/style/responsive/responsive_builder.dart';
 import 'package:betna/style/style.dart';
+import 'package:betna/style/widget/ImageView.dart';
 import 'package:betna/style/widget/currency_widget.dart';
+import 'package:betna/style/widget/hover_widget.dart';
 import 'package:betna/style/widget/images_list.dart';
+import 'package:betna/style/widget/images_page_view.dart';
+import 'package:betna/style/widget/logo_widget.dart';
 import 'package:betna/style/widget/video_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:maker/scr/common/hover_widget.dart';
-import 'package:maker/scr/common/logo_widget.dart';
-import 'package:maker/setup/general.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:translator/translator.dart';
@@ -47,10 +50,9 @@ class _DetailsSale extends State<DetailsSale> {
 
   @override
   void initState() {
-    if(!widget.fromUrl) {
-      model =widget.kModel;
+    if (!widget.fromUrl) {
+      model = widget.kModel;
       address = Address.fromMap(model!.address!);
-
     }
     super.initState();
   }
@@ -61,11 +63,11 @@ class _DetailsSale extends State<DetailsSale> {
     return ResponsiveBuilder(builder: (context, size) {
       double w = MediaQuery.of(context).size.width;
       double h = MediaQuery.of(context).size.height;
-      _isDesktop = size.deviceScreenType == DeviceScreenType.Desktop || size.deviceScreenType == DeviceScreenType.Tablet;
+      _isDesktop = size.deviceScreenType == DeviceScreenType.Desktop ||
+          size.deviceScreenType == DeviceScreenType.Tablet;
       double horizontal = 0.0;
-      switch(size.deviceScreenType){
+      switch (size.deviceScreenType) {
         case DeviceScreenType.Mobile:
-
           break;
         case DeviceScreenType.Tablet:
           horizontal = 0.05;
@@ -74,8 +76,8 @@ class _DetailsSale extends State<DetailsSale> {
           horizontal = 0.25;
           break;
         default:
-
       }
+      print("video ${model?.videoUrl}");
       return SafeArea(
           child: PopOverController(
         child: Scaffold(
@@ -85,7 +87,15 @@ class _DetailsSale extends State<DetailsSale> {
             child: FutureBuilder(
               future: widget.fromUrl ? getAd() : Future.value(model),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (!snapshot.hasData) return Container(child: Center(child: CircularProgressIndicator(color: Colors.white,),),);
+                if (!snapshot.hasData) {
+                  return Container(
+                    child: const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                    ),
+                  );
+                }
                 return Column(
                   children: [
                     Container(
@@ -103,9 +113,7 @@ class _DetailsSale extends State<DetailsSale> {
                         child: Row(
                           textDirection: TextDirection.ltr,
                           children: [
-                            const LogoWidget(
-                              imageWidth: 100,
-                            ),
+                             Container(padding: const EdgeInsets.symmetric(horizontal: 12),child: const Logo(withBackground: false,),),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.06,
                             ),
@@ -152,32 +160,102 @@ class _DetailsSale extends State<DetailsSale> {
                       child: Container(
                         color: Colors.white,
                         padding: EdgeInsets.only(bottom: h * 0.10),
-                        margin: EdgeInsets.symmetric(
-                            horizontal: w * horizontal),
+                        margin:
+                        EdgeInsets.symmetric(horizontal: w * horizontal),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ///VIDEO
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: _isDesktop!
-                                      ? SizedBox(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.75,
-                                          child: ViedoPlayerView(
+                            if (model!.videoUrl != null && model!.videoUrl!.isNotEmpty) ...[
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: _isDesktop!
+                                        ? SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.75,
+                                            child: ViedoPlayerView(
+                                              model: model!,
+                                            ),
+                                          )
+                                        : ViedoPlayerView(
                                             model: model!,
                                           ),
-                                        )
-                                      : ViedoPlayerView(
-                                          model: model!,
+                                  )
+                                ],
+                              ),
+                            ] else ...[
+                              ///Image
+                              Container(
+                                color: Colors.transparent,
+                                height: _isDesktop! ? h * 0.40 : h * 0.35,
+                                child: Stack(
+                                  children: [
+                                    model!.images!.isNotEmpty
+                                    ? InkWell(
+                                      child: Hero(
+                                        tag: '${model!.adId!}${widget.tag}',
+                                        child: ImageView(
+                                          image: model!.images![0]!??'',
+                                          width: w,
+                                          height:
+                                          _isDesktop! ? h * 0.40 : h * 0.35,
                                         ),
-                                )
-                              ],
-                            ),
+                                      ),
+                                      onTap: () {
+                                        Get.to(() => ImagePageView(
+                                          images: model!.images,
+                                          tag:
+                                          "${model!.adId!}${widget.tag}",
+                                        ));
+                                      },
+                                    ):Hero(
+                                      tag: '${model!.adId!}${widget.tag}',
+                                      child: ImageView(
+                                        image: '',
+                                        width: w,
+                                        fit: BoxFit.fill,
+                                        height:
+                                        _isDesktop! ? h * 0.40 : h * 0.35,
+                                      ),
+                                    ),
+                                    Positioned(
+                                        right: 12,
+                                        top: 24,
+                                        left: 12,
+                                        child: Row(
+                                          textDirection: TextDirection.rtl,
+                                          children: [
+                                            IconButton(
+                                                onPressed: () {
+                                                  Get.to(() => ImagePageView(
+                                                        images: model!.images,
+                                                        tag:
+                                                            "${model!.adId!}${widget.tag}",
+                                                      ));
+                                                },
+                                                icon: Icon(
+                                                  Icons.photo_library_rounded,
+                                                  color: Style.orchid,
+                                                )),
+                                            const Spacer(),
+                                            IconButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                icon: const Icon(
+                                                  Icons.close_sharp,
+                                                  color: Colors.white,
+                                                )),
+                                          ],
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ],
 
                             ///IMAGES
                             Container(
@@ -576,7 +654,8 @@ class _DetailsSale extends State<DetailsSale> {
       decoration: BoxDecoration(
           border:
               Border(bottom: BorderSide(color: Colors.grey.withOpacity(0.5)))),
-      margin: EdgeInsets.symmetric(horizontal: _isDesktop! ? w * 0.05 : w * 0.15, vertical: 6),
+      margin: EdgeInsets.symmetric(
+          horizontal: _isDesktop! ? w * 0.05 : w * 0.15, vertical: 6),
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children: [

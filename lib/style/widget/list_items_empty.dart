@@ -13,20 +13,19 @@ class ListItemsEmpty extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey.shade50,
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomText(
             text: S.of(context).kNoOffer,
-            size: 36,
+            size: 16,
             color: Style.primaryColors,
           ),
           const SizedBox(
-            height: 24,
+            height: 12,
           ),
-            Icon(Icons.search_off,size: 48,color: Style.primaryColors,)
+            Icon(Icons.search_off,size: 24,color: Style.primaryColors,)
         ],
 
       ),

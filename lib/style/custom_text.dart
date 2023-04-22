@@ -1,9 +1,9 @@
+import 'package:betna/setup/enumerators.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../setup/enumerators.dart';
 
 class CustomText extends StatelessWidget {
   final String? text;

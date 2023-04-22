@@ -1800,6 +1800,46 @@ class S {
     );
   }
 
+  /// `The image has been saved successfully {path}`
+  String kMessageSaveImageTrue(Object path) {
+    return Intl.message(
+      'The image has been saved successfully $path',
+      name: 'kMessageSaveImageTrue',
+      desc: '',
+      args: [path],
+    );
+  }
+
+  /// `Number of offers {count}`
+  String kOfferLength(Object count) {
+    return Intl.message(
+      'Number of offers $count',
+      name: 'kOfferLength',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Close`
+  String get kClose {
+    return Intl.message(
+      'Close',
+      name: 'kClose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The offers on the site are priced on the Turkish lira. When the currency changes from the Turkish currency to another currency, the exchange rate is roughly calculated on the basis of the exchange rates of the World Central Bank.`
+  String get kNoteExchangeRate {
+    return Intl.message(
+      'The offers on the site are priced on the Turkish lira. When the currency changes from the Turkish currency to another currency, the exchange rate is roughly calculated on the basis of the exchange rates of the World Central Bank.',
+      name: 'kNoteExchangeRate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-Contract`
   String get appName {
     return Intl.message(

@@ -4,9 +4,6 @@ import 'package:betna/setup/main_provider.dart';
 import 'package:betna/pages/details_sale_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:maker/main.dart';
-
-import 'package:maker/web_control_panal/pages/home_page.dart';
 import 'package:provider/provider.dart';
 import 'enumerators.dart';
 import 'dart:ui' as ui;
@@ -38,12 +35,6 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
     case '/':
       pageRoute = _buildRouteFade(settings, const Home());
       break;
-    case '/page':
-      pageRoute = _buildRouteFade(
-          settings,
-          AppPagesController(
-            page: HomePageControl(),
-          ));
       break;
     case '/sale':
       String? param1 = uri.queryParameters['id'];

@@ -184,7 +184,11 @@
   "kUrgent1": "Acil",
   "kUrgent2": "Fırsat",
   "kUrgentTitle": "Acil Fırsatlar",
+  "kMessageSaveImageTrue": "Resim başarıyla kaydedildi {path}",
 
+  "kOfferLength": "Teklif sayısı {count}",
+  "kClose": "Kapat",
+  "kNoteExchangeRate": "Sitedeki teklifler Türk Lirası üzerinden fiyatlandırılmaktadır.Para birimi Türk para biriminden başka bir para birimine geçtiğinde, döviz kuru Dünya Merkez Bankası döviz kurları baz alınarak kabaca hesaplanmaktadır.",
 
 
 

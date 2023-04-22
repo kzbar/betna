@@ -11,13 +11,14 @@ class ListViewItems extends StatelessWidget {
   final String titleAction;
   final Widget? list;
   final Function? function;
+  final List? listItems;
 
   const ListViewItems(
       {Key? key,
       this.title = '',
       this.titleAction = '',
       this.list,
-      this.function})
+      this.function, this.listItems})
       : super(key: key);
 
   @override
@@ -72,7 +73,7 @@ class ListViewItems extends StatelessWidget {
                 children: [
                   CustomText(
                     text: title,
-                    size: 20,
+                    size: 12,
                     color: Style.lavenderBlack,
                   ),
                   const SizedBox(

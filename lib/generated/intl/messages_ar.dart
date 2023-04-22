@@ -26,25 +26,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(value) => "منذ ${value} ساعات";
 
-  static String m3(value) => "منذ دقائق";
+  static String m3(path) => "تم حفظ الصورة بنجاح ${path}";
 
-  static String m4(value) => "منذ ${value} أشهر";
+  static String m4(value) => "منذ دقائق";
 
-  static String m5(number) => "عدد الاعلانات ${number}";
+  static String m5(value) => "منذ ${value} أشهر";
 
-  static String m6(value) => "عدد العقود ${value}";
+  static String m6(number) => "عدد الاعلانات ${number}";
 
-  static String m7(value) => "البحث عبر ${value}";
+  static String m7(value) => "عدد العقود ${value}";
 
-  static String m8(value) => "البحث بواسطة ${value}";
+  static String m8(count) => "عدد العروض ${count}";
 
-  static String m9(number) => "عنوان ${number}";
+  static String m9(value) => "البحث عبر ${value}";
 
-  static String m10(value) => "منذ ${value} أسابيع";
+  static String m10(value) => "البحث بواسطة ${value}";
 
-  static String m11(value) => "منذ ${value} سنوات";
+  static String m11(number) => "عنوان ${number}";
 
-  static String m12(value) => "يجب أخد موعد من ${value}";
+  static String m12(value) => "منذ ${value} أسابيع";
+
+  static String m13(value) => "منذ ${value} سنوات";
+
+  static String m14(value) => "يجب أخد موعد من ${value}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -178,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "kChangeCurrency": MessageLookupByLibrary.simpleMessage("تغير العملة"),
         "kChangeLang": MessageLookupByLibrary.simpleMessage("تغير اللغة"),
         "kCity": MessageLookupByLibrary.simpleMessage("المدينة"),
+        "kClose": MessageLookupByLibrary.simpleMessage("اغلاق"),
         "kCommunication": MessageLookupByLibrary.simpleMessage("التواصل"),
         "kConstructionYear":
             MessageLookupByLibrary.simpleMessage("تاريخ البناء"),
@@ -253,10 +258,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "يمكنكم التواصل معنا من خلال الروابط التالية عبر الضغط على ايقونة التواصل المناسبة لكم"),
         "kMessageContactToHelp": MessageLookupByLibrary.simpleMessage(
             "اتصل بنا للحصول على المساعدة"),
+        "kMessageSaveImageTrue": m3,
         "kMessenger": MessageLookupByLibrary.simpleMessage("محادثة مسنجر"),
-        "kMinutesAgo": m3,
+        "kMinutesAgo": m4,
         "kMonthlyRent": MessageLookupByLibrary.simpleMessage("الايجار الشهري"),
-        "kMonthsAgo": m4,
+        "kMonthsAgo": m5,
         "kNameSurname": MessageLookupByLibrary.simpleMessage("الاسم والكنية"),
         "kNeighborhood": MessageLookupByLibrary.simpleMessage("المرافق العامة"),
         "kNew": MessageLookupByLibrary.simpleMessage("جديد"),
@@ -264,8 +270,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "kNo": MessageLookupByLibrary.simpleMessage("لا"),
         "kNoOffer": MessageLookupByLibrary.simpleMessage("لا يوجد عروض حاليا"),
         "kNote": MessageLookupByLibrary.simpleMessage("ملاحظات"),
-        "kNumberAds": m5,
-        "kNumberContracts": m6,
+        "kNoteExchangeRate": MessageLookupByLibrary.simpleMessage(
+            " العروض الموجودة ضمن الموقع  مسعرة على الليرة التركية ، عند تغير العملة من العملة التركية الى عملة اخرى يتم حساب سعر الصرف بشكل تقريبي على اساس اسعار صرف البنك المركزي العالمي ."),
+        "kNumberAds": m6,
+        "kNumberContracts": m7,
+        "kOfferLength": m8,
         "kOffers": MessageLookupByLibrary.simpleMessage("العروض"),
         "kOldLess": MessageLookupByLibrary.simpleMessage("الأقل/الأقدم"),
         "kOwnerID": MessageLookupByLibrary.simpleMessage("رقم الهوية-المالك"),
@@ -311,8 +320,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kRoomPlan": MessageLookupByLibrary.simpleMessage("النماذج والمساحات"),
         "kSale": MessageLookupByLibrary.simpleMessage("للبيع"),
         "kSaleList": MessageLookupByLibrary.simpleMessage("قائمة البيع"),
-        "kSearch": m7,
-        "kSearchBy": m8,
+        "kSearch": m9,
+        "kSearchBy": m10,
         "kSeeAllListing":
             MessageLookupByLibrary.simpleMessage("شاهد جميع العروض"),
         "kSelect": MessageLookupByLibrary.simpleMessage("حدد"),
@@ -328,7 +337,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "kThereIs": MessageLookupByLibrary.simpleMessage("موجود"),
         "kThereIsNot": MessageLookupByLibrary.simpleMessage("غير موجود"),
         "kThings": MessageLookupByLibrary.simpleMessage("الأشياء"),
-        "kTitle": m9,
+        "kTitle": m11,
         "kTown": MessageLookupByLibrary.simpleMessage("المقاطعة"),
         "kTransportation": MessageLookupByLibrary.simpleMessage("وسائل النقل"),
         "kType": MessageLookupByLibrary.simpleMessage("نوع الاعلان"),
@@ -340,16 +349,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "kUrgentTitle": MessageLookupByLibrary.simpleMessage("العروض العاجلة"),
         "kUsersList": MessageLookupByLibrary.simpleMessage("قائمة المستخدمين"),
         "kView": MessageLookupByLibrary.simpleMessage("الاطلالة"),
-        "kWeeksAgo": m10,
+        "kWeeksAgo": m12,
         "kWelcomeMessage": MessageLookupByLibrary.simpleMessage(
             "اهلا وسهلا في موقع بيتنا الموقع حاليا قيد الانشاء . للمزيد من المعلومات يرجى التواصل على الرقم التالي"),
         "kWhatsApp": MessageLookupByLibrary.simpleMessage("محادثة واتس إب"),
         "kWithBackground": MessageLookupByLibrary.simpleMessage("خلفية"),
         "kWithLogo": MessageLookupByLibrary.simpleMessage("مع شعار"),
-        "kYearsAgo": m11,
+        "kYearsAgo": m13,
         "kYes": MessageLookupByLibrary.simpleMessage("نعم"),
         "kYesterday": MessageLookupByLibrary.simpleMessage("البارحة"),
-        "kYouShouldTakeDate": m12,
+        "kYouShouldTakeDate": m14,
         "kira": MessageLookupByLibrary.simpleMessage("الايجار : "),
         "kira_title": MessageLookupByLibrary.simpleMessage("عقد إيجار"),
         "leaseContracts": MessageLookupByLibrary.simpleMessage("عقود الايجار"),

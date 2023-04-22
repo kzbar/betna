@@ -1,9 +1,9 @@
 
 import 'package:betna/style/widget/ImageView.dart';
 import 'package:betna/style/style.dart';
+import 'package:betna/style/widget/images_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:maker/app/common/images_page_view.dart';
 
 class ImageList extends StatefulWidget {
   final List<dynamic>? photosList;

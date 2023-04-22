@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:betna/generated/l10n.dart';
 import 'package:betna/models/address_model.dart';
 import 'package:betna/models/sale_ad_model.dart';
+import 'package:betna/pages/details_sale_screen.dart';
 import 'package:betna/setup/tools.dart';
 import 'package:betna/style/custom_text.dart';
 import 'package:betna/style/popover/context_menu_overlay.dart';
@@ -25,51 +26,25 @@ class _UrgentRowItem extends State<UrgentRowItem> {
 
   @override
   Widget build(BuildContext context) {
-    void _handleSharePressed() async {
-      // setState(() {
-      //   isShare = true;
-      // });
-      // try {
-      //   Capture().capturePng(context, _globalKey).then((value) async {
-      //     await WM()
-      //         .saveAndLaunchImage(value, "${widget.model!.adId}.png")
-      //         .then((value) {
-      //       setState(() {
-      //         isShare = false;
-      //       });
-      //     });
-      //   });
-      // } catch (error) {
-      //   setState(() {
-      //     isShare = false;
-      //   });
-      //   rethrow;
-      // }
-      // CloseContextMenuNotification().dispatch(context);
-    }
 
-    return ContextMenuRegion(
-      contextMenu: TextButton(
-        style: ButtonStyles.style,
-        onPressed: _handleSharePressed,
-        child: CustomText(
-          text: S.of(context).kShare,
-          color: Style.primaryColors,
-        ),
-      ),
+    return  IgnorePointer(
+      ignoring: !widget.model!.available!,
       child: RepaintBoundary(
         key: _globalKey,
         child: InkWell(
           onTap: () {
-            // Navigator.of(context).push(PageRouteBuilder(
-            //     settings: RouteSettings(name: 'sale?id=${widget.model!.adId}'),
-            //     pageBuilder: (BuildContext context, Animation<double> animation,
-            //         Animation<double> secondaryAnimation) {
-            //       return DetailsSale(
-            //         model: widget.model,
-            //         tag: widget.tag,
-            //       );
-            //     }));
+            Navigator.of(context).push(PageRouteBuilder(
+                settings:
+                RouteSettings(name: 'sale?id=${widget.model!.adId}'),
+                pageBuilder: (BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation) {
+                  return DetailsSale(
+                    kModel: widget.model,
+                    tag: widget.tag!,
+                    fromUrl: false,
+                  );
+                }));
           },
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -77,7 +52,7 @@ class _UrgentRowItem extends State<UrgentRowItem> {
                 color: Colors.white,
                 borderRadius: Corners.lgBorder,
                 boxShadow: Shadows.small),
-            width: 150,
+            width: 145,
             child: Stack(
               children: [
                 Column(
@@ -89,8 +64,8 @@ class _UrgentRowItem extends State<UrgentRowItem> {
                       child: ClipRRect(
                         borderRadius: Corners.lgBorderTop,
                         child: ImageView(
-                          height: 150 ,
-                          width: 150,
+                          height: 100 ,
+                          width: 145,
                           image: widget.model!.images!.isNotEmpty
                               ? widget.model!.images![0]
                               : '',
@@ -99,7 +74,7 @@ class _UrgentRowItem extends State<UrgentRowItem> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(
-                        top: 3
+                          top: 3
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -127,9 +102,11 @@ class _UrgentRowItem extends State<UrgentRowItem> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           InfoTextWidget(
+
                             text1: S.of(context).kCity,
                             text2:
                             '${Address.fromMap(widget.model!.address!).city!.name}/${Address.fromMap(widget.model!.address!).town!.name}',
+
                           ),
                         ],
                       ),
@@ -162,6 +139,45 @@ class _UrgentRowItem extends State<UrgentRowItem> {
                     ),
                   ),
                 ),
+                Visibility(
+                    visible: !widget.model!.available!,
+                    child: Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Style.primaryColors.withOpacity(0.5),
+                          borderRadius: Corners.lgBorder,
+                        ),
+
+                        child: Center(child: DefaultTextStyle(
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontFamily: 'LBC',
+                            shadows: [
+                              Shadow(
+                                blurRadius: 8.0,
+                                color: Colors.black26,
+                                offset: Offset(0, 1),
+                              ),
+                              Shadow(
+                                blurRadius: 8.0,
+                                color: Colors.black26,
+                                offset: Offset(1, 2),
+                              ),
+                            ],
+                          ),
+                          child: CustomText(
+                            text: 'Sold',
+                            size: 24,
+                            color: Colors.white,
+                          ),
+                        ),),
+                      ),
+                    ))
               ],
             ),
           ),
@@ -195,7 +211,7 @@ class InfoTextWidget extends StatelessWidget {
             text: text2,
             color: Style.primaryColors,
             weight: FontWeight.bold,
-            size: 10,
+            size: 8,
           ),
         ],
       ),

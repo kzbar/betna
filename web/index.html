@@ -87,6 +87,28 @@
 
 
     </style>
+    <script>
+        async function download() {
+            var pdfAsDataUri = "data:application/pdf;base64, " + pdfdata;
+            var link = document.createElement('a');
+            link.download = filename;
+            link.href = pdfAsDataUri;
+            link.type = 'application/pdf';
+            link.click();
+        }
+        async function downloadImage() {
+            var pdfAsDataUri = "data:image/png;base64, " + imageData;
+            var link = document.createElement('a');
+            link.download = filename;
+            link.href = pdfAsDataUri;
+            link.type = 'application/pdf';
+            link.click();
+        }
+<!--        // Disable right-click. It doesn't work with Flutter, and we have our own internal context menu.-->
+<!--        document.addEventListener('contextmenu', event => event.preventDefault());-->
+
+
+    </script>
     <!--  loading-->
 
     <script>
