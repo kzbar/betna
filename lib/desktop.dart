@@ -37,7 +37,6 @@ class _Desktop extends State<Desktop> {
               child: Column(
                 children: [
                   const NoteExchangeRate(edgeInsetsGeometry: EdgeInsets.symmetric(horizontal: 200),textSize: 12,),
-
                   ///Urgent List
                   const UrgentSection(),
                   ///resale list

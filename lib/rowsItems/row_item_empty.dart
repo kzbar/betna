@@ -31,7 +31,6 @@ class EmptyRowItem extends StatelessWidget {
           double imageHeight = 0.0;
           double fontSize = 20;
           double fontSizePrice = 20;
-          double bottom = 0.0;
           double top = 0.0;
           switch (size.deviceScreenType) {
             case DeviceScreenType.Mobile:
@@ -39,14 +38,12 @@ class EmptyRowItem extends StatelessWidget {
               imageHeight = 190;
               fontSizePrice = 15;
               fontSize = 10;
-              bottom = 100;
               top = 12;
               break;
             case DeviceScreenType.Tablet:
               width = 250;
               imageHeight = 280;
               fontSize = 16;
-              bottom = 130;
               fontSizePrice = 24;
               top = 20;
 
@@ -55,7 +52,6 @@ class EmptyRowItem extends StatelessWidget {
               width = 250;
               imageHeight = 280;
               fontSize = 16;
-              bottom = 130;
               fontSizePrice = 24;
               top = 20;
 
@@ -64,7 +60,6 @@ class EmptyRowItem extends StatelessWidget {
               width = 300;
               imageHeight = 280;
               fontSize = 16;
-              bottom = 124;
               fontSizePrice = 24;
               top = 20;
 
@@ -175,6 +170,7 @@ class EmptyRowItem extends StatelessWidget {
     );
   }
 }
+
 class InfoTextWidget extends StatelessWidget {
   final String? text1;
   final String? text2;

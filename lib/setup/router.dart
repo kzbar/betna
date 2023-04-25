@@ -1,5 +1,6 @@
 import 'package:betna/home.dart';
 import 'package:betna/page_404.dart';
+import 'package:betna/pages/details_project_screen.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/pages/details_sale_screen.dart';
 import 'package:flutter/foundation.dart';
@@ -35,11 +36,16 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
     case '/':
       pageRoute = _buildRouteFade(settings, const Home());
       break;
-      break;
     case '/sale':
       String? param1 = uri.queryParameters['id'];
       pageRoute = MaterialPageRoute(builder: (BuildContext context) {
-        return DetailsSale(fromUrl: true, id: param1);
+        return DetailsSale(fromUrl: true, id: param1,tag: 'sale',);
+      });
+      break;
+    case '/project':
+      String? param1 = uri.queryParameters['id'];
+      pageRoute = MaterialPageRoute(builder: (BuildContext context) {
+        return DetailsProject(fromUrl: true, id: param1,tag: 'project',);
       });
       break;
   }

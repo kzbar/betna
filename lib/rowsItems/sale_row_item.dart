@@ -144,7 +144,7 @@ class _SaleRowItem extends State<SaleRowItem> {
                       }));
                 },
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 12.0,),
                   decoration: BoxDecoration(
                       color: Colors.grey.shade200,
                       borderRadius: Corners.lgBorder,
@@ -380,38 +380,38 @@ class _SaleRowItem extends State<SaleRowItem> {
     );
   }
 
-  _showToast(String message) {
-    Widget toast = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
-        color: Style.lavenderBlack,
-      ),
-      child: CustomText(
-        text: message,
-        color: Colors.white,
-        size: 12,
-      ),
-    );
-
-    fToast.showToast(
-      child: toast,
-      gravity: ToastGravity.TOP,
-      toastDuration: const Duration(seconds: 4),
-    );
-
-    // Custom Toast Position
-    // fToast.showToast(
-    //     child: toast,
-    //     toastDuration: Duration(seconds: 2),
-    //     positionedToastBuilder: (context, child) {
-    //       return Positioned(
-    //         child: child,
-    //         top: 16.0,
-    //         left: 16.0,
-    //       );
-    //     });
-  }
+  // _showToast(String message) {
+  //   Widget toast = Container(
+  //     padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(25.0),
+  //       color: Style.lavenderBlack,
+  //     ),
+  //     child: CustomText(
+  //       text: message,
+  //       color: Colors.white,
+  //       size: 12,
+  //     ),
+  //   );
+  //
+  //   fToast.showToast(
+  //     child: toast,
+  //     gravity: ToastGravity.TOP,
+  //     toastDuration: const Duration(seconds: 4),
+  //   );
+  //
+  //   // Custom Toast Position
+  //   // fToast.showToast(
+  //   //     child: toast,
+  //   //     toastDuration: Duration(seconds: 2),
+  //   //     positionedToastBuilder: (context, child) {
+  //   //       return Positioned(
+  //   //         child: child,
+  //   //         top: 16.0,
+  //   //         left: 16.0,
+  //   //       );
+  //   //     });
+  // }
 }
 
 class InfoTextWidget extends StatelessWidget {

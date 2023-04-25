@@ -37,7 +37,7 @@ class _NewSaleSection extends State<NewSaleSection>
     String lang = Provider.of<MainProvider>(context, listen: true).kLang;
     listToShow = listBase;
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 750),
       vsync: this,
     );
     _offsetAnimation = Tween<Offset>(
@@ -103,7 +103,7 @@ class _NewSaleSection extends State<NewSaleSection>
                           position: _offsetAnimation!,
                           child: SaleRowItem(
                             model: model,
-                            tag: '${''}_sale',
+                            tag: 'sale',
                           ),
                         );
                       })

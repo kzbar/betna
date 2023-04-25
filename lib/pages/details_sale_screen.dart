@@ -77,7 +77,6 @@ class _DetailsSale extends State<DetailsSale> {
           break;
         default:
       }
-      print("video ${model?.videoUrl}");
       return SafeArea(
           child: PopOverController(
         child: Scaffold(
@@ -209,7 +208,7 @@ class _DetailsSale extends State<DetailsSale> {
                                         Get.to(() => ImagePageView(
                                           images: model!.images,
                                           tag:
-                                          "${model!.adId!}${widget.tag}",
+                                          "${widget.tag}",
                                         ));
                                       },
                                     ):Hero(

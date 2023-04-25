@@ -1,5 +1,6 @@
 import 'package:betna/generated/l10n.dart';
 import 'package:betna/models/project_model.dart';
+import 'package:betna/pages/details_project_screen.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/setup/tools.dart';
 import 'package:betna/style/responsive/responsive_builder.dart';
@@ -78,22 +79,22 @@ class _ProjectRowItem extends State<ProjectRowItem> {
           double bottom = 0.0;
           switch(size.deviceScreenType){
             case DeviceScreenType.Mobile:
-              width = 222;
-              imageHeight = 180;
+              width = 180;
+              imageHeight = 190;
               fontSize = 10;
-              bottom = 100;
+              bottom = 90;
               break;
             case DeviceScreenType.Tablet:
-              width = 300;
-              imageHeight = 280;
-              fontSize = 16;
-              bottom = 124;
+              width = 250;
+              imageHeight = 250;
+              fontSize = 14;
+              bottom = 120;
               break;
             case DeviceScreenType.Desktop:
-              width = 300;
-              imageHeight = 280;
-              fontSize = 16;
-              bottom = 124;
+              width = 250;
+              imageHeight = 250;
+              fontSize = 14;
+              bottom = 120;
 
 
               break;
@@ -112,7 +113,7 @@ class _ProjectRowItem extends State<ProjectRowItem> {
             child: Stack(
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0),
+                  margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
                   decoration: BoxDecoration(
                       color: Colors.grey.shade300,
                       borderRadius: Corners.lgBorder,
@@ -169,13 +170,7 @@ class _ProjectRowItem extends State<ProjectRowItem> {
                                   size: fontSize,
 
                                   text1: S.of(context).kCity,
-                                  text2: '${widget.model!.city!.name}',
-                                ),
-                                InfoTextWidget(
-                                  size: fontSize,
-
-                                  text1: S.of(context).kTown,
-                                  text2: '${widget.model!.town!.name}',
+                                  text2: '${widget.model!.city!.name}/${widget.model!.town!.name}',
                                 ),
                               ],
                             ),
@@ -185,7 +180,7 @@ class _ProjectRowItem extends State<ProjectRowItem> {
                             child: CustomText(
                               text: Constants.convertPrice(
                                   context, widget.model!.staredPrice!),
-                              size: fontSize,
+                              size: 24,
                               color: Style.primaryColors,
                               weight: FontWeight.bold,
                               textDirection: TextDirection.ltr,
@@ -212,7 +207,7 @@ class _ProjectRowItem extends State<ProjectRowItem> {
                                       .toIso8601String())) ...[
                                 CustomText(
                                   text: S.of(context).kNew.toUpperCase(),
-                                  size: 10,
+                                  size: 8,
                                   color: Colors.white,
                                 ),
                                 CustomText(
@@ -230,7 +225,7 @@ class _ProjectRowItem extends State<ProjectRowItem> {
                                         .toIso8601String(),
                                     context: context)
                                     .toUpperCase(),
-                                size: 12,
+                                size: 8,
                                 color: Colors.white,
                               )
                             ],
@@ -250,7 +245,7 @@ class _ProjectRowItem extends State<ProjectRowItem> {
                             color: Style.lavenderBlack,
                             weight: FontWeight.bold,
                             height: 1,
-                            size: 18,
+                            size: 8,
                           ),
                         ),
                       ),
@@ -293,15 +288,16 @@ class _ProjectRowItem extends State<ProjectRowItem> {
           );
         },),
         onTap: () {
-          // Navigator.of(context).push(PageRouteBuilder(
-          //     settings: RouteSettings(name: 'project?id=${widget.model!.id}'),
-          //     pageBuilder: (BuildContext context, Animation<double> animation,
-          //         Animation<double> secondaryAnimation) {
-          //       return DetailsProject(
-          //         model: widget.model,
-          //         tag: widget.tag,
-          //       );
-          //     }));
+          Navigator.of(context).push(PageRouteBuilder(
+              settings: RouteSettings(name: 'project?id=${widget.model!.id}'),
+              pageBuilder: (BuildContext context, Animation<double> animation,
+                  Animation<double> secondaryAnimation) {
+                return DetailsProject(
+                  kModel: widget.model,
+                  fromUrl: false,
+                  tag: widget.tag,
+                );
+              }));
         },
       ),
     );
@@ -318,16 +314,16 @@ class InfoTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 3),
+      margin: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3),
       child: Row(
         children: [
           CustomText(
             text: text1,
-            color: Colors.black45,
-            size: size,
+            color: Colors.black,
+            size: (size! * 0.70),
           ),
           const SizedBox(
-            width: 4,
+            width: 2,
           ),
           CustomText(
             text: text2,

@@ -17,26 +17,25 @@ class _NoteExchangeRate extends State<NoteExchangeRate> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: AnimatedContainer(
-        padding: widget.edgeInsetsGeometry,
+    return AnimatedContainer(
+      padding: widget.edgeInsetsGeometry,
 
-        color: Colors.white70,
-      height: h,
-      duration: const Duration(milliseconds: 750),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          TextButton(onPressed: () {
-            setState(() {
-              h = 0;
-            });
-          },style: ButtonStyles.style, child: CustomText(text:S.of(context).kClose,color: Colors.white,size: 10,),),
-          const SizedBox(width: 6,),
-          Expanded(child: CustomText(text: S.of(context).kNoteExchangeRate,size: widget.textSize,textAlign: TextAlign.justify,height: 1.2,),)
-        ],
-      ),
-    ),);
+      color: Colors.white70,
+    height: h,
+    duration: const Duration(milliseconds: 750),
+    child: Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TextButton(onPressed: () {
+          setState(() {
+            h = 0;
+          });
+        },style: ButtonStyles.style, child: CustomText(text:S.of(context).kClose,color: Colors.white,size: 10,),),
+        const SizedBox(width: 6,),
+        Expanded(child: CustomText(text: S.of(context).kNoteExchangeRate,size: widget.textSize,textAlign: TextAlign.justify,height: 1.2,),)
+      ],
+    ),
+    );
   }
 }
