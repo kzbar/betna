@@ -35,7 +35,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    String lang =  View.of(context).platformDispatcher.locale.languageCode;
     return GetMaterialApp(
+
       localizationsDelegates: const [
         S.delegate,
         ...GlobalMaterialLocalizations.delegates,
@@ -43,15 +45,18 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
         FormBuilderLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('tr', ''),
-        Locale('en', ''),
-        Locale('ar', ''),
-      ],
-      locale: Locale(Provider.of<MainProvider>(context).kLang, ""),
+      supportedLocales: S.delegate.supportedLocales,
+      locale: Locale(lang, ""),
       color: Colors.amber,
       initialRoute: '/',
       title: 'Betna real estate',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0E7490)),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+        ),
+      ),
       builder: (context, child) {
         return Directionality(
           textDirection: Provider.of<MainProvider>(context).textDecoration,

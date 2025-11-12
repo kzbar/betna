@@ -181,9 +181,26 @@
   "kOfferLength": "Number of offers {count}",
   "kClose": "Close",
   "kNoteExchangeRate": "The offers on the site are priced on the Turkish lira. When the currency changes from the Turkish currency to another currency, the exchange rate is roughly calculated on the basis of the exchange rates of the World Central Bank.",
+  "kempty":"Empty",
+  "kStreet":"Street / Detailed Address",
 
-
-
+  "kSaleRequestTextFieldTitle":"Apartment for sale request – Istanbul",
+  "kSaleRequestTextFieldDec":"Please provide property details and contact information. We will then contact you to assess the price and market the apartment.",
+  "kSaleRequestTextField1":"The district (İlçe) in Istanbul",
+  "kSaleRequestTextField2":"District/Neighborhood (Mahalle)",
+  "kSaleRequestTextField3":"Street / Detailed Address",
+  "kSaleRequestTextField4":"Number of rooms",
+  "kSaleRequestTextField5":"Total area (m²)",
+  "kSaleRequestTextField6":"Floor",
+  "kSaleRequestTextField7":"Building age (in years)",
+  "kSaleRequestTextField8":"Within a residential complex?",
+  "kSaleRequestTextField9":"Usage Status",
+  "kSaleRequestTextField10":"Asking price (₺)",
+  "kSaleRequestTextField11":"Name Surname",
+  "kSaleRequestTextField12":"Phone number",
+  "kSaleRequestTextField13":"Email address (optional)",
+  "testfortest":"Hi",
+  "testfort333est":"Add new",
 
   "appName": "E-Contract",
 
