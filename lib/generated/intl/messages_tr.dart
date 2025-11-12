@@ -355,16 +355,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSale": MessageLookupByLibrary.simpleMessage("Satılık"),
     "kSaleList": MessageLookupByLibrary.simpleMessage("satış listesi"),
     "kSaleRequestTextField1": MessageLookupByLibrary.simpleMessage(
-      "İstanbul\'un ilçesi (İlçe)",
+      "The district (İlçe) in Istanbul",
     ),
     "kSaleRequestTextField10": MessageLookupByLibrary.simpleMessage(
+      "Kullanım Durumu",
+    ),
+    "kSaleRequestTextField11": MessageLookupByLibrary.simpleMessage(
       "İstenen fiyat (₺)",
     ),
-    "kSaleRequestTextField11": MessageLookupByLibrary.simpleMessage("Ad Soyad"),
     "kSaleRequestTextField12": MessageLookupByLibrary.simpleMessage(
-      "Telefon numarası",
+      "Adı Soyadı",
     ),
     "kSaleRequestTextField13": MessageLookupByLibrary.simpleMessage(
+      "Telefon numarası",
+    ),
+    "kSaleRequestTextField14": MessageLookupByLibrary.simpleMessage(
       "E-posta adresi (isteğe bağlı)",
     ),
     "kSaleRequestTextField2": MessageLookupByLibrary.simpleMessage(
@@ -379,18 +384,58 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextField5": MessageLookupByLibrary.simpleMessage(
       "Toplam alan (m²)",
     ),
-    "kSaleRequestTextField6": MessageLookupByLibrary.simpleMessage("Kat"),
+    "kSaleRequestTextField6": MessageLookupByLibrary.simpleMessage("Zemin"),
     "kSaleRequestTextField7": MessageLookupByLibrary.simpleMessage(
       "Bina yaşı (yıl olarak)",
     ),
     "kSaleRequestTextField8": MessageLookupByLibrary.simpleMessage(
-      "Site içinde mi?",
+      "Bir konut site içinde mi?",
     ),
-    "kSaleRequestTextField9": MessageLookupByLibrary.simpleMessage(
-      "Kullanım Durumu",
-    ),
+    "kSaleRequestTextField9": MessageLookupByLibrary.simpleMessage("site isim"),
     "kSaleRequestTextFieldDec": MessageLookupByLibrary.simpleMessage(
       "Lütfen mülkün ayrıntılarını ve iletişim bilgilerini sağlayın. Daha sonra sizinle iletişime geçerek fiyatı değerlendirip daireyi pazarlayacağız.",
+    ),
+    "kSaleRequestTextFieldErrorMessage1": MessageLookupByLibrary.simpleMessage(
+      "Lütfen İstanbul\'daki ilçeyi giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage10": MessageLookupByLibrary.simpleMessage(
+      "Lütfen kullanım durumunu giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage11": MessageLookupByLibrary.simpleMessage(
+      "Lütfen istenen fiyatı girin (₺)",
+    ),
+    "kSaleRequestTextFieldErrorMessage12": MessageLookupByLibrary.simpleMessage(
+      "Lütfen adınızı soyadınızı giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage13": MessageLookupByLibrary.simpleMessage(
+      "Lütfen telefon numaranızı giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage14": MessageLookupByLibrary.simpleMessage(
+      "Lütfen e-posta adresini girin (isteğe bağlı)",
+    ),
+    "kSaleRequestTextFieldErrorMessage2": MessageLookupByLibrary.simpleMessage(
+      "Lütfen ilçe/mahalle (Mahalle) giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage3": MessageLookupByLibrary.simpleMessage(
+      "Lütfen Sokak / Ayrıntılı Adresi giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage4": MessageLookupByLibrary.simpleMessage(
+      "Lütfen oda sayısını giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage5": MessageLookupByLibrary.simpleMessage(
+      "Lütfen toplam alanı (m²) giriniz",
+    ),
+    "kSaleRequestTextFieldErrorMessage6": MessageLookupByLibrary.simpleMessage(
+      "Lütfen kata girin",
+    ),
+    "kSaleRequestTextFieldErrorMessage7": MessageLookupByLibrary.simpleMessage(
+      "Lütfen bina yaşını girin (yıl olarak)",
+    ),
+    "kSaleRequestTextFieldErrorMessage8": MessageLookupByLibrary.simpleMessage(
+      "Lütfen giriniz Bir konut sitesi içinde mi?",
+    ),
+    "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
+      "Lütfen site bir ad girin",
     ),
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
       "Satılık daire talebi – İstanbul",
@@ -476,9 +521,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "site_name": MessageLookupByLibrary.simpleMessage("Site Adi : "),
     "state": MessageLookupByLibrary.simpleMessage("Eşyalı"),
     "tarih": MessageLookupByLibrary.simpleMessage("Tarih"),
-    "testfort333eeeeest": MessageLookupByLibrary.simpleMessage("Yeni ekle"),
-    "testfort333est": MessageLookupByLibrary.simpleMessage("Yeni ekle"),
-    "testfortest": MessageLookupByLibrary.simpleMessage("MERHABA"),
     "uploading": MessageLookupByLibrary.simpleMessage("yükleniyor"),
     "user_id": MessageLookupByLibrary.simpleMessage("Kullanıcı kimliği"),
     "viewAll": MessageLookupByLibrary.simpleMessage("Hepsini gör"),

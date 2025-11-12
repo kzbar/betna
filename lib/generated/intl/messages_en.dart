@@ -360,15 +360,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "The district (İlçe) in Istanbul",
     ),
     "kSaleRequestTextField10": MessageLookupByLibrary.simpleMessage(
-      "Asking price (₺)",
+      "Usage Status",
     ),
     "kSaleRequestTextField11": MessageLookupByLibrary.simpleMessage(
-      "Name Surname",
+      "Asking price (₺)",
     ),
     "kSaleRequestTextField12": MessageLookupByLibrary.simpleMessage(
-      "Phone number",
+      "Name Surname",
     ),
     "kSaleRequestTextField13": MessageLookupByLibrary.simpleMessage(
+      "Phone number",
+    ),
+    "kSaleRequestTextField14": MessageLookupByLibrary.simpleMessage(
       "Email address (optional)",
     ),
     "kSaleRequestTextField2": MessageLookupByLibrary.simpleMessage(
@@ -391,10 +394,52 @@ class MessageLookup extends MessageLookupByLibrary {
       "Within a residential complex?",
     ),
     "kSaleRequestTextField9": MessageLookupByLibrary.simpleMessage(
-      "Usage Status",
+      "Complex name",
     ),
     "kSaleRequestTextFieldDec": MessageLookupByLibrary.simpleMessage(
       "Please provide property details and contact information. We will then contact you to assess the price and market the apartment.",
+    ),
+    "kSaleRequestTextFieldErrorMessage1": MessageLookupByLibrary.simpleMessage(
+      "Please enter the district (İlçe) in Istanbul",
+    ),
+    "kSaleRequestTextFieldErrorMessage10": MessageLookupByLibrary.simpleMessage(
+      "Please enter the usage status",
+    ),
+    "kSaleRequestTextFieldErrorMessage11": MessageLookupByLibrary.simpleMessage(
+      "Please enter the asking price (₺)",
+    ),
+    "kSaleRequestTextFieldErrorMessage12": MessageLookupByLibrary.simpleMessage(
+      "Please enter the name surname",
+    ),
+    "kSaleRequestTextFieldErrorMessage13": MessageLookupByLibrary.simpleMessage(
+      "Please enter the phone number",
+    ),
+    "kSaleRequestTextFieldErrorMessage14": MessageLookupByLibrary.simpleMessage(
+      "Please enter the email address (optional)",
+    ),
+    "kSaleRequestTextFieldErrorMessage2": MessageLookupByLibrary.simpleMessage(
+      "Please enter the district/Neighborhood (Mahalle)",
+    ),
+    "kSaleRequestTextFieldErrorMessage3": MessageLookupByLibrary.simpleMessage(
+      "Please enter the Street / Detailed Address",
+    ),
+    "kSaleRequestTextFieldErrorMessage4": MessageLookupByLibrary.simpleMessage(
+      "Please enter the number of rooms",
+    ),
+    "kSaleRequestTextFieldErrorMessage5": MessageLookupByLibrary.simpleMessage(
+      "Please enter the total area (m²)",
+    ),
+    "kSaleRequestTextFieldErrorMessage6": MessageLookupByLibrary.simpleMessage(
+      "Please enter the floor",
+    ),
+    "kSaleRequestTextFieldErrorMessage7": MessageLookupByLibrary.simpleMessage(
+      "Please enter the building age (in years)",
+    ),
+    "kSaleRequestTextFieldErrorMessage8": MessageLookupByLibrary.simpleMessage(
+      "Please enter Within a residential complex?",
+    ),
+    "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
+      "Please enter complex name",
     ),
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
       "Apartment for sale request – Istanbul",
@@ -480,9 +525,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "site_name": MessageLookupByLibrary.simpleMessage("Site name : "),
     "state": MessageLookupByLibrary.simpleMessage("Furnished"),
     "tarih": MessageLookupByLibrary.simpleMessage("Date"),
-    "testfort333eeeeest": MessageLookupByLibrary.simpleMessage("Add new"),
-    "testfort333est": MessageLookupByLibrary.simpleMessage("Add new"),
-    "testfortest": MessageLookupByLibrary.simpleMessage("Hi"),
     "uploading": MessageLookupByLibrary.simpleMessage("uploading"),
     "user_id": MessageLookupByLibrary.simpleMessage("User Id"),
     "viewAll": MessageLookupByLibrary.simpleMessage("view all"),

@@ -1504,71 +1504,201 @@ class S {
     );
   }
 
-  /// `Usage Status`
+  /// `Complex name`
   String get kSaleRequestTextField9 {
     return Intl.message(
-      'Usage Status',
+      'Complex name',
       name: 'kSaleRequestTextField9',
       desc: '',
       args: [],
     );
   }
 
-  /// `Asking price (₺)`
+  /// `Usage Status`
   String get kSaleRequestTextField10 {
     return Intl.message(
-      'Asking price (₺)',
+      'Usage Status',
       name: 'kSaleRequestTextField10',
       desc: '',
       args: [],
     );
   }
 
-  /// `Name Surname`
+  /// `Asking price (₺)`
   String get kSaleRequestTextField11 {
     return Intl.message(
-      'Name Surname',
+      'Asking price (₺)',
       name: 'kSaleRequestTextField11',
       desc: '',
       args: [],
     );
   }
 
-  /// `Phone number`
+  /// `Name Surname`
   String get kSaleRequestTextField12 {
     return Intl.message(
-      'Phone number',
+      'Name Surname',
       name: 'kSaleRequestTextField12',
       desc: '',
       args: [],
     );
   }
 
-  /// `Email address (optional)`
+  /// `Phone number`
   String get kSaleRequestTextField13 {
     return Intl.message(
-      'Email address (optional)',
+      'Phone number',
       name: 'kSaleRequestTextField13',
       desc: '',
       args: [],
     );
   }
 
-  /// `Hi`
-  String get testfortest {
-    return Intl.message('Hi', name: 'testfortest', desc: '', args: []);
-  }
-
-  /// `Add new`
-  String get testfort333est {
-    return Intl.message('Add new', name: 'testfort333est', desc: '', args: []);
-  }
-
-  /// `Add new`
-  String get testfort333eeeeest {
+  /// `Email address (optional)`
+  String get kSaleRequestTextField14 {
     return Intl.message(
-      'Add new',
-      name: 'testfort333eeeeest',
+      'Email address (optional)',
+      name: 'kSaleRequestTextField14',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the district (İlçe) in Istanbul`
+  String get kSaleRequestTextFieldErrorMessage1 {
+    return Intl.message(
+      'Please enter the district (İlçe) in Istanbul',
+      name: 'kSaleRequestTextFieldErrorMessage1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the district/Neighborhood (Mahalle)`
+  String get kSaleRequestTextFieldErrorMessage2 {
+    return Intl.message(
+      'Please enter the district/Neighborhood (Mahalle)',
+      name: 'kSaleRequestTextFieldErrorMessage2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the Street / Detailed Address`
+  String get kSaleRequestTextFieldErrorMessage3 {
+    return Intl.message(
+      'Please enter the Street / Detailed Address',
+      name: 'kSaleRequestTextFieldErrorMessage3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the number of rooms`
+  String get kSaleRequestTextFieldErrorMessage4 {
+    return Intl.message(
+      'Please enter the number of rooms',
+      name: 'kSaleRequestTextFieldErrorMessage4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the total area (m²)`
+  String get kSaleRequestTextFieldErrorMessage5 {
+    return Intl.message(
+      'Please enter the total area (m²)',
+      name: 'kSaleRequestTextFieldErrorMessage5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the floor`
+  String get kSaleRequestTextFieldErrorMessage6 {
+    return Intl.message(
+      'Please enter the floor',
+      name: 'kSaleRequestTextFieldErrorMessage6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the building age (in years)`
+  String get kSaleRequestTextFieldErrorMessage7 {
+    return Intl.message(
+      'Please enter the building age (in years)',
+      name: 'kSaleRequestTextFieldErrorMessage7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter Within a residential complex?`
+  String get kSaleRequestTextFieldErrorMessage8 {
+    return Intl.message(
+      'Please enter Within a residential complex?',
+      name: 'kSaleRequestTextFieldErrorMessage8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter complex name`
+  String get kSaleRequestTextFieldErrorMessage9 {
+    return Intl.message(
+      'Please enter complex name',
+      name: 'kSaleRequestTextFieldErrorMessage9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the usage status`
+  String get kSaleRequestTextFieldErrorMessage10 {
+    return Intl.message(
+      'Please enter the usage status',
+      name: 'kSaleRequestTextFieldErrorMessage10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the asking price (₺)`
+  String get kSaleRequestTextFieldErrorMessage11 {
+    return Intl.message(
+      'Please enter the asking price (₺)',
+      name: 'kSaleRequestTextFieldErrorMessage11',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the name surname`
+  String get kSaleRequestTextFieldErrorMessage12 {
+    return Intl.message(
+      'Please enter the name surname',
+      name: 'kSaleRequestTextFieldErrorMessage12',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the phone number`
+  String get kSaleRequestTextFieldErrorMessage13 {
+    return Intl.message(
+      'Please enter the phone number',
+      name: 'kSaleRequestTextFieldErrorMessage13',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the email address (optional)`
+  String get kSaleRequestTextFieldErrorMessage14 {
+    return Intl.message(
+      'Please enter the email address (optional)',
+      name: 'kSaleRequestTextFieldErrorMessage14',
       desc: '',
       args: [],
     );

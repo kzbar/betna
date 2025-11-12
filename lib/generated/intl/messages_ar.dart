@@ -339,45 +339,90 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSale": MessageLookupByLibrary.simpleMessage("للبيع"),
     "kSaleList": MessageLookupByLibrary.simpleMessage("قائمة البيع"),
     "kSaleRequestTextField1": MessageLookupByLibrary.simpleMessage(
-      "المنطقة (İlçe) في إسطنبول",
+      "(İlçe) المنطقة في اسطنبول",
     ),
     "kSaleRequestTextField10": MessageLookupByLibrary.simpleMessage(
-      "السعر المطلوب (₺)",
+      "حالة الاستخدام",
     ),
     "kSaleRequestTextField11": MessageLookupByLibrary.simpleMessage(
-      "الاسم الكامل",
+      "سعر الطلب (₺)",
     ),
     "kSaleRequestTextField12": MessageLookupByLibrary.simpleMessage(
-      "رقم الهاتف",
+      "الاسم واللقب",
     ),
     "kSaleRequestTextField13": MessageLookupByLibrary.simpleMessage(
-      "البريد الالكتروني(اختياري)",
+      "رقم التليفون",
+    ),
+    "kSaleRequestTextField14": MessageLookupByLibrary.simpleMessage(
+      "عنوان البريد الإلكتروني (اختياري)",
     ),
     "kSaleRequestTextField2": MessageLookupByLibrary.simpleMessage(
-      "الناحية / الحي (Mahalle)",
+      "المنطقة/الحي (المحلة)",
     ),
     "kSaleRequestTextField3": MessageLookupByLibrary.simpleMessage(
-      "الشارع / العنوان التفصيلي",
+      "عنوان الشارع / العنوان التفصيلي",
     ),
     "kSaleRequestTextField4": MessageLookupByLibrary.simpleMessage("عدد الغرف"),
     "kSaleRequestTextField5": MessageLookupByLibrary.simpleMessage(
-      "المساحة الكلية (م²)",
+      "المساحة الإجمالية (م²)",
     ),
     "kSaleRequestTextField6": MessageLookupByLibrary.simpleMessage("الطابق"),
     "kSaleRequestTextField7": MessageLookupByLibrary.simpleMessage(
-      "عمر البناء (بالسنوات)",
+      "عمر المبنى (بالسنوات)",
     ),
     "kSaleRequestTextField8": MessageLookupByLibrary.simpleMessage(
-      "ضمن مجمع سكني؟",
+      "داخل مجمع سكني؟",
     ),
     "kSaleRequestTextField9": MessageLookupByLibrary.simpleMessage(
-      "حالة الاستخدام",
+      "اسم المجمع",
     ),
     "kSaleRequestTextFieldDec": MessageLookupByLibrary.simpleMessage(
-      "يرجى إدخال تفاصيل العقار ووسيلة التواصل. سنتواصل معك لتقييم السعر وتسويق الشقة.",
+      "يرجى تزويدنا بتفاصيل العقار ومعلومات الاتصال. سنتواصل معك لتقييم السعر وتسويق الشقة.",
+    ),
+    "kSaleRequestTextFieldErrorMessage1": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال المنطقة (İlçe) في إسطنبول",
+    ),
+    "kSaleRequestTextFieldErrorMessage10": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال حالة الاستخدام",
+    ),
+    "kSaleRequestTextFieldErrorMessage11": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال السعر المطلوب (₺)",
+    ),
+    "kSaleRequestTextFieldErrorMessage12": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال الاسم واللقب",
+    ),
+    "kSaleRequestTextFieldErrorMessage13": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال رقم الهاتف",
+    ),
+    "kSaleRequestTextFieldErrorMessage14": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال عنوان البريد الإلكتروني (اختياري)",
+    ),
+    "kSaleRequestTextFieldErrorMessage2": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال المنطقة/الحي (المحلة)",
+    ),
+    "kSaleRequestTextFieldErrorMessage3": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال عنوان الشارع / العنوان التفصيلي",
+    ),
+    "kSaleRequestTextFieldErrorMessage4": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال عدد الغرف",
+    ),
+    "kSaleRequestTextFieldErrorMessage5": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال المساحة الإجمالية (م²)",
+    ),
+    "kSaleRequestTextFieldErrorMessage6": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال الطابق",
+    ),
+    "kSaleRequestTextFieldErrorMessage7": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال عمر المبنى (بالسنوات)",
+    ),
+    "kSaleRequestTextFieldErrorMessage8": MessageLookupByLibrary.simpleMessage(
+      "الرجاء اختيار ضمن مجمع سكني؟",
+    ),
+    "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال اسم المجمع",
     ),
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
-      "طلب بيع شقة – إسطنبول",
+      "طلب شقة للبيع – اسطنبول",
     ),
     "kSearch": m9,
     "kSearchBy": m10,
@@ -460,9 +505,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "site_name": MessageLookupByLibrary.simpleMessage("اسم المجمع : "),
     "state": MessageLookupByLibrary.simpleMessage("مفروش"),
     "tarih": MessageLookupByLibrary.simpleMessage("تاريخ"),
-    "testfort333eeeeest": MessageLookupByLibrary.simpleMessage("إضافة جديد"),
-    "testfort333est": MessageLookupByLibrary.simpleMessage("إضافة جديد"),
-    "testfortest": MessageLookupByLibrary.simpleMessage("أهلاً"),
     "uploading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
     "user_id": MessageLookupByLibrary.simpleMessage("معرف المستخدم"),
     "viewAll": MessageLookupByLibrary.simpleMessage("مشاهدة الكل"),
