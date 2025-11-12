@@ -1564,6 +1564,16 @@ class S {
     return Intl.message('Add new', name: 'testfort333est', desc: '', args: []);
   }
 
+  /// `Add new`
+  String get testfort333eeeeest {
+    return Intl.message(
+      'Add new',
+      name: 'testfort333eeeeest',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-Contract`
   String get appName {
     return Intl.message('E-Contract', name: 'appName', desc: '', args: []);

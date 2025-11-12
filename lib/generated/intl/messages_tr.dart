@@ -476,6 +476,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "site_name": MessageLookupByLibrary.simpleMessage("Site Adi : "),
     "state": MessageLookupByLibrary.simpleMessage("Eşyalı"),
     "tarih": MessageLookupByLibrary.simpleMessage("Tarih"),
+    "testfort333eeeeest": MessageLookupByLibrary.simpleMessage("Yeni ekle"),
+    "testfort333est": MessageLookupByLibrary.simpleMessage("Yeni ekle"),
     "testfortest": MessageLookupByLibrary.simpleMessage("MERHABA"),
     "uploading": MessageLookupByLibrary.simpleMessage("yükleniyor"),
     "user_id": MessageLookupByLibrary.simpleMessage("Kullanıcı kimliği"),

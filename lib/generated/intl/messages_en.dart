@@ -480,6 +480,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "site_name": MessageLookupByLibrary.simpleMessage("Site name : "),
     "state": MessageLookupByLibrary.simpleMessage("Furnished"),
     "tarih": MessageLookupByLibrary.simpleMessage("Date"),
+    "testfort333eeeeest": MessageLookupByLibrary.simpleMessage("Add new"),
     "testfort333est": MessageLookupByLibrary.simpleMessage("Add new"),
     "testfortest": MessageLookupByLibrary.simpleMessage("Hi"),
     "uploading": MessageLookupByLibrary.simpleMessage("uploading"),

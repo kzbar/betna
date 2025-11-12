@@ -460,6 +460,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "site_name": MessageLookupByLibrary.simpleMessage("اسم المجمع : "),
     "state": MessageLookupByLibrary.simpleMessage("مفروش"),
     "tarih": MessageLookupByLibrary.simpleMessage("تاريخ"),
+    "testfort333eeeeest": MessageLookupByLibrary.simpleMessage("إضافة جديد"),
+    "testfort333est": MessageLookupByLibrary.simpleMessage("إضافة جديد"),
     "testfortest": MessageLookupByLibrary.simpleMessage("أهلاً"),
     "uploading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
     "user_id": MessageLookupByLibrary.simpleMessage("معرف المستخدم"),
