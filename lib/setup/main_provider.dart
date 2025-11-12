@@ -25,7 +25,7 @@ class MainProvider with ChangeNotifier {
 
   ///
   TextDirection textDecoration = TextDirection.ltr;
-  String kLang = 'en';
+  String kLang = 'tr';
 
   /// fetch data from firebase
   FetchDataState fetchDataState = FetchDataState.none;
@@ -44,10 +44,10 @@ class MainProvider with ChangeNotifier {
 
     currentPage = DisplayedPage.HOME;
     currency = Currency.TRY;
-    changeCurrentLang(Lang.EN);
+    changeCurrentLang(Lang.TR);
     notifyListeners();
-    getDataList();
-    getCurrent();
+    //getDataList();
+    //getCurrent();
   }
 
   changeCurrentLang(Lang? newPage) {

@@ -18,6 +18,7 @@ class FirebaseCollectionNames {
   static const HeaderPageCollection = 'header_page_collection';
   static const LocationCollection = 'location_collection';
   static const PDFImagesCollection = 'pdf_images_collection';
+  static const prototypeImagesPageCollection = 'prototype_images_collection';
   static const UsersCollection = 'users_collection';
   static const SettingAppCollection = 'setting_app_collection';
   static const AppointmentCollection = 'appointment_collection';

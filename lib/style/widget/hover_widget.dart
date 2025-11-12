@@ -37,7 +37,7 @@ class _HoverWidget extends State<HoverWidget> {
       child: AnimatedContainer(
         alignment: Alignment.center,
         curve: Curves.fastOutSlowIn,
-        padding: EdgeInsets.all(0.0),
+        padding: EdgeInsets.all(3),
         height: widget.height,
         width: widget.width,
         decoration: BoxDecoration(

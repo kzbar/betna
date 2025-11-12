@@ -1,143 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--
-      If you are serving your web app in a path other than the root, change the
-      href value below to reflect the base path you are serving from.
-
-      The path provided below has to start and end with a slash "/" in order for
-      it to work correctly.
-
-      For more details:
-      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-      This is a placeholder for base href that will be replaced by the value of
-      the `--base-href` argument provided to `flutter build`.
-    -->
-<!--    <base href="$FLUTTER_BASE_HREF">-->
-<!--    <base href="/flutter_app/">-->
     <base href="/">
-
     <meta charset="UTF-8">
+
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="">
+    <title>Betna real estate</title>
+    <meta name="description" content="With our long years of experience in the real estate sector, we are a real estate consultancy office that provides reliable and professional services to our customers. We aim to offer you the best solutions by always keeping customer satisfaction at the forefront. We are here to help you find your dream home or workplace with our real estate options for sale and rent.">
 
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Betan real estate">
-    <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png"/>
 
-    <title>Betna real estate</title>
+
     <link rel="manifest" href="manifest.json">
-    <!--  loading-->
-    <style>
-      body {
-       background-color: #211522;
-      }
 
-    .loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
-    .loader {
-      border: 3px solid #2E4655;
-      border-radius: 50%;
-      border: 3px solid ;
-      border-top: 3px solid #613659;
-      border-right: 3px solid white;
-      border-bottom: 3px solid #613659;
-      border-left: 3px solid white;
-      width: 60px;
-      height: 60px;
-      -webkit-animation: spin 1s linear infinite;
-      animation: spin 1s linear infinite;
-    }
-
-    @-webkit-keyframes spin {
-      0% {
-        -webkit-transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(360deg);
-      }
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-
-
-
-    </style>
-    <script>
-        async function download() {
-            var pdfAsDataUri = "data:application/pdf;base64, " + pdfdata;
-            var link = document.createElement('a');
-            link.download = filename;
-            link.href = pdfAsDataUri;
-            link.type = 'application/pdf';
-            link.click();
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Business",
+            "name": "Betna Real estate",
+            "description": "With our long years of experience in the real estate sector, we are a real estate consultancy office that provides reliable and professional services to our customers. We aim to offer you the best solutions by always keeping customer satisfaction at the forefront. We are here to help you find your dream home or workplace with our real estate options for sale and rent.",
+            "image":"https://betna.net/icons/Icon-512.png",
+            "url": "https://betna.net",
+            "logo": "https://betna.net/icons/Icon-192.png"
         }
-        async function downloadImage() {
-            var pdfAsDataUri = "data:image/png;base64, " + imageData;
-            var link = document.createElement('a');
-            link.download = filename;
-            link.href = pdfAsDataUri;
-            link.type = 'application/pdf';
-            link.click();
-        }
-<!--        // Disable right-click. It doesn't work with Flutter, and we have our own internal context menu.-->
-<!--        document.addEventListener('contextmenu', event => event.preventDefault());-->
-
-
     </script>
-    <!--  loading-->
-
-    <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-
-    </script>
-    <!-- This script adds the flutter initialization JS code -->
-    <script src="flutter.js" defer></script>
 </head>
 <body>
-<div class="loading">
-    <div class="loader"></div>
-</div>
-
-<script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
-      });
-    });
-
-</script>
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

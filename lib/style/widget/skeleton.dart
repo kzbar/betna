@@ -70,7 +70,7 @@ class _SkeletonState extends State<Skeleton>
       child: Center(
         child: Visibility(
           visible: widget.showCircular,
-          child: CircularProgressIndicator(backgroundColor: Theme.of(context).accentColor,),
+          child: CircularProgressIndicator(backgroundColor: Theme.of(context).canvasColor,),
         ),
       ),
     );

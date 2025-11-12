@@ -7,6 +7,7 @@ class HoverIcon extends StatefulWidget {
   final double size;
   final EdgeInsets margin;
 
+
   const HoverIcon(
       {Key? key,
       this.data,

@@ -17,7 +17,7 @@ class ImagePageView extends StatefulWidget {
 }
 
 class _ImagePageView extends State<ImagePageView> with SingleTickerProviderStateMixin{
-  CarouselController buttonCarouselController = CarouselController();
+  CarouselSliderController buttonCarouselController = CarouselSliderController();
   final _controller = ScrollController();
   Animation<double>? _animation;
   AnimationController? controller;

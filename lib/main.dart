@@ -11,14 +11,13 @@ import 'services/firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
 
 Future<void> main() async {
   WM().configureApp();
 
   WidgetsFlutterBinding.ensureInitialized();
-  debugDefaultTargetPlatformOverride = TargetPlatform.android;
+  if (!kIsWeb) debugDefaultTargetPlatformOverride = TargetPlatform.android;
   //Provider.debugCheckInvalidValueType = null;
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(
@@ -31,7 +30,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
 
   // This widget is the root of your application.
   @override
@@ -46,8 +44,8 @@ class MyApp extends StatelessWidget {
         FormBuilderLocalizations.delegate,
       ],
       supportedLocales: const [
-        Locale('en', ''),
         Locale('tr', ''),
+        Locale('en', ''),
         Locale('ar', ''),
       ],
       locale: Locale(Provider.of<MainProvider>(context).kLang, ""),
@@ -55,7 +53,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       title: 'Betna real estate',
       builder: (context, child) {
-
         return Directionality(
           textDirection: Provider.of<MainProvider>(context).textDecoration,
           child: child!,

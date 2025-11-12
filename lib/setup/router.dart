@@ -1,4 +1,5 @@
 import 'package:betna/home.dart';
+import 'package:betna/homePrototypeVideo.dart';
 import 'package:betna/page_404.dart';
 import 'package:betna/pages/details_project_screen.dart';
 import 'package:betna/setup/main_provider.dart';
@@ -21,7 +22,8 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
   }
   PageRoute pageRoute =
       MaterialPageRoute(builder: (BuildContext context) => Page404());
-  String lang = ui.window.locale.toString();
+  String lang =  View.of(context).platformDispatcher.locale.languageCode;
+  print("device lang $lang");
   if (lang.contains('en')) {
     change('en', context);
   }
@@ -34,7 +36,7 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
 
   switch (path) {
     case '/':
-      pageRoute = _buildRouteFade(settings, const Home());
+      pageRoute = _buildRouteFade(settings, const HomePrototypeVideo());
       break;
     case '/sale':
       String? param1 = uri.queryParameters['id'];
