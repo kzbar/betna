@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "turkishtenesapp",
+  "private_key_id": "b336b266baf6e7af2c563202f82bc64b41b729a4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDI+yhZ8ay1R3oy\n3ZsLHHydV+FC1+FJRKEjRwm01wvnUaKBVyWfWI/uCoXGJV2QaupYpf7iQaOAr86n\nCboPTfXsoXo7vTVICG1ilGZsXLnrwC7mURuX0B92L3U6+v62oyrrm/ic++2HaRxo\nkJ8Vt45GcW5+2LUs/CyOhBeiyB4+0bbz/XDaoDFNL8FYC99mRMA9tRsPNoOjyV4C\nHRP1EF1aIdYf1hEb00G4ygScSUQ4h1y/3p+DDzelojMb7JQGw3AKwsHagPBASSuE\nCk8JyJKCmczpH7eYLLwTVg8/qVNOrg3VWay0ZuwMoKFDOjq8NCh+rYLCfGZhQ8PJ\nfenX2jAVAgMBAAECggEAYejxLHgu8hVDM7p/yLb1AlYImF7BEseLVLtLwDyvQN6l\nMyt4WZt0arvXlcMoRK3BQrSDakgd1hhPrVJwwPny33d/K9EuPsxUNZ0kFJBLxszW\nTD+hGKE8YoAWNUiHhAQTabqPMDMO8VPEkjA6QAMvHaQu9z6tbJ/hOQCi3xtsmJ8G\n5XBq1592Lt4A4/3/Xc+J1lufYdZdPvVzwQFp8L9BkpLAl0Bv0Wc8naYLDoVWY0fy\n1D9ubkbVsYy+V3U13eNswaNAm/KQXhFIq0NqWKyWmZ35oI7uM9bThriEyBCexg0u\nKGq6VN8P17dvnAXIq8pS1V+RIYe0lRyqH8gN7YVplQKBgQDkncFS/e+Y53po1jrM\njH/Gn9y1dE8ZyIKIqmCbxZD0cKRzbfeQ6rj4nXapZ+Vswt140Ri2M6VoNAZR1Bxk\n2nFFIqk3ohO7NitpbnutGksHKCFpvvyEZaqNVLy71DVgFj9sqFeiMDaGe2i8IsFY\n80VtpnTx9wxTMp6K+2xEV4eDxwKBgQDhDgDoRodiAa/MjD/X7P+A3rWn3VRbfDTL\nZXhe3MujHDX9RXpHkWLJbKRPsaHvny39p2BKRQ0zBRX5s98OO7KdTZhhGdwGhTU0\nq1J3Z+CoAEivQQBOaclRZSup5n2Kj3BiSJeBCbbp9YRUroFLrYi5Y0FC65WdnIi7\nI4KqqRG1QwKBgFEgCfJBWjyQJ8f7/XGIie8Z22AonckwdeG5U/7y5LVZI4Iyi59J\nK8pNVkZXL/qgS6cLzBEb0p5fl76B3nGLcpZt7k5nnUjZuB35rrmGkwk/HFxCAamZ\nyiPM5gxhCW/HdUpBkpdjNHYUZN4eFy5RZVm7r9QNLrp3Q/tdrNWzmcsRAoGBAME4\nr6i83QFVJ2U7yJiPXvJ6w4Xi7ck6A23ZqZXwhVl+IBBaNVj6xtDe2NefT8QWa3sK\n2A4L6QAzzqE7QDfNI1YQx9IeTJzAg2S77qqb4fL7g2wMJ8Iq6vBaJznQrVpoOnn3\njzP3bjbCVyIJTPL3g5p/UAmvkB3oxi+9ljMFwzFXAoGAc1iiYMnWa46yuK+g0hAU\n8hdsDHMuJ8W/asvHpPpJBFY6GRPEeMUWT6zG8WEP+SawdoHcjekxd3TGnivysVg5\nAJS5uuaHevwz1rmzspR/R3JWKImrm9QtPhjODrwaPbankocQQIrxjrRnsXjWNJ68\nFLX1+PVFlt8eH7JH79raoRM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "translate-apps@turkishtenesapp.iam.gserviceaccount.com",
+  "client_id": "110236602752875171827",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/translate-apps%40turkishtenesapp.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -24,6 +24,8 @@ class _Tablet extends State<Tablet> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
 
+
+
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       body: Column(
