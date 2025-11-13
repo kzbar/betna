@@ -374,6 +374,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextField14": MessageLookupByLibrary.simpleMessage(
       "Email address (optional)",
     ),
+    "kSaleRequestTextField15": MessageLookupByLibrary.simpleMessage(
+      "Verification code",
+    ),
     "kSaleRequestTextField2": MessageLookupByLibrary.simpleMessage(
       "District/Neighborhood (Mahalle)",
     ),
@@ -396,6 +399,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextField9": MessageLookupByLibrary.simpleMessage(
       "Complex name",
     ),
+    "kSaleRequestTextFieldContactInformation":
+        MessageLookupByLibrary.simpleMessage("Contact information"),
     "kSaleRequestTextFieldDec": MessageLookupByLibrary.simpleMessage(
       "Please provide property details and contact information. We will then contact you to assess the price and market the apartment.",
     ),
@@ -416,6 +421,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kSaleRequestTextFieldErrorMessage14": MessageLookupByLibrary.simpleMessage(
       "Please enter the email address (optional)",
+    ),
+    "kSaleRequestTextFieldErrorMessage15": MessageLookupByLibrary.simpleMessage(
+      "Please enter the Verification code",
     ),
     "kSaleRequestTextFieldErrorMessage2": MessageLookupByLibrary.simpleMessage(
       "Please enter the district/Neighborhood (Mahalle)",
@@ -441,8 +449,42 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
       "Please enter complex name",
     ),
+    "kSaleRequestTextFieldSendRequest": MessageLookupByLibrary.simpleMessage(
+      "Send Request",
+    ),
+    "kSaleRequestTextFieldSendRequestMessageFailed":
+        MessageLookupByLibrary.simpleMessage(
+          "Your request could not be submitted. Please try again later.",
+        ),
+    "kSaleRequestTextFieldSendRequestMessageSending":
+        MessageLookupByLibrary.simpleMessage("Request Sending"),
+    "kSaleRequestTextFieldSendRequestMessageSuccessfully":
+        MessageLookupByLibrary.simpleMessage(
+          "Your request has been successfully submitted. We will contact you soon.",
+        ),
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
       "Apartment for sale request – Istanbul",
+    ),
+    "kSaleRequestTextVerificationEmailMessage1":
+        MessageLookupByLibrary.simpleMessage("Enter your email address first."),
+    "kSaleRequestTextVerificationEmailMessage2":
+        MessageLookupByLibrary.simpleMessage(
+          "A verification code has been sent to your email.",
+        ),
+    "kSaleRequestTextVerificationEmailMessage3":
+        MessageLookupByLibrary.simpleMessage("Email code could not be sent."),
+    "kSaleRequestTextVerificationEmailMessage4":
+        MessageLookupByLibrary.simpleMessage(
+          "There is a previous order registered with this email address. If you wish to modify the order, please contact the support team.",
+        ),
+    "kSaleRequestTextVerificationMethod1": MessageLookupByLibrary.simpleMessage(
+      "Phone number",
+    ),
+    "kSaleRequestTextVerificationMethod2": MessageLookupByLibrary.simpleMessage(
+      "Email address",
+    ),
+    "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
+      "Verification method via",
     ),
     "kSearch": m9,
     "kSearchBy": m10,
@@ -505,6 +547,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "noPhotoFlat": MessageLookupByLibrary.simpleMessage("flat photo Empty"),
     "numara": MessageLookupByLibrary.simpleMessage("Phone"),
+    "occupancyOwner": MessageLookupByLibrary.simpleMessage("Owner-occupied"),
+    "occupancyRented": MessageLookupByLibrary.simpleMessage("Rented"),
+    "occupancyVacant": MessageLookupByLibrary.simpleMessage("Vacant"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "payRent": MessageLookupByLibrary.simpleMessage("How to pay the rent"),
     "photoFlat": MessageLookupByLibrary.simpleMessage("flat photo"),

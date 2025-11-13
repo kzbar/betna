@@ -323,5 +323,13 @@
   "kSaleRequestTextFieldErrorMessage11": "الرجاء إدخال السعر المطلوب (₺)",
   "kSaleRequestTextFieldErrorMessage12": "الرجاء إدخال الاسم واللقب",
   "kSaleRequestTextFieldErrorMessage13": "الرجاء إدخال رقم الهاتف",
-  "kSaleRequestTextFieldErrorMessage14": "الرجاء إدخال عنوان البريد الإلكتروني (اختياري)"
+  "kSaleRequestTextFieldErrorMessage14": "الرجاء إدخال عنوان البريد الإلكتروني (اختياري)",
+  "kSaleRequestTextFieldSendRequest": "إرسال الطلب",
+  "kSaleRequestTextFieldContactInformation": "معلومات الاتصال",
+  "occupancyVacant": "فارغ",
+  "occupancyRented": "مؤجر",
+  "occupancyOwner": "يسكنه المالك",
+  "kSaleRequestTextFieldSendRequestMessageSuccessfully": "تم تقديم طلبك بنجاح. سنتواصل معك قريبًا.",
+  "kSaleRequestTextFieldSendRequestMessageFailed": "لم يتم إرسال طلبك. يُرجى المحاولة لاحقًا.",
+  "kSaleRequestTextFieldSendRequestMessageSending": "طلب الإرسال"
 }

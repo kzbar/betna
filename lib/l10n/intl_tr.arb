@@ -323,5 +323,13 @@
   "kSaleRequestTextFieldErrorMessage11": "Lütfen istenen fiyatı girin (₺)",
   "kSaleRequestTextFieldErrorMessage12": "Lütfen adınızı soyadınızı giriniz",
   "kSaleRequestTextFieldErrorMessage13": "Lütfen telefon numaranızı giriniz",
-  "kSaleRequestTextFieldErrorMessage14": "Lütfen e-posta adresini girin (isteğe bağlı)"
+  "kSaleRequestTextFieldErrorMessage14": "Lütfen e-posta adresini girin (isteğe bağlı)",
+  "kSaleRequestTextFieldSendRequest": "İstek Gönder",
+  "kSaleRequestTextFieldContactInformation": "İletişim bilgileri",
+  "occupancyVacant": "Boş",
+  "occupancyRented": "Kiracılı",
+  "occupancyOwner": "Ev sahibi oturuyor",
+  "kSaleRequestTextFieldSendRequestMessageSuccessfully": "Talebiniz başarıyla iletildi. En kısa sürede sizinle iletişime geçeceğiz.",
+  "kSaleRequestTextFieldSendRequestMessageFailed": "Talebiniz gönderilemedi. Lütfen daha sonra tekrar deneyin.",
+  "kSaleRequestTextFieldSendRequestMessageSending": "İstek Gönderiliyor"
 }

@@ -216,6 +216,28 @@
   "kSaleRequestTextFieldErrorMessage13":"Please enter the phone number",
   "kSaleRequestTextFieldErrorMessage14":"Please enter the email address (optional)",
 
+  "kSaleRequestTextFieldSendRequest":"Send Request",
+  "kSaleRequestTextFieldSendRequestMessageSuccessfully":"Your request has been successfully submitted. We will contact you soon.",
+  "kSaleRequestTextFieldSendRequestMessageFailed":"Your request could not be submitted. Please try again later.",
+  "kSaleRequestTextFieldSendRequestMessageSending":"Request Sending",
+  "kSaleRequestTextFieldContactInformation":"Contact information",
+  "occupancyVacant": "Vacant",
+  "occupancyRented": "Rented",
+  "occupancyOwner": "Owner-occupied",
+  "kSaleRequestTextVerificationTitle":"Verification method via",
+  "kSaleRequestTextVerificationMethod1":"Phone number",
+  "kSaleRequestTextVerificationMethod2":"Email address",
+  "kSaleRequestTextField15":"Verification code",
+  "kSaleRequestTextFieldErrorMessage15":"Please enter the Verification code",
+
+  "kSaleRequestTextVerificationEmailMessage1":"Enter your email address first.",
+  "kSaleRequestTextVerificationEmailMessage2":"A verification code has been sent to your email.",
+  "kSaleRequestTextVerificationEmailMessage3":"Email code could not be sent.",
+  "kSaleRequestTextVerificationEmailMessage4":"There is a previous order registered with this email address. If you wish to modify the order, please contact the support team.",
+
+
+
+
   "appName": "E-Contract",
 
   "singIn": "Sing In",

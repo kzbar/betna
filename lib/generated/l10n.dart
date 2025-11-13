@@ -1704,6 +1704,166 @@ class S {
     );
   }
 
+  /// `Send Request`
+  String get kSaleRequestTextFieldSendRequest {
+    return Intl.message(
+      'Send Request',
+      name: 'kSaleRequestTextFieldSendRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your request has been successfully submitted. We will contact you soon.`
+  String get kSaleRequestTextFieldSendRequestMessageSuccessfully {
+    return Intl.message(
+      'Your request has been successfully submitted. We will contact you soon.',
+      name: 'kSaleRequestTextFieldSendRequestMessageSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your request could not be submitted. Please try again later.`
+  String get kSaleRequestTextFieldSendRequestMessageFailed {
+    return Intl.message(
+      'Your request could not be submitted. Please try again later.',
+      name: 'kSaleRequestTextFieldSendRequestMessageFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request Sending`
+  String get kSaleRequestTextFieldSendRequestMessageSending {
+    return Intl.message(
+      'Request Sending',
+      name: 'kSaleRequestTextFieldSendRequestMessageSending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact information`
+  String get kSaleRequestTextFieldContactInformation {
+    return Intl.message(
+      'Contact information',
+      name: 'kSaleRequestTextFieldContactInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vacant`
+  String get occupancyVacant {
+    return Intl.message('Vacant', name: 'occupancyVacant', desc: '', args: []);
+  }
+
+  /// `Rented`
+  String get occupancyRented {
+    return Intl.message('Rented', name: 'occupancyRented', desc: '', args: []);
+  }
+
+  /// `Owner-occupied`
+  String get occupancyOwner {
+    return Intl.message(
+      'Owner-occupied',
+      name: 'occupancyOwner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification method via`
+  String get kSaleRequestTextVerificationTitle {
+    return Intl.message(
+      'Verification method via',
+      name: 'kSaleRequestTextVerificationTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get kSaleRequestTextVerificationMethod1 {
+    return Intl.message(
+      'Phone number',
+      name: 'kSaleRequestTextVerificationMethod1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email address`
+  String get kSaleRequestTextVerificationMethod2 {
+    return Intl.message(
+      'Email address',
+      name: 'kSaleRequestTextVerificationMethod2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code`
+  String get kSaleRequestTextField15 {
+    return Intl.message(
+      'Verification code',
+      name: 'kSaleRequestTextField15',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the Verification code`
+  String get kSaleRequestTextFieldErrorMessage15 {
+    return Intl.message(
+      'Please enter the Verification code',
+      name: 'kSaleRequestTextFieldErrorMessage15',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email address first.`
+  String get kSaleRequestTextVerificationEmailMessage1 {
+    return Intl.message(
+      'Enter your email address first.',
+      name: 'kSaleRequestTextVerificationEmailMessage1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A verification code has been sent to your email.`
+  String get kSaleRequestTextVerificationEmailMessage2 {
+    return Intl.message(
+      'A verification code has been sent to your email.',
+      name: 'kSaleRequestTextVerificationEmailMessage2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email code could not be sent.`
+  String get kSaleRequestTextVerificationEmailMessage3 {
+    return Intl.message(
+      'Email code could not be sent.',
+      name: 'kSaleRequestTextVerificationEmailMessage3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is a previous order registered with this email address. If you wish to modify the order, please contact the support team.`
+  String get kSaleRequestTextVerificationEmailMessage4 {
+    return Intl.message(
+      'There is a previous order registered with this email address. If you wish to modify the order, please contact the support team.',
+      name: 'kSaleRequestTextVerificationEmailMessage4',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-Contract`
   String get appName {
     return Intl.message('E-Contract', name: 'appName', desc: '', args: []);

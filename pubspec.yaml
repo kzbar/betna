@@ -80,6 +80,7 @@ dependencies:
 
   fluttertoast: ^9.0.0
   flutter_map: ^4.0.0
+  crypto: ^3.0.7
 
 
 # Run this script to generate the app icon: flutter pub run flutter_launcher_icons:main

@@ -1,8 +1,8 @@
 import argparse, json, re, sys
 from pathlib import Path
 #"C:\Users\AHMAD\StudioProjects\betna\turkishtenesapp-b336b266baf6.json"
-#SETX / GOOGLE_APPLICATION_CREDENTIALS= "C:/Users/AHMAD/StudioProjects/betna/turkishtenesapp-b336b266baf6.json"
-# setx GOOGLE_APPLICATION_CREDENTIALS "C:/Users/AHMAD/StudioProjects/betna/turkishtenesapp-b336b266baf6.json"
+#SETX / GOOGLE_APPLICATION_CREDENTIALS= "C:/Users/AHMAD/StudioProjects/betna/turkishtenesapp-0e6ccce90fa3.json"
+# setx GOOGLE_APPLICATION_CREDENTIALS "C:/Users/AHMAD/StudioProjects/betna/turkishtenesapp-0e6ccce90fa3.json"
 
 
 # python sync_translate_arb.py --arb-dir C:/Users/AHMAD/StudioProjects/betna/lib/l10n --targets ar,tr --engine gcloud

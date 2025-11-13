@@ -376,6 +376,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextField9": MessageLookupByLibrary.simpleMessage(
       "اسم المجمع",
     ),
+    "kSaleRequestTextFieldContactInformation":
+        MessageLookupByLibrary.simpleMessage("معلومات الاتصال"),
     "kSaleRequestTextFieldDec": MessageLookupByLibrary.simpleMessage(
       "يرجى تزويدنا بتفاصيل العقار ومعلومات الاتصال. سنتواصل معك لتقييم السعر وتسويق الشقة.",
     ),
@@ -421,6 +423,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
       "الرجاء إدخال اسم المجمع",
     ),
+    "kSaleRequestTextFieldSendRequest": MessageLookupByLibrary.simpleMessage(
+      "إرسال الطلب",
+    ),
+    "kSaleRequestTextFieldSendRequestMessageFailed":
+        MessageLookupByLibrary.simpleMessage(
+          "لم يتم إرسال طلبك. يُرجى المحاولة لاحقًا.",
+        ),
+    "kSaleRequestTextFieldSendRequestMessageSending":
+        MessageLookupByLibrary.simpleMessage("طلب الإرسال"),
+    "kSaleRequestTextFieldSendRequestMessageSuccessfully":
+        MessageLookupByLibrary.simpleMessage(
+          "تم تقديم طلبك بنجاح. سنتواصل معك قريبًا.",
+        ),
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
       "طلب شقة للبيع – اسطنبول",
     ),
@@ -483,6 +498,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "noPhotoFlat": MessageLookupByLibrary.simpleMessage("لا يوجد صور حاليا"),
     "numara": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "occupancyOwner": MessageLookupByLibrary.simpleMessage("يسكنه المالك"),
+    "occupancyRented": MessageLookupByLibrary.simpleMessage("مؤجر"),
+    "occupancyVacant": MessageLookupByLibrary.simpleMessage("فارغ"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
     "payRent": MessageLookupByLibrary.simpleMessage("طريقة دفع الايجار"),
     "photoFlat": MessageLookupByLibrary.simpleMessage("صور الشقة"),

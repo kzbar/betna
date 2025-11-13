@@ -19,7 +19,7 @@ class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
     hexColor = hexColor.toUpperCase().replaceAll("#", "");
     if (hexColor.length == 6) {
-      hexColor = "FF" + hexColor;
+      hexColor = "FF$hexColor";
     }
     return int.parse(hexColor, radix: 16);
   }
@@ -37,7 +37,7 @@ class Shadows {
 
   static List<BoxShadow> get universal2 => [
     BoxShadow(
-        color: Colors.grey.withOpacity(0.7),
+        color: Colors.grey.withAlpha(70),
         spreadRadius: 2,
         blurRadius: 2,
         offset: Offset(0.5, 0)),
@@ -45,7 +45,7 @@ class Shadows {
 
   static List<BoxShadow> get small => [
     BoxShadow(
-        color: Color(0xff333333).withOpacity(.15),
+        color: Color(0xff333333).withAlpha(15),
         spreadRadius: 0,
         blurRadius: 3,
         offset: Offset(0, 1)),
@@ -76,23 +76,28 @@ class Corners {
 
 class ButtonStyles {
   static ButtonStyle style = ButtonStyle(
-    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (Set<MaterialState> states) {
-        if (states.contains(MaterialState.hovered))
+    backgroundColor: WidgetStateProperty.resolveWith<Color>(
+          (Set<WidgetState> states) {
+        if (states.contains(WidgetState.hovered)) {
           return Style.lavenderBlack!.withOpacity(0.4);
-        if (states.contains(MaterialState.focused) ||
-            states.contains(MaterialState.pressed)) return Style.lavenderBlack!;
+        }
+        if (states.contains(WidgetState.focused) ||
+            states.contains(WidgetState.pressed)) {
+          return Style.lavenderBlack!;
+        }
         return Style.lavenderBlack!; // Defer to the widget's default.
       },
     ),
   );
   static ButtonStyle styleWhite = ButtonStyle(
-    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (Set<MaterialState> states) {
-        if (states.contains(MaterialState.hovered))
+    backgroundColor: WidgetStateProperty.resolveWith<Color>(
+          (Set<WidgetState> states) {
+        if (states.contains(WidgetState.hovered))
           return Style.lavenderBlack!.withOpacity(0.4);
-        if (states.contains(MaterialState.focused) ||
-            states.contains(MaterialState.pressed)) return Style.lavenderBlack!;
+        if (states.contains(WidgetState.focused) ||
+            states.contains(WidgetState.pressed)) {
+          return Style.lavenderBlack!;
+        }
         return Colors.white; // Defer to the widget's default.
       },
     ),

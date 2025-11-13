@@ -392,6 +392,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Bir konut site içinde mi?",
     ),
     "kSaleRequestTextField9": MessageLookupByLibrary.simpleMessage("site isim"),
+    "kSaleRequestTextFieldContactInformation":
+        MessageLookupByLibrary.simpleMessage("İletişim bilgileri"),
     "kSaleRequestTextFieldDec": MessageLookupByLibrary.simpleMessage(
       "Lütfen mülkün ayrıntılarını ve iletişim bilgilerini sağlayın. Daha sonra sizinle iletişime geçerek fiyatı değerlendirip daireyi pazarlayacağız.",
     ),
@@ -437,6 +439,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
       "Lütfen site bir ad girin",
     ),
+    "kSaleRequestTextFieldSendRequest": MessageLookupByLibrary.simpleMessage(
+      "İstek Gönder",
+    ),
+    "kSaleRequestTextFieldSendRequestMessageFailed":
+        MessageLookupByLibrary.simpleMessage(
+          "Talebiniz gönderilemedi. Lütfen daha sonra tekrar deneyin.",
+        ),
+    "kSaleRequestTextFieldSendRequestMessageSending":
+        MessageLookupByLibrary.simpleMessage("İstek Gönderiliyor"),
+    "kSaleRequestTextFieldSendRequestMessageSuccessfully":
+        MessageLookupByLibrary.simpleMessage(
+          "Talebiniz başarıyla iletildi. En kısa sürede sizinle iletişime geçeceğiz.",
+        ),
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
       "Satılık daire talebi – İstanbul",
     ),
@@ -499,6 +514,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "next": MessageLookupByLibrary.simpleMessage("Sonraki"),
     "noPhotoFlat": MessageLookupByLibrary.simpleMessage("flat photo Empty"),
     "numara": MessageLookupByLibrary.simpleMessage("Numara"),
+    "occupancyOwner": MessageLookupByLibrary.simpleMessage(
+      "Ev sahibi oturuyor",
+    ),
+    "occupancyRented": MessageLookupByLibrary.simpleMessage("Kiracılı"),
+    "occupancyVacant": MessageLookupByLibrary.simpleMessage("Boş"),
     "password": MessageLookupByLibrary.simpleMessage("Parola"),
     "payRent": MessageLookupByLibrary.simpleMessage(
       "Kiranın ne şekilde ödeceği",

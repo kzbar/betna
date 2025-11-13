@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 abstract class FirebaseMethod<T> {
@@ -7,7 +8,9 @@ abstract class FirebaseMethod<T> {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).update(value);
     } catch (error) {
-      print('FirebaseMethod update:${error.toString()}');
+      if (kDebugMode) {
+        print('FirebaseMethod update:${error.toString()}');
+      }
       rethrow;
     }
   }
@@ -17,7 +20,9 @@ abstract class FirebaseMethod<T> {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).set(value);
     } catch (error) {
-      print('FirebaseMethod add:${error.toString()}');
+      if (kDebugMode) {
+        print('FirebaseMethod add:${error.toString()}');
+      }
       rethrow;
     }
   }
@@ -26,7 +31,9 @@ abstract class FirebaseMethod<T> {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).delete();
     } catch (error) {
-      print('FirebaseMethod delete:${error.toString()}');
+      if (kDebugMode) {
+        print('FirebaseMethod delete:${error.toString()}');
+      }
       rethrow;
     }
   }
@@ -35,7 +42,9 @@ abstract class FirebaseMethod<T> {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).get();
     } catch (error) {
-      print('FirebaseMethod get:${error.toString()}');
+      if (kDebugMode) {
+        print('FirebaseMethod get:${error.toString()}');
+      }
       rethrow;
     }
   }
@@ -44,7 +53,9 @@ abstract class FirebaseMethod<T> {
     try {
       return FirebaseFirestore.instance.collection(co!).get();
     } catch (error) {
-      print('FirebaseMethod gets:${error.toString()}');
+      if (kDebugMode) {
+        print('FirebaseMethod gets:${error.toString()}');
+      }
       rethrow;
     }
   }
@@ -53,7 +64,9 @@ abstract class FirebaseMethod<T> {
     try {
       return FirebaseFirestore.instance.collection(co!).snapshots();
     } catch (error) {
-      print('FirebaseMethod streams:${error.toString()}');
+      if (kDebugMode) {
+        print('FirebaseMethod streams:${error.toString()}');
+      }
       rethrow;
     }
   }
@@ -62,7 +75,9 @@ abstract class FirebaseMethod<T> {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).snapshots();
     } catch (error) {
-      print('FirebaseMethod stream:${error.toString()}');
+      if (kDebugMode) {
+        print('FirebaseMethod stream:${error.toString()}');
+      }
       rethrow;
     }
   }
