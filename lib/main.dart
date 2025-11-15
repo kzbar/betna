@@ -2,16 +2,17 @@ import 'package:betna/generated/l10n.dart';
 import 'package:betna/setup/confing/web_mobile_calss.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/setup/router.dart';
+import 'package:betna/style/style.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'services/firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'dart:ui' as ui;
 
 Future<void> main() async {
   WM().configureApp();
@@ -35,9 +36,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    String lang =  View.of(context).platformDispatcher.locale.languageCode;
+    String lang = View.of(context).platformDispatcher.locale.languageCode;
     return GetMaterialApp(
-
       localizationsDelegates: const [
         S.delegate,
         ...GlobalMaterialLocalizations.delegates,
@@ -51,21 +51,49 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       title: 'Betna real estate',
       theme: ThemeData(
+        snackBarTheme: SnackBarThemeData(backgroundColor: Colors.white),
+        textTheme: TextTheme(
+            titleLarge: customStyle(
+                lang, 24, Color(0xFF000000), FontWeight.bold, 1.2, 0.5),
+            titleMedium: customStyle(
+                lang, 16, Color(0xFF000000), FontWeight.w700, 1.2, 0.5),
+            titleSmall: customStyle(
+                lang, 12, Color(0xFF000000), FontWeight.w400, 1.2, 0.5),
+            headlineSmall:
+                customStyle(lang, 14, Color(0xFF000000), FontWeight.w300, 1, 1),
+            bodyMedium:
+                customStyle(lang, 14, Color(0xFF000000), FontWeight.w400, 1, 1),
+            bodySmall: customStyle(
+                lang, 12, Color(0xFF000000), FontWeight.w300, 1, 1)),
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0E7490)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Style.primaryColors),
         inputDecorationTheme: const InputDecorationTheme(
-          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12))),
         ),
       ),
-      builder: (context, child) {
-        return Directionality(
-          textDirection: Provider.of<MainProvider>(context).textDecoration,
-          child: child!,
-        );
-      },
       onGenerateRoute: (setting) {
         return generateRoute(setting, context);
       },
     );
+  }
+
+  TextStyle customStyle(String lang, double size, Color color,
+      FontWeight weight, double height, double letterSpacing) {
+    return lang == "ar"
+        ? GoogleFonts.alexandria(
+            height: height,
+            letterSpacing: letterSpacing,
+            fontSize: size,
+            color: color,
+            fontWeight: weight,
+          )
+        : GoogleFonts.roboto(
+            height: height,
+            letterSpacing: letterSpacing,
+            fontSize: size,
+            color: color,
+            fontWeight: weight,
+          );
   }
 }

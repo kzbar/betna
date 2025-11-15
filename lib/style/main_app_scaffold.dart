@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 
 /// Wraps the entire app, providing it with various helper classes and wrapper widgets.
 class MainAppScaffold extends StatefulWidget {
-  const MainAppScaffold({Key? key, required this.child,}) : super(key: key);
+  const MainAppScaffold({super.key, required this.child,});
   @required final Widget child;
 
   @override
-  _MainAppScaffoldState createState() => _MainAppScaffoldState();
+   _MainAppScaffoldState createState() {
+    return _MainAppScaffoldState();
+  }
 }
 
 class _MainAppScaffoldState extends State<MainAppScaffold> {

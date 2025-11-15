@@ -1,16 +1,11 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:betna/bar.dart';
-import 'package:betna/generated/l10n.dart';
-import 'package:betna/models/company_profile.dart';
 import 'package:betna/section/projects_section.dart';
 import 'package:betna/section/sale_section_.dart';
 import 'package:betna/section/urgent_section.dart';
 import 'package:betna/setup/enumerators.dart';
 import 'package:betna/setup/main_provider.dart';
-import 'package:betna/style/custom_text.dart';
 import 'package:betna/style/style.dart';
 import 'package:betna/style/widget/about_as.dart';
-import 'package:betna/style/widget/list_view_items.dart';
 import 'package:betna/style/widget/note_exchange_rate.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

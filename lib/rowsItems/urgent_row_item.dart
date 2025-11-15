@@ -1,11 +1,9 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:betna/generated/l10n.dart';
 import 'package:betna/models/address_model.dart';
 import 'package:betna/models/sale_ad_model.dart';
 import 'package:betna/pages/details_sale_screen.dart';
 import 'package:betna/setup/tools.dart';
 import 'package:betna/style/custom_text.dart';
-import 'package:betna/style/popover/context_menu_overlay.dart';
 import 'package:betna/style/style.dart';
 import 'package:betna/style/widget/ImageView.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +79,7 @@ class _UrgentRowItem extends State<UrgentRowItem> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InfoTextWidget(
-                            text1: S.of(context).rooms,
+                            text1: "S.of(context).rooms",
                             text2: widget.model!.room,
                           ),
                           // InfoTextWidget(

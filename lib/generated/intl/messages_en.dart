@@ -20,48 +20,47 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(value) => "${value} Days Ago";
+  static String m0(year) => "© ${year} Betna. All rights reserved.";
 
-  static String m1(value) => "Do you want to delete ${value}";
+  static String m1(value) => "${value} Days Ago";
 
-  static String m2(value) => "${value} Hours Ago";
+  static String m2(value) => "Do you want to delete ${value}";
 
-  static String m3(path) => "The image has been saved successfully ${path}";
+  static String m3(value) => "${value} Hours Ago";
 
-  static String m4(value) => "${value} Minutes Ago";
+  static String m4(path) => "The image has been saved successfully ${path}";
 
-  static String m5(value) => "${value} Months Ago";
+  static String m5(value) => "${value} Minutes Ago";
 
-  static String m6(number) => "Number of ads ${number}";
+  static String m6(value) => "${value} Months Ago";
 
-  static String m7(value) => "Number contracts ${value}";
+  static String m7(number) => "Number of ads ${number}";
 
-  static String m8(count) => "Number of offers ${count}";
+  static String m8(value) => "Number contracts ${value}";
 
-  static String m9(value) => "Search by ${value}";
+  static String m9(count) => "Number of offers ${count}";
 
   static String m10(value) => "Search by ${value}";
 
-  static String m11(number) => "Title ${number}";
+  static String m11(value) => "Search by ${value}";
 
-  static String m12(value) => "${value} Weeks Ago";
+  static String m12(number) => "Title ${number}";
 
-  static String m13(value) => "${value} years ago";
+  static String m13(value) => "${value} Weeks Ago";
 
-  static String m14(value) => "Must make an appointment ${value}";
+  static String m14(value) => "${value} years ago";
+
+  static String m15(value) => "Must make an appointment ${value}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AdInformation": MessageLookupByLibrary.simpleMessage("Ad information"),
     "Ad_information": MessageLookupByLibrary.simpleMessage("Ad information"),
-    "AvenueStreet": MessageLookupByLibrary.simpleMessage("Avenue/Street"),
-    "Contact": MessageLookupByLibrary.simpleMessage("Contact"),
     "Continue": MessageLookupByLibrary.simpleMessage("continue"),
     "Current_status_aforementioned": MessageLookupByLibrary.simpleMessage(
       "Current status of the rented",
     ),
     "DISMISS": MessageLookupByLibrary.simpleMessage("Close️"),
-    "Deposit": MessageLookupByLibrary.simpleMessage("Deposit"),
     "Detail_Ad": MessageLookupByLibrary.simpleMessage("Details Ad"),
     "Kira": MessageLookupByLibrary.simpleMessage("Rent"),
     "LocationTile": MessageLookupByLibrary.simpleMessage(
@@ -86,7 +85,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "adPhoto": MessageLookupByLibrary.simpleMessage("Advertising photos"),
     "addPerson": MessageLookupByLibrary.simpleMessage("add person"),
     "add_photo": MessageLookupByLibrary.simpleMessage("Add Photo"),
-    "ageBuilding": MessageLookupByLibrary.simpleMessage("Age building"),
     "annualRent": MessageLookupByLibrary.simpleMessage("Annual rent"),
     "annualRentSummer": MessageLookupByLibrary.simpleMessage(
       "Annual rent summer",
@@ -96,7 +94,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "applicationDeveloper": MessageLookupByLibrary.simpleMessage(
       "App Developer",
     ),
-    "area": MessageLookupByLibrary.simpleMessage("Area"),
     "balcony": MessageLookupByLibrary.simpleMessage("Balcony"),
     "beginningofrent": MessageLookupByLibrary.simpleMessage(
       "Beginning of rent",
@@ -121,9 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Down payment summer",
     ),
     "edit": MessageLookupByLibrary.simpleMessage("Update"),
-    "email": MessageLookupByLibrary.simpleMessage("Email"),
     "example": MessageLookupByLibrary.simpleMessage("An example of a contract"),
-    "explanation": MessageLookupByLibrary.simpleMessage("explanation"),
     "fee": MessageLookupByLibrary.simpleMessage("Fee"),
     "fieldEmpty": MessageLookupByLibrary.simpleMessage(
       "This field cannot be empty..",
@@ -141,15 +136,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "flat_add": MessageLookupByLibrary.simpleMessage("Add Flat"),
     "flat_add_photo": MessageLookupByLibrary.simpleMessage("Add Flat Images"),
     "flat_list": MessageLookupByLibrary.simpleMessage("Flat List"),
-    "floor": MessageLookupByLibrary.simpleMessage("Floor"),
     "forSaleList": MessageLookupByLibrary.simpleMessage("For Sale List"),
     "furniture": MessageLookupByLibrary.simpleMessage(
       "Things that were delivered with the house",
     ),
     "houseLocation": MessageLookupByLibrary.simpleMessage("Property location"),
     "id": MessageLookupByLibrary.simpleMessage("ID number"),
-    "images": MessageLookupByLibrary.simpleMessage("Ad photos"),
-    "inSideSite": MessageLookupByLibrary.simpleMessage("Inside site"),
     "k1DayAgo": MessageLookupByLibrary.simpleMessage("1 Day Ago"),
     "k1HourAgo": MessageLookupByLibrary.simpleMessage("1 Hour Ago"),
     "k1MinuteAgo": MessageLookupByLibrary.simpleMessage("1 Minute Ago"),
@@ -192,6 +184,87 @@ class MessageLookup extends MessageLookupByLibrary {
     "kBalcony": MessageLookupByLibrary.simpleMessage("Balcony"),
     "kBath": MessageLookupByLibrary.simpleMessage("Bath"),
     "kBathrooms": MessageLookupByLibrary.simpleMessage("Bathrooms"),
+    "kBetnaHomePageBrowseOffers": MessageLookupByLibrary.simpleMessage(
+      "Browse Offers",
+    ),
+    "kBetnaHomePageFooter": m0,
+    "kBetnaHomePageHeroIllustrationTag": MessageLookupByLibrary.simpleMessage(
+      "Real estate in Istanbul",
+    ),
+    "kBetnaHomePageHeroIllustrationText": MessageLookupByLibrary.simpleMessage(
+      "Betna Real Estate",
+    ),
+    "kBetnaHomePageHeroTextBlockBadge": MessageLookupByLibrary.simpleMessage(
+      "Reliable real estate service in Istanbul",
+    ),
+    "kBetnaHomePageHeroTextBlockFreeConsultation":
+        MessageLookupByLibrary.simpleMessage("Free consultation soon"),
+    "kBetnaHomePageHeroTextBlockSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Fill out a simple form with your apartment details, and let our team contact you to evaluate the property and help you get the best possible offer.",
+    ),
+    "kBetnaHomePageHeroTextBlockTitle": MessageLookupByLibrary.simpleMessage(
+      "Sell your apartment with ease and professionalism\nwith Betna Real Estate",
+    ),
+    "kBetnaHomePageInfoCard1Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Send your apartment details in minutes, and our team will follow up.",
+    ),
+    "kBetnaHomePageInfoCard1Title": MessageLookupByLibrary.simpleMessage(
+      "Sell your property easily",
+    ),
+    "kBetnaHomePageInfoCard2Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Deep understanding of the real estate market in Istanbul and its surrounding areas.",
+    ),
+    "kBetnaHomePageInfoCard2Title": MessageLookupByLibrary.simpleMessage(
+      "Experience in Istanbul",
+    ),
+    "kBetnaHomePageInfoCard3Subtitle": MessageLookupByLibrary.simpleMessage(
+      "We deal with transparency in valuation, contracts, and client follow-up.",
+    ),
+    "kBetnaHomePageInfoCard3Title": MessageLookupByLibrary.simpleMessage(
+      "Reliability and Security",
+    ),
+    "kBetnaHomePageSlide1Badge": MessageLookupByLibrary.simpleMessage(
+      "Real Estate Sales Service",
+    ),
+    "kBetnaHomePageSlide1Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Send your apartment details in minutes, and the Betna team will contact you to evaluate the property and help you get the best offer.",
+    ),
+    "kBetnaHomePageSlide1Title": MessageLookupByLibrary.simpleMessage(
+      "Sell your apartment with ease and professionalism",
+    ),
+    "kBetnaHomePageSlide2Badge": MessageLookupByLibrary.simpleMessage(
+      "Offers for Sale",
+    ),
+    "kBetnaHomePageSlide2Subtitle": MessageLookupByLibrary.simpleMessage(
+      "We have a selection of apartments and properties for sale in different areas of Istanbul to suit your budget.",
+    ),
+    "kBetnaHomePageSlide2Title": MessageLookupByLibrary.simpleMessage(
+      "Real estate offers ready for purchase",
+    ),
+    "kBetnaHomePageSlide3Badge": MessageLookupByLibrary.simpleMessage(
+      "Evaluation and Consulting",
+    ),
+    "kBetnaHomePageSlide3Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Our experts provide you with a realistic valuation of your property\'s price based on market data and professional analysis.",
+    ),
+    "kBetnaHomePageSlide3Title": MessageLookupByLibrary.simpleMessage(
+      "Real estate appraisal and specialized consultation",
+    ),
+    "kBetnaHomePageSocialFacebook": MessageLookupByLibrary.simpleMessage(
+      "Facebook",
+    ),
+    "kBetnaHomePageSocialInstagram": MessageLookupByLibrary.simpleMessage(
+      "Instagram",
+    ),
+    "kBetnaHomePageSocialWebsite": MessageLookupByLibrary.simpleMessage(
+      "Website",
+    ),
+    "kBetnaHomePageSocialWhatsapp": MessageLookupByLibrary.simpleMessage(
+      "WhatsApp",
+    ),
+    "kBetnaHomePageSubmitSaleRequest": MessageLookupByLibrary.simpleMessage(
+      "Submit a Sale Request",
+    ),
     "kCallNow": MessageLookupByLibrary.simpleMessage("Call now"),
     "kCancelSearch": MessageLookupByLibrary.simpleMessage("Cancel search"),
     "kCash": MessageLookupByLibrary.simpleMessage("Cash"),
@@ -213,8 +286,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Contract Duration",
     ),
     "kDateAdded": MessageLookupByLibrary.simpleMessage("Date"),
-    "kDaysAgo": m0,
-    "kDeleteMessage": m1,
+    "kDaysAgo": m1,
+    "kDeleteMessage": m2,
     "kDeliveryDate": MessageLookupByLibrary.simpleMessage("Delivery Date"),
     "kDeposit": MessageLookupByLibrary.simpleMessage("Deposit"),
     "kDescription": MessageLookupByLibrary.simpleMessage("Description"),
@@ -244,7 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Header page adding",
     ),
     "kHome": MessageLookupByLibrary.simpleMessage("Home"),
-    "kHoursAgo": m2,
+    "kHoursAgo": m3,
     "kHouseNew": MessageLookupByLibrary.simpleMessage("new unused"),
     "kHouseOld": MessageLookupByLibrary.simpleMessage("Used"),
     "kHouseState1": MessageLookupByLibrary.simpleMessage("Empty"),
@@ -287,11 +360,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "kMessageContactToHelp": MessageLookupByLibrary.simpleMessage(
       "Contact Us for help",
     ),
-    "kMessageSaveImageTrue": m3,
+    "kMessageSaveImageTrue": m4,
     "kMessenger": MessageLookupByLibrary.simpleMessage("Messenger chat"),
-    "kMinutesAgo": m4,
+    "kMinutesAgo": m5,
     "kMonthlyRent": MessageLookupByLibrary.simpleMessage("Monthly rent"),
-    "kMonthsAgo": m5,
+    "kMonthsAgo": m6,
     "kNameSurname": MessageLookupByLibrary.simpleMessage("Name Surname"),
     "kNeighborhood": MessageLookupByLibrary.simpleMessage("Neighborhood"),
     "kNew": MessageLookupByLibrary.simpleMessage("New"),
@@ -304,9 +377,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "kNoteExchangeRate": MessageLookupByLibrary.simpleMessage(
       "The offers on the site are priced on the Turkish lira. When the currency changes from the Turkish currency to another currency, the exchange rate is roughly calculated on the basis of the exchange rates of the World Central Bank.",
     ),
-    "kNumberAds": m6,
-    "kNumberContracts": m7,
-    "kOfferLength": m8,
+    "kNumberAds": m7,
+    "kNumberContracts": m8,
+    "kOfferLength": m9,
     "kOffers": MessageLookupByLibrary.simpleMessage("Offers"),
     "kOldLess": MessageLookupByLibrary.simpleMessage("Old/Less"),
     "kOwnerID": MessageLookupByLibrary.simpleMessage("ID-Owner No."),
@@ -356,6 +429,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "kRoomPlan": MessageLookupByLibrary.simpleMessage("Apartment Models"),
     "kSale": MessageLookupByLibrary.simpleMessage("For Sale"),
     "kSaleList": MessageLookupByLibrary.simpleMessage("Sale list"),
+    "kSaleRequestSuccessfulMessageButtonReturn":
+        MessageLookupByLibrary.simpleMessage("Home"),
+    "kSaleRequestSuccessfulMessageTitle": MessageLookupByLibrary.simpleMessage(
+      "Your request has been successfully sent 🎉",
+    ),
+    "kSaleRequestSuccessfulMessageTitle2": MessageLookupByLibrary.simpleMessage(
+      "Thank you! Your request to sell the apartment has been received. We will contact you soon to review the details.",
+    ),
     "kSaleRequestTextField1": MessageLookupByLibrary.simpleMessage(
       "The district (İlçe) in Istanbul",
     ),
@@ -372,7 +453,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Phone number",
     ),
     "kSaleRequestTextField14": MessageLookupByLibrary.simpleMessage(
-      "Email address (optional)",
+      "Email address",
     ),
     "kSaleRequestTextField15": MessageLookupByLibrary.simpleMessage(
       "Verification code",
@@ -420,7 +501,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter the phone number",
     ),
     "kSaleRequestTextFieldErrorMessage14": MessageLookupByLibrary.simpleMessage(
-      "Please enter the email address (optional)",
+      "Please enter the email address ",
     ),
     "kSaleRequestTextFieldErrorMessage15": MessageLookupByLibrary.simpleMessage(
       "Please enter the Verification code",
@@ -448,6 +529,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
       "Please enter complex name",
+    ),
+    "kSaleRequestTextFieldErrorPhone1": MessageLookupByLibrary.simpleMessage(
+      "The length of the phone number is illogical.",
+    ),
+    "kSaleRequestTextFieldErrorPhone2": MessageLookupByLibrary.simpleMessage(
+      "The number contains symbols that are not allowed.",
+    ),
+    "kSaleRequestTextFieldErrorPhone3": MessageLookupByLibrary.simpleMessage(
+      "The number must be in international format and begin with +",
     ),
     "kSaleRequestTextFieldSendRequest": MessageLookupByLibrary.simpleMessage(
       "Send Request",
@@ -477,17 +567,84 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "There is a previous order registered with this email address. If you wish to modify the order, please contact the support team.",
         ),
+    "kSaleRequestTextVerificationFieldConfirmPhone":
+        MessageLookupByLibrary.simpleMessage("Confirm phone number"),
+    "kSaleRequestTextVerificationFieldMail":
+        MessageLookupByLibrary.simpleMessage("Verification code (email)"),
+    "kSaleRequestTextVerificationFieldPhone":
+        MessageLookupByLibrary.simpleMessage("SMS code"),
+    "kSaleRequestTextVerificationMessage1":
+        MessageLookupByLibrary.simpleMessage(
+          "Choose a verification method (phone or email)",
+        ),
+    "kSaleRequestTextVerificationMessage2":
+        MessageLookupByLibrary.simpleMessage(
+          "Please confirm your phone number before submitting the request.",
+        ),
+    "kSaleRequestTextVerificationMessage3":
+        MessageLookupByLibrary.simpleMessage(
+          "The verified phone number could not be read.",
+        ),
+    "kSaleRequestTextVerificationMessage4":
+        MessageLookupByLibrary.simpleMessage(
+          "Send the verification code to the email first.",
+        ),
+    "kSaleRequestTextVerificationMessage5":
+        MessageLookupByLibrary.simpleMessage("The email code is incorrect."),
+    "kSaleRequestTextVerificationMessage6":
+        MessageLookupByLibrary.simpleMessage(
+          "The request was sent after successful verification.",
+        ),
     "kSaleRequestTextVerificationMethod1": MessageLookupByLibrary.simpleMessage(
       "Phone number",
     ),
     "kSaleRequestTextVerificationMethod2": MessageLookupByLibrary.simpleMessage(
       "Email address",
     ),
+    "kSaleRequestTextVerificationOkEmail": MessageLookupByLibrary.simpleMessage(
+      "✅ Email verified",
+    ),
+    "kSaleRequestTextVerificationOkPhone": MessageLookupByLibrary.simpleMessage(
+      "✅ Phone number verified",
+    ),
+    "kSaleRequestTextVerificationPhoneMessage1":
+        MessageLookupByLibrary.simpleMessage("Enter your phone number first."),
+    "kSaleRequestTextVerificationPhoneMessage10":
+        MessageLookupByLibrary.simpleMessage(
+          "Unexpected error during verification",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage2":
+        MessageLookupByLibrary.simpleMessage("SMS sending failed"),
+    "kSaleRequestTextVerificationPhoneMessage3":
+        MessageLookupByLibrary.simpleMessage(
+          "An SMS code has been sent, enter it and then press Confirm on your phone",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage4":
+        MessageLookupByLibrary.simpleMessage("Send the SMS code first."),
+    "kSaleRequestTextVerificationPhoneMessage5":
+        MessageLookupByLibrary.simpleMessage("Enter the SMS code."),
+    "kSaleRequestTextVerificationPhoneMessage6":
+        MessageLookupByLibrary.simpleMessage(
+          "The phone number has been successfully verified.",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage7":
+        MessageLookupByLibrary.simpleMessage("Invalid SMS code"),
+    "kSaleRequestTextVerificationPhoneMessage8":
+        MessageLookupByLibrary.simpleMessage(
+          "The phone number could not be read after verification.",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage9":
+        MessageLookupByLibrary.simpleMessage("Invalid or expired SMS code:"),
+    "kSaleRequestTextVerificationSend": MessageLookupByLibrary.simpleMessage(
+      "Send code",
+    ),
+    "kSaleRequestTextVerificationSendCodePhone":
+        MessageLookupByLibrary.simpleMessage("Send SMS code"),
     "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
       "Verification method via",
     ),
-    "kSearch": m9,
-    "kSearchBy": m10,
+    "kSearch": m10,
+    "kSearchBy": m11,
     "kSeeAllListing": MessageLookupByLibrary.simpleMessage("See All listing"),
     "kSelect": MessageLookupByLibrary.simpleMessage("Select"),
     "kSend": MessageLookupByLibrary.simpleMessage("Send"),
@@ -507,7 +664,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kThereIs": MessageLookupByLibrary.simpleMessage("Yes"),
     "kThereIsNot": MessageLookupByLibrary.simpleMessage("No"),
     "kThings": MessageLookupByLibrary.simpleMessage("Things"),
-    "kTitle": m11,
+    "kTitle": m12,
     "kTown": MessageLookupByLibrary.simpleMessage("Town"),
     "kTransportation": MessageLookupByLibrary.simpleMessage("Transportation"),
     "kType": MessageLookupByLibrary.simpleMessage("Ad type"),
@@ -519,17 +676,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "kUrgentTitle": MessageLookupByLibrary.simpleMessage("Urgent Offers"),
     "kUsersList": MessageLookupByLibrary.simpleMessage("Users list"),
     "kView": MessageLookupByLibrary.simpleMessage("View"),
-    "kWeeksAgo": m12,
+    "kWeeksAgo": m13,
     "kWelcomeMessage": MessageLookupByLibrary.simpleMessage(
       "Welcome to our home site. The site is currently under construction. For more information, please contact the following number",
     ),
     "kWhatsApp": MessageLookupByLibrary.simpleMessage("whatsApp chat"),
     "kWithBackground": MessageLookupByLibrary.simpleMessage("Background"),
     "kWithLogo": MessageLookupByLibrary.simpleMessage("With Logo"),
-    "kYearsAgo": m13,
+    "kYearsAgo": m14,
     "kYes": MessageLookupByLibrary.simpleMessage("Yse"),
     "kYesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
-    "kYouShouldTakeDate": m14,
+    "kYouShouldTakeDate": m15,
     "kempty": MessageLookupByLibrary.simpleMessage("Empty"),
     "kira": MessageLookupByLibrary.simpleMessage("RENT : "),
     "kira_title": MessageLookupByLibrary.simpleMessage("RENTAL CONTRACT"),
@@ -542,21 +699,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "nameSurname": MessageLookupByLibrary.simpleMessage("Name Surname"),
-    "neighborhood": MessageLookupByLibrary.simpleMessage("neighborhood"),
     "net_area": MessageLookupByLibrary.simpleMessage("Net Area"),
-    "next": MessageLookupByLibrary.simpleMessage("Next"),
     "noPhotoFlat": MessageLookupByLibrary.simpleMessage("flat photo Empty"),
     "numara": MessageLookupByLibrary.simpleMessage("Phone"),
     "occupancyOwner": MessageLookupByLibrary.simpleMessage("Owner-occupied"),
     "occupancyRented": MessageLookupByLibrary.simpleMessage("Rented"),
     "occupancyVacant": MessageLookupByLibrary.simpleMessage("Vacant"),
-    "password": MessageLookupByLibrary.simpleMessage("Password"),
     "payRent": MessageLookupByLibrary.simpleMessage("How to pay the rent"),
     "photoFlat": MessageLookupByLibrary.simpleMessage("flat photo"),
     "placeResidenceOwner": MessageLookupByLibrary.simpleMessage(
       "Place of residence",
     ),
-    "price": MessageLookupByLibrary.simpleMessage("price"),
     "prices": MessageLookupByLibrary.simpleMessage("Monthly rent , Deposit "),
     "province": MessageLookupByLibrary.simpleMessage("Province"),
     "rent": MessageLookupByLibrary.simpleMessage("Rent"),
@@ -564,7 +717,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "rent: price,time,pay",
     ),
     "rentalPeriod": MessageLookupByLibrary.simpleMessage("Rental period"),
-    "rooms": MessageLookupByLibrary.simpleMessage("Rooms"),
     "showPdf": MessageLookupByLibrary.simpleMessage("Show pdf"),
     "singIn": MessageLookupByLibrary.simpleMessage("Sing In"),
     "site_name": MessageLookupByLibrary.simpleMessage("Site name : "),

@@ -39,14 +39,14 @@ class CustomText extends StatelessWidget {
       textDirection:
           textDirection ?? appProvider.textDecoration,
       style: appProvider.currentLang == Lang.AR
-          ? GoogleFonts.changa(
+          ? GoogleFonts.alexandria(
               height: height,
               letterSpacing: letterSpacing,
               fontSize: size ?? 16,
               color: color ?? Colors.black,
               fontWeight: weight ?? FontWeight.normal,
             )
-          : GoogleFonts.cambay(
+          : GoogleFonts.roboto(
               height: height,
               letterSpacing: letterSpacing,
               fontSize: size ?? 16,

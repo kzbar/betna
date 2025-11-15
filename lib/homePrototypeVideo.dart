@@ -171,7 +171,7 @@ class _HomePrototypeVideo extends State<HomePrototypeVideo> {
                 textDirection:
                     lang == Lang.AR ? TextDirection.rtl : TextDirection.ltr,
                 child: CustomPaint(
-                  painter: Bar(angle: 0.005, lang: lang!),
+                  painter: Bar(angle: 0.005, lang: lang),
                   child: Container(
                     padding: EdgeInsets.only(top: 6, bottom: 6),
                     child: Row(
@@ -253,7 +253,7 @@ class _HomePrototypeVideo extends State<HomePrototypeVideo> {
                 textDirection:
                 lang == Lang.AR ? TextDirection.rtl : TextDirection.ltr,
                 child: CustomPaint(
-                  painter: Bar(angle: 0.000, lang: lang!),
+                  painter: Bar(angle: 0.000, lang: lang),
                   child: Container(
                     padding: const EdgeInsets.only(
                       top: 6,
@@ -352,7 +352,7 @@ class _HomePrototypeVideo extends State<HomePrototypeVideo> {
                 textDirection:
                 lang == Lang.AR ? TextDirection.rtl : TextDirection.ltr,
                 child: CustomPaint(
-                  painter: Bar(angle: 0.000, lang: lang!),
+                  painter: Bar(angle: 0.000, lang: lang),
                   child: Container(
                     padding: EdgeInsets.only(top: 6, bottom: 6),
                     child: Row(
@@ -517,7 +517,7 @@ class _PagesState extends State<Pages> {
                                     widget.width /
                                     2.5,
                                 child: CustomText(
-                                  text: model.title[lang!.name.toLowerCase()],
+                                  text: model.title[lang.name.toLowerCase()],
                                   color: Colors.white,
                                   size: 24,
                                   weight: FontWeight.bold,
@@ -541,7 +541,7 @@ class _PagesState extends State<Pages> {
                                     widget.width/
                                     2.5,
                                 child: CustomText(
-                                  text:model.title2[lang!.name.toLowerCase()],
+                                  text:model.title2[lang.name.toLowerCase()],
                                   color: Colors.white,
                                   size: 12,
                                   textAlign: TextAlign.start,

@@ -1554,10 +1554,10 @@ class S {
     );
   }
 
-  /// `Email address (optional)`
+  /// `Email address`
   String get kSaleRequestTextField14 {
     return Intl.message(
-      'Email address (optional)',
+      'Email address',
       name: 'kSaleRequestTextField14',
       desc: '',
       args: [],
@@ -1694,11 +1694,41 @@ class S {
     );
   }
 
-  /// `Please enter the email address (optional)`
+  /// `Please enter the email address `
   String get kSaleRequestTextFieldErrorMessage14 {
     return Intl.message(
-      'Please enter the email address (optional)',
+      'Please enter the email address ',
       name: 'kSaleRequestTextFieldErrorMessage14',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The length of the phone number is illogical.`
+  String get kSaleRequestTextFieldErrorPhone1 {
+    return Intl.message(
+      'The length of the phone number is illogical.',
+      name: 'kSaleRequestTextFieldErrorPhone1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The number contains symbols that are not allowed.`
+  String get kSaleRequestTextFieldErrorPhone2 {
+    return Intl.message(
+      'The number contains symbols that are not allowed.',
+      name: 'kSaleRequestTextFieldErrorPhone2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The number must be in international format and begin with +`
+  String get kSaleRequestTextFieldErrorPhone3 {
+    return Intl.message(
+      'The number must be in international format and begin with +',
+      name: 'kSaleRequestTextFieldErrorPhone3',
       desc: '',
       args: [],
     );
@@ -1824,6 +1854,76 @@ class S {
     );
   }
 
+  /// `Send code`
+  String get kSaleRequestTextVerificationSend {
+    return Intl.message(
+      'Send code',
+      name: 'kSaleRequestTextVerificationSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send SMS code`
+  String get kSaleRequestTextVerificationSendCodePhone {
+    return Intl.message(
+      'Send SMS code',
+      name: 'kSaleRequestTextVerificationSendCodePhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SMS code`
+  String get kSaleRequestTextVerificationFieldPhone {
+    return Intl.message(
+      'SMS code',
+      name: 'kSaleRequestTextVerificationFieldPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification code (email)`
+  String get kSaleRequestTextVerificationFieldMail {
+    return Intl.message(
+      'Verification code (email)',
+      name: 'kSaleRequestTextVerificationFieldMail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm phone number`
+  String get kSaleRequestTextVerificationFieldConfirmPhone {
+    return Intl.message(
+      'Confirm phone number',
+      name: 'kSaleRequestTextVerificationFieldConfirmPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `✅ Phone number verified`
+  String get kSaleRequestTextVerificationOkPhone {
+    return Intl.message(
+      '✅ Phone number verified',
+      name: 'kSaleRequestTextVerificationOkPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `✅ Email verified`
+  String get kSaleRequestTextVerificationOkEmail {
+    return Intl.message(
+      '✅ Email verified',
+      name: 'kSaleRequestTextVerificationOkEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter your email address first.`
   String get kSaleRequestTextVerificationEmailMessage1 {
     return Intl.message(
@@ -1864,6 +1964,196 @@ class S {
     );
   }
 
+  /// `Enter your phone number first.`
+  String get kSaleRequestTextVerificationPhoneMessage1 {
+    return Intl.message(
+      'Enter your phone number first.',
+      name: 'kSaleRequestTextVerificationPhoneMessage1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SMS sending failed`
+  String get kSaleRequestTextVerificationPhoneMessage2 {
+    return Intl.message(
+      'SMS sending failed',
+      name: 'kSaleRequestTextVerificationPhoneMessage2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An SMS code has been sent, enter it and then press Confirm on your phone`
+  String get kSaleRequestTextVerificationPhoneMessage3 {
+    return Intl.message(
+      'An SMS code has been sent, enter it and then press Confirm on your phone',
+      name: 'kSaleRequestTextVerificationPhoneMessage3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send the SMS code first.`
+  String get kSaleRequestTextVerificationPhoneMessage4 {
+    return Intl.message(
+      'Send the SMS code first.',
+      name: 'kSaleRequestTextVerificationPhoneMessage4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the SMS code.`
+  String get kSaleRequestTextVerificationPhoneMessage5 {
+    return Intl.message(
+      'Enter the SMS code.',
+      name: 'kSaleRequestTextVerificationPhoneMessage5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The phone number has been successfully verified.`
+  String get kSaleRequestTextVerificationPhoneMessage6 {
+    return Intl.message(
+      'The phone number has been successfully verified.',
+      name: 'kSaleRequestTextVerificationPhoneMessage6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid SMS code`
+  String get kSaleRequestTextVerificationPhoneMessage7 {
+    return Intl.message(
+      'Invalid SMS code',
+      name: 'kSaleRequestTextVerificationPhoneMessage7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The phone number could not be read after verification.`
+  String get kSaleRequestTextVerificationPhoneMessage8 {
+    return Intl.message(
+      'The phone number could not be read after verification.',
+      name: 'kSaleRequestTextVerificationPhoneMessage8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid or expired SMS code:`
+  String get kSaleRequestTextVerificationPhoneMessage9 {
+    return Intl.message(
+      'Invalid or expired SMS code:',
+      name: 'kSaleRequestTextVerificationPhoneMessage9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unexpected error during verification`
+  String get kSaleRequestTextVerificationPhoneMessage10 {
+    return Intl.message(
+      'Unexpected error during verification',
+      name: 'kSaleRequestTextVerificationPhoneMessage10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose a verification method (phone or email)`
+  String get kSaleRequestTextVerificationMessage1 {
+    return Intl.message(
+      'Choose a verification method (phone or email)',
+      name: 'kSaleRequestTextVerificationMessage1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please confirm your phone number before submitting the request.`
+  String get kSaleRequestTextVerificationMessage2 {
+    return Intl.message(
+      'Please confirm your phone number before submitting the request.',
+      name: 'kSaleRequestTextVerificationMessage2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The verified phone number could not be read.`
+  String get kSaleRequestTextVerificationMessage3 {
+    return Intl.message(
+      'The verified phone number could not be read.',
+      name: 'kSaleRequestTextVerificationMessage3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send the verification code to the email first.`
+  String get kSaleRequestTextVerificationMessage4 {
+    return Intl.message(
+      'Send the verification code to the email first.',
+      name: 'kSaleRequestTextVerificationMessage4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email code is incorrect.`
+  String get kSaleRequestTextVerificationMessage5 {
+    return Intl.message(
+      'The email code is incorrect.',
+      name: 'kSaleRequestTextVerificationMessage5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The request was sent after successful verification.`
+  String get kSaleRequestTextVerificationMessage6 {
+    return Intl.message(
+      'The request was sent after successful verification.',
+      name: 'kSaleRequestTextVerificationMessage6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your request has been successfully sent 🎉`
+  String get kSaleRequestSuccessfulMessageTitle {
+    return Intl.message(
+      'Your request has been successfully sent 🎉',
+      name: 'kSaleRequestSuccessfulMessageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you! Your request to sell the apartment has been received. We will contact you soon to review the details.`
+  String get kSaleRequestSuccessfulMessageTitle2 {
+    return Intl.message(
+      'Thank you! Your request to sell the apartment has been received. We will contact you soon to review the details.',
+      name: 'kSaleRequestSuccessfulMessageTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get kSaleRequestSuccessfulMessageButtonReturn {
+    return Intl.message(
+      'Home',
+      name: 'kSaleRequestSuccessfulMessageButtonReturn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `E-Contract`
   String get appName {
     return Intl.message('E-Contract', name: 'appName', desc: '', args: []);
@@ -1872,16 +2162,6 @@ class S {
   /// `Sing In`
   String get singIn {
     return Intl.message('Sing In', name: 'singIn', desc: '', args: []);
-  }
-
-  /// `Email`
-  String get email {
-    return Intl.message('Email', name: 'email', desc: '', args: []);
-  }
-
-  /// `Password`
-  String get password {
-    return Intl.message('Password', name: 'password', desc: '', args: []);
   }
 
   /// `continue`
@@ -1907,11 +2187,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `Next`
-  String get next {
-    return Intl.message('Next', name: 'next', desc: '', args: []);
   }
 
   /// `Location of property`
@@ -1944,44 +2219,14 @@ class S {
     return Intl.message('Details Ad', name: 'Detail_Ad', desc: '', args: []);
   }
 
-  /// `Rooms`
-  String get rooms {
-    return Intl.message('Rooms', name: 'rooms', desc: '', args: []);
-  }
-
-  /// `Floor`
-  String get floor {
-    return Intl.message('Floor', name: 'floor', desc: '', args: []);
-  }
-
   /// `Rent`
   String get rent {
     return Intl.message('Rent', name: 'rent', desc: '', args: []);
   }
 
-  /// `Age building`
-  String get ageBuilding {
-    return Intl.message(
-      'Age building',
-      name: 'ageBuilding',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Deposit`
-  String get Deposit {
-    return Intl.message('Deposit', name: 'Deposit', desc: '', args: []);
-  }
-
   /// `Furnished`
   String get state {
     return Intl.message('Furnished', name: 'state', desc: '', args: []);
-  }
-
-  /// `Inside site`
-  String get inSideSite {
-    return Intl.message('Inside site', name: 'inSideSite', desc: '', args: []);
   }
 
   /// `Fee`
@@ -1997,11 +2242,6 @@ class S {
   /// `Net Area`
   String get net_area {
     return Intl.message('Net Area', name: 'net_area', desc: '', args: []);
-  }
-
-  /// `Area`
-  String get area {
-    return Intl.message('Area', name: 'area', desc: '', args: []);
   }
 
   /// `Balcony`
@@ -2024,19 +2264,9 @@ class S {
     );
   }
 
-  /// `Ad photos`
-  String get images {
-    return Intl.message('Ad photos', name: 'images', desc: '', args: []);
-  }
-
   /// `view all`
   String get viewAll {
     return Intl.message('view all', name: 'viewAll', desc: '', args: []);
-  }
-
-  /// `explanation`
-  String get explanation {
-    return Intl.message('explanation', name: 'explanation', desc: '', args: []);
   }
 
   /// `Location`
@@ -2154,26 +2384,6 @@ class S {
     return Intl.message('District', name: 'district', desc: '', args: []);
   }
 
-  /// `neighborhood`
-  String get neighborhood {
-    return Intl.message(
-      'neighborhood',
-      name: 'neighborhood',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Avenue/Street`
-  String get AvenueStreet {
-    return Intl.message(
-      'Avenue/Street',
-      name: 'AvenueStreet',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Apartmant no:`
   String get apartman {
     return Intl.message('Apartmant no:', name: 'apartman', desc: '', args: []);
@@ -2217,11 +2427,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `Contact`
-  String get Contact {
-    return Intl.message('Contact', name: 'Contact', desc: '', args: []);
   }
 
   /// `Tenant`
@@ -2664,16 +2869,291 @@ class S {
     return Intl.message('Update', name: 'edit', desc: '', args: []);
   }
 
-  /// `price`
-  String get price {
-    return Intl.message('price', name: 'price', desc: '', args: []);
-  }
-
   /// `For Sale List`
   String get forSaleList {
     return Intl.message(
       'For Sale List',
       name: 'forSaleList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sell your apartment with ease and professionalism`
+  String get kBetnaHomePageSlide1Title {
+    return Intl.message(
+      'Sell your apartment with ease and professionalism',
+      name: 'kBetnaHomePageSlide1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send your apartment details in minutes, and the Betna team will contact you to evaluate the property and help you get the best offer.`
+  String get kBetnaHomePageSlide1Subtitle {
+    return Intl.message(
+      'Send your apartment details in minutes, and the Betna team will contact you to evaluate the property and help you get the best offer.',
+      name: 'kBetnaHomePageSlide1Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Real Estate Sales Service`
+  String get kBetnaHomePageSlide1Badge {
+    return Intl.message(
+      'Real Estate Sales Service',
+      name: 'kBetnaHomePageSlide1Badge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Real estate offers ready for purchase`
+  String get kBetnaHomePageSlide2Title {
+    return Intl.message(
+      'Real estate offers ready for purchase',
+      name: 'kBetnaHomePageSlide2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We have a selection of apartments and properties for sale in different areas of Istanbul to suit your budget.`
+  String get kBetnaHomePageSlide2Subtitle {
+    return Intl.message(
+      'We have a selection of apartments and properties for sale in different areas of Istanbul to suit your budget.',
+      name: 'kBetnaHomePageSlide2Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offers for Sale`
+  String get kBetnaHomePageSlide2Badge {
+    return Intl.message(
+      'Offers for Sale',
+      name: 'kBetnaHomePageSlide2Badge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Real estate appraisal and specialized consultation`
+  String get kBetnaHomePageSlide3Title {
+    return Intl.message(
+      'Real estate appraisal and specialized consultation',
+      name: 'kBetnaHomePageSlide3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our experts provide you with a realistic valuation of your property's price based on market data and professional analysis.`
+  String get kBetnaHomePageSlide3Subtitle {
+    return Intl.message(
+      'Our experts provide you with a realistic valuation of your property\'s price based on market data and professional analysis.',
+      name: 'kBetnaHomePageSlide3Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Evaluation and Consulting`
+  String get kBetnaHomePageSlide3Badge {
+    return Intl.message(
+      'Evaluation and Consulting',
+      name: 'kBetnaHomePageSlide3Badge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WhatsApp`
+  String get kBetnaHomePageSocialWhatsapp {
+    return Intl.message(
+      'WhatsApp',
+      name: 'kBetnaHomePageSocialWhatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instagram`
+  String get kBetnaHomePageSocialInstagram {
+    return Intl.message(
+      'Instagram',
+      name: 'kBetnaHomePageSocialInstagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Facebook`
+  String get kBetnaHomePageSocialFacebook {
+    return Intl.message(
+      'Facebook',
+      name: 'kBetnaHomePageSocialFacebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Website`
+  String get kBetnaHomePageSocialWebsite {
+    return Intl.message(
+      'Website',
+      name: 'kBetnaHomePageSocialWebsite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sell your property easily`
+  String get kBetnaHomePageInfoCard1Title {
+    return Intl.message(
+      'Sell your property easily',
+      name: 'kBetnaHomePageInfoCard1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send your apartment details in minutes, and our team will follow up.`
+  String get kBetnaHomePageInfoCard1Subtitle {
+    return Intl.message(
+      'Send your apartment details in minutes, and our team will follow up.',
+      name: 'kBetnaHomePageInfoCard1Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Experience in Istanbul`
+  String get kBetnaHomePageInfoCard2Title {
+    return Intl.message(
+      'Experience in Istanbul',
+      name: 'kBetnaHomePageInfoCard2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deep understanding of the real estate market in Istanbul and its surrounding areas.`
+  String get kBetnaHomePageInfoCard2Subtitle {
+    return Intl.message(
+      'Deep understanding of the real estate market in Istanbul and its surrounding areas.',
+      name: 'kBetnaHomePageInfoCard2Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reliability and Security`
+  String get kBetnaHomePageInfoCard3Title {
+    return Intl.message(
+      'Reliability and Security',
+      name: 'kBetnaHomePageInfoCard3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We deal with transparency in valuation, contracts, and client follow-up.`
+  String get kBetnaHomePageInfoCard3Subtitle {
+    return Intl.message(
+      'We deal with transparency in valuation, contracts, and client follow-up.',
+      name: 'kBetnaHomePageInfoCard3Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `© {year} Betna. All rights reserved.`
+  String kBetnaHomePageFooter(int year) {
+    return Intl.message(
+      '© $year Betna. All rights reserved.',
+      name: 'kBetnaHomePageFooter',
+      desc: '',
+      args: [year],
+    );
+  }
+
+  /// `Browse Offers`
+  String get kBetnaHomePageBrowseOffers {
+    return Intl.message(
+      'Browse Offers',
+      name: 'kBetnaHomePageBrowseOffers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit a Sale Request`
+  String get kBetnaHomePageSubmitSaleRequest {
+    return Intl.message(
+      'Submit a Sale Request',
+      name: 'kBetnaHomePageSubmitSaleRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Betna Real Estate`
+  String get kBetnaHomePageHeroIllustrationText {
+    return Intl.message(
+      'Betna Real Estate',
+      name: 'kBetnaHomePageHeroIllustrationText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reliable real estate service in Istanbul`
+  String get kBetnaHomePageHeroTextBlockBadge {
+    return Intl.message(
+      'Reliable real estate service in Istanbul',
+      name: 'kBetnaHomePageHeroTextBlockBadge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sell your apartment with ease and professionalism\nwith Betna Real Estate`
+  String get kBetnaHomePageHeroTextBlockTitle {
+    return Intl.message(
+      'Sell your apartment with ease and professionalism\nwith Betna Real Estate',
+      name: 'kBetnaHomePageHeroTextBlockTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill out a simple form with your apartment details, and let our team contact you to evaluate the property and help you get the best possible offer.`
+  String get kBetnaHomePageHeroTextBlockSubtitle {
+    return Intl.message(
+      'Fill out a simple form with your apartment details, and let our team contact you to evaluate the property and help you get the best possible offer.',
+      name: 'kBetnaHomePageHeroTextBlockSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free consultation soon`
+  String get kBetnaHomePageHeroTextBlockFreeConsultation {
+    return Intl.message(
+      'Free consultation soon',
+      name: 'kBetnaHomePageHeroTextBlockFreeConsultation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Real estate in Istanbul`
+  String get kBetnaHomePageHeroIllustrationTag {
+    return Intl.message(
+      'Real estate in Istanbul',
+      name: 'kBetnaHomePageHeroIllustrationTag',
       desc: '',
       args: [],
     );

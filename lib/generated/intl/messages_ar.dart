@@ -20,48 +20,47 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
-  static String m0(value) => "منذ ${value} أيام";
+  static String m0(year) => "© ${year} بيتنا. جميع الحقوق محفوظة.";
 
-  static String m1(value) => "هل تريد حذف الملف ${value}";
+  static String m1(value) => "منذ ${value} أيام";
 
-  static String m2(value) => "منذ ${value} ساعات";
+  static String m2(value) => "هل تريد حذف الملف ${value}";
 
-  static String m3(path) => "تم حفظ الصورة بنجاح ${path}";
+  static String m3(value) => "منذ ${value} ساعات";
 
-  static String m4(value) => "منذ دقائق";
+  static String m4(path) => "تم حفظ الصورة بنجاح ${path}";
 
-  static String m5(value) => "منذ ${value} أشهر";
+  static String m5(value) => "منذ دقائق";
 
-  static String m6(number) => "عدد الاعلانات ${number}";
+  static String m6(value) => "منذ ${value} أشهر";
 
-  static String m7(value) => "عدد العقود ${value}";
+  static String m7(number) => "عدد الاعلانات ${number}";
 
-  static String m8(count) => "عدد العروض ${count}";
+  static String m8(value) => "عدد العقود ${value}";
 
-  static String m9(value) => "البحث عبر ${value}";
+  static String m9(count) => "عدد العروض ${count}";
 
-  static String m10(value) => "البحث بواسطة ${value}";
+  static String m10(value) => "البحث عبر ${value}";
 
-  static String m11(number) => "عنوان ${number}";
+  static String m11(value) => "البحث بواسطة ${value}";
 
-  static String m12(value) => "منذ ${value} أسابيع";
+  static String m12(number) => "عنوان ${number}";
 
-  static String m13(value) => "منذ ${value} سنوات";
+  static String m13(value) => "منذ ${value} أسابيع";
 
-  static String m14(value) => "يجب أخد موعد من ${value}";
+  static String m14(value) => "منذ ${value} سنوات";
+
+  static String m15(value) => "يجب أخد موعد من ${value}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AdInformation": MessageLookupByLibrary.simpleMessage("معلومات الاعلان"),
     "Ad_information": MessageLookupByLibrary.simpleMessage("معلومات الاعلان"),
-    "AvenueStreet": MessageLookupByLibrary.simpleMessage("الجادة-الشارع"),
-    "Contact": MessageLookupByLibrary.simpleMessage("التواصل"),
     "Continue": MessageLookupByLibrary.simpleMessage("متابعة"),
     "Current_status_aforementioned": MessageLookupByLibrary.simpleMessage(
       "حالة العقار",
     ),
     "DISMISS": MessageLookupByLibrary.simpleMessage("اغلاق"),
-    "Deposit": MessageLookupByLibrary.simpleMessage("التامين"),
     "Detail_Ad": MessageLookupByLibrary.simpleMessage("تفاصيل الاعلان"),
     "Kira": MessageLookupByLibrary.simpleMessage("الإيجار"),
     "LocationTile": MessageLookupByLibrary.simpleMessage("موقع العقار"),
@@ -84,7 +83,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "adPhoto": MessageLookupByLibrary.simpleMessage("صور الاعلان"),
     "addPerson": MessageLookupByLibrary.simpleMessage("اضافة شخص"),
     "add_photo": MessageLookupByLibrary.simpleMessage("اضف صورة"),
-    "ageBuilding": MessageLookupByLibrary.simpleMessage("بناء العمر"),
     "annualRent": MessageLookupByLibrary.simpleMessage(
       "قيمة الايجار في السنة رقما",
     ),
@@ -96,7 +94,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "applicationDeveloper": MessageLookupByLibrary.simpleMessage(
       "مطور التطبيق",
     ),
-    "area": MessageLookupByLibrary.simpleMessage("المساحة الكلية"),
     "balcony": MessageLookupByLibrary.simpleMessage("بلكون-شرفة"),
     "beginningofrent": MessageLookupByLibrary.simpleMessage("تاريخ بدا العقد"),
     "bina": MessageLookupByLibrary.simpleMessage("البناء"),
@@ -119,9 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الذفعة الأولى كتابة",
     ),
     "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
-    "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
     "example": MessageLookupByLibrary.simpleMessage("مثال عن العقد"),
-    "explanation": MessageLookupByLibrary.simpleMessage("توضيح"),
     "fee": MessageLookupByLibrary.simpleMessage("العائدات الشهرية"),
     "fieldEmpty": MessageLookupByLibrary.simpleMessage(
       "هذا المجال لا يمكن أن يكون فارغا.",
@@ -139,15 +134,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "flat_add": MessageLookupByLibrary.simpleMessage("اضافة شقة"),
     "flat_add_photo": MessageLookupByLibrary.simpleMessage("اضافة صورالشقة"),
     "flat_list": MessageLookupByLibrary.simpleMessage("لائحةالشقق"),
-    "floor": MessageLookupByLibrary.simpleMessage("الطابق"),
     "forSaleList": MessageLookupByLibrary.simpleMessage("شقق للبيع"),
     "furniture": MessageLookupByLibrary.simpleMessage(
       "الأشياء التي تم تسليمها مع المنزل",
     ),
     "houseLocation": MessageLookupByLibrary.simpleMessage("موقع العقار"),
     "id": MessageLookupByLibrary.simpleMessage("الرقم الوطني"),
-    "images": MessageLookupByLibrary.simpleMessage("صور الاعلان"),
-    "inSideSite": MessageLookupByLibrary.simpleMessage("الموقع الداخلي"),
     "k1DayAgo": MessageLookupByLibrary.simpleMessage("قبل يوم واحد"),
     "k1HourAgo": MessageLookupByLibrary.simpleMessage("قبل ساعة واحدة"),
     "k1MinuteAgo": MessageLookupByLibrary.simpleMessage("قبل دقيقة واحدة"),
@@ -186,6 +178,87 @@ class MessageLookup extends MessageLookupByLibrary {
     "kBalcony": MessageLookupByLibrary.simpleMessage("بلكون-شرفة"),
     "kBath": MessageLookupByLibrary.simpleMessage("الحمام"),
     "kBathrooms": MessageLookupByLibrary.simpleMessage("غرفة النوم"),
+    "kBetnaHomePageBrowseOffers": MessageLookupByLibrary.simpleMessage(
+      "تصفح العروض",
+    ),
+    "kBetnaHomePageFooter": m0,
+    "kBetnaHomePageHeroIllustrationTag": MessageLookupByLibrary.simpleMessage(
+      "العقارات في اسطنبول",
+    ),
+    "kBetnaHomePageHeroIllustrationText": MessageLookupByLibrary.simpleMessage(
+      "بيتنا للعقارات",
+    ),
+    "kBetnaHomePageHeroTextBlockBadge": MessageLookupByLibrary.simpleMessage(
+      "خدمة عقارية موثوقة في اسطنبول",
+    ),
+    "kBetnaHomePageHeroTextBlockFreeConsultation":
+        MessageLookupByLibrary.simpleMessage("استشارة مجانية قريبا"),
+    "kBetnaHomePageHeroTextBlockSubtitle": MessageLookupByLibrary.simpleMessage(
+      "قم بملء نموذج بسيط بتفاصيل شقتك، ودع فريقنا يتواصل معك لتقييم العقار ومساعدتك في الحصول على أفضل عرض ممكن.",
+    ),
+    "kBetnaHomePageHeroTextBlockTitle": MessageLookupByLibrary.simpleMessage(
+      "بيع شقتك بسهولة واحترافية مع بيتنا للعقارات",
+    ),
+    "kBetnaHomePageInfoCard1Subtitle": MessageLookupByLibrary.simpleMessage(
+      "قم بإرسال تفاصيل شقتك خلال دقائق، وسيقوم فريقنا بمتابعتك.",
+    ),
+    "kBetnaHomePageInfoCard1Title": MessageLookupByLibrary.simpleMessage(
+      "بيع عقارك بسهولة",
+    ),
+    "kBetnaHomePageInfoCard2Subtitle": MessageLookupByLibrary.simpleMessage(
+      "فهم عميق لسوق العقارات في اسطنبول والمناطق المحيطة بها.",
+    ),
+    "kBetnaHomePageInfoCard2Title": MessageLookupByLibrary.simpleMessage(
+      "الخبرة في اسطنبول",
+    ),
+    "kBetnaHomePageInfoCard3Subtitle": MessageLookupByLibrary.simpleMessage(
+      "نحن نتعامل بشفافية في التقييم والعقود ومتابعة العملاء.",
+    ),
+    "kBetnaHomePageInfoCard3Title": MessageLookupByLibrary.simpleMessage(
+      "الموثوقية والأمان",
+    ),
+    "kBetnaHomePageSlide1Badge": MessageLookupByLibrary.simpleMessage(
+      "خدمة مبيعات العقارات",
+    ),
+    "kBetnaHomePageSlide1Subtitle": MessageLookupByLibrary.simpleMessage(
+      "قم بإرسال تفاصيل شقتك خلال دقائق، وسيقوم فريق بيتنا بالتواصل معك لتقييم العقار ومساعدتك في الحصول على أفضل عرض.",
+    ),
+    "kBetnaHomePageSlide1Title": MessageLookupByLibrary.simpleMessage(
+      "بيع شقتك بكل سهولة واحترافية",
+    ),
+    "kBetnaHomePageSlide2Badge": MessageLookupByLibrary.simpleMessage(
+      "عروض للبيع",
+    ),
+    "kBetnaHomePageSlide2Subtitle": MessageLookupByLibrary.simpleMessage(
+      "لدينا مجموعة مختارة من الشقق والعقارات للبيع في مناطق مختلفة من اسطنبول لتناسب ميزانيتك.",
+    ),
+    "kBetnaHomePageSlide2Title": MessageLookupByLibrary.simpleMessage(
+      "عروض عقارية جاهزة للشراء",
+    ),
+    "kBetnaHomePageSlide3Badge": MessageLookupByLibrary.simpleMessage(
+      "التقييم والاستشارات",
+    ),
+    "kBetnaHomePageSlide3Subtitle": MessageLookupByLibrary.simpleMessage(
+      "يقدم لك خبرائنا تقييمًا واقعيًا لسعر عقارك بناءً على بيانات السوق والتحليل المهني.",
+    ),
+    "kBetnaHomePageSlide3Title": MessageLookupByLibrary.simpleMessage(
+      "تقييم العقارات والاستشارات المتخصصة",
+    ),
+    "kBetnaHomePageSocialFacebook": MessageLookupByLibrary.simpleMessage(
+      "فيسبوك",
+    ),
+    "kBetnaHomePageSocialInstagram": MessageLookupByLibrary.simpleMessage(
+      "انستغرام",
+    ),
+    "kBetnaHomePageSocialWebsite": MessageLookupByLibrary.simpleMessage(
+      "موقع إلكتروني",
+    ),
+    "kBetnaHomePageSocialWhatsapp": MessageLookupByLibrary.simpleMessage(
+      "واتساب",
+    ),
+    "kBetnaHomePageSubmitSaleRequest": MessageLookupByLibrary.simpleMessage(
+      "إرسال طلب بيع",
+    ),
     "kCallNow": MessageLookupByLibrary.simpleMessage("اتصل الآن"),
     "kCancelSearch": MessageLookupByLibrary.simpleMessage("الغاء البحث"),
     "kCash": MessageLookupByLibrary.simpleMessage("نقدي"),
@@ -203,8 +276,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "kContractList": MessageLookupByLibrary.simpleMessage("عقود الايجار"),
     "kContractValidity": MessageLookupByLibrary.simpleMessage("مد العقد"),
     "kDateAdded": MessageLookupByLibrary.simpleMessage("تاريخ الاعلان"),
-    "kDaysAgo": m0,
-    "kDeleteMessage": m1,
+    "kDaysAgo": m1,
+    "kDeleteMessage": m2,
     "kDeliveryDate": MessageLookupByLibrary.simpleMessage("تاريخ التسليم"),
     "kDeposit": MessageLookupByLibrary.simpleMessage("التامين"),
     "kDescription": MessageLookupByLibrary.simpleMessage("الشرح"),
@@ -234,7 +307,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحديد راس الصفحة",
     ),
     "kHome": MessageLookupByLibrary.simpleMessage("الرئيسية"),
-    "kHoursAgo": m2,
+    "kHoursAgo": m3,
     "kHouseNew": MessageLookupByLibrary.simpleMessage("جديد غير مستخدم"),
     "kHouseOld": MessageLookupByLibrary.simpleMessage("مستخدم"),
     "kHouseState1": MessageLookupByLibrary.simpleMessage("فارغ"),
@@ -273,11 +346,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "kMessageContactToHelp": MessageLookupByLibrary.simpleMessage(
       "اتصل بنا للحصول على المساعدة",
     ),
-    "kMessageSaveImageTrue": m3,
+    "kMessageSaveImageTrue": m4,
     "kMessenger": MessageLookupByLibrary.simpleMessage("محادثة مسنجر"),
-    "kMinutesAgo": m4,
+    "kMinutesAgo": m5,
     "kMonthlyRent": MessageLookupByLibrary.simpleMessage("الايجار الشهري"),
-    "kMonthsAgo": m5,
+    "kMonthsAgo": m6,
     "kNameSurname": MessageLookupByLibrary.simpleMessage("الاسم والكنية"),
     "kNeighborhood": MessageLookupByLibrary.simpleMessage("المرافق العامة"),
     "kNew": MessageLookupByLibrary.simpleMessage("جديد"),
@@ -288,9 +361,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "kNoteExchangeRate": MessageLookupByLibrary.simpleMessage(
       " العروض الموجودة ضمن الموقع  مسعرة على الليرة التركية ، عند تغير العملة من العملة التركية الى عملة اخرى يتم حساب سعر الصرف بشكل تقريبي على اساس اسعار صرف البنك المركزي العالمي .",
     ),
-    "kNumberAds": m6,
-    "kNumberContracts": m7,
-    "kOfferLength": m8,
+    "kNumberAds": m7,
+    "kNumberContracts": m8,
+    "kOfferLength": m9,
     "kOffers": MessageLookupByLibrary.simpleMessage("العروض"),
     "kOldLess": MessageLookupByLibrary.simpleMessage("الأقل/الأقدم"),
     "kOwnerID": MessageLookupByLibrary.simpleMessage("رقم الهوية-المالك"),
@@ -338,6 +411,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "kRoomPlan": MessageLookupByLibrary.simpleMessage("النماذج والمساحات"),
     "kSale": MessageLookupByLibrary.simpleMessage("للبيع"),
     "kSaleList": MessageLookupByLibrary.simpleMessage("قائمة البيع"),
+    "kSaleRequestSuccessfulMessageButtonReturn":
+        MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
+    "kSaleRequestSuccessfulMessageTitle": MessageLookupByLibrary.simpleMessage(
+      "لقد تم إرسال طلبك بنجاح 🎉",
+    ),
+    "kSaleRequestSuccessfulMessageTitle2": MessageLookupByLibrary.simpleMessage(
+      "شكراً لك! تم استلام طلبك لبيع الشقة. سنتواصل معك قريباً للاطلاع على التفاصيل.",
+    ),
     "kSaleRequestTextField1": MessageLookupByLibrary.simpleMessage(
       "(İlçe) المنطقة في اسطنبول",
     ),
@@ -354,7 +435,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "رقم التليفون",
     ),
     "kSaleRequestTextField14": MessageLookupByLibrary.simpleMessage(
-      "عنوان البريد الإلكتروني (اختياري)",
+      "عنوان البريد الإلكتروني ",
+    ),
+    "kSaleRequestTextField15": MessageLookupByLibrary.simpleMessage(
+      "رمز التحقق",
     ),
     "kSaleRequestTextField2": MessageLookupByLibrary.simpleMessage(
       "المنطقة/الحي (المحلة)",
@@ -397,7 +481,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "الرجاء إدخال رقم الهاتف",
     ),
     "kSaleRequestTextFieldErrorMessage14": MessageLookupByLibrary.simpleMessage(
-      "الرجاء إدخال عنوان البريد الإلكتروني (اختياري)",
+      "الرجاء إدخال عنوان البريد الإلكتروني ",
+    ),
+    "kSaleRequestTextFieldErrorMessage15": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال رمز التحقق",
     ),
     "kSaleRequestTextFieldErrorMessage2": MessageLookupByLibrary.simpleMessage(
       "الرجاء إدخال المنطقة/الحي (المحلة)",
@@ -423,6 +510,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
       "الرجاء إدخال اسم المجمع",
     ),
+    "kSaleRequestTextFieldErrorPhone1": MessageLookupByLibrary.simpleMessage(
+      "طول رقم الهاتف غير منطقي.",
+    ),
+    "kSaleRequestTextFieldErrorPhone2": MessageLookupByLibrary.simpleMessage(
+      "يحتوي الرقم على رموز غير مسموح بها.",
+    ),
+    "kSaleRequestTextFieldErrorPhone3": MessageLookupByLibrary.simpleMessage(
+      "يجب أن يكون الرقم بتنسيق دولي ويبدأ بـ +",
+    ),
     "kSaleRequestTextFieldSendRequest": MessageLookupByLibrary.simpleMessage(
       "إرسال الطلب",
     ),
@@ -439,8 +535,106 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
       "طلب شقة للبيع – اسطنبول",
     ),
-    "kSearch": m9,
-    "kSearchBy": m10,
+    "kSaleRequestTextVerificationEmailMessage1":
+        MessageLookupByLibrary.simpleMessage(
+          "أدخل عنوان بريدك الإلكتروني أولاً.",
+        ),
+    "kSaleRequestTextVerificationEmailMessage2":
+        MessageLookupByLibrary.simpleMessage(
+          "لقد تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
+        ),
+    "kSaleRequestTextVerificationEmailMessage3":
+        MessageLookupByLibrary.simpleMessage(
+          "لم يتم إرسال رمز البريد الإلكتروني.",
+        ),
+    "kSaleRequestTextVerificationEmailMessage4":
+        MessageLookupByLibrary.simpleMessage(
+          "يوجد طلب سابق مسجل بهذا البريد الإلكتروني. لتعديل الطلب، يُرجى التواصل مع فريق الدعم.",
+        ),
+    "kSaleRequestTextVerificationFieldConfirmPhone":
+        MessageLookupByLibrary.simpleMessage("تأكيد رقم الهاتف"),
+    "kSaleRequestTextVerificationFieldMail":
+        MessageLookupByLibrary.simpleMessage("رمز التحقق (البريد الإلكتروني)"),
+    "kSaleRequestTextVerificationFieldPhone":
+        MessageLookupByLibrary.simpleMessage("رمز الرسالة "),
+    "kSaleRequestTextVerificationMessage1":
+        MessageLookupByLibrary.simpleMessage(
+          "اختر طريقة التحقق (الهاتف أو البريد الإلكتروني)",
+        ),
+    "kSaleRequestTextVerificationMessage2":
+        MessageLookupByLibrary.simpleMessage(
+          "يرجى تأكيد رقم هاتفك قبل تقديم الطلب.",
+        ),
+    "kSaleRequestTextVerificationMessage3":
+        MessageLookupByLibrary.simpleMessage(
+          "لم يتم قراءة رقم الهاتف الذي تم التحقق منه.",
+        ),
+    "kSaleRequestTextVerificationMessage4":
+        MessageLookupByLibrary.simpleMessage(
+          "أرسل رمز التحقق إلى البريد الإلكتروني أولاً.",
+        ),
+    "kSaleRequestTextVerificationMessage5":
+        MessageLookupByLibrary.simpleMessage("رمز البريد الإلكتروني غير صحيح."),
+    "kSaleRequestTextVerificationMessage6":
+        MessageLookupByLibrary.simpleMessage(
+          "تم إرسال الطلب بعد التحقق الناجح.",
+        ),
+    "kSaleRequestTextVerificationMethod1": MessageLookupByLibrary.simpleMessage(
+      "رقم التليفون",
+    ),
+    "kSaleRequestTextVerificationMethod2": MessageLookupByLibrary.simpleMessage(
+      "عنوان البريد الإلكتروني",
+    ),
+    "kSaleRequestTextVerificationOkEmail": MessageLookupByLibrary.simpleMessage(
+      "✅ تم التحقق من البريد الإلكتروني",
+    ),
+    "kSaleRequestTextVerificationOkPhone": MessageLookupByLibrary.simpleMessage(
+      "✅ تم التحقق من رقم الهاتف",
+    ),
+    "kSaleRequestTextVerificationPhoneMessage1":
+        MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك أولاً."),
+    "kSaleRequestTextVerificationPhoneMessage10":
+        MessageLookupByLibrary.simpleMessage("خطأ غير متوقع أثناء التحقق"),
+    "kSaleRequestTextVerificationPhoneMessage2":
+        MessageLookupByLibrary.simpleMessage(
+          "فشل إرسال الرسائل النصية القصيرة",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage3":
+        MessageLookupByLibrary.simpleMessage(
+          "لقد تم إرسال رمز SMS، أدخله ثم اضغط على \"تأكيد\" على هاتفك",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage4":
+        MessageLookupByLibrary.simpleMessage(
+          "أرسل رمز الرسالة النصية القصيرة أولاً.",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage5":
+        MessageLookupByLibrary.simpleMessage(
+          "أدخل رمز الرسالة النصية القصيرة.",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage6":
+        MessageLookupByLibrary.simpleMessage("تم التحقق من رقم الهاتف بنجاح."),
+    "kSaleRequestTextVerificationPhoneMessage7":
+        MessageLookupByLibrary.simpleMessage(
+          "رمز الرسالة النصية القصيرة غير صالح",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage8":
+        MessageLookupByLibrary.simpleMessage(
+          "لم يتمكن من قراءة رقم الهاتف بعد التحقق.",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage9":
+        MessageLookupByLibrary.simpleMessage(
+          "رمز SMS غير صالح أو منتهي الصلاحية:",
+        ),
+    "kSaleRequestTextVerificationSend": MessageLookupByLibrary.simpleMessage(
+      "إرسال الرمز",
+    ),
+    "kSaleRequestTextVerificationSendCodePhone":
+        MessageLookupByLibrary.simpleMessage("إرسال رمز "),
+    "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
+      "طريقة التحقق عبر",
+    ),
+    "kSearch": m10,
+    "kSearchBy": m11,
     "kSeeAllListing": MessageLookupByLibrary.simpleMessage("شاهد جميع العروض"),
     "kSelect": MessageLookupByLibrary.simpleMessage("حدد"),
     "kSend": MessageLookupByLibrary.simpleMessage("ارسال"),
@@ -458,7 +652,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kThereIs": MessageLookupByLibrary.simpleMessage("موجود"),
     "kThereIsNot": MessageLookupByLibrary.simpleMessage("غير موجود"),
     "kThings": MessageLookupByLibrary.simpleMessage("الأشياء"),
-    "kTitle": m11,
+    "kTitle": m12,
     "kTown": MessageLookupByLibrary.simpleMessage("المقاطعة"),
     "kTransportation": MessageLookupByLibrary.simpleMessage("وسائل النقل"),
     "kType": MessageLookupByLibrary.simpleMessage("نوع الاعلان"),
@@ -470,17 +664,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "kUrgentTitle": MessageLookupByLibrary.simpleMessage("العروض العاجلة"),
     "kUsersList": MessageLookupByLibrary.simpleMessage("قائمة المستخدمين"),
     "kView": MessageLookupByLibrary.simpleMessage("الاطلالة"),
-    "kWeeksAgo": m12,
+    "kWeeksAgo": m13,
     "kWelcomeMessage": MessageLookupByLibrary.simpleMessage(
       "اهلا وسهلا في موقع بيتنا الموقع حاليا قيد الانشاء . للمزيد من المعلومات يرجى التواصل على الرقم التالي",
     ),
     "kWhatsApp": MessageLookupByLibrary.simpleMessage("محادثة واتس إب"),
     "kWithBackground": MessageLookupByLibrary.simpleMessage("خلفية"),
     "kWithLogo": MessageLookupByLibrary.simpleMessage("مع شعار"),
-    "kYearsAgo": m13,
+    "kYearsAgo": m14,
     "kYes": MessageLookupByLibrary.simpleMessage("نعم"),
     "kYesterday": MessageLookupByLibrary.simpleMessage("البارحة"),
-    "kYouShouldTakeDate": m14,
+    "kYouShouldTakeDate": m15,
     "kempty": MessageLookupByLibrary.simpleMessage("فارغ"),
     "kira": MessageLookupByLibrary.simpleMessage("الايجار : "),
     "kira_title": MessageLookupByLibrary.simpleMessage("عقد إيجار"),
@@ -493,21 +687,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "nameSurname": MessageLookupByLibrary.simpleMessage("الاسم والكنية"),
-    "neighborhood": MessageLookupByLibrary.simpleMessage("المحلة"),
     "net_area": MessageLookupByLibrary.simpleMessage("المساحة الصافية"),
-    "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "noPhotoFlat": MessageLookupByLibrary.simpleMessage("لا يوجد صور حاليا"),
     "numara": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "occupancyOwner": MessageLookupByLibrary.simpleMessage("يسكنه المالك"),
     "occupancyRented": MessageLookupByLibrary.simpleMessage("مؤجر"),
     "occupancyVacant": MessageLookupByLibrary.simpleMessage("فارغ"),
-    "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
     "payRent": MessageLookupByLibrary.simpleMessage("طريقة دفع الايجار"),
     "photoFlat": MessageLookupByLibrary.simpleMessage("صور الشقة"),
     "placeResidenceOwner": MessageLookupByLibrary.simpleMessage(
       "موقع السكن الحالي",
     ),
-    "price": MessageLookupByLibrary.simpleMessage("السعر"),
     "prices": MessageLookupByLibrary.simpleMessage(
       "الايجار , التأمين , والدفعة الأولى",
     ),
@@ -517,7 +707,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "الأيجار : المدة,البدء,الحالة,الدفع",
     ),
     "rentalPeriod": MessageLookupByLibrary.simpleMessage("مدة العقد"),
-    "rooms": MessageLookupByLibrary.simpleMessage("عدد الغرف"),
     "showPdf": MessageLookupByLibrary.simpleMessage("شاهد الملف"),
     "singIn": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
     "site_name": MessageLookupByLibrary.simpleMessage("اسم المجمع : "),

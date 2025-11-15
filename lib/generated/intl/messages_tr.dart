@@ -20,48 +20,47 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'tr';
 
-  static String m0(value) => "${value} Günler önce";
+  static String m0(year) => "© ${year} Betna. Tüm hakları saklıdır.";
 
-  static String m1(value) => "Silmek istiyor musunuz ${value}";
+  static String m1(value) => "${value} Günler önce";
 
-  static String m2(value) => "${value} Saatler önce";
+  static String m2(value) => "Silmek istiyor musunuz ${value}";
 
-  static String m3(path) => "Resim başarıyla kaydedildi ${path}";
+  static String m3(value) => "${value} Saatler önce";
 
-  static String m4(value) => "${value} Dakika önce";
+  static String m4(path) => "Resim başarıyla kaydedildi ${path}";
 
-  static String m5(value) => "${value} Aylar önce";
+  static String m5(value) => "${value} Dakika önce";
 
-  static String m6(number) => "İlan sayısı ${number}";
+  static String m6(value) => "${value} Aylar önce";
 
-  static String m7(value) => "Sözleşme sayısı ${value}";
+  static String m7(number) => "İlan sayısı ${number}";
 
-  static String m8(count) => "Teklif sayısı ${count}";
+  static String m8(value) => "Sözleşme sayısı ${value}";
 
-  static String m9(value) => "Arama ${value}";
+  static String m9(count) => "Teklif sayısı ${count}";
 
-  static String m10(value) => "Şuna göre ara ${value}";
+  static String m10(value) => "Arama ${value}";
 
-  static String m11(number) => "Başlık ${number}";
+  static String m11(value) => "Şuna göre ara ${value}";
 
-  static String m12(value) => "${value} Haftalar önceo";
+  static String m12(number) => "Başlık ${number}";
 
-  static String m13(value) => "${value} Yıllar önce";
+  static String m13(value) => "${value} Haftalar önceo";
 
-  static String m14(value) => "Randevu almalı ${value}";
+  static String m14(value) => "${value} Yıllar önce";
+
+  static String m15(value) => "Randevu almalı ${value}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AdInformation": MessageLookupByLibrary.simpleMessage("Reklam bilgileri"),
     "Ad_information": MessageLookupByLibrary.simpleMessage("İlan Detayları"),
-    "AvenueStreet": MessageLookupByLibrary.simpleMessage("Cadde/Sokak"),
-    "Contact": MessageLookupByLibrary.simpleMessage("iletisim"),
     "Continue": MessageLookupByLibrary.simpleMessage("devam et"),
     "Current_status_aforementioned": MessageLookupByLibrary.simpleMessage(
       "kira Durumu",
     ),
     "DISMISS": MessageLookupByLibrary.simpleMessage("Kapat"),
-    "Deposit": MessageLookupByLibrary.simpleMessage("Depozito"),
     "Detail_Ad": MessageLookupByLibrary.simpleMessage("İlan Detayları"),
     "Kira": MessageLookupByLibrary.simpleMessage("Kira"),
     "LocationTile": MessageLookupByLibrary.simpleMessage("Mülkün konumu"),
@@ -88,7 +87,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "adPhoto": MessageLookupByLibrary.simpleMessage("Reklam fotoğrafları"),
     "addPerson": MessageLookupByLibrary.simpleMessage("Kişi ekleyin"),
     "add_photo": MessageLookupByLibrary.simpleMessage("Resim ekle"),
-    "ageBuilding": MessageLookupByLibrary.simpleMessage("Bina Yaşı"),
     "annualRent": MessageLookupByLibrary.simpleMessage("senelik kira rakamla"),
     "annualRentSummer": MessageLookupByLibrary.simpleMessage(
       "senelik kira yazile",
@@ -98,7 +96,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "applicationDeveloper": MessageLookupByLibrary.simpleMessage(
       "Uygulama geliştiricii",
     ),
-    "area": MessageLookupByLibrary.simpleMessage("m² (Brüt)"),
     "balcony": MessageLookupByLibrary.simpleMessage("Balkon"),
     "beginningofrent": MessageLookupByLibrary.simpleMessage(
       "kiranin baslangici",
@@ -121,9 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "downpayment": MessageLookupByLibrary.simpleMessage("pesinat rakamla"),
     "downpaymentSummer": MessageLookupByLibrary.simpleMessage("pesinat yazile"),
     "edit": MessageLookupByLibrary.simpleMessage("Update"),
-    "email": MessageLookupByLibrary.simpleMessage("E-posta"),
     "example": MessageLookupByLibrary.simpleMessage("Bir sözleşme örneği"),
-    "explanation": MessageLookupByLibrary.simpleMessage("açıklama"),
     "fee": MessageLookupByLibrary.simpleMessage("Aidat"),
     "fieldEmpty": MessageLookupByLibrary.simpleMessage("Bu alan boş olamaz."),
     "fieldEmptyMessage": MessageLookupByLibrary.simpleMessage(
@@ -139,7 +134,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Daire Resimleri Ekle",
     ),
     "flat_list": MessageLookupByLibrary.simpleMessage("Dairelerin listesi"),
-    "floor": MessageLookupByLibrary.simpleMessage("Bulunduğu Kat"),
     "forSaleList": MessageLookupByLibrary.simpleMessage("Satılık daireleri"),
     "furniture": MessageLookupByLibrary.simpleMessage(
       "Kiralanan mezkür ile beraber teslim olunan",
@@ -148,8 +142,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Gayrimenkulün konumu",
     ),
     "id": MessageLookupByLibrary.simpleMessage("TC:"),
-    "images": MessageLookupByLibrary.simpleMessage("İlan fotoğraflarıs"),
-    "inSideSite": MessageLookupByLibrary.simpleMessage("Site İçerisinde"),
     "k1DayAgo": MessageLookupByLibrary.simpleMessage("1 gün önce"),
     "k1HourAgo": MessageLookupByLibrary.simpleMessage("1 saat önce"),
     "k1MinuteAgo": MessageLookupByLibrary.simpleMessage("1 dakika önce"),
@@ -192,6 +184,87 @@ class MessageLookup extends MessageLookupByLibrary {
     "kBalcony": MessageLookupByLibrary.simpleMessage("Balkon"),
     "kBath": MessageLookupByLibrary.simpleMessage("banyo"),
     "kBathrooms": MessageLookupByLibrary.simpleMessage("banyolar"),
+    "kBetnaHomePageBrowseOffers": MessageLookupByLibrary.simpleMessage(
+      "Tekliflere Göz Atın",
+    ),
+    "kBetnaHomePageFooter": m0,
+    "kBetnaHomePageHeroIllustrationTag": MessageLookupByLibrary.simpleMessage(
+      "İstanbul\'da gayrimenkul",
+    ),
+    "kBetnaHomePageHeroIllustrationText": MessageLookupByLibrary.simpleMessage(
+      "Betna Emlak",
+    ),
+    "kBetnaHomePageHeroTextBlockBadge": MessageLookupByLibrary.simpleMessage(
+      "İstanbul\'da güvenilir emlak hizmeti",
+    ),
+    "kBetnaHomePageHeroTextBlockFreeConsultation":
+        MessageLookupByLibrary.simpleMessage("Yakında ücretsiz danışmanlık"),
+    "kBetnaHomePageHeroTextBlockSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Dairenizin bilgilerini içeren basit bir formu doldurun ve ekibimizin sizinle iletişime geçerek mülkü değerlendirmesine ve mümkün olan en iyi teklifi almanıza yardımcı olmasına izin verin.",
+    ),
+    "kBetnaHomePageHeroTextBlockTitle": MessageLookupByLibrary.simpleMessage(
+      "Dairenizi Betna Gayrimenkul ile kolayca ve profesyonelce satın",
+    ),
+    "kBetnaHomePageInfoCard1Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Dairenizin bilgilerini dakikalar içinde gönderin, ekibimiz gerisini takip edecektir.",
+    ),
+    "kBetnaHomePageInfoCard1Title": MessageLookupByLibrary.simpleMessage(
+      "Mülkünüzü kolayca satın",
+    ),
+    "kBetnaHomePageInfoCard2Subtitle": MessageLookupByLibrary.simpleMessage(
+      "İstanbul ve çevresindeki gayrimenkul piyasası hakkında derin anlayış.",
+    ),
+    "kBetnaHomePageInfoCard2Title": MessageLookupByLibrary.simpleMessage(
+      "İstanbul\'da Deneyim",
+    ),
+    "kBetnaHomePageInfoCard3Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Değerleme, sözleşmeler ve müşteri takibinde şeffaflık ilkesini benimsiyoruz.",
+    ),
+    "kBetnaHomePageInfoCard3Title": MessageLookupByLibrary.simpleMessage(
+      "Güvenilirlik ve Güvenlik",
+    ),
+    "kBetnaHomePageSlide1Badge": MessageLookupByLibrary.simpleMessage(
+      "Gayrimenkul Satış Hizmeti",
+    ),
+    "kBetnaHomePageSlide1Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Dakikalar içinde dairenizin bilgilerini gönderin, Betna ekibi sizinle iletişime geçerek mülkü değerlendirecek ve en iyi teklifi almanıza yardımcı olacaktır.",
+    ),
+    "kBetnaHomePageSlide1Title": MessageLookupByLibrary.simpleMessage(
+      "Dairenizi kolaylıkla ve profesyonelce satın",
+    ),
+    "kBetnaHomePageSlide2Badge": MessageLookupByLibrary.simpleMessage(
+      "Satılık Teklifler",
+    ),
+    "kBetnaHomePageSlide2Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Bütçenize uygun İstanbul\'un farklı bölgelerinde satılık daire ve mülk seçeneklerimiz mevcuttur.",
+    ),
+    "kBetnaHomePageSlide2Title": MessageLookupByLibrary.simpleMessage(
+      "Satın almaya hazır gayrimenkul teklifleri",
+    ),
+    "kBetnaHomePageSlide3Badge": MessageLookupByLibrary.simpleMessage(
+      "Değerlendirme ve Danışmanlık",
+    ),
+    "kBetnaHomePageSlide3Subtitle": MessageLookupByLibrary.simpleMessage(
+      "Uzmanlarımız piyasa verileri ve profesyonel analizler temelinde mülkünüzün fiyatının gerçekçi bir değerlendirmesini sunar.",
+    ),
+    "kBetnaHomePageSlide3Title": MessageLookupByLibrary.simpleMessage(
+      "Gayrimenkul değerleme ve uzman danışmanlığı",
+    ),
+    "kBetnaHomePageSocialFacebook": MessageLookupByLibrary.simpleMessage(
+      "Facebook",
+    ),
+    "kBetnaHomePageSocialInstagram": MessageLookupByLibrary.simpleMessage(
+      "Instagram",
+    ),
+    "kBetnaHomePageSocialWebsite": MessageLookupByLibrary.simpleMessage(
+      "Web sitesi",
+    ),
+    "kBetnaHomePageSocialWhatsapp": MessageLookupByLibrary.simpleMessage(
+      "WhatsApp",
+    ),
+    "kBetnaHomePageSubmitSaleRequest": MessageLookupByLibrary.simpleMessage(
+      "Satış Talebi Gönderin",
+    ),
     "kCallNow": MessageLookupByLibrary.simpleMessage("Şimdi ara"),
     "kCancelSearch": MessageLookupByLibrary.simpleMessage("Aramayı iptal et"),
     "kCash": MessageLookupByLibrary.simpleMessage("Nakit"),
@@ -209,8 +282,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "kContractList": MessageLookupByLibrary.simpleMessage("Sözleşme listesi"),
     "kContractValidity": MessageLookupByLibrary.simpleMessage("Kontrat süresi"),
     "kDateAdded": MessageLookupByLibrary.simpleMessage("İlan Tarihi"),
-    "kDaysAgo": m0,
-    "kDeleteMessage": m1,
+    "kDaysAgo": m1,
+    "kDeleteMessage": m2,
     "kDeliveryDate": MessageLookupByLibrary.simpleMessage("Teslim tarihi"),
     "kDeposit": MessageLookupByLibrary.simpleMessage("Depozito"),
     "kDescription": MessageLookupByLibrary.simpleMessage("Açıklama"),
@@ -242,7 +315,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Başlık sayfası ekleme",
     ),
     "kHome": MessageLookupByLibrary.simpleMessage("Ana sayfa"),
-    "kHoursAgo": m2,
+    "kHoursAgo": m3,
     "kHouseNew": MessageLookupByLibrary.simpleMessage("yeni kullanılmamış"),
     "kHouseOld": MessageLookupByLibrary.simpleMessage("Kullanılmış"),
     "kHouseState1": MessageLookupByLibrary.simpleMessage("Boş"),
@@ -283,11 +356,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "kMessageContactToHelp": MessageLookupByLibrary.simpleMessage(
       "Yardım için Bize Ulaşın",
     ),
-    "kMessageSaveImageTrue": m3,
+    "kMessageSaveImageTrue": m4,
     "kMessenger": MessageLookupByLibrary.simpleMessage("Messenger sohbeti"),
-    "kMinutesAgo": m4,
+    "kMinutesAgo": m5,
     "kMonthlyRent": MessageLookupByLibrary.simpleMessage("Aylık kira"),
-    "kMonthsAgo": m5,
+    "kMonthsAgo": m6,
     "kNameSurname": MessageLookupByLibrary.simpleMessage("Adı Soyadı"),
     "kNeighborhood": MessageLookupByLibrary.simpleMessage("Mahlle"),
     "kNew": MessageLookupByLibrary.simpleMessage("Yeni"),
@@ -298,9 +371,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "kNoteExchangeRate": MessageLookupByLibrary.simpleMessage(
       "Sitedeki teklifler Türk Lirası üzerinden fiyatlandırılmaktadır.Para birimi Türk para biriminden başka bir para birimine geçtiğinde, döviz kuru Dünya Merkez Bankası döviz kurları baz alınarak kabaca hesaplanmaktadır.",
     ),
-    "kNumberAds": m6,
-    "kNumberContracts": m7,
-    "kOfferLength": m8,
+    "kNumberAds": m7,
+    "kNumberContracts": m8,
+    "kOfferLength": m9,
     "kOffers": MessageLookupByLibrary.simpleMessage("Teklifler"),
     "kOldLess": MessageLookupByLibrary.simpleMessage("En eski/Daha az"),
     "kOwnerID": MessageLookupByLibrary.simpleMessage("Kimlik Mülk Sahibi No."),
@@ -354,6 +427,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "kRoomPlan": MessageLookupByLibrary.simpleMessage("Daire Modelleri"),
     "kSale": MessageLookupByLibrary.simpleMessage("Satılık"),
     "kSaleList": MessageLookupByLibrary.simpleMessage("satış listesi"),
+    "kSaleRequestSuccessfulMessageButtonReturn":
+        MessageLookupByLibrary.simpleMessage("Ana Sayfa"),
+    "kSaleRequestSuccessfulMessageTitle": MessageLookupByLibrary.simpleMessage(
+      "Talebiniz başarıyla gönderildi 🎉",
+    ),
+    "kSaleRequestSuccessfulMessageTitle2": MessageLookupByLibrary.simpleMessage(
+      "Teşekkürler! Daireyi satma talebiniz alındı. Ayrıntıları görüşmek için en kısa sürede sizinle iletişime geçeceğiz.",
+    ),
     "kSaleRequestTextField1": MessageLookupByLibrary.simpleMessage(
       "The district (İlçe) in Istanbul",
     ),
@@ -370,7 +451,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Telefon numarası",
     ),
     "kSaleRequestTextField14": MessageLookupByLibrary.simpleMessage(
-      "E-posta adresi (isteğe bağlı)",
+      "E-posta adresi",
+    ),
+    "kSaleRequestTextField15": MessageLookupByLibrary.simpleMessage(
+      "Doğrulama kodu",
     ),
     "kSaleRequestTextField2": MessageLookupByLibrary.simpleMessage(
       "İlçe/Mahalle (Mahalle)",
@@ -413,7 +497,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Lütfen telefon numaranızı giriniz",
     ),
     "kSaleRequestTextFieldErrorMessage14": MessageLookupByLibrary.simpleMessage(
-      "Lütfen e-posta adresini girin (isteğe bağlı)",
+      "Lütfen e-posta adresini girin",
+    ),
+    "kSaleRequestTextFieldErrorMessage15": MessageLookupByLibrary.simpleMessage(
+      "Lütfen Doğrulama kodunu girin",
     ),
     "kSaleRequestTextFieldErrorMessage2": MessageLookupByLibrary.simpleMessage(
       "Lütfen ilçe/mahalle (Mahalle) giriniz",
@@ -439,6 +526,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextFieldErrorMessage9": MessageLookupByLibrary.simpleMessage(
       "Lütfen site bir ad girin",
     ),
+    "kSaleRequestTextFieldErrorPhone1": MessageLookupByLibrary.simpleMessage(
+      "Telefon numarasının uzunluğu mantıksız.",
+    ),
+    "kSaleRequestTextFieldErrorPhone2": MessageLookupByLibrary.simpleMessage(
+      "Sayı, izin verilmeyen semboller içeriyor.",
+    ),
+    "kSaleRequestTextFieldErrorPhone3": MessageLookupByLibrary.simpleMessage(
+      "Numara uluslararası formatta olmalı ve + ile başlamalıdır",
+    ),
     "kSaleRequestTextFieldSendRequest": MessageLookupByLibrary.simpleMessage(
       "İstek Gönder",
     ),
@@ -455,8 +551,98 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextFieldTitle": MessageLookupByLibrary.simpleMessage(
       "Satılık daire talebi – İstanbul",
     ),
-    "kSearch": m9,
-    "kSearchBy": m10,
+    "kSaleRequestTextVerificationEmailMessage1":
+        MessageLookupByLibrary.simpleMessage("Önce e-posta adresinizi girin."),
+    "kSaleRequestTextVerificationEmailMessage2":
+        MessageLookupByLibrary.simpleMessage(
+          "E-postanıza doğrulama kodu gönderildi.",
+        ),
+    "kSaleRequestTextVerificationEmailMessage3":
+        MessageLookupByLibrary.simpleMessage("E-posta kodu gönderilemedi."),
+    "kSaleRequestTextVerificationEmailMessage4":
+        MessageLookupByLibrary.simpleMessage(
+          "Bu e-posta adresiyle daha önce kaydedilmiş bir sipariş bulunmaktadır. Siparişi değiştirmek isterseniz lütfen destek ekibiyle iletişime geçin.",
+        ),
+    "kSaleRequestTextVerificationFieldConfirmPhone":
+        MessageLookupByLibrary.simpleMessage("Telefon numarasını onayla"),
+    "kSaleRequestTextVerificationFieldMail":
+        MessageLookupByLibrary.simpleMessage("Doğrulama kodu (e-posta)"),
+    "kSaleRequestTextVerificationFieldPhone":
+        MessageLookupByLibrary.simpleMessage("SMS kodu"),
+    "kSaleRequestTextVerificationMessage1":
+        MessageLookupByLibrary.simpleMessage(
+          "Bir doğrulama yöntemi seçin (telefon veya e-posta)",
+        ),
+    "kSaleRequestTextVerificationMessage2":
+        MessageLookupByLibrary.simpleMessage(
+          "Talebinizi göndermeden önce lütfen telefon numaranızı doğrulayın.",
+        ),
+    "kSaleRequestTextVerificationMessage3":
+        MessageLookupByLibrary.simpleMessage(
+          "Doğrulanan telefon numarası okunamadı.",
+        ),
+    "kSaleRequestTextVerificationMessage4":
+        MessageLookupByLibrary.simpleMessage(
+          "Öncelikle doğrulama kodunu e-postaya gönderin.",
+        ),
+    "kSaleRequestTextVerificationMessage5":
+        MessageLookupByLibrary.simpleMessage("E-posta kodu hatalı."),
+    "kSaleRequestTextVerificationMessage6":
+        MessageLookupByLibrary.simpleMessage(
+          "İstek, başarılı doğrulamanın ardından gönderildi.",
+        ),
+    "kSaleRequestTextVerificationMethod1": MessageLookupByLibrary.simpleMessage(
+      "Telefon numarası",
+    ),
+    "kSaleRequestTextVerificationMethod2": MessageLookupByLibrary.simpleMessage(
+      "E-posta adresi",
+    ),
+    "kSaleRequestTextVerificationOkEmail": MessageLookupByLibrary.simpleMessage(
+      "✅ E-posta doğrulandı",
+    ),
+    "kSaleRequestTextVerificationOkPhone": MessageLookupByLibrary.simpleMessage(
+      "✅ Telefon numarası doğrulandı",
+    ),
+    "kSaleRequestTextVerificationPhoneMessage1":
+        MessageLookupByLibrary.simpleMessage("Önce telefon numaranızı girin."),
+    "kSaleRequestTextVerificationPhoneMessage10":
+        MessageLookupByLibrary.simpleMessage(
+          "Doğrulama sırasında beklenmeyen hata",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage2":
+        MessageLookupByLibrary.simpleMessage("SMS gönderimi başarısız oldu"),
+    "kSaleRequestTextVerificationPhoneMessage3":
+        MessageLookupByLibrary.simpleMessage(
+          "Bir SMS kodu gönderildi, kodu girin ve ardından telefonunuzda Onayla\'ya basın",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage4":
+        MessageLookupByLibrary.simpleMessage("Önce SMS kodunu gönderin."),
+    "kSaleRequestTextVerificationPhoneMessage5":
+        MessageLookupByLibrary.simpleMessage("SMS kodunu giriniz."),
+    "kSaleRequestTextVerificationPhoneMessage6":
+        MessageLookupByLibrary.simpleMessage(
+          "Telefon numarası başarıyla doğrulandı.",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage7":
+        MessageLookupByLibrary.simpleMessage("Geçersiz SMS kodu"),
+    "kSaleRequestTextVerificationPhoneMessage8":
+        MessageLookupByLibrary.simpleMessage(
+          "Telefon numarası doğrulama sonrasında okunamadı.",
+        ),
+    "kSaleRequestTextVerificationPhoneMessage9":
+        MessageLookupByLibrary.simpleMessage(
+          "Geçersiz veya süresi dolmuş SMS kodu:",
+        ),
+    "kSaleRequestTextVerificationSend": MessageLookupByLibrary.simpleMessage(
+      "Kod gönder",
+    ),
+    "kSaleRequestTextVerificationSendCodePhone":
+        MessageLookupByLibrary.simpleMessage("SMS kodunu gönder"),
+    "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
+      "Doğrulama yöntemi",
+    ),
+    "kSearch": m10,
+    "kSearchBy": m11,
     "kSeeAllListing": MessageLookupByLibrary.simpleMessage("Tüm listeyi gör"),
     "kSelect": MessageLookupByLibrary.simpleMessage("Seçiniz"),
     "kSend": MessageLookupByLibrary.simpleMessage("Gönder"),
@@ -474,7 +660,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kThereIs": MessageLookupByLibrary.simpleMessage("var"),
     "kThereIsNot": MessageLookupByLibrary.simpleMessage("Yok"),
     "kThings": MessageLookupByLibrary.simpleMessage("şeyler"),
-    "kTitle": m11,
+    "kTitle": m12,
     "kTown": MessageLookupByLibrary.simpleMessage("ilce"),
     "kTransportation": MessageLookupByLibrary.simpleMessage("taşımacılık"),
     "kType": MessageLookupByLibrary.simpleMessage("Reklam türü"),
@@ -486,17 +672,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "kUrgentTitle": MessageLookupByLibrary.simpleMessage("Acil Fırsatlar"),
     "kUsersList": MessageLookupByLibrary.simpleMessage("Kullanıcı listesi"),
     "kView": MessageLookupByLibrary.simpleMessage("Manzara"),
-    "kWeeksAgo": m12,
+    "kWeeksAgo": m13,
     "kWelcomeMessage": MessageLookupByLibrary.simpleMessage(
       "Ana sitemize hoş geldiniz. Site şu anda yapım aşamasındadır. Daha fazla bilgi için lütfen aşağıdaki numarayla iletişime geçin",
     ),
     "kWhatsApp": MessageLookupByLibrary.simpleMessage("whatsApp sohbet"),
     "kWithBackground": MessageLookupByLibrary.simpleMessage("Arka fon"),
     "kWithLogo": MessageLookupByLibrary.simpleMessage("Logo ile"),
-    "kYearsAgo": m13,
+    "kYearsAgo": m14,
     "kYes": MessageLookupByLibrary.simpleMessage("Evet"),
     "kYesterday": MessageLookupByLibrary.simpleMessage("Dün"),
-    "kYouShouldTakeDate": m14,
+    "kYouShouldTakeDate": m15,
     "kempty": MessageLookupByLibrary.simpleMessage("Boş"),
     "kira": MessageLookupByLibrary.simpleMessage("KIRA : "),
     "kira_title": MessageLookupByLibrary.simpleMessage("KİRA SÖZLEŞMESİ"),
@@ -509,9 +695,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("Adı,Soyadı"),
     "nameSurname": MessageLookupByLibrary.simpleMessage("Adi soyad"),
-    "neighborhood": MessageLookupByLibrary.simpleMessage("mahallesi"),
     "net_area": MessageLookupByLibrary.simpleMessage("m² (Net)"),
-    "next": MessageLookupByLibrary.simpleMessage("Sonraki"),
     "noPhotoFlat": MessageLookupByLibrary.simpleMessage("flat photo Empty"),
     "numara": MessageLookupByLibrary.simpleMessage("Numara"),
     "occupancyOwner": MessageLookupByLibrary.simpleMessage(
@@ -519,13 +703,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "occupancyRented": MessageLookupByLibrary.simpleMessage("Kiracılı"),
     "occupancyVacant": MessageLookupByLibrary.simpleMessage("Boş"),
-    "password": MessageLookupByLibrary.simpleMessage("Parola"),
     "payRent": MessageLookupByLibrary.simpleMessage(
       "Kiranın ne şekilde ödeceği",
     ),
     "photoFlat": MessageLookupByLibrary.simpleMessage("Dairelerin Resimleri"),
     "placeResidenceOwner": MessageLookupByLibrary.simpleMessage("ikametgah"),
-    "price": MessageLookupByLibrary.simpleMessage("Fiyat"),
     "prices": MessageLookupByLibrary.simpleMessage(
       "aylik kira , depozito ,pesinat",
     ),
@@ -535,7 +717,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "kira : muddeti,ödeme,Durumu",
     ),
     "rentalPeriod": MessageLookupByLibrary.simpleMessage("kira muddeti"),
-    "rooms": MessageLookupByLibrary.simpleMessage("Oda Sayısı"),
     "showPdf": MessageLookupByLibrary.simpleMessage("Dosyayı izle"),
     "singIn": MessageLookupByLibrary.simpleMessage("Oturum aç"),
     "site_name": MessageLookupByLibrary.simpleMessage("Site Adi : "),

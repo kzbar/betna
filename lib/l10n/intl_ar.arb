@@ -309,7 +309,7 @@
   "kSaleRequestTextField11": "سعر الطلب (₺)",
   "kSaleRequestTextField12": "الاسم واللقب",
   "kSaleRequestTextField13": "رقم التليفون",
-  "kSaleRequestTextField14": "عنوان البريد الإلكتروني (اختياري)",
+  "kSaleRequestTextField14": "عنوان البريد الإلكتروني ",
   "kSaleRequestTextFieldErrorMessage1": "الرجاء إدخال المنطقة (İlçe) في إسطنبول",
   "kSaleRequestTextFieldErrorMessage2": "الرجاء إدخال المنطقة/الحي (المحلة)",
   "kSaleRequestTextFieldErrorMessage3": "الرجاء إدخال عنوان الشارع / العنوان التفصيلي",
@@ -323,7 +323,7 @@
   "kSaleRequestTextFieldErrorMessage11": "الرجاء إدخال السعر المطلوب (₺)",
   "kSaleRequestTextFieldErrorMessage12": "الرجاء إدخال الاسم واللقب",
   "kSaleRequestTextFieldErrorMessage13": "الرجاء إدخال رقم الهاتف",
-  "kSaleRequestTextFieldErrorMessage14": "الرجاء إدخال عنوان البريد الإلكتروني (اختياري)",
+  "kSaleRequestTextFieldErrorMessage14": "الرجاء إدخال عنوان البريد الإلكتروني ",
   "kSaleRequestTextFieldSendRequest": "إرسال الطلب",
   "kSaleRequestTextFieldContactInformation": "معلومات الاتصال",
   "occupancyVacant": "فارغ",
@@ -331,5 +331,78 @@
   "occupancyOwner": "يسكنه المالك",
   "kSaleRequestTextFieldSendRequestMessageSuccessfully": "تم تقديم طلبك بنجاح. سنتواصل معك قريبًا.",
   "kSaleRequestTextFieldSendRequestMessageFailed": "لم يتم إرسال طلبك. يُرجى المحاولة لاحقًا.",
-  "kSaleRequestTextFieldSendRequestMessageSending": "طلب الإرسال"
+  "kSaleRequestTextFieldSendRequestMessageSending": "طلب الإرسال",
+  "kSaleRequestTextFieldErrorPhone1": "طول رقم الهاتف غير منطقي.",
+  "kSaleRequestTextFieldErrorPhone2": "يحتوي الرقم على رموز غير مسموح بها.",
+  "kSaleRequestTextFieldErrorPhone3": "يجب أن يكون الرقم بتنسيق دولي ويبدأ بـ +",
+  "kSaleRequestTextVerificationTitle": "طريقة التحقق عبر",
+  "kSaleRequestTextVerificationMethod1": "رقم التليفون",
+  "kSaleRequestTextVerificationMethod2": "عنوان البريد الإلكتروني",
+  "kSaleRequestTextField15": "رمز التحقق",
+  "kSaleRequestTextFieldErrorMessage15": "الرجاء إدخال رمز التحقق",
+  "kSaleRequestTextVerificationSend": "إرسال الرمز",
+  "kSaleRequestTextVerificationSendCodePhone": "إرسال رمز ",
+  "kSaleRequestTextVerificationFieldPhone": "رمز الرسالة ",
+  "kSaleRequestTextVerificationFieldMail": "رمز التحقق (البريد الإلكتروني)",
+  "kSaleRequestTextVerificationFieldConfirmPhone": "تأكيد رقم الهاتف",
+  "kSaleRequestTextVerificationOkPhone": "✅ تم التحقق من رقم الهاتف",
+  "kSaleRequestTextVerificationOkEmail": "✅ تم التحقق من البريد الإلكتروني",
+  "kSaleRequestTextVerificationEmailMessage1": "أدخل عنوان بريدك الإلكتروني أولاً.",
+  "kSaleRequestTextVerificationEmailMessage2": "لقد تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
+  "kSaleRequestTextVerificationEmailMessage3": "لم يتم إرسال رمز البريد الإلكتروني.",
+  "kSaleRequestTextVerificationEmailMessage4": "يوجد طلب سابق مسجل بهذا البريد الإلكتروني. لتعديل الطلب، يُرجى التواصل مع فريق الدعم.",
+  "kSaleRequestTextVerificationPhoneMessage1": "أدخل رقم هاتفك أولاً.",
+  "kSaleRequestTextVerificationPhoneMessage2": "فشل إرسال الرسائل النصية القصيرة",
+  "kSaleRequestTextVerificationPhoneMessage3": "لقد تم إرسال رمز SMS، أدخله ثم اضغط على \"تأكيد\" على هاتفك",
+  "kSaleRequestTextVerificationPhoneMessage4": "أرسل رمز الرسالة النصية القصيرة أولاً.",
+  "kSaleRequestTextVerificationPhoneMessage5": "أدخل رمز الرسالة النصية القصيرة.",
+  "kSaleRequestTextVerificationPhoneMessage6": "تم التحقق من رقم الهاتف بنجاح.",
+  "kSaleRequestTextVerificationPhoneMessage7": "رمز الرسالة النصية القصيرة غير صالح",
+  "kSaleRequestTextVerificationMessage1": "اختر طريقة التحقق (الهاتف أو البريد الإلكتروني)",
+  "kSaleRequestTextVerificationMessage2": "يرجى تأكيد رقم هاتفك قبل تقديم الطلب.",
+  "kSaleRequestTextVerificationMessage3": "لم يتم قراءة رقم الهاتف الذي تم التحقق منه.",
+  "kSaleRequestTextVerificationMessage4": "أرسل رمز التحقق إلى البريد الإلكتروني أولاً.",
+  "kSaleRequestTextVerificationMessage5": "رمز البريد الإلكتروني غير صحيح.",
+  "kSaleRequestTextVerificationMessage6": "تم إرسال الطلب بعد التحقق الناجح.",
+  "kSaleRequestTextVerificationPhoneMessage8": "لم يتمكن من قراءة رقم الهاتف بعد التحقق.",
+  "kSaleRequestTextVerificationPhoneMessage9": "رمز SMS غير صالح أو منتهي الصلاحية:",
+  "kSaleRequestTextVerificationPhoneMessage10": "خطأ غير متوقع أثناء التحقق",
+  "kSaleRequestSuccessfulMessageTitle": "لقد تم إرسال طلبك بنجاح 🎉",
+  "kSaleRequestSuccessfulMessageTitle2": "شكراً لك! تم استلام طلبك لبيع الشقة. سنتواصل معك قريباً للاطلاع على التفاصيل.",
+  "kSaleRequestSuccessfulMessageButtonReturn": "الصفحة الرئيسية",
+  "kBetnaHomePageSlide1Title": "بيع شقتك بكل سهولة واحترافية",
+  "kBetnaHomePageSlide1Subtitle": "قم بإرسال تفاصيل شقتك خلال دقائق، وسيقوم فريق بيتنا بالتواصل معك لتقييم العقار ومساعدتك في الحصول على أفضل عرض.",
+  "kBetnaHomePageSlide1Badge": "خدمة مبيعات العقارات",
+  "kBetnaHomePageSlide2Title": "عروض عقارية جاهزة للشراء",
+  "kBetnaHomePageSlide2Subtitle": "لدينا مجموعة مختارة من الشقق والعقارات للبيع في مناطق مختلفة من اسطنبول لتناسب ميزانيتك.",
+  "kBetnaHomePageSlide2Badge": "عروض للبيع",
+  "kBetnaHomePageSlide3Title": "تقييم العقارات والاستشارات المتخصصة",
+  "kBetnaHomePageSlide3Subtitle": "يقدم لك خبرائنا تقييمًا واقعيًا لسعر عقارك بناءً على بيانات السوق والتحليل المهني.",
+  "kBetnaHomePageSlide3Badge": "التقييم والاستشارات",
+  "kBetnaHomePageSocialWhatsapp": "واتساب",
+  "kBetnaHomePageSocialInstagram": "انستغرام",
+  "kBetnaHomePageSocialFacebook": "فيسبوك",
+  "kBetnaHomePageSocialWebsite": "موقع إلكتروني",
+  "kBetnaHomePageInfoCard1Title": "بيع عقارك بسهولة",
+  "kBetnaHomePageInfoCard1Subtitle": "قم بإرسال تفاصيل شقتك خلال دقائق، وسيقوم فريقنا بمتابعتك.",
+  "kBetnaHomePageInfoCard2Title": "الخبرة في اسطنبول",
+  "kBetnaHomePageInfoCard2Subtitle": "فهم عميق لسوق العقارات في اسطنبول والمناطق المحيطة بها.",
+  "kBetnaHomePageInfoCard3Title": "الموثوقية والأمان",
+  "kBetnaHomePageInfoCard3Subtitle": "نحن نتعامل بشفافية في التقييم والعقود ومتابعة العملاء.",
+  "kBetnaHomePageFooter": "© {year} بيتنا. جميع الحقوق محفوظة.",
+  "@kBetnaHomePageFooter": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "kBetnaHomePageBrowseOffers": "تصفح العروض",
+  "kBetnaHomePageSubmitSaleRequest": "إرسال طلب بيع",
+  "kBetnaHomePageHeroIllustrationText": "بيتنا للعقارات",
+  "kBetnaHomePageHeroTextBlockBadge": "خدمة عقارية موثوقة في اسطنبول",
+  "kBetnaHomePageHeroTextBlockTitle": "بيع شقتك بسهولة واحترافية مع بيتنا للعقارات",
+  "kBetnaHomePageHeroTextBlockSubtitle": "قم بملء نموذج بسيط بتفاصيل شقتك، ودع فريقنا يتواصل معك لتقييم العقار ومساعدتك في الحصول على أفضل عرض ممكن.",
+  "kBetnaHomePageHeroTextBlockFreeConsultation": "استشارة مجانية قريبا",
+  "kBetnaHomePageHeroIllustrationTag": "العقارات في اسطنبول"
 }

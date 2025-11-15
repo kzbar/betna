@@ -3,7 +3,6 @@ import 'package:betna/style/main_app_scaffold.dart';
 import 'package:betna/style/responsive/screen_type_layout.dart';
 import 'package:betna/tablet.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'mobile.dart';
 

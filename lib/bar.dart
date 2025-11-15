@@ -1,6 +1,5 @@
 import 'package:betna/setup/enumerators.dart';
 import 'package:betna/setup/main_provider.dart';
-import 'package:betna/setup/tools.dart';
 import 'package:betna/style/custom_text.dart';
 import 'package:betna/style/popover/popover_notifications.dart';
 import 'package:betna/style/popover/popover_region.dart';
@@ -53,10 +52,10 @@ class _CustomBar extends State<CustomBar> with TickerProviderStateMixin {
     );
   }
 }
-class DesktopOrTablet extends StatelessWidget {
+class DesktopOrTablet extends StatefulWidget {
   final bool isTablet;
 
-  DesktopOrTablet({Key? key, required this.isTablet}) : super(key: key);
+  const DesktopOrTablet({super.key, required this.isTablet});
 
   static const List<Map> langs = [
     {'title': 'English', 'value': Lang.EN},
@@ -93,6 +92,12 @@ class DesktopOrTablet extends StatelessWidget {
       'value': 'https://wa.me/message/WTBMCUW6NPAQA1'
     }
   ];
+
+  @override
+  State<DesktopOrTablet> createState() => _DesktopOrTabletState();
+}
+
+class _DesktopOrTabletState extends State<DesktopOrTablet> {
   late Map? map;
 
   @override
@@ -184,7 +189,7 @@ class DesktopOrTablet extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ...socials.map(
+                    ...DesktopOrTablet.socials.map(
                       (icon) => IconButton(
                         padding: const EdgeInsets.all(6),
                         onPressed: () {
@@ -209,7 +214,7 @@ class DesktopOrTablet extends StatelessWidget {
               color: Colors.white,
               boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0, 1))]),
           padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * (isTablet ? 0.05 : 0.19)),
+              horizontal: MediaQuery.of(context).size.width * (widget.isTablet ? 0.05 : 0.19)),
           width: MediaQuery.of(context).size.width,
           child: Row(
             children: [
@@ -234,7 +239,7 @@ class DesktopOrTablet extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ...langs.map((gender) => GestureDetector(
+                      ...DesktopOrTablet.langs.map((gender) => GestureDetector(
                             child: Container(
                               width: 100,
                               height: 36,
@@ -333,7 +338,7 @@ class Mobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Lang? lang = Provider.of<MainProvider>(context, listen: false).currentLang;
-    String logo;
+    String? logo;
     switch (lang) {
       case Lang.AR:
         logo = 'assets/logo/logoA.png';

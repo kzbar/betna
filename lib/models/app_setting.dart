@@ -5,9 +5,7 @@
 import 'dart:convert';
 
 import 'package:betna/models/company_profile.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'location_models.dart';
 
 class AppSetting {
   AppSetting({this.profile});

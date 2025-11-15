@@ -177,7 +177,7 @@ class _SaleRowItem extends State<SaleRowItem> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 InfoTextWidget(
-                                  text1: S.of(context).rooms,
+                                  text1: "S.of(context).rooms",
                                   size: fontSize,
                                   text2: widget.model.room,
                                   data: Icons.home,

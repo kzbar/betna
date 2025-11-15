@@ -1,4 +1,5 @@
-import 'package:betna/SaleRequestPage.dart';
+import 'package:betna/betna_home_page.dart';
+import 'package:betna/sale_request_page.dart';
 import 'package:betna/home.dart';
 import 'package:betna/homePrototypeVideo.dart';
 import 'package:betna/page_404.dart';
@@ -37,7 +38,7 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
 
   switch (path) {
     case '/':
-      pageRoute = _buildRouteFade(settings, const HomePrototypeVideo());
+      pageRoute = _buildRouteFade(settings, const BetnaHomePage());
       break;
     case '/salerequest':
       pageRoute = _buildRouteFade(settings, const SaleRequestPage());
