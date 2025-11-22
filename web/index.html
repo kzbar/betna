@@ -6,7 +6,8 @@
 
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <title>Betna real estate</title>
-    <meta name="description" content="With our long years of experience in the real estate sector, we are a real estate consultancy office that provides reliable and professional services to our customers. We aim to offer you the best solutions by always keeping customer satisfaction at the forefront. We are here to help you find your dream home or workplace with our real estate options for sale and rent.">
+    <meta name="description"
+          content="With our long years of experience in the real estate sector, we are a real estate consultancy office that provides reliable and professional services to our customers. We aim to offer you the best solutions by always keeping customer satisfaction at the forefront. We are here to help you find your dream home or workplace with our real estate options for sale and rent.">
 
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,20 +20,33 @@
 
 
     <link rel="manifest" href="manifest.json">
-
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LffFwwsAAAAAGRQPTLmEBUGPl-35dHFZ0uu0GZ6"></script>
+    <!-- Your code -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Business",
             "name": "Betna Real estate",
             "description": "With our long years of experience in the real estate sector, we are a real estate consultancy office that provides reliable and professional services to our customers. We aim to offer you the best solutions by always keeping customer satisfaction at the forefront. We are here to help you find your dream home or workplace with our real estate options for sale and rent.",
-            "image":"https://betna.net/icons/Icon-512.png",
+            "image": "https://betna.net/icons/Icon-512.png",
             "url": "https://betna.net",
             "logo": "https://betna.net/icons/Icon-192.png"
         }
     </script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+<script>
+
+      {{flutter_js}}
+      {{flutter_build_config}}
+      // TODO: Replace this with your own code to determine which renderer to use.
+      const useCanvasKit = true;
+      const config = {
+        renderer: useCanvasKit ? "canvaskit" : "skwasm",
+      };
+      _flutter.loader.load({
+        config: config,
+      });
+</script>
 </body>
 </html>

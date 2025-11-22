@@ -212,7 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sell your property easily",
     ),
     "kBetnaHomePageInfoCard2Subtitle": MessageLookupByLibrary.simpleMessage(
-      "Deep understanding of the real estate market in Istanbul and its surrounding areas.",
+      "Deep understanding of real estate market in Istanbul",
     ),
     "kBetnaHomePageInfoCard2Title": MessageLookupByLibrary.simpleMessage(
       "Experience in Istanbul",
@@ -257,13 +257,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Instagram",
     ),
     "kBetnaHomePageSocialWebsite": MessageLookupByLibrary.simpleMessage(
-      "Website",
+      "Location",
     ),
     "kBetnaHomePageSocialWhatsapp": MessageLookupByLibrary.simpleMessage(
       "WhatsApp",
     ),
     "kBetnaHomePageSubmitSaleRequest": MessageLookupByLibrary.simpleMessage(
-      "Submit a Sale Request",
+      "Sale Request",
     ),
     "kCallNow": MessageLookupByLibrary.simpleMessage("Call now"),
     "kCancelSearch": MessageLookupByLibrary.simpleMessage("Cancel search"),
@@ -285,6 +285,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kContractValidity": MessageLookupByLibrary.simpleMessage(
       "Contract Duration",
     ),
+    "kCountry": MessageLookupByLibrary.simpleMessage("country"),
     "kDateAdded": MessageLookupByLibrary.simpleMessage("Date"),
     "kDaysAgo": m1,
     "kDeleteMessage": m2,
@@ -567,6 +568,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "There is a previous order registered with this email address. If you wish to modify the order, please contact the support team.",
         ),
+    "kSaleRequestTextVerificationFieldConfirmEmail":
+        MessageLookupByLibrary.simpleMessage("Confirm Email"),
     "kSaleRequestTextVerificationFieldConfirmPhone":
         MessageLookupByLibrary.simpleMessage("Confirm phone number"),
     "kSaleRequestTextVerificationFieldMail":
@@ -602,10 +605,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Email address",
     ),
     "kSaleRequestTextVerificationOkEmail": MessageLookupByLibrary.simpleMessage(
-      "✅ Email verified",
+      "Email verified",
     ),
     "kSaleRequestTextVerificationOkPhone": MessageLookupByLibrary.simpleMessage(
-      "✅ Phone number verified",
+      "Phone number verified",
     ),
     "kSaleRequestTextVerificationPhoneMessage1":
         MessageLookupByLibrary.simpleMessage("Enter your phone number first."),
@@ -614,7 +617,9 @@ class MessageLookup extends MessageLookupByLibrary {
           "Unexpected error during verification",
         ),
     "kSaleRequestTextVerificationPhoneMessage2":
-        MessageLookupByLibrary.simpleMessage("SMS sending failed"),
+        MessageLookupByLibrary.simpleMessage(
+          "SMS sending failed Invalid format",
+        ),
     "kSaleRequestTextVerificationPhoneMessage3":
         MessageLookupByLibrary.simpleMessage(
           "An SMS code has been sent, enter it and then press Confirm on your phone",
@@ -638,8 +643,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextVerificationSend": MessageLookupByLibrary.simpleMessage(
       "Send code",
     ),
+    "kSaleRequestTextVerificationSendCodeEmail":
+        MessageLookupByLibrary.simpleMessage("Send code via email "),
     "kSaleRequestTextVerificationSendCodePhone":
-        MessageLookupByLibrary.simpleMessage("Send SMS code"),
+        MessageLookupByLibrary.simpleMessage("Send code via SMS"),
     "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
       "Verification method via",
     ),

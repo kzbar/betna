@@ -1,17 +1,36 @@
 import 'dart:async';
 
+import 'package:betna/pages/sale_request_page.dart';
+import 'package:betna/services/firebase_collections_names.dart';
 import 'package:betna/style/responsive/screen_type_layout.dart';
+import 'package:betna/style/skeleton.dart';
+import 'package:betna/style/style.dart';
+import 'package:betna/style/widget/ImageView.dart';
 import 'package:betna/style/widget/logo_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import 'generated/l10n.dart';
+import '../generated/l10n.dart';
+import '../models/header_page_model.dart';
 
 const Color kPrimary = Color(0xFF740247);
 const Color kPrimaryDark = Color(0xFF4E0030);
 const Color kPrimaryLight = Color(0xFFA74676);
 const Color kBackground = Color(0xFFF8F3F5);
 const Color kSoftChip = Color(0xFFEFCBDE);
+
+Future<void> launchURL(String data, BuildContext context) async {
+  try {
+    await launchUrl(Uri.parse(data));
+  } catch (error) {
+    if (kDebugMode) {
+      print(error);
+    }
+  }
+}
 
 class BetnaHomePage extends StatefulWidget {
   const BetnaHomePage({
@@ -85,7 +104,7 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
                     _buildInfoCards(theme),
                     SizedBox(height: maxHeight * 0.25),
                     _buildSocialRow(),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 24),
                     _buildFooter(theme),
                   ],
                 ),
@@ -100,6 +119,8 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
   // ---------------- Top Bar ----------------
 
   Widget _buildTopBar(ThemeData theme) {
+    final s = S.of(context);
+    Color backgroundColor = kPrimaryDark;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -126,6 +147,38 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
             ),
             const SizedBox(width: 10),
           ],
+        ),
+        InkWell(
+          borderRadius: BorderRadius.circular(999),
+          onTap: (){
+            launchURL('tel:+905525333666', context);
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(999),
+              color: kPrimaryDark.withAlpha(12),
+              border: Border.all(color: kPrimaryDark.withAlpha(50)),
+            ),
+            child: Row(
+              textDirection: TextDirection.ltr,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(FontAwesomeIcons.squarePhoneFlip, size: 18, color:  kPrimaryDark),
+                const SizedBox(width: 6),
+                Text(
+                  "+ 905525-333666",
+                  textDirection: TextDirection.ltr,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: kPrimaryDark,
+                      fontWeight: FontWeight.w600,
+                    fontSize: FontSize.scale(context, 12)
+                  ),
+
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
@@ -161,6 +214,7 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
                   title: s.kBetnaHomePageSlide1Title,
                   subtitle: s.kBetnaHomePageSlide1Subtitle,
                   badge: s.kBetnaHomePageSlide1Badge,
+                  pageIndex: _currentPage,
                   //highlight: 'بيع شقق في إسطنبول',
                 ),
 
@@ -170,6 +224,7 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
                   title: s.kBetnaHomePageSlide2Title,
                   subtitle: s.kBetnaHomePageSlide2Subtitle,
                   badge: s.kBetnaHomePageSlide2Badge,
+                  pageIndex: _currentPage,
                   //highlight: 'شقق جاهزة للشراء',
                 ),
 
@@ -179,6 +234,7 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
                   title: s.kBetnaHomePageSlide3Title,
                   subtitle: s.kBetnaHomePageSlide3Subtitle,
                   badge: s.kBetnaHomePageSlide3Badge,
+                  pageIndex: _currentPage,
                   //highlight: 'استشارة عقارية',
                 ),
               ],
@@ -235,7 +291,7 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
             label: s.kBetnaHomePageSocialWhatsapp,
             background: const Color(0xFF25D366),
             onTap: () {
-              // TODO: launch WhatsApp link
+              launchURL("https://wa.me/message/WTBMCUW6NPAQA1", context);
             },
           ),
           _SocialButton(
@@ -243,7 +299,7 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
             label: s.kBetnaHomePageSocialInstagram,
             background: const Color(0xFFC13584),
             onTap: () {
-              // TODO: launch Instagram link
+              launchURL('https://www.instagram.com/betnatr/', context);
             },
           ),
           _SocialButton(
@@ -251,15 +307,15 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
             label: s.kBetnaHomePageSocialFacebook,
             background: const Color(0xFF1877F2),
             onTap: () {
-              // TODO: launch Facebook link
+              launchURL('https://www.facebook.com/betnatr', context);
             },
           ),
           _SocialButton(
-            icon: Icons.language_rounded,
+            icon: Icons.map_rounded,
             label: s.kBetnaHomePageSocialWebsite,
             background: kPrimary,
             onTap: () {
-              // TODO: launch main website
+              launchURL('https://maps.app.goo.gl/Wxs5H48VPuHjc7Hk7', context);
             },
           ),
         ],
@@ -287,8 +343,6 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
       },
       child: LayoutBuilder(
         builder: (context, constraints) {
-
-
           return Wrap(
             spacing: 16,
             runSpacing: 16,
@@ -324,7 +378,8 @@ class _BetnaHomePageState extends State<BetnaHomePage> {
       child: Text(
         s.kBetnaHomePageFooter(DateTime.now().year),
         style: theme.textTheme.bodySmall?.copyWith(
-          color: kPrimaryDark.withOpacity(0.6),
+           fontWeight: FontWeight.w800,
+          color: Colors.black.withAlpha(80),
         ),
       ),
     );
@@ -335,13 +390,18 @@ class _HeroSlideItem extends StatelessWidget {
   final String title;
   final String subtitle;
   final String badge;
+  final int pageIndex;
 
-  const _HeroSlideItem({required this.title, required this.subtitle, required this.badge});
+
+  const _HeroSlideItem(
+      {required this.title, required this.subtitle, required this.badge, required this.pageIndex});
+
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
     String? lang = View.of(context).platformDispatcher.locale.languageCode;
-    TextDirection direction = lang.contains('ar') ? TextDirection.ltr : TextDirection.rtl;
+    TextDirection direction =
+        lang.contains('ar') ? TextDirection.ltr : TextDirection.rtl;
 
     final theme = Theme.of(context);
     return ScreenTypeLayout(
@@ -349,7 +409,7 @@ class _HeroSlideItem extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            elevation: 6,
+            elevation: 1,
             clipBehavior: Clip.antiAlias,
             child: Container(
               decoration: const BoxDecoration(
@@ -374,25 +434,31 @@ class _HeroSlideItem extends StatelessWidget {
                     child: Column(
                       textDirection: direction,
                       crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment:  MainAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 3),
                           decoration: BoxDecoration(
-                            color: Colors.white.withAlpha(50),
+                            color: Style.lavenderBlack?.withAlpha(70),
                             borderRadius: BorderRadius.circular(999),
-                            border: Border.all(color: Colors.white.withAlpha(18)),
+                            border:
+                                Border.all(color: Colors.white.withAlpha(80)),
                           ),
                           child: Row(
                             textDirection: direction,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(Icons.star_rounded, size: 18, color: Colors.white),
+                              const Icon(Icons.star_rounded,
+                                  size: 18, color: Colors.white),
                               const SizedBox(width: 6),
                               Text(
                                 textDirection: direction,
                                 badge,
-                                style: const TextStyle(fontSize: 12, color: Colors.white),
+                                style:  theme.textTheme.bodySmall?.copyWith(
+                                    fontSize: FontSize.scale(context, 8), color: Colors.white
+                                )
                               ),
                             ],
                           ),
@@ -400,63 +466,87 @@ class _HeroSlideItem extends StatelessWidget {
                         const SizedBox(height: 16),
                         Text(
                           title,
+
                           textAlign: direction == TextDirection.ltr
-                              ? TextAlign.right : TextAlign.left,
+                              ? TextAlign.right
+                              : TextAlign.left,
                           //textDirection: direction,
-                          style: theme.textTheme.headlineSmall?.copyWith(
+                          style: theme.textTheme.titleLarge?.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
-                            height: 1.3,
+                            height: 1,
+                            fontSize: FontSize.scale(context, 14),
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 24),
                         Text(
                           subtitle,
                           //textDirection: direction,
                           textAlign: direction == TextDirection.ltr
-                              ? TextAlign.right : TextAlign.left,
-                          style: theme.textTheme.bodyMedium?.copyWith(
+                              ? TextAlign.right
+                              : TextAlign.left,
+                          style: theme.textTheme.titleSmall?.copyWith(
                             color: Colors.white70,
-                            height: 1.5,
+                            fontSize: FontSize.scale(context, 10),
+                            height: 1.2,
                           ),
                         ),
-                        const SizedBox(height: 18),
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
-                          alignment: WrapAlignment.center,
-                          children: [
-                            OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                overlayColor: Colors.white.withAlpha(10),
-                                side: BorderSide(color: Colors.white.withAlpha(10)),
-                              ),
-                              onHover: (value) {},
-                              onPressed: () {},
-                              child: Text(
-                                s.kBetnaHomePageBrowseOffers,
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: Colors.white70,
-                                  height: 1.5,
+                        const SizedBox(height: 36),
+                        SizedBox(
+                          width: 300,
+                          child: Row(
+                            spacing: 6,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Expanded(
+                                  child: FilledButton(
+                                style: OutlinedButton.styleFrom(
+                                  foregroundColor: kPrimary,
+                                  overlayColor: kPrimary.withAlpha(50),
+                                  side: BorderSide(
+                                      color: Colors.white.withAlpha(10)),
                                 ),
-                              ),
-                            ),
-                            FilledButton(
-                              style: FilledButton.styleFrom(
-                                foregroundColor: kPrimaryDark,
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                s.kBetnaHomePageSubmitSaleRequest,
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: Colors.white70,
-                                  height: 1.5,
+                                onHover: (value) {},
+                                onPressed: () {
+                                  launchURL(
+                                      'https://betnagayrimenkul.sahibinden.com',
+                                      context);
+                                },
+                                child: Text(
+                                  s.kBetnaHomePageBrowseOffers,
+                                  style: theme.textTheme.bodySmall?.copyWith(
+                                    color: Colors.white70,
+                                    height: 1,
+                                    fontSize: FontSize.scale(context, 8),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ],
+                              )),
+                              Expanded(
+                                child: FilledButton(
+                                  style: FilledButton.styleFrom(
+                                    foregroundColor: kPrimaryDark,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 12),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => SaleRequestPage()),
+                                    );
+                                  },
+                                  child: Text(
+                                    s.kBetnaHomePageSubmitSaleRequest,
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      color: Colors.white70,
+                                      height: 1,
+                                      fontSize: FontSize.scale(context, 8),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -464,7 +554,7 @@ class _HeroSlideItem extends StatelessWidget {
                   const SizedBox(width: 24),
                   Expanded(
                     flex: 2,
-                    child: _HeroSlideIllustration(),
+                    child: _HeroSlideIllustration(pageIndex),
                   ),
                 ],
               ),
@@ -495,20 +585,23 @@ class _HeroSlideItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                   decoration: BoxDecoration(
-                    color: Colors.white.withAlpha(50),
+                    color: Style.lavenderBlack?.withAlpha(70),
                     borderRadius: BorderRadius.circular(999),
                     border: Border.all(color: Colors.white.withAlpha(18)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.star_rounded, size: 18, color: Colors.white),
+                      const Icon(Icons.star_rounded,
+                          size: 18, color: Colors.white),
                       const SizedBox(width: 6),
                       Text(
                         badge,
-                        style: theme.textTheme.titleSmall?.copyWith(color: Colors.white),
+                        style: theme.textTheme.bodySmall
+                            ?.copyWith(color: Colors.white,fontSize: FontSize.scale(context, 6),),
                       ),
                     ],
                   ),
@@ -517,53 +610,73 @@ class _HeroSlideItem extends StatelessWidget {
                 Text(
                   title,
                   textAlign: direction == TextDirection.ltr
-                      ? TextAlign.right : TextAlign.left,
-                  style: theme.textTheme.titleSmall?.copyWith(
+                      ? TextAlign.right
+                      : TextAlign.left,
+                  style: theme.textTheme.titleMedium?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    height: 1.3,
+                    fontSize: FontSize.scale(context, 14),
+                    height: 1,
                   ),
                 ),
                 const SizedBox(height: 10),
                 Text(
                   subtitle,
                   textAlign: direction == TextDirection.ltr
-                      ? TextAlign.right : TextAlign.left,
-                  style: theme.textTheme.bodyMedium?.copyWith(
+                      ? TextAlign.right
+                      : TextAlign.left,
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    fontSize: FontSize.scale(context, 12),
                     color: Colors.white70,
-                    height: 1.6,
+                    height: 1.5,
                   ),
                 ),
                 const SizedBox(height: 18),
                 Expanded(
                   flex: 3,
-                  child: _HeroSlideIllustration(),
+                  child: _HeroSlideIllustration(pageIndex),
                 ),
                 const SizedBox(height: 16),
                 Align(
                   alignment: Alignment.center,
-                  child: Wrap(
+                  child: Row(
                     spacing: 8,
-                    runSpacing: 8,
-                    alignment: WrapAlignment.center,
                     children: [
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          side: BorderSide(color: Colors.white.withOpacity(0.5)),
+                      Expanded(
+                        child: FilledButton(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            side: BorderSide(color: Colors.white.withAlpha(50)),
+                          ),
+                          onPressed: () {
+                            launchURL('https://betnagayrimenkul.sahibinden.com',
+                                context);
+                          },
+                          child: Text(s.kBetnaHomePageBrowseOffers,
+                              style: theme.textTheme.bodySmall
+                                  ?.copyWith(color: Colors.white,fontSize: FontSize.scale(context, 8),)),
                         ),
-                        onPressed: () {},
-                        child: Text(s.kBetnaHomePageBrowseOffers),
                       ),
-                      FilledButton(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: kSoftChip,
-                          foregroundColor: kPrimaryDark,
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      Expanded(
+                        child: FilledButton(
+                          style: FilledButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            side: BorderSide(color: Colors.white.withAlpha(50)),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 12),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => SaleRequestPage()),
+                            );
+                          },
+                          child: Text(s.kBetnaHomePageSubmitSaleRequest,
+                              style: theme.textTheme.bodySmall
+                                  ?.copyWith(color: Colors.white,fontSize: FontSize.scale(context, 8))),
                         ),
-                        onPressed: () {},
-                        child: Text(s.kBetnaHomePageSubmitSaleRequest),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -575,12 +688,14 @@ class _HeroSlideItem extends StatelessWidget {
 }
 
 class _HeroSlideIllustration extends StatelessWidget {
-  const _HeroSlideIllustration();
+  final int pageIndex;
+  const _HeroSlideIllustration(this.pageIndex);
+
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
     return Container(
-      height: 180,
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: const LinearGradient(
@@ -592,38 +707,81 @@ class _HeroSlideIllustration extends StatelessWidget {
           ],
         ),
       ),
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Opacity(
-              opacity: 0.12,
-              child: Icon(
-                Icons.location_city_rounded,
-                size: 150,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              s.kBetnaHomePageHeroIllustrationText,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                letterSpacing: 1.1,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
+      child: FutureBuilder(
+        future: FirebaseFirestore.instance
+            .collection(FirebaseCollectionNames.prototypeImagesPageCollection)
+            .get(),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: SizedBox(
+                height: 180,
+                child: Center(
+                  child: Skeleton(
+                    showCircular: false,
+                    width: 500,
+                    height: 180,
+                    cornerRadius: 0.0,
+                  ),
+                ),
+              ),);
+            case ConnectionState.active:
+            case ConnectionState.done:
+              {
+                HeaderPageModel model = HeaderPageModel.fromJson(
+                    snapshot.data!.docs[pageIndex].data()
+                    as Map<String, dynamic>);
+                Widget imageItem =  ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child:  Opacity(
+                    opacity: 0.65,
+                    child: ImageView(image: model.imageUrl,loading: true,width:double.infinity,height: double.infinity,),
+                  ),
+
+                );
+                if (snapshot.hasData) {
+                  return imageItem;
+                } else {
+                  return Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Opacity(
+                          opacity: 0.12,
+                          child: Icon(
+                            Icons.location_city_rounded,
+                            size: 150,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          s.kBetnaHomePageHeroIllustrationText,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            letterSpacing: 1.1,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              }
+          }
+        },
       ),
     );
   }
 }
-// -------- Social Button --------
 
+// -------- Social Button --------
 class _SocialButton extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -687,7 +845,7 @@ class _InfoTile extends StatelessWidget {
     final isWide = MediaQuery.of(context).size.width > 700;
 
     return SizedBox(
-      width: isWide ? 320 : double.infinity,
+      width: isWide ? 300 : double.infinity,
       child: Card(
         elevation: 2,
         shape: RoundedRectangleBorder(
@@ -697,11 +855,12 @@ class _InfoTile extends StatelessWidget {
           padding: const EdgeInsets.all(14.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: kSoftChip.withAlpha(60),
+                  color: kSoftChip.withAlpha(90),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
@@ -717,16 +876,15 @@ class _InfoTile extends StatelessWidget {
                   children: [
                     Text(
                       title,
-
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.w600,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w400,
+                        fontSize: FontSize.scale(context, 12),
                           ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             color: Colors.grey.shade700,
                             height: 1.5,
                           ),

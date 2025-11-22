@@ -1864,11 +1864,21 @@ class S {
     );
   }
 
-  /// `Send SMS code`
+  /// `Send code via SMS`
   String get kSaleRequestTextVerificationSendCodePhone {
     return Intl.message(
-      'Send SMS code',
+      'Send code via SMS',
       name: 'kSaleRequestTextVerificationSendCodePhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send code via email `
+  String get kSaleRequestTextVerificationSendCodeEmail {
+    return Intl.message(
+      'Send code via email ',
+      name: 'kSaleRequestTextVerificationSendCodeEmail',
       desc: '',
       args: [],
     );
@@ -1904,20 +1914,30 @@ class S {
     );
   }
 
-  /// `✅ Phone number verified`
+  /// `Confirm Email`
+  String get kSaleRequestTextVerificationFieldConfirmEmail {
+    return Intl.message(
+      'Confirm Email',
+      name: 'kSaleRequestTextVerificationFieldConfirmEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number verified`
   String get kSaleRequestTextVerificationOkPhone {
     return Intl.message(
-      '✅ Phone number verified',
+      'Phone number verified',
       name: 'kSaleRequestTextVerificationOkPhone',
       desc: '',
       args: [],
     );
   }
 
-  /// `✅ Email verified`
+  /// `Email verified`
   String get kSaleRequestTextVerificationOkEmail {
     return Intl.message(
-      '✅ Email verified',
+      'Email verified',
       name: 'kSaleRequestTextVerificationOkEmail',
       desc: '',
       args: [],
@@ -1974,10 +1994,10 @@ class S {
     );
   }
 
-  /// `SMS sending failed`
+  /// `SMS sending failed Invalid format`
   String get kSaleRequestTextVerificationPhoneMessage2 {
     return Intl.message(
-      'SMS sending failed',
+      'SMS sending failed Invalid format',
       name: 'kSaleRequestTextVerificationPhoneMessage2',
       desc: '',
       args: [],
@@ -2152,6 +2172,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `country`
+  String get kCountry {
+    return Intl.message('country', name: 'kCountry', desc: '', args: []);
   }
 
   /// `E-Contract`
@@ -2999,10 +3024,10 @@ class S {
     );
   }
 
-  /// `Website`
+  /// `Location`
   String get kBetnaHomePageSocialWebsite {
     return Intl.message(
-      'Website',
+      'Location',
       name: 'kBetnaHomePageSocialWebsite',
       desc: '',
       args: [],
@@ -3039,10 +3064,10 @@ class S {
     );
   }
 
-  /// `Deep understanding of the real estate market in Istanbul and its surrounding areas.`
+  /// `Deep understanding of real estate market in Istanbul`
   String get kBetnaHomePageInfoCard2Subtitle {
     return Intl.message(
-      'Deep understanding of the real estate market in Istanbul and its surrounding areas.',
+      'Deep understanding of real estate market in Istanbul',
       name: 'kBetnaHomePageInfoCard2Subtitle',
       desc: '',
       args: [],
@@ -3089,10 +3114,10 @@ class S {
     );
   }
 
-  /// `Submit a Sale Request`
+  /// `Sale Request`
   String get kBetnaHomePageSubmitSaleRequest {
     return Intl.message(
-      'Submit a Sale Request',
+      'Sale Request',
       name: 'kBetnaHomePageSubmitSaleRequest',
       desc: '',
       args: [],

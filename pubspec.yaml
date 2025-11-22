@@ -121,6 +121,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/istanbul_neighborhoods.json
+    - assets/countries.json
     - assets/logo/
     - assets/images/
     - assets/flags/

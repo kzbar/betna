@@ -185,7 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kBath": MessageLookupByLibrary.simpleMessage("banyo"),
     "kBathrooms": MessageLookupByLibrary.simpleMessage("banyolar"),
     "kBetnaHomePageBrowseOffers": MessageLookupByLibrary.simpleMessage(
-      "Tekliflere Göz Atın",
+      "Tekliflere",
     ),
     "kBetnaHomePageFooter": m0,
     "kBetnaHomePageHeroIllustrationTag": MessageLookupByLibrary.simpleMessage(
@@ -257,13 +257,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Instagram",
     ),
     "kBetnaHomePageSocialWebsite": MessageLookupByLibrary.simpleMessage(
-      "Web sitesi",
+      "Kounum",
     ),
     "kBetnaHomePageSocialWhatsapp": MessageLookupByLibrary.simpleMessage(
       "WhatsApp",
     ),
     "kBetnaHomePageSubmitSaleRequest": MessageLookupByLibrary.simpleMessage(
-      "Satış Talebi Gönderin",
+      "Satış Talebi",
     ),
     "kCallNow": MessageLookupByLibrary.simpleMessage("Şimdi ara"),
     "kCancelSearch": MessageLookupByLibrary.simpleMessage("Aramayı iptal et"),
@@ -281,6 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kContractList": MessageLookupByLibrary.simpleMessage("Sözleşme listesi"),
     "kContractValidity": MessageLookupByLibrary.simpleMessage("Kontrat süresi"),
+    "kCountry": MessageLookupByLibrary.simpleMessage("ülke"),
     "kDateAdded": MessageLookupByLibrary.simpleMessage("İlan Tarihi"),
     "kDaysAgo": m1,
     "kDeleteMessage": m2,
@@ -563,6 +564,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Bu e-posta adresiyle daha önce kaydedilmiş bir sipariş bulunmaktadır. Siparişi değiştirmek isterseniz lütfen destek ekibiyle iletişime geçin.",
         ),
+    "kSaleRequestTextVerificationFieldConfirmEmail":
+        MessageLookupByLibrary.simpleMessage("E-posta Onayla"),
     "kSaleRequestTextVerificationFieldConfirmPhone":
         MessageLookupByLibrary.simpleMessage("Telefon numarasını onayla"),
     "kSaleRequestTextVerificationFieldMail":
@@ -598,10 +601,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "E-posta adresi",
     ),
     "kSaleRequestTextVerificationOkEmail": MessageLookupByLibrary.simpleMessage(
-      "✅ E-posta doğrulandı",
+      "E-posta doğrulandı",
     ),
     "kSaleRequestTextVerificationOkPhone": MessageLookupByLibrary.simpleMessage(
-      "✅ Telefon numarası doğrulandı",
+      "Telefon numarası doğrulandı",
     ),
     "kSaleRequestTextVerificationPhoneMessage1":
         MessageLookupByLibrary.simpleMessage("Önce telefon numaranızı girin."),
@@ -636,8 +639,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextVerificationSend": MessageLookupByLibrary.simpleMessage(
       "Kod gönder",
     ),
+    "kSaleRequestTextVerificationSendCodeEmail":
+        MessageLookupByLibrary.simpleMessage("Kodu e-posta yoluyla gönder"),
     "kSaleRequestTextVerificationSendCodePhone":
-        MessageLookupByLibrary.simpleMessage("SMS kodunu gönder"),
+        MessageLookupByLibrary.simpleMessage("Kodu SMS yoluyla gönder"),
     "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
       "Doğrulama yöntemi",
     ),

@@ -15,6 +15,30 @@ class Style {
 
 }
 
+class FontSize {
+  static double scale(BuildContext context, double fontSize) {
+    final width = MediaQuery.of(context).size.width;
+
+    // هاتف صغير
+    if (width < 400) {
+      return fontSize * 0.90;
+    }
+
+    // هاتف كبير
+    if (width < 600) {
+      return fontSize * 1.0;
+    }
+
+    // تابلت
+    if (width < 900) {
+      return fontSize * 1.15;
+    }
+
+    // شاشة كمبيوتر
+    return fontSize * 1.30;
+  }
+}
+
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
     hexColor = hexColor.toUpperCase().replaceAll("#", "");

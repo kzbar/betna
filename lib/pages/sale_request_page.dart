@@ -1,9 +1,14 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:betna/pages/betna_home_page.dart';
+import 'package:betna/providers/country_provider.dart';
+import 'package:betna/providers/istanbul_repository.dart';
 import 'package:betna/setup/enumerators.dart';
 import 'package:betna/setup/main_provider.dart';
 import 'package:betna/style/style.dart';
+import 'package:betna/widgets/country_dropdown.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,7 +18,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-import 'generated/l10n.dart';
+import '../generated/l10n.dart';
 
 enum OccupancyStatus { vacant, rented, owner }
 
@@ -104,7 +109,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
   final _formKey = GlobalKey<FormState>();
 
   // Controllers
-  final TextEditingController _neighborhoodCtrl = TextEditingController();
+
   final TextEditingController _streetCtrl = TextEditingController();
   final TextEditingController _totalAreaCtrl = TextEditingController();
   final TextEditingController _floorCtrl = TextEditingController();
@@ -115,81 +120,42 @@ class _RequestFormPageState extends State<RequestFormPage> {
   final TextEditingController _contactEmailCtrl = TextEditingController();
   final TextEditingController _complexNameCtrl = TextEditingController();
   final TextEditingController _codeInputCtrl = TextEditingController();
-
-  //firebase functions:config:set sendgrid.key="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" sendgrid.from="info@betna.com"
+  final TextEditingController _phoneCodeCtrl = TextEditingController();
+  final TextEditingController _emailCodeCtrl = TextEditingController();
 
   final apikey =
       "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";
   ConfirmationResult? _webConfirmationResult;
+
   bool _requestSubmitted = false;
+  bool _isVerificationMethodComplete = false;
 
   // Phone Auth
   String? _phoneVerificationId;
   bool _isPhoneVerified = false;
+  bool _isEmaileVerified = false;
   bool _sendingPhoneCode = false;
   bool _verifyingPhoneCode = false;
-  final TextEditingController _phoneCodeCtrl = TextEditingController();
 
   // Email OTP
   bool _emailCodeSent = false;
   String _generatedEmailCode = '';
   bool _verifyingEmailCode = false;
-  final TextEditingController _emailCodeCtrl = TextEditingController();
 
   VerificationMethod? _verificationMethod;
   bool _submitting = false;
-
   final Random _random = Random.secure();
-
-  String? _district; // منطقة إسطنبول
   String? _rooms; // عدد الغرف
+  String? _floor;
+  String? _age;
+
   bool _inResidenceComplex = false; // ضمن مجمع سكني؟
-  //String _occupancy = 'فارغ'; // حالة الإشغال
-
+  Map<String, List<String>> _neighborhoodsByDistrict = {};
+  bool _isLoadingMap = true;
+  String? _selectedDistrict;
+  String? _selectedNeighborhood;
   OccupancyStatus _occupancy = OccupancyStatus.vacant;
-
   VerificationState state = VerificationState.none;
-
-  final List<String> _districts = const [
-    'Adalar',
-    'Arnavutköy',
-    'Ataşehir',
-    'Avcılar',
-    'Bağcılar',
-    'Bahçelievler',
-    'Bakırköy',
-    'Başakşehir',
-    'Bayrampaşa',
-    'Beşiktaş',
-    'Beykoz',
-    'Beylikdüzü',
-    'Beyoğlu',
-    'Büyükçekmece',
-    'Çatalca',
-    'Çekmeköy',
-    'Esenler',
-    'Esenyurt',
-    'Eyüpsultan',
-    'Fatih',
-    'Gaziosmanpaşa',
-    'Güngören',
-    'Kadıköy',
-    'Kağıthane',
-    'Kartal',
-    'Küçükçekmece',
-    'Maltepe',
-    'Pendik',
-    'Sancaktepe',
-    'Sarıyer',
-    'Şile',
-    'Şişli',
-    'Sultanbeyli',
-    'Sultangazi',
-    'Tuzla',
-    'Ümraniye',
-    'Üsküdar',
-    'Zeytinburnu'
-  ];
 
   final List<String> _roomTypes = const [
     '1+0',
@@ -200,14 +166,76 @@ class _RequestFormPageState extends State<RequestFormPage> {
     '5+1',
     '2+2',
     '3+2',
-    '4+2'
+    '4+2',
+    '5+2',
+    '3+3',
+    '4+3',
+    '5+3',
+    'villa',
+    'other'
   ];
+  final List<String> _floorsList = const[
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30+',
+  ];
+  final List<String> _agesList = const[
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11-15',
+    '15-20',
+    '21-25',
+    '26-30',
+    '31+'
+  ];
+
   static const String kVerificationFunctionUrl =
       'https://us-central1-kira-contract.cloudfunctions.net/sendVerificationCode';
 
   @override
+  void initState() {
+    _loadNeighborhoodData();
+    super.initState();
+  }
+
+  @override
   void dispose() {
-    _neighborhoodCtrl.dispose();
     _streetCtrl.dispose();
     _totalAreaCtrl.dispose();
     _floorCtrl.dispose();
@@ -221,6 +249,21 @@ class _RequestFormPageState extends State<RequestFormPage> {
     _phoneCodeCtrl.dispose();
     _emailCodeCtrl.dispose();
     super.dispose();
+  }
+
+  Future<void> _loadNeighborhoodData() async {
+    try {
+      final map = await loadNeighborhoodsByDistrict();
+      setState(() {
+        _neighborhoodsByDistrict = map;
+        _isLoadingMap = false;
+      });
+    } catch (e) {
+      // You can show a snackbar or error widget
+      setState(() {
+        _isLoadingMap = false;
+      });
+    }
   }
 
   Future<void> _sendPhoneCodeWeb() async {
@@ -410,7 +453,9 @@ class _RequestFormPageState extends State<RequestFormPage> {
       return;
     }
 
-    setState(() => _verifyingEmailCode = true);
+    setState(() { _verifyingEmailCode = true;
+    state = VerificationState.onSending;
+    });
 
     try {
       final code = 100000 + _random.nextInt(900000);
@@ -436,12 +481,15 @@ class _RequestFormPageState extends State<RequestFormPage> {
 
       if (res.statusCode != 200) {
         if (kDebugMode) {
+          state = VerificationState.none;
           print(res.body);
         }
         throw Exception('Failed to send email code: ${res.body}');
       }
 
-      setState(() => _emailCodeSent = true);
+      setState(() { _emailCodeSent = true;
+      state = VerificationState.onSendCompleted;
+      });
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -453,6 +501,9 @@ class _RequestFormPageState extends State<RequestFormPage> {
       );
     } catch (e) {
       if (!mounted) return;
+      setState(() {
+        state = VerificationState.none;
+      });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
             backgroundColor: Colors.white,
@@ -464,6 +515,34 @@ class _RequestFormPageState extends State<RequestFormPage> {
     } finally {
       if (mounted) setState(() => _verifyingEmailCode = false);
     }
+  }
+
+  Future<void> _verifyEmailCode() async {
+
+    if (!_emailCodeSent) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content:
+            Text(S
+                .of(context)
+                .kSaleRequestTextVerificationMessage4)),
+      );
+      return;
+    }
+    if (_emailCodeCtrl.text.trim() != _generatedEmailCode) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content:
+            Text(S.of(context).kSaleRequestTextVerificationMessage5)),
+      );
+      return;
+    }
+    setState(() {
+      state = VerificationState.onVerifyCompleted;
+      _isEmaileVerified = true;
+      _isVerificationMethodComplete = true;
+      _verifyingEmailCode = false;
+    });
   }
 
   Future<void> _sendPhoneCode() async {
@@ -479,8 +558,13 @@ class _RequestFormPageState extends State<RequestFormPage> {
       );
       return;
     }
-    final normalizedPhone = rawPhone.toLowerCase();
-    final fingerprintId = contactFingerprint(normalizedPhone);
+    final normalizedPhone = normalizePhoneInternational(rawPhone.toLowerCase());
+    final countryProvider =
+        Provider.of<CountryProvider>(context, listen: false);
+    final phoneCode = countryProvider.selectedPhoneCode;
+    final phoneWithCode = '$phoneCode$normalizedPhone';
+    debugPrint(phoneWithCode);
+    final fingerprintId = contactFingerprint(phoneWithCode);
     try {
       final existingDoc = await FirebaseFirestore.instance
           .collection('sale_requests')
@@ -515,7 +599,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
 
     try {
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: rawPhone,
+        phoneNumber: phoneWithCode,
         // يجب أن يكون بصيغة دولية +90..., +966..., إلخ
         verificationCompleted: (PhoneAuthCredential credential) async {
           // في الويب غالباً لن يحدث تلقائي، لكن نحتفظ به
@@ -528,7 +612,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
                 content: Text(
-              '${S.of(context).kSaleRequestTextVerificationPhoneMessage2} $e',
+              S.of(context).kSaleRequestTextVerificationPhoneMessage2,
               style: customStyle(
                   appProvider, 14, Colors.black, FontWeight.w400, 1.5, 0.5),
             )),
@@ -537,6 +621,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
         codeSent: (String verificationId, int? resendToken) {
           setState(() {
             _phoneVerificationId = verificationId;
+            state = VerificationState.onSendCompleted;
           });
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -554,7 +639,6 @@ class _RequestFormPageState extends State<RequestFormPage> {
     } finally {
       if (mounted) {
         setState(() {
-          state = VerificationState.onSendCompleted;
           _sendingPhoneCode = false;
         });
       }
@@ -604,6 +688,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
       setState(() {
         _isPhoneVerified = true;
         state = VerificationState.onVerifyCompleted;
+        _isVerificationMethodComplete = true;
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -630,7 +715,6 @@ class _RequestFormPageState extends State<RequestFormPage> {
       if (mounted) {
         setState(() {
           _verifyingPhoneCode = false;
-          state = VerificationState.onVerifyCompleted;
         });
       }
     }
@@ -675,19 +759,11 @@ class _RequestFormPageState extends State<RequestFormPage> {
       primaryValue = user!.phoneNumber!;
     } else {
       // email
-      if (!_emailCodeSent) {
+      if (!_isEmaileVerified) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content:
                   Text(S.of(context).kSaleRequestTextVerificationMessage4)),
-        );
-        return;
-      }
-      if (_emailCodeCtrl.text.trim() != _generatedEmailCode) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content:
-                  Text(S.of(context).kSaleRequestTextVerificationMessage5)),
         );
         return;
       }
@@ -701,8 +777,8 @@ class _RequestFormPageState extends State<RequestFormPage> {
       final fingerprintId = contactFingerprint(primaryValue);
 
       final data = {
-        'district': _district,
-        'neighborhood': _neighborhoodCtrl.text.trim(),
+        'district': _selectedDistrict,
+        'neighborhood': _selectedNeighborhood,
         'street': _streetCtrl.text.trim(),
         'rooms': _rooms,
         'totalAreaSqm':
@@ -764,14 +840,15 @@ class _RequestFormPageState extends State<RequestFormPage> {
     String cleaned = raw.trim();
     // 1) إذا بدأت بـ 00 حوّلها إلى +
     if (cleaned.startsWith('00')) {
-      cleaned = '+${cleaned.substring(2)}';
+      cleaned = cleaned.substring(2);
+    }
+    if (cleaned.startsWith('0')) {
+      cleaned = cleaned.substring(1);
     }
     // 2) إزالة كل شيء ما عدا الأرقام و +
     cleaned = cleaned.replaceAll(RegExp(r'[^0-9+]'), '');
     // 3) لو ما في + في البداية، أضف واحد
-    if (!cleaned.startsWith('+')) {
-      cleaned = '+$cleaned';
-    }
+
     // 4) تأكد أن + واحد فقط في البداية (لو المستخدم كتب ++ مثلاً)
     cleaned = cleaned.replaceFirst(RegExp(r'^\++'), '+');
     return cleaned;
@@ -782,19 +859,6 @@ class _RequestFormPageState extends State<RequestFormPage> {
     if (raw.isEmpty) {
       return S.of(context).kSaleRequestTextFieldErrorMessage13;
     }
-    final normalized = normalizePhoneInternational(raw);
-    // يجب أن يبدأ بـ +
-    if (!normalized.startsWith('+')) {
-      return S.of(context).kSaleRequestTextFieldErrorPhone3;
-    }
-    // فقط + والأرقام
-    if (!RegExp(r'^\+[0-9]+$').hasMatch(normalized)) {
-      return S.of(context).kSaleRequestTextFieldErrorPhone2;
-    }
-    // طول تقريبي معقول لأرقام دولية
-    if (normalized.length < 8 || normalized.length > 16) {
-      return S.of(context).kSaleRequestTextFieldErrorPhone1;
-    }
     // إذا وصلنا هنا فهو مقبول
     return null;
   }
@@ -804,123 +868,8 @@ class _RequestFormPageState extends State<RequestFormPage> {
     return sha256.convert(bytes).toString();
   }
 
-  Future<void> sendVerificationCode({
-    required VerificationMethod method,
-    required String destination,
-    required String code,
-  }) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-  }
-
   Widget? fieldPhone(bool isWide) {
-    final appProvider = Provider.of<MainProvider>(context);
-    // _fieldSized(
-    //   isWide,
-    //   Row(
-    //     children: [
-    //       Expanded(
-    //         child: TextFormField(
-    //           controller:
-    //           _phoneCodeCtrl,
-    //           keyboardType:
-    //           TextInputType.number,
-    //           decoration: InputDecoration(
-    //               errorStyle:
-    //               customStyle(
-    //                   appProvider,
-    //                   12,
-    //                   Colors.red,
-    //                   FontWeight
-    //                       .w300,
-    //                   1.5,
-    //                   0.5),
-    //               labelStyle:
-    //               customStyle(
-    //                   appProvider,
-    //                   14,
-    //                   Colors.black,
-    //                   FontWeight
-    //                       .w500,
-    //                   1.5,
-    //                   0.5),
-    //               labelText: S
-    //                   .of(context)
-    //                   .kSaleRequestTextVerificationFieldPhone),
-    //         ),
-    //       ),
-    //       const SizedBox(width: 8),
-    //       Expanded(
-    //           child: OutlinedButton(
-    //             onPressed: _sendingPhoneCode
-    //                 ? null
-    //                 : _sendPhoneCode,
-    //             child: _sendingPhoneCode
-    //                 ? const SizedBox(
-    //                 width: 18,
-    //                 height: 18,
-    //                 child:
-    //                 CircularProgressIndicator(
-    //                     strokeWidth:
-    //                     2))
-    //                 : Text(
-    //                 S
-    //                     .of(context)
-    //                     .kSaleRequestTextVerificationSendCodePhone,
-    //                 style: customStyle(
-    //                     appProvider,
-    //                     14,
-    //                     Colors.black,
-    //                     FontWeight.w500,
-    //                     1.5,
-    //                     0.5)),
-    //           )),
-    //       const SizedBox(width: 8),
-    //       Expanded(
-    //           child: FilledButton(
-    //             style: ButtonStyle(
-    //                 backgroundColor:
-    //                 WidgetStateProperty
-    //                     .all(Style
-    //                     .primaryColors)),
-    //             onPressed:
-    //             _verifyingPhoneCode
-    //                 ? null
-    //                 : _verifyPhoneCode,
-    //             child: _verifyingPhoneCode
-    //                 ? const SizedBox(
-    //                 width: 18,
-    //                 height: 18,
-    //                 child:
-    //                 CircularProgressIndicator(
-    //                     strokeWidth:
-    //                     2))
-    //                 : Text(
-    //                 S
-    //                     .of(context)
-    //                     .kSaleRequestTextVerificationFieldConfirmPhone,
-    //                 style: customStyle(
-    //                     appProvider,
-    //                     14,
-    //                     Colors.white,
-    //                     FontWeight.w500,
-    //                     1.5,
-    //                     0.5)),
-    //           )),
-    //     ],
-    //   ),
-    // ),
-    // if (_isPhoneVerified)
-    // Text(
-    // S
-    //     .of(context)
-    //     .kSaleRequestTextVerificationOkPhone,
-    // style: customStyle(
-    // appProvider,
-    // 16,
-    // Colors.black,
-    // FontWeight.w500,
-    // 1.5,
-    // 0.5)),
+    final theme = Theme.of(context);
     switch (state) {
       case VerificationState.onSending:
         return _fieldSized(
@@ -976,9 +925,31 @@ class _RequestFormPageState extends State<RequestFormPage> {
                   width: 18,
                   height: 18,
                 )),
+
                 Text(S.of(context).kSaleRequestTextVerificationOkPhone,
-                    style: customStyle(appProvider, 16, Colors.black,
-                        FontWeight.w500, 1.5, 0.5)),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400)),
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.green.shade600,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.green.shade200,
+                        blurRadius: 12,
+                        offset: const Offset(0, 6),
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.check_rounded,
+                    color: Colors.white,
+                    size: 12,
+                  ),
+                ),
                 Expanded(
                     child: SizedBox(
                   width: 18,
@@ -996,10 +967,19 @@ class _RequestFormPageState extends State<RequestFormPage> {
                     controller: _phoneCodeCtrl,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                        errorStyle: customStyle(appProvider, 12, Colors.red,
-                            FontWeight.w300, 1.5, 0.5),
-                        labelStyle: customStyle(appProvider, 14, Colors.black,
-                            FontWeight.w500, 1.5, 0.5),
+                        errorStyle: theme.textTheme.bodyMedium?.copyWith(
+                            fontSize: 10,
+                            color: Colors.red,
+                            fontWeight: FontWeight.w200),
+                        floatingLabelStyle: theme.textTheme.bodyMedium
+                            ?.copyWith(
+                                fontSize: 14,
+                                color: kPrimaryLight,
+                                fontWeight: FontWeight.w600),
+                        labelStyle: theme.textTheme.bodyMedium?.copyWith(
+                            fontSize: FontSize.scale(context, 6),
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400),
                         labelText: S
                             .of(context)
                             .kSaleRequestTextVerificationFieldPhone),
@@ -1016,8 +996,10 @@ class _RequestFormPageState extends State<RequestFormPage> {
                       S
                           .of(context)
                           .kSaleRequestTextVerificationFieldConfirmPhone,
-                      style: customStyle(appProvider, 14, Colors.white,
-                          FontWeight.w500, 1.5, 0.5)),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                          fontSize: FontSize.scale(context, 6),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w300)),
                 ))
               ],
             ));
@@ -1031,16 +1013,191 @@ class _RequestFormPageState extends State<RequestFormPage> {
               onPressed: _sendPhoneCode,
               child: Text(
                   S.of(context).kSaleRequestTextVerificationSendCodePhone,
-                  style: customStyle(appProvider, 14, Colors.white,
-                      FontWeight.w500, 1.5, 0.5)),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400)),
             ));
     }
-    return null;
+  }
+
+  Widget? fieldEmail(bool isWide) {
+    final theme = Theme.of(context);
+    switch (state) {
+      case VerificationState.onSending:
+        return _fieldSized(
+            isWide,
+            Row(
+              children: [
+                Expanded(
+                    child: SizedBox(
+                      width: 18,
+                      height: 18,
+                    )),
+                SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2)),
+                Expanded(
+                    child: SizedBox(
+                      width: 18,
+                      height: 18,
+                    )),
+              ],
+            ));
+
+      case VerificationState.onVerifying:
+        return _fieldSized(
+            isWide,
+            Row(
+              children: [
+                Expanded(
+                    child: SizedBox(
+                      width: 18,
+                      height: 18,
+                    )),
+                SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2)),
+                Expanded(
+                    child: SizedBox(
+                      width: 18,
+                      height: 18,
+                    )),
+              ],
+            ));
+
+      case VerificationState.onVerifyCompleted:
+        return _fieldSized(
+            isWide,
+            Row(
+              children: [
+                Expanded(
+                    child: SizedBox(
+                      width: 18,
+                      height: 18,
+                    )),
+
+                Text(
+                  S.of(context)
+                      .kSaleRequestTextVerificationOkEmail,
+                  style: theme
+                      .textTheme.bodyMedium
+                      ?.copyWith(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight:
+                      FontWeight.w400),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.green.shade600,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.green.shade200,
+                        blurRadius: 12,
+                        offset: const Offset(0, 6),
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.check_rounded,
+                    color: Colors.white,
+                    size: 12,
+                  ),
+                ),
+                Expanded(
+                    child: SizedBox(
+                      width: 18,
+                      height: 18,
+                    )),
+              ],
+            ));
+      case VerificationState.onSendCompleted:
+        return _fieldSized(
+            isWide,
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: _emailCodeCtrl,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                        errorStyle: theme.textTheme.bodyMedium?.copyWith(
+                            fontSize: 10,
+                            color: Colors.red,
+                            fontWeight: FontWeight.w200),
+                        floatingLabelStyle: theme.textTheme.bodyMedium
+                            ?.copyWith(
+                            fontSize: 14,
+                            color: kPrimaryLight,
+                            fontWeight: FontWeight.w600),
+                        labelStyle: theme.textTheme.bodyMedium?.copyWith(
+                            fontSize: FontSize.scale(context, 6),
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400),
+                        labelText: S
+                            .of(context)
+                            .kSaleRequestTextVerificationFieldMail),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                    child: FilledButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                          WidgetStateProperty.all(Style.primaryColors)),
+                      onPressed: _verifyEmailCode,
+                      child: Text(
+                          S
+                              .of(context)
+                              .kSaleRequestTextVerificationFieldConfirmPhone,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                              fontSize: FontSize.scale(context, 6),
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300)),
+                    ))
+              ],
+            ));
+      case VerificationState.none:
+        return _fieldSized(
+            isWide,
+            FilledButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                  WidgetStateProperty.all(Style.primaryColors)),
+              onPressed: _sendEmailCode,
+              child: Text(
+                  S.of(context).kSaleRequestTextVerificationSendCodeEmail,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400)),
+            ));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final appProvider = Provider.of<MainProvider>(context);
+    if (_isLoadingMap) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    if (_neighborhoodsByDistrict.isEmpty) {
+      return const Center(
+        child: Text('No neighborhood data found'),
+      );
+    }
+    final districts = _neighborhoodsByDistrict.keys.toList()..sort();
+    final neighborhoods = _selectedDistrict == null
+        ? <String>[]
+        : (_neighborhoodsByDistrict[_selectedDistrict] ?? <String>[])
+      ..sort();
+
     return Scaffold(
       body: AnimatedContainer(
         duration: Duration(milliseconds: 400),
@@ -1058,7 +1215,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
                 child: Center(
                   child: SingleChildScrollView(
                     child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 980),
+                      constraints: const BoxConstraints(maxWidth: 720),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 32),
@@ -1079,25 +1236,21 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                     Text(
                                       S.of(context).kSaleRequestTextFieldTitle,
                                       textAlign: TextAlign.center,
-                                      style: customStyle(
-                                          appProvider,
-                                          28,
-                                          Colors.black,
-                                          FontWeight.w700,
-                                          1.2,
-                                          0.5),
+                                      style: theme.textTheme.titleMedium
+                                          ?.copyWith(
+                                              fontSize: 28,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w700),
                                     ),
-                                    const SizedBox(height: 6),
+                                    const SizedBox(height: 12),
                                     Text(
                                       S.of(context).kSaleRequestTextFieldDec,
                                       textAlign: TextAlign.center,
-                                      style: customStyle(
-                                          appProvider,
-                                          16,
-                                          Colors.grey.shade700,
-                                          FontWeight.w700,
-                                          1.5,
-                                          0.5),
+                                      style: theme.textTheme.titleLarge
+                                          ?.copyWith(
+                                              fontSize: 18,
+                                              color: Colors.black38,
+                                              fontWeight: FontWeight.w500),
                                     ),
                                     const SizedBox(height: 24),
                                     LayoutBuilder(
@@ -1112,26 +1265,34 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                             _fieldSized(
                                               isWide,
                                               DropdownButtonFormField<String>(
-                                                value: _district,
+                                                value: _selectedDistrict,
                                                 decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    errorStyle: theme
+                                                        .textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField1),
-                                                items: _districts
+                                                items: districts
                                                     .map(
                                                         (d) => DropdownMenuItem(
                                                             value: d,
@@ -1148,8 +1309,13 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                                   0.5),
                                                             )))
                                                     .toList(),
-                                                onChanged: (v) => setState(
-                                                    () => _district = v),
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    _selectedDistrict = value;
+                                                    _selectedNeighborhood =
+                                                        null; // reset neighborhood
+                                                  });
+                                                },
                                                 validator: (v) => v == null
                                                     ? S
                                                         .of(context)
@@ -1159,41 +1325,67 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                             ),
                                             _fieldSized(
                                               isWide,
-                                              TextFormField(
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
-                                                controller: _neighborhoodCtrl,
+                                              DropdownButtonFormField<String>(
+                                                value: _selectedNeighborhood,
                                                 decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    errorStyle: theme
+                                                        .textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField2),
-                                                validator: (v) => (v == null ||
-                                                        v.trim().isEmpty)
+                                                items: neighborhoods
+                                                    .map(
+                                                        (d) => DropdownMenuItem(
+                                                            value: d,
+                                                            child: Text(
+                                                              d,
+                                                              style: customStyle(
+                                                                  appProvider,
+                                                                  12,
+                                                                  Colors.grey
+                                                                      .shade700,
+                                                                  FontWeight
+                                                                      .w500,
+                                                                  1.5,
+                                                                  0.5),
+                                                            )))
+                                                    .toList(),
+                                                onChanged: neighborhoods.isEmpty
+                                                    ? null
+                                                    : (value) {
+                                                        setState(() {
+                                                          _selectedNeighborhood =
+                                                              value;
+                                                        });
+                                                      },
+                                                validator: (v) => v == null
                                                     ? S
                                                         .of(context)
                                                         .kSaleRequestTextFieldErrorMessage2
                                                     : null,
                                               ),
                                             ),
+
                                             _fieldSized(
                                               isWide,
                                               TextFormField(
@@ -1206,20 +1398,28 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                     0.5),
                                                 controller: _streetCtrl,
                                                 decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    errorStyle: theme
+                                                        .textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField3),
@@ -1236,20 +1436,28 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                               DropdownButtonFormField<String>(
                                                 value: _rooms,
                                                 decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    errorStyle: theme
+                                                        .textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField4),
@@ -1268,6 +1476,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                     : null,
                                               ),
                                             ),
+
                                             _fieldSized(
                                               isWide,
                                               TextFormField(
@@ -1276,28 +1485,36 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                     const TextInputType
                                                         .numberWithOptions(
                                                         decimal: true),
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
+                                                style: theme
+                                                    .textTheme.bodyMedium
+                                                    ?.copyWith(
+                                                        fontSize: 14,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w400),
                                                 decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    errorStyle: theme
+                                                        .textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField5),
@@ -1318,102 +1535,106 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                             ),
                                             _fieldSized(
                                               isWide,
-                                              TextFormField(
-                                                controller: _floorCtrl,
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
+                                              DropdownButtonFormField<String>(
+                                                value: _floor,
                                                 decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    errorStyle: theme
+                                                        .textTheme.bodySmall
+                                                        ?.copyWith(
+                                                        fontSize: 10,
+                                                        color: Colors.red,
+                                                        fontWeight: FontWeight
+                                                            .w200),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                        fontSize: 14,
+                                                        color:
+                                                        kPrimaryLight,
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                        fontSize: 14,
+                                                        color: Colors.black,
+                                                        fontWeight: FontWeight
+                                                            .w400),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField6),
-                                                validator: (v) {
-                                                  final parsed =
-                                                      int.tryParse(v ?? '');
-                                                  if (parsed == null) {
-                                                    return S
-                                                        .of(context)
-                                                        .kSaleRequestTextFieldErrorMessage6;
-                                                  }
-                                                  return null;
-                                                },
+                                                items: _floorsList
+                                                    .map((r) =>
+                                                    DropdownMenuItem(
+                                                        value: r,
+                                                        child: Text(r)))
+                                                    .toList(),
+                                                onChanged: (v) =>
+                                                    setState(() => _floor = v),
+                                                validator: (v) => v == null
+                                                    ? S
+                                                    .of(context)
+                                                    .kSaleRequestTextFieldErrorMessage6
+                                                    : null,
                                               ),
                                             ),
                                             _fieldSized(
                                               isWide,
-                                              TextFormField(
-                                                controller: _buildingAgeCtrl,
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
+                                              DropdownButtonFormField<String>(
+                                                value: _age,
                                                 decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    errorStyle: theme
+                                                        .textTheme.bodySmall
+                                                        ?.copyWith(
+                                                        fontSize: 10,
+                                                        color: Colors.red,
+                                                        fontWeight: FontWeight
+                                                            .w200),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                        fontSize: 14,
+                                                        color:
+                                                        kPrimaryLight,
+                                                        fontWeight: FontWeight
+                                                            .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                        fontSize: 14,
+                                                        color: Colors.black,
+                                                        fontWeight: FontWeight
+                                                            .w400),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField7),
-                                                validator: (v) {
-                                                  final parsed =
-                                                      int.tryParse(v ?? '');
-                                                  if (parsed == null ||
-                                                      parsed < 0) {
-                                                    return S
-                                                        .of(context)
-                                                        .kSaleRequestTextFieldErrorMessage7;
-                                                  }
-                                                  return null;
-                                                },
+                                                items: _agesList
+                                                    .map((r) =>
+                                                    DropdownMenuItem(
+                                                        value: r,
+                                                        child: Text(r)))
+                                                    .toList(),
+                                                onChanged: (v) =>
+                                                    setState(() => _age = v),
+                                                validator: (v) => v == null
+                                                    ? S
+                                                    .of(context)
+                                                    .kSaleRequestTextFieldErrorMessage7
+                                                    : null,
                                               ),
                                             ),
                                             _fieldSized(
                                               isWide,
                                               SwitchListTileFormField(
                                                 title: Text(
-                                                    style: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
+                                                    style: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
                                                     S
                                                         .of(context)
                                                         .kSaleRequestTextField8),
@@ -1433,28 +1654,35 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                 isWide,
                                                 TextFormField(
                                                   controller: _complexNameCtrl,
-                                                  style: customStyle(
-                                                      appProvider,
-                                                      14,
-                                                      Colors.black,
-                                                      FontWeight.w400,
-                                                      1.5,
-                                                      0.5),
+                                                  style: theme
+                                                      .textTheme.bodyMedium
+                                                      ?.copyWith(
+                                                          fontSize: 14,
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.w400),
                                                   decoration: InputDecoration(
-                                                      errorStyle: customStyle(
-                                                          appProvider,
-                                                          12,
-                                                          Colors.red,
-                                                          FontWeight.w300,
-                                                          1.5,
-                                                          0.5),
-                                                      labelStyle: customStyle(
-                                                          appProvider,
-                                                          14,
-                                                          Colors.black,
-                                                          FontWeight.w500,
-                                                          1.5,
-                                                          0.5),
+                                                      errorStyle: theme
+                                                          .textTheme.bodySmall
+                                                          ?.copyWith(
+                                                              fontSize: 10,
+                                                              color: Colors.red,
+                                                              fontWeight: FontWeight
+                                                                  .w200),
+                                                      floatingLabelStyle: theme
+                                                          .textTheme.bodyMedium
+                                                          ?.copyWith(
+                                                              fontSize: 14,
+                                                              color:
+                                                                  kPrimaryLight,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                      labelStyle: theme.textTheme.bodyMedium?.copyWith(
+                                                          fontSize: 14,
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.w400),
                                                       labelText: S
                                                           .of(context)
                                                           .kSaleRequestTextField9),
@@ -1476,20 +1704,27 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                   OccupancyStatus>(
                                                 value: _occupancy,
                                                 decoration: InputDecoration(
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
+                                                    errorStyle: theme.textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField10),
@@ -1499,14 +1734,15 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                     value: st,
                                                     child: Text(
                                                         st.label(context),
-                                                        style: customStyle(
-                                                            appProvider,
-                                                            12,
-                                                            Colors
-                                                                .grey.shade700,
-                                                            FontWeight.w500,
-                                                            1.5,
-                                                            0.5)),
+                                                        style: theme.textTheme
+                                                            .bodyMedium
+                                                            ?.copyWith(
+                                                                fontSize: 14,
+                                                                color: Colors
+                                                                    .black,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400)),
                                                   );
                                                 }).toList(),
                                                 onChanged: (v) => setState(() =>
@@ -1518,32 +1754,39 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                               isWide,
                                               TextFormField(
                                                 controller: _priceCtrl,
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
+                                                style: theme
+                                                    .textTheme.bodyMedium
+                                                    ?.copyWith(
+                                                        fontSize: 14,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w400),
                                                 keyboardType:
                                                     const TextInputType
                                                         .numberWithOptions(
                                                         decimal: true),
                                                 decoration: InputDecoration(
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
+                                                    errorStyle: theme.textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField11),
@@ -1578,13 +1821,15 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                       S
                                                           .of(context)
                                                           .kSaleRequestTextFieldContactInformation,
-                                                      style: customStyle(
-                                                          appProvider,
-                                                          14,
-                                                          Colors.black,
-                                                          FontWeight.w800,
-                                                          1.5,
-                                                          0.5)),
+                                                      style: theme
+                                                          .textTheme.bodyMedium
+                                                          ?.copyWith(
+                                                              fontSize: 14,
+                                                              color:
+                                                                  Colors.black,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400)),
                                                 ),
                                               ),
                                             ),
@@ -1592,28 +1837,35 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                               isWide,
                                               TextFormField(
                                                 controller: _contactNameCtrl,
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
+                                                style: theme
+                                                    .textTheme.bodyMedium
+                                                    ?.copyWith(
+                                                        fontSize: 14,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w400),
                                                 decoration: InputDecoration(
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
+                                                    errorStyle: theme.textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField12),
@@ -1627,67 +1879,98 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                             ),
                                             _fieldSized(
                                               isWide,
-                                              TextFormField(
-                                                controller: _contactPhoneCtrl,
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
-                                                keyboardType:
-                                                    TextInputType.phone,
-                                                decoration: InputDecoration(
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
-                                                    labelText: S
-                                                        .of(context)
-                                                        .kSaleRequestTextField13),
-                                                validator:
-                                                    validateInternationalPhone,
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 140,
+                                                    child: CountryDropdown(),
+                                                  ),
+                                                  const SizedBox(width: 8),
+                                                  Expanded(
+                                                      child: TextFormField(
+                                                    controller:
+                                                        _contactPhoneCtrl,
+                                                    style: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                    keyboardType:
+                                                        TextInputType.phone,
+                                                    decoration: InputDecoration(
+                                                        errorStyle: theme
+                                                            .textTheme.bodySmall
+                                                            ?.copyWith(
+                                                                fontSize: 10,
+                                                                color:
+                                                                    Colors.red,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w200),
+                                                        floatingLabelStyle: theme
+                                                            .textTheme
+                                                            .bodyMedium
+                                                            ?.copyWith(
+                                                                fontSize: 14,
+                                                                color:
+                                                                    kPrimaryLight,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                        labelStyle: theme
+                                                            .textTheme
+                                                            .bodyMedium
+                                                            ?.copyWith(
+                                                                fontSize: 14,
+                                                                color:
+                                                                    Colors.black,
+                                                                fontWeight: FontWeight.w400),
+                                                        labelText: S.of(context).kSaleRequestTextField13),
+                                                    validator:
+                                                        validateInternationalPhone,
+                                                  ))
+                                                ],
                                               ),
                                             ),
                                             _fieldSized(
                                               isWide,
                                               TextFormField(
                                                 controller: _contactEmailCtrl,
-                                                style: customStyle(
-                                                    appProvider,
-                                                    14,
-                                                    Colors.black,
-                                                    FontWeight.w400,
-                                                    1.5,
-                                                    0.5),
+                                                style: theme
+                                                    .textTheme.bodyMedium
+                                                    ?.copyWith(
+                                                        fontSize: 14,
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w400),
                                                 keyboardType:
                                                     TextInputType.emailAddress,
                                                 decoration: InputDecoration(
-                                                    labelStyle: customStyle(
-                                                        appProvider,
-                                                        14,
-                                                        Colors.black,
-                                                        FontWeight.w500,
-                                                        1.5,
-                                                        0.5),
-                                                    errorStyle: customStyle(
-                                                        appProvider,
-                                                        12,
-                                                        Colors.red,
-                                                        FontWeight.w300,
-                                                        1.5,
-                                                        0.5),
+                                                    floatingLabelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color:
+                                                                kPrimaryLight,
+                                                            fontWeight: FontWeight
+                                                                .w600),
+                                                    labelStyle: theme
+                                                        .textTheme.bodyMedium
+                                                        ?.copyWith(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight
+                                                                .w400),
+                                                    errorStyle: theme.textTheme.bodySmall
+                                                        ?.copyWith(
+                                                            fontSize: 10,
+                                                            color: Colors.red,
+                                                            fontWeight: FontWeight
+                                                                .w200),
                                                     labelText: S
                                                         .of(context)
                                                         .kSaleRequestTextField14),
@@ -1705,182 +1988,122 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                 },
                                               ),
                                             ),
-                                            _fieldSized(
-                                              isWide,
-                                              SizedBox(
-                                                width: constraints.maxWidth,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                        S
-                                                            .of(context)
-                                                            .kSaleRequestTextVerificationTitle,
-                                                        style: customStyle(
-                                                            appProvider,
-                                                            14,
-                                                            Colors.black,
-                                                            FontWeight.w800,
-                                                            1.5,
-                                                            0.5)),
-                                                    Row(
-                                                      children: [
-                                                        Expanded(
-                                                          child: RadioListTile<
-                                                              VerificationMethod>(
-                                                            title: Text(
-                                                              S
-                                                                  .of(context)
-                                                                  .kSaleRequestTextVerificationMethod1,
-                                                              style: customStyle(
-                                                                  appProvider,
-                                                                  14,
-                                                                  Colors.black,
-                                                                  FontWeight
-                                                                      .w400,
-                                                                  1.5,
-                                                                  0.5),
+                                            if(!_isVerificationMethodComplete)...[
+                                              _fieldSized(
+                                                isWide,
+                                                SizedBox(
+                                                  width: constraints.maxWidth,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                          S
+                                                              .of(context)
+                                                              .kSaleRequestTextVerificationTitle,
+                                                          style: theme
+                                                              .textTheme.bodyMedium
+                                                              ?.copyWith(
+                                                              fontSize: FontSize
+                                                                  .scale(
+                                                                  context,
+                                                                  12),
+                                                              color: Colors
+                                                                  .black,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w700)),
+                                                      Row(
+                                                        children: [
+                                                          Expanded(
+                                                            child: RadioListTile<
+                                                                VerificationMethod>(
+                                                              title: Text(
+                                                                S
+                                                                    .of(context)
+                                                                    .kSaleRequestTextVerificationMethod1,
+                                                                style: theme
+                                                                    .textTheme
+                                                                    .bodyMedium
+                                                                    ?.copyWith(
+                                                                    fontSize:
+                                                                    FontSize.scale(
+                                                                        context,
+                                                                        8),
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
+                                                              ),
+                                                              activeColor: Style
+                                                                  .primaryColors,
+                                                              value:
+                                                              VerificationMethod
+                                                                  .phone,
+                                                              groupValue:
+                                                              _verificationMethod,
+                                                              onChanged: (v) =>
+                                                                  setState(() =>
+                                                                  _verificationMethod =
+                                                                      v),
                                                             ),
-                                                            activeColor: Style
-                                                                .primaryColors,
-                                                            value:
-                                                                VerificationMethod
-                                                                    .phone,
-                                                            groupValue:
-                                                                _verificationMethod,
-                                                            onChanged: (v) =>
-                                                                setState(() =>
-                                                                    _verificationMethod =
-                                                                        v),
                                                           ),
-                                                        ),
-                                                        Expanded(
-                                                          child: RadioListTile<
-                                                              VerificationMethod>(
-                                                            title: Text(
-                                                              S
-                                                                  .of(context)
-                                                                  .kSaleRequestTextVerificationMethod2,
-                                                              style: customStyle(
-                                                                  appProvider,
-                                                                  13,
-                                                                  Colors.black,
-                                                                  FontWeight
-                                                                      .w400,
-                                                                  1.5,
-                                                                  0.5),
+                                                          Expanded(
+                                                            child: RadioListTile<
+                                                                VerificationMethod>(
+                                                              title: Text(
+                                                                S
+                                                                    .of(context)
+                                                                    .kSaleRequestTextVerificationMethod2,
+                                                                style: theme
+                                                                    .textTheme
+                                                                    .bodyMedium
+                                                                    ?.copyWith(
+                                                                    fontSize:
+                                                                    FontSize.scale(
+                                                                        context,
+                                                                        8),
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
+                                                              ),
+                                                              activeColor: Style
+                                                                  .primaryColors,
+                                                              value:
+                                                              VerificationMethod
+                                                                  .email,
+                                                              groupValue:
+                                                              _verificationMethod,
+                                                              onChanged: (v) =>
+                                                                  setState(() =>
+                                                                  _verificationMethod =
+                                                                      v),
                                                             ),
-                                                            activeColor: Style
-                                                                .primaryColors,
-                                                            value:
-                                                                VerificationMethod
-                                                                    .email,
-                                                            groupValue:
-                                                                _verificationMethod,
-                                                            onChanged: (v) =>
-                                                                setState(() =>
-                                                                    _verificationMethod =
-                                                                        v),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
+                                            ],
                                             if (_verificationMethod ==
                                                 VerificationMethod.phone) ...[
                                               fieldPhone(isWide)!,
                                             ],
                                             if (_verificationMethod ==
                                                 VerificationMethod.email) ...[
-                                              _fieldSized(
-                                                isWide,
-                                                Row(
-                                                  children: [
-                                                    Expanded(
-                                                      child: TextFormField(
-                                                        controller:
-                                                            _emailCodeCtrl,
-                                                        keyboardType:
-                                                            TextInputType
-                                                                .number,
-                                                        decoration: InputDecoration(
-                                                            errorStyle:
-                                                                customStyle(
-                                                                    appProvider,
-                                                                    12,
-                                                                    Colors.red,
-                                                                    FontWeight
-                                                                        .w300,
-                                                                    1.5,
-                                                                    0.5),
-                                                            labelStyle:
-                                                                customStyle(
-                                                                    appProvider,
-                                                                    14,
-                                                                    Colors
-                                                                        .black,
-                                                                    FontWeight
-                                                                        .w500,
-                                                                    1.5,
-                                                                    0.5),
-                                                            labelText: S
-                                                                .of(context)
-                                                                .kSaleRequestTextVerificationFieldMail),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(width: 8),
-                                                    OutlinedButton(
-                                                      onPressed:
-                                                          _verifyingEmailCode
-                                                              ? null
-                                                              : _sendEmailCode,
-                                                      child: _verifyingEmailCode
-                                                          ? const SizedBox(
-                                                              width: 18,
-                                                              height: 18,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                      strokeWidth:
-                                                                          2))
-                                                          : Text(
-                                                              S
-                                                                  .of(context)
-                                                                  .kSaleRequestTextVerificationSend,
-                                                              style: customStyle(
-                                                                  appProvider,
-                                                                  14,
-                                                                  Colors.black,
-                                                                  FontWeight
-                                                                      .w500,
-                                                                  1.5,
-                                                                  0.5)),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              if (_verifyingEmailCode)
-                                                Text(
-                                                  S
-                                                      .of(context)
-                                                      .kSaleRequestTextVerificationOkEmail,
-                                                  style: customStyle(
-                                                      appProvider,
-                                                      16,
-                                                      Colors.black,
-                                                      FontWeight.w500,
-                                                      1.5,
-                                                      0.5),
-                                                ),
+                                                  fieldEmail(isWide)!,
                                             ]
                                           ],
                                         );
                                       },
                                     ),
                                     const SizedBox(height: 20),
+                                    if(_isVerificationMethodComplete)
                                     FilledButton.icon(
                                       onPressed: _submitting ? null : _submit,
                                       style: FilledButton.styleFrom(
@@ -1895,13 +2118,11 @@ class _RequestFormPageState extends State<RequestFormPage> {
                                                   strokeWidth: 2))
                                           : Icon(Icons.send),
                                       label: Text(
-                                        style: customStyle(
-                                            appProvider,
-                                            14,
-                                            Colors.white,
-                                            FontWeight.w400,
-                                            1.5,
-                                            0.5),
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(
+                                                fontSize: 14,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w400),
                                         _submitting
                                             ? S
                                                 .of(context)
@@ -1927,7 +2148,7 @@ class _RequestFormPageState extends State<RequestFormPage> {
   // Helper to size fields nicely in a responsive grid-like layout
   Widget _fieldSized(bool isWide, Widget child) {
     final width =
-        isWide ? (MediaQuery.of(context).size.width / 2) - 56 : double.infinity;
+        isWide ? (MediaQuery.of(context).size.width / 2) - 48 : double.infinity;
     return SizedBox(width: width, child: child);
   }
 }

@@ -1,6 +1,4 @@
-import 'package:betna/models/company_profile.dart';
-import 'package:betna/models/project_model.dart';
-import 'package:betna/models/sale_ad_model.dart';
+
 import 'package:betna/services/firebase_collections_names.dart';
 import 'package:betna/services/firebase_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -29,14 +27,6 @@ class MainProvider with ChangeNotifier {
 
   /// fetch data from firebase
   FetchDataState fetchDataState = FetchDataState.none;
-  ListNotifier<ProjectModel> projectList =
-      ListNotifier(fetchDataState: Future.value(FetchDataState.wait));
-
-  Future<CompanyProfile?>? profile;
-
-  ListNotifier<SaleAdModel> saleList =
-      ListNotifier(fetchDataState: Future.value(FetchDataState.wait));
-
   MainProvider.init() {
     if (kDebugMode) {
       print('AppProvider inti');
@@ -98,33 +88,6 @@ class MainProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  getDataList() async {
-    fetchDataState = FetchDataState.wait;
-
-    /// for projects data
-    FirebaseMethod.streams(co: FirebaseCollectionNames.ProjectsCollection)
-        .listen((event) {
-      List<ProjectModel> project = event.docs.map((e) {
-        return ProjectModel.fromJson(e.data());
-      }).toList();
-      projectList =
-          ListNotifier<ProjectModel>.init(project, Future.value(FetchDataState.done),null);
-      notifyListeners();
-    });
-
-    /// for resale data
-    FirebaseMethod.streams(co: FirebaseCollectionNames.SalesCollection)
-        .listen((event) {
-      List<SaleAdModel> saleAdList = event.docs.map((e) {
-        return SaleAdModel.fromMap(e.data());
-      }).toList();
-      saleList = ListNotifier<SaleAdModel>.init(saleAdList, Future.value(FetchDataState.done),event);
-      notifyListeners();
-    });
-
-    fetchDataState = FetchDataState.done;
-    notifyListeners();
-  }
 }
 
 enum FetchDataState { done, wait, error, none }

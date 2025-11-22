@@ -251,13 +251,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "انستغرام",
     ),
     "kBetnaHomePageSocialWebsite": MessageLookupByLibrary.simpleMessage(
-      "موقع إلكتروني",
+      "الموقع",
     ),
     "kBetnaHomePageSocialWhatsapp": MessageLookupByLibrary.simpleMessage(
       "واتساب",
     ),
     "kBetnaHomePageSubmitSaleRequest": MessageLookupByLibrary.simpleMessage(
-      "إرسال طلب بيع",
+      "طلب بيع",
     ),
     "kCallNow": MessageLookupByLibrary.simpleMessage("اتصل الآن"),
     "kCancelSearch": MessageLookupByLibrary.simpleMessage("الغاء البحث"),
@@ -275,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kContractList": MessageLookupByLibrary.simpleMessage("عقود الايجار"),
     "kContractValidity": MessageLookupByLibrary.simpleMessage("مد العقد"),
+    "kCountry": MessageLookupByLibrary.simpleMessage("البلد"),
     "kDateAdded": MessageLookupByLibrary.simpleMessage("تاريخ الاعلان"),
     "kDaysAgo": m1,
     "kDeleteMessage": m2,
@@ -551,6 +552,8 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "يوجد طلب سابق مسجل بهذا البريد الإلكتروني. لتعديل الطلب، يُرجى التواصل مع فريق الدعم.",
         ),
+    "kSaleRequestTextVerificationFieldConfirmEmail":
+        MessageLookupByLibrary.simpleMessage(".تأكيد عنوان البريد الإلكتروني"),
     "kSaleRequestTextVerificationFieldConfirmPhone":
         MessageLookupByLibrary.simpleMessage("تأكيد رقم الهاتف"),
     "kSaleRequestTextVerificationFieldMail":
@@ -586,10 +589,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "عنوان البريد الإلكتروني",
     ),
     "kSaleRequestTextVerificationOkEmail": MessageLookupByLibrary.simpleMessage(
-      "✅ تم التحقق من البريد الإلكتروني",
+      "تم التحقق من البريد الإلكتروني",
     ),
     "kSaleRequestTextVerificationOkPhone": MessageLookupByLibrary.simpleMessage(
-      "✅ تم التحقق من رقم الهاتف",
+      "تم التحقق من رقم الهاتف",
     ),
     "kSaleRequestTextVerificationPhoneMessage1":
         MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك أولاً."),
@@ -628,8 +631,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextVerificationSend": MessageLookupByLibrary.simpleMessage(
       "إرسال الرمز",
     ),
+    "kSaleRequestTextVerificationSendCodeEmail":
+        MessageLookupByLibrary.simpleMessage(
+          "إرسال الرمز عبر البريد الإلكتروني",
+        ),
     "kSaleRequestTextVerificationSendCodePhone":
-        MessageLookupByLibrary.simpleMessage("إرسال رمز "),
+        MessageLookupByLibrary.simpleMessage("إرسال الرمز عبر الرسائل القصيرة"),
     "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
       "طريقة التحقق عبر",
     ),

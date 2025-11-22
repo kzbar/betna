@@ -1,16 +1,11 @@
-import 'package:betna/betna_home_page.dart';
-import 'package:betna/sale_request_page.dart';
-import 'package:betna/home.dart';
-import 'package:betna/homePrototypeVideo.dart';
-import 'package:betna/page_404.dart';
-import 'package:betna/pages/details_project_screen.dart';
+import 'package:betna/pages/betna_home_page.dart';
+import 'package:betna/pages/sale_request_page.dart';
+import 'package:betna/pages/page_404.dart';
 import 'package:betna/setup/main_provider.dart';
-import 'package:betna/pages/details_sale_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'enumerators.dart';
-import 'dart:ui' as ui;
 
 Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
   //AuthProvider authProvider = Provider.of<AuthProvider>(context, listen: false);
@@ -25,7 +20,9 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
   PageRoute pageRoute =
       MaterialPageRoute(builder: (BuildContext context) => Page404());
   String lang =  View.of(context).platformDispatcher.locale.languageCode;
-  print("device lang $lang");
+  if (kDebugMode) {
+    print("device lang $lang");
+  }
   if (lang.contains('en')) {
     change('en', context);
   }
@@ -40,21 +37,10 @@ Route<dynamic> generateRoute(RouteSettings settings, BuildContext context) {
     case '/':
       pageRoute = _buildRouteFade(settings, const BetnaHomePage());
       break;
-    case '/salerequest':
+    case '/sale-request':
       pageRoute = _buildRouteFade(settings, const SaleRequestPage());
       break;
-    case '/sale':
-      String? param1 = uri.queryParameters['id'];
-      pageRoute = MaterialPageRoute(builder: (BuildContext context) {
-        return DetailsSale(fromUrl: true, id: param1,tag: 'sale',);
-      });
-      break;
-    case '/project':
-      String? param1 = uri.queryParameters['id'];
-      pageRoute = MaterialPageRoute(builder: (BuildContext context) {
-        return DetailsProject(fromUrl: true, id: param1,tag: 'project',);
-      });
-      break;
+
   }
   return pageRoute;
 }
