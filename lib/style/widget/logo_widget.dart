@@ -1,7 +1,7 @@
 
 
 import 'package:betna/setup/enumerators.dart';
-import 'package:betna/setup/main_provider.dart';
+import 'package:betna/providers/main_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

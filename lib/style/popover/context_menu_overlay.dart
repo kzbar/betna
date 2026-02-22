@@ -1,4 +1,4 @@
-import 'package:betna/setup/main_provider.dart';
+import 'package:betna/providers/main_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -15,12 +15,12 @@ class CloseContextMenuNotification extends Notification {}
 
 // Helper widget, to dispatch Notifications when a right-click is detected on some child
 class ContextMenuRegion extends StatelessWidget {
-  const ContextMenuRegion(
-      {Key? key,
-      required this.child,
-      required this.contextMenu,
-      this.isEnabled = true})
-      : super(key: key);
+  const ContextMenuRegion({
+    super.key,
+    required this.child,
+    required this.contextMenu,
+    this.isEnabled = true,
+  });
   final Widget child;
   final Widget contextMenu;
   final bool isEnabled;
@@ -35,7 +35,7 @@ class ContextMenuRegion extends StatelessWidget {
       onDoubleTap: showMenu,
       onSecondaryTap: showMenu,
       onLongPress: showMenu,
-      onTap:showMenu ,
+      onTap: showMenu,
       child: child,
     );
   }
@@ -43,11 +43,11 @@ class ContextMenuRegion extends StatelessWidget {
 
 // The main overlay class, holds a Stack which contains the main app, contextMenu and contextModal
 class ContextMenuOverlay extends StatefulWidget {
-  const ContextMenuOverlay({Key? key, this.child}) : super(key: key);
+  const ContextMenuOverlay({super.key, this.child});
   final Widget? child;
 
   @override
-  _ContextMenuOverlayState createState() => _ContextMenuOverlayState();
+  State<ContextMenuOverlay> createState() => _ContextMenuOverlayState();
 }
 
 class _ContextMenuOverlayState extends State<ContextMenuOverlay> {
@@ -88,12 +88,15 @@ class _ContextMenuOverlayState extends State<ContextMenuOverlay> {
     if (_mousePos.dx > _prevSize!.width / 2) dx = -_menuSize.width;
     if (_mousePos.dy > _prevSize!.height / 2) dy = -_menuSize.height;
     // The final menuPos, is mousePos + quadrant offset
-    Offset _menuPos = _mousePos + Offset(dx, dy);
+    Offset menuPos = _mousePos + Offset(dx, dy);
     return Scaffold(
       body: MouseRegion(
         opaque: false,
         onHover: (event) {
-          if (Provider.of<MainProvider>(context, listen: false).textDecoration ==
+          if (Provider.of<MainProvider>(
+                context,
+                listen: false,
+              ).textDecoration ==
               TextDirection.rtl) {
             double x = event.position.dx;
             double s = MediaQuery.of(context).size.width;
@@ -124,7 +127,7 @@ class _ContextMenuOverlayState extends State<ContextMenuOverlay> {
                 ),
                 // Menu
                 Transform.translate(
-                  offset: _menuPos,
+                  offset: menuPos,
                   child: Opacity(
                     opacity: _menuSize != Size.zero ? 1 : 0,
                     child: _MeasureSize(
@@ -133,7 +136,7 @@ class _ContextMenuOverlayState extends State<ContextMenuOverlay> {
                     ),
                   ),
                 ),
-              ]
+              ],
             ],
           ),
         ),
@@ -160,8 +163,7 @@ class _MeasureSizeRenderObject extends RenderProxyBox {
 }
 
 class _MeasureSize extends SingleChildRenderObjectWidget {
-  const _MeasureSize({Key? key, required this.onChange, required Widget? child})
-      : super(key: key, child: child);
+  const _MeasureSize({super.key, required this.onChange, required super.child});
   final void Function(Size size) onChange;
 
   @override

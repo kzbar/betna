@@ -9,11 +9,11 @@ import 'core/context_menu_card.dart';
 
 class GenericContextMenu extends BaseContextMenu {
   const GenericContextMenu({
-    Key? key,
+    super.key,
     this.labels,
     this.actions,
     this.addDividers = false,
-  }) : super(key: key);
+  });
   final List<String?>? labels;
   final List<VoidCallback>? actions;
   final bool addDividers;
@@ -33,13 +33,14 @@ class GenericContextMenu extends BaseContextMenu {
       }
     }
     return ContextMenuCard(
-      children: labels!.map(
-        (lbl) {
-          if (lbl == null) return ContextDivider();
-          VoidCallback action = actions![labels!.indexOf(lbl)];
-          return ContextMenuBtn(lbl, onPressed:  () => handlePressed(context, action));
-        },
-      ).toList(),
+      children: labels!.map((lbl) {
+        if (lbl == null) return ContextDivider();
+        VoidCallback action = actions![labels!.indexOf(lbl)];
+        return ContextMenuBtn(
+          lbl,
+          onPressed: () => handlePressed(context, action),
+        );
+      }).toList(),
     );
   }
 }

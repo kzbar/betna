@@ -47,34 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAn692XrDLvHnjeMPZ8rRC91s86CsHM7og',
-    appId: '1:812606330872:web:bad3091fef5afbdeea280d',
-    messagingSenderId: '812606330872',
-    projectId: 'kira-contract',
-    authDomain: 'kira-contract.firebaseapp.com',
-    databaseURL: 'https://kira-contract.firebaseio.com',
-    storageBucket: 'kira-contract.appspot.com',
-    measurementId: 'G-8LLX1BE868',
+    apiKey: 'AIzaSyCYPOyhYY-yDRpbGn61pYCb6l4SaCEq-pc',
+    appId: '1:100131328944:web:ed48e9546c4d031bdf7c75',
+    messagingSenderId: '100131328944',
+    projectId: 'betna-real-estate',
+    authDomain: 'betna-real-estate.firebaseapp.com',
+    storageBucket: 'betna-real-estate.firebasestorage.app',
+    measurementId: 'G-FHSFPF2S42',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD_1HDbNCZV3S0k5Dm7iHy7vtGU2kTtW8A',
-    appId: '1:812606330872:android:4f860f519ddbd174ea280d',
-    messagingSenderId: '812606330872',
-    projectId: 'kira-contract',
-    databaseURL: 'https://kira-contract.firebaseio.com',
-    storageBucket: 'kira-contract.appspot.com',
+    apiKey: 'AIzaSyDgxSHqSQNlnHb_39mj7Y34NFAbXuFVc0k',
+    appId: '1:100131328944:android:73ac317951ac3d96df7c75',
+    messagingSenderId: '100131328944',
+    projectId: 'betna-real-estate',
+    storageBucket: 'betna-real-estate.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBRQWgM_Y-B5Ic1LafvCVInWGez5P4dNRI',
-    appId: '1:812606330872:ios:25167eb9f831298eea280d',
-    messagingSenderId: '812606330872',
-    projectId: 'kira-contract',
-    databaseURL: 'https://kira-contract.firebaseio.com',
-    storageBucket: 'kira-contract.appspot.com',
-    androidClientId: '812606330872-kap6jtsstvi975gash1rru7bo22q5bvq.apps.googleusercontent.com',
-    iosClientId: '812606330872-4l6s16asesps9oemg15j8522128ka6cs.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDvJTLBQOZT3-9mN52lGGsMXyvpbT0mCDU',
+    appId: '1:100131328944:ios:11f76bf5d6eabd86df7c75',
+    messagingSenderId: '100131328944',
+    projectId: 'betna-real-estate',
+    storageBucket: 'betna-real-estate.firebasestorage.app',
     iosBundleId: 'com.betna.tr.betna',
   );
 }

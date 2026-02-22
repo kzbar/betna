@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // Base class for all ContextMenus.
 // Provides a handlePressed method that takes care of closing the menu after some action has been run.
 abstract class BaseContextMenu extends StatelessWidget {
-  const BaseContextMenu({Key? key}) : super(key: key);
+  const BaseContextMenu({super.key});
   // Convenience method so each menu item does not need to manually Close the context menu.
   void handlePressed(BuildContext context, VoidCallback action) {
     action.call();

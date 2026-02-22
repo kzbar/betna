@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 // A single ContextMenu button
 class ContextMenuBtn extends StatefulWidget {
-  const ContextMenuBtn(this.label,
-      {Key? key, this.onPressed, this.icon, this.shortcutLabel, this.hoverBgColor, this.iconColor})
-      : super(key: key);
+  const ContextMenuBtn(
+    this.label, {
+    super.key,
+    this.onPressed,
+    this.icon,
+    this.shortcutLabel,
+    this.hoverBgColor,
+    this.iconColor,
+  });
   final String label;
   final String? shortcutLabel;
   final VoidCallback? onPressed;
@@ -14,12 +19,13 @@ class ContextMenuBtn extends StatefulWidget {
   final Color? hoverBgColor;
 
   @override
-  _ContextMenuBtnState createState() => _ContextMenuBtnState();
+  State<ContextMenuBtn> createState() => _ContextMenuBtnState();
 }
 
 class _ContextMenuBtnState extends State<ContextMenuBtn> {
   bool _isMouseOver = false;
-  set isMouseOver(bool isMouseOver) => setState(() => _isMouseOver = isMouseOver);
+  set isMouseOver(bool isMouseOver) =>
+      setState(() => _isMouseOver = isMouseOver);
   @override
   Widget build(BuildContext context) {
     //AppTheme theme = context.watch();
@@ -39,33 +45,34 @@ class _ContextMenuBtnState extends State<ContextMenuBtn> {
         child: Opacity(
           opacity: isDisabled ? .7 : 1,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             width: 100,
-            color: showMouseOver ? (widget.hoverBgColor ?? Colors.black) : Colors.transparent,
+            color: showMouseOver
+                ? (widget.hoverBgColor ?? Colors.black)
+                : Colors.transparent,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 /// Optional Icon
                 if (widget.icon != null) ...[
                   //AppIcon(widget.icon, size: 16, color: widget.iconColor ?? fgColor),
-                 // HSpace.med,
+                  // HSpace.med,
                 ],
 
                 /// Main Label
-                Text(
-                  widget.label,
-                  style: TextStyle(fontSize: 12),
-                ),
-                Spacer(),
+                Text(widget.label, style: const TextStyle(fontSize: 12)),
+                const Spacer(),
 
                 /// Shortcut Label
                 if (widget.shortcutLabel != null) ...[
                   Opacity(
-                      opacity: showMouseOver ? 1 : .7,
-                      child: Text(widget.shortcutLabel!,
-                          //style: TextStyles.caption.copyWith(color: fgColor)
-                      ))
-                ]
+                    opacity: showMouseOver ? 1 : .7,
+                    child: Text(
+                      widget.shortcutLabel!,
+                      //style: TextStyles.caption.copyWith(color: fgColor)
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

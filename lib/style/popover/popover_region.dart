@@ -18,6 +18,10 @@ import 'popover_notifications.dart';
 ///
 ///
 ///
+///
+///
+
+// ignore_for_file: constant_identifier_names
 enum PopOverRegionMode {
   ClickToToggle, // Click a region to open PopOver, click barrier to close.
   Hover, // Open on hoverIn (slightly delayed), close on hoverOut
@@ -25,16 +29,17 @@ enum PopOverRegionMode {
 }
 
 class PopOverRegion extends StatefulWidget {
-  PopOverRegion(
-      {Key? key,
-      required this.child,
-      required this.popChild,
-      this.anchor,
-      this.popAnchor,
-      this.barrierDismissable,
-      this.barrierColor,
-      this.mode, this.time = 300})
-      : super(key: key);
+  const PopOverRegion({
+    super.key,
+    required this.child,
+    required this.popChild,
+    this.anchor,
+    this.popAnchor,
+    this.barrierDismissable,
+    this.barrierColor,
+    this.mode,
+    this.time = 300,
+  });
   final Widget? child;
   final Widget? popChild;
   final bool? barrierDismissable;
@@ -44,30 +49,39 @@ class PopOverRegion extends StatefulWidget {
   final PopOverRegionMode? mode;
   final int? time;
   @override
-  PopOverRegionState createState() => PopOverRegionState();
+  State<PopOverRegion> createState() => PopOverRegionState();
 
   // Non-interactive tool-tips, triggered on a delayed hover. Auto-close when you roll-out of the PopOverRegion
-  static PopOverRegion hover({Widget? child, Widget? popChild, Alignment? anchor, Alignment? popAnchor, Key? key,int? time}) {
+  static PopOverRegion hover({
+    Widget? child,
+    Widget? popChild,
+    Alignment? anchor,
+    Alignment? popAnchor,
+    Key? key,
+    int? time,
+  }) {
     return PopOverRegion(
-        key: key,
-        child: child,
-        popChild: popChild,
-        anchor: anchor,
-        popAnchor: popAnchor,
-        time: time,
-        mode: PopOverRegionMode.Hover);
+      key: key,
+      child: child,
+      popChild: popChild,
+      anchor: anchor,
+      popAnchor: popAnchor,
+      time: time,
+      mode: PopOverRegionMode.Hover,
+    );
   }
 
   // Click to open/close. Use for interactive panels, or other elements that should close themselves
-  static PopOverRegion click(
-      {Key? key,
-      Widget? child,
-      Widget? popChild,
-        int? time,
-      Alignment? anchor,
-      Alignment? popAnchor,
-      bool? barrierDismissable,
-      Color? barrierColor}) {
+  static PopOverRegion click({
+    Key? key,
+    Widget? child,
+    Widget? popChild,
+    int? time,
+    Alignment? anchor,
+    Alignment? popAnchor,
+    bool? barrierDismissable,
+    Color? barrierColor,
+  }) {
     return PopOverRegion(
       key: key,
       child: child,
@@ -95,23 +109,28 @@ class PopOverRegion extends StatefulWidget {
     Alignment? clickPopAnchor,
   }) {
     return click(
-        key: key,
-        anchor: clickAnchor,
-        barrierColor: barrierColor,
-        barrierDismissable: barrierDismissable,
-        popChild: clickPopChild,
-        popAnchor: clickPopAnchor,
+      key: key,
+      anchor: clickAnchor,
+      barrierColor: barrierColor,
+      barrierDismissable: barrierDismissable,
+      popChild: clickPopChild,
+      popAnchor: clickPopAnchor,
+      time: time,
+
+      child: hover(
+        popAnchor: hoverPopAnchor,
+        popChild: hoverPopChild,
+        anchor: hoverAnchor,
+        child: child,
         time: time,
-
-
-
-        child: hover(popAnchor: hoverPopAnchor, popChild: hoverPopChild, anchor: hoverAnchor, child: child,time: time));
+      ),
+    );
   }
 }
 
 class PopOverRegionState extends State<PopOverRegion> {
   Timer? _timer;
-  LayerLink _link = LayerLink();
+  final LayerLink _link = LayerLink();
 
   PopOverControllerState? _popContext;
   @override
@@ -132,7 +151,9 @@ class PopOverRegionState extends State<PopOverRegion> {
         onExit: (_) {
           _timer?.cancel();
 
-          _timer = Timer.periodic(Duration(milliseconds: widget.time!), (timer) {
+          _timer = Timer.periodic(Duration(milliseconds: widget.time!), (
+            timer,
+          ) {
             if (_popContext?.isBarrierOpen == false) {
               ClosePopoverNotification().dispatch(context);
               _popContext = null;
@@ -144,7 +165,7 @@ class PopOverRegionState extends State<PopOverRegion> {
         child: widget.child,
       );
     } else {
-      content = GestureDetector(onTap: show, child: widget.child,);
+      content = GestureDetector(onTap: show, child: widget.child);
     }
     return CompositedTransformTarget(link: _link, child: content);
   }
@@ -152,22 +173,23 @@ class PopOverRegionState extends State<PopOverRegion> {
   void show() {
     if (widget.popChild == null || mounted == false) return;
     ShowPopOverNotification(
-            // Send context with the notification, so the Overlay can use it to send more messages in the future.
-            context,
-            // Provide a link so Flutter will auto-position for us
-            _link,
-            popChild: widget.popChild,
-            anchor: widget.anchor ?? Alignment.bottomCenter,
-            popAnchor: widget.popAnchor ?? Alignment.topCenter,
-            // Don't use a barrier at all when using Hover mode
-            useBarrier: widget.mode != PopOverRegionMode.Hover,
-            barrierColor: widget.barrierColor ?? Colors.transparent,
-            dismissOnBarrierClick: widget.barrierDismissable ?? true,
-            // When a context catches this notification, it will callback.
-            // We use this later to decide whether to ignore the exit event in HoverMode
-            onContextHandled: _handleContextHandled)
-        .dispatch(context);
+      // Send context with the notification, so the Overlay can use it to send more messages in the future.
+      context,
+      // Provide a link so Flutter will auto-position for us
+      _link,
+      popChild: widget.popChild,
+      anchor: widget.anchor ?? Alignment.bottomCenter,
+      popAnchor: widget.popAnchor ?? Alignment.topCenter,
+      // Don't use a barrier at all when using Hover mode
+      useBarrier: widget.mode != PopOverRegionMode.Hover,
+      barrierColor: widget.barrierColor ?? Colors.transparent,
+      dismissOnBarrierClick: widget.barrierDismissable ?? true,
+      // When a context catches this notification, it will callback.
+      // We use this later to decide whether to ignore the exit event in HoverMode
+      onContextHandled: _handleContextHandled,
+    ).dispatch(context);
   }
 
-  void _handleContextHandled(PopOverControllerState value) => _popContext = value;
+  void _handleContextHandled(PopOverControllerState value) =>
+      _popContext = value;
 }

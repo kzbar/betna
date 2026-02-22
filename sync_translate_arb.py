@@ -1,12 +1,17 @@
 import argparse, json, re, sys
 from pathlib import Path
+import os
+
 #"C:\Users\AHMAD\StudioProjects\betna\turkishtenesapp-b336b266baf6.json"
 #SETX / GOOGLE_APPLICATION_CREDENTIALS= "C:/Users/AHMAD/StudioProjects/betna/turkishtenesapp-0e6ccce90fa3.json"
 # setx GOOGLE_APPLICATION_CREDENTIALS "C:/Users/AHMAD/StudioProjects/betna/turkishtenesapp-0e6ccce90fa3.json"
 
 
 # python sync_translate_arb.py --arb-dir C:/Users/AHMAD/StudioProjects/betna/lib/l10n --targets ar,tr --engine gcloud
+# python sync_translate_arb.py --arb-dir C:/Users/AHMAD/StudioProjects/propflow/lib/l10n --targets ar,tr --engine gcloud
+
 PH_RE = re.compile(r"{[^}]+}")
+print(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
 
 def load_json(p: Path):
     return json.load(p.open("r", encoding="utf-8")) if p.exists() else {}

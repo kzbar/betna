@@ -7,20 +7,20 @@ class HoverIcon extends StatefulWidget {
   final double size;
   final EdgeInsets margin;
 
-
-  const HoverIcon(
-      {Key? key,
-      this.data,
-      this.backgroundColorHover,
-      this.backgroundColor, this.size = 24, this.margin = const EdgeInsets.all(6),
-      })
-      : super(key: key);
+  const HoverIcon({
+    super.key,
+    this.data,
+    this.backgroundColorHover,
+    this.backgroundColor,
+    this.size = 24,
+    this.margin = const EdgeInsets.all(6),
+  });
 
   @override
-  State<StatefulWidget> createState() => _HoverIcon();
+  State<HoverIcon> createState() => _HoverIconState();
 }
 
-class _HoverIcon extends State<HoverIcon> {
+class _HoverIconState extends State<HoverIcon> {
   bool isHover = false;
 
   @override
@@ -35,9 +35,9 @@ class _HoverIcon extends State<HoverIcon> {
       child: AnimatedContainer(
         alignment: Alignment.center,
         curve: Curves.fastOutSlowIn,
-        padding: EdgeInsets.all(0.0),
+        padding: EdgeInsets.zero,
         margin: widget.margin,
-        duration: Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 400),
         child: Icon(
           widget.data,
           size: widget.size,

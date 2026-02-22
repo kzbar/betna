@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="betna">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/android/app/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

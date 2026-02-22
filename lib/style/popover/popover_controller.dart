@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:betna/setup/enumerators.dart';
-import 'package:betna/setup/main_provider.dart';
+import 'package:betna/providers/main_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -14,17 +14,17 @@ import 'popover_notifications.dart';
 /// Context listens for Notifications, and inserts/removes layers from the Overlay stack in response.
 /// The context wraps the content in a
 class PopOverController extends StatefulWidget {
-  const PopOverController({Key? key, this.child}) : super(key: key);
+  const PopOverController({super.key, this.child});
   final Widget? child;
 
   @override
-  PopOverControllerState createState() => PopOverControllerState();
+  State<PopOverController> createState() => PopOverControllerState();
 }
 
 class PopOverControllerState extends State<PopOverController> {
   OverlayEntry? barrierOverlay;
   OverlayEntry? mainContentOverlay;
-  ValueNotifier<Size?> _sizeNotifier = ValueNotifier(Size.zero);
+  final ValueNotifier<Size?> _sizeNotifier = ValueNotifier(Size.zero);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,9 @@ class PopOverControllerState extends State<PopOverController> {
           builder: (_) {
             return GestureDetector(
               onTap: n.dismissOnBarrierClick ? _closeOverlay : null,
-              onPanStart: n.dismissOnBarrierClick ? (_) => _closeOverlay() : null,
+              onPanStart: n.dismissOnBarrierClick
+                  ? (_) => _closeOverlay()
+                  : null,
               child: Container(color: n.barrierColor),
             );
           },
@@ -72,18 +74,21 @@ class PopOverControllerState extends State<PopOverController> {
       }
 
       /// Main Content Overlay
-      mainContentOverlay = OverlayEntry(builder: (_) {
-        // Wrap the child in a Listener, since it will technically be parented above us in the Stack (overlay items are above Navigator children)
-        return NotificationListener(
-          onNotification: _handleNotification,
-          child: Material(
-            type: MaterialType.transparency,
-            // The overlay is wrapped in a VLB, so it can rebuild when the child calls us with a new size
-            child: ValueListenableBuilder<Size?>(
+      mainContentOverlay = OverlayEntry(
+        builder: (_) {
+          // Wrap the child in a Listener, since it will technically be parented above us in the Stack (overlay items are above Navigator children)
+          return NotificationListener(
+            onNotification: _handleNotification,
+            child: Material(
+              type: MaterialType.transparency,
+              // The overlay is wrapped in a VLB, so it can rebuild when the child calls us with a new size
+              child: ValueListenableBuilder<Size?>(
                 valueListenable: _sizeNotifier,
-                builder: (_, size, __) {
-                  Lang? lang =
-                      Provider.of<MainProvider>(context, listen: true).currentLang;
+                builder: (context, size, child) {
+                  Lang? lang = Provider.of<MainProvider>(
+                    context,
+                    listen: true,
+                  ).currentLang;
 
                   // Calculate the normalized offset, from a top-left starting point
                   // This means a top-left align is 0,0, and bottom-right is -1,-1 as we shift left and up
@@ -107,21 +112,27 @@ class PopOverControllerState extends State<PopOverController> {
                       child: Opacity(
                         opacity: size != Size.zero ? 1 : 0,
                         // Wrap content in a MeasureSize which sends us it's size via callback.
-                        child: MeasureSize(onChange: _handlePopOverSized, child: FocusScope(child: n.popChild!)),
+                        child: MeasureSize(
+                          onChange: _handlePopOverSized,
+                          child: FocusScope(child: n.popChild!),
+                        ),
                       ),
                     ),
                   );
-                }),
-          ),
-        );
-      });
+                },
+              ),
+            ),
+          );
+        },
+      );
       Overlay.of(n.context).insert(mainContentOverlay!);
       return true;
     }
     return false;
   }
 
-  void _handlePopOverSized(Size size) => scheduleMicrotask(() => _sizeNotifier.value = size);
+  void _handlePopOverSized(Size size) =>
+      scheduleMicrotask(() => _sizeNotifier.value = size);
 }
 
 /// Simple wrapper that measures itself and send the size in a callback or notification.
@@ -141,8 +152,9 @@ class MeasureSizeRenderObject extends RenderProxyBox {
 }
 
 class MeasureSize extends SingleChildRenderObjectWidget {
-  const MeasureSize({Key? key, required this.onChange, required Widget child}) : super(key: key, child: child);
+  const MeasureSize({super.key, required this.onChange, required super.child});
   final void Function(Size size) onChange;
   @override
-  RenderObject createRenderObject(BuildContext context) => MeasureSizeRenderObject(onChange);
+  RenderObject createRenderObject(BuildContext context) =>
+      MeasureSizeRenderObject(onChange);
 }

@@ -4,7 +4,6 @@ import '../generated/l10n.dart';
 import '../models/countries.dart';
 import '../providers/country_provider.dart';
 
-
 class CountryDropdown extends StatelessWidget {
   const CountryDropdown({super.key});
 
@@ -18,10 +17,7 @@ class CountryDropdown extends StatelessWidget {
     }
 
     if (provider.error != null) {
-      return Text(
-        provider.error!,
-        style: const TextStyle(color: Colors.red),
-      );
+      return Text(provider.error!, style: const TextStyle(color: Colors.red));
     }
 
     final countries = provider.countries;
@@ -30,17 +26,19 @@ class CountryDropdown extends StatelessWidget {
     }
 
     return DropdownButtonFormField<Country>(
-      value: provider.selectedCountry,
+      initialValue: provider.selectedCountry,
       isExpanded: true,
-      decoration:  InputDecoration(
-        labelText: S.of(context).kCountry,
-
-      ),
+      decoration: InputDecoration(labelText: S.of(context).kCountry),
       items: countries.map((c) {
         return DropdownMenuItem(
           value: c,
 
-          child: Text('${c.nameEn} (${c.phone})',style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),),
+          child: Text(
+            '${c.nameEn} (${c.phone})',
+            style: theme.textTheme.bodySmall?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         );
       }).toList(),
       onChanged: (country) {

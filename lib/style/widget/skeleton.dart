@@ -6,15 +6,16 @@ class Skeleton extends StatefulWidget {
   final double cornerRadius;
   final bool showCircular;
 
-  Skeleton({
-    Key? key,
+  const Skeleton({
+    super.key,
     this.height = 60,
     this.width = 60,
-    this.cornerRadius = 30.0, this.showCircular = true,
-  }) : super(key: key);
+    this.cornerRadius = 30.0,
+    this.showCircular = true,
+  });
 
   @override
-  _SkeletonState createState() => _SkeletonState();
+  State<Skeleton> createState() => _SkeletonState();
 }
 
 class _SkeletonState extends State<Skeleton>
@@ -30,16 +31,12 @@ class _SkeletonState extends State<Skeleton>
       vsync: this,
     );
 
-    gradientPosition = Tween<double>(
-      begin: -1,
-      end: 10,
-    ).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.linear),
-    )..addListener(
-        () {
+    gradientPosition =
+        Tween<double>(begin: -1, end: 10).animate(
+          CurvedAnimation(parent: _controller, curve: Curves.linear),
+        )..addListener(() {
           setState(() {});
-        },
-      );
+        });
 
     _controller.repeat();
   }
@@ -63,14 +60,16 @@ class _SkeletonState extends State<Skeleton>
           colors: const [
             Color(0xFF740247),
             Color(0xFF753142),
-            Color(0xFF642247)
+            Color(0xFF642247),
           ],
         ),
       ),
       child: Center(
         child: Visibility(
           visible: widget.showCircular,
-          child: CircularProgressIndicator(backgroundColor: Theme.of(context).canvasColor,),
+          child: CircularProgressIndicator(
+            backgroundColor: Theme.of(context).canvasColor,
+          ),
         ),
       ),
     );

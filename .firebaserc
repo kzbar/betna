@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "kira-contract"
+    "default": "betna-real-estate",
+    "app": "betna-real-estate"
   },
   "targets": {},
   "etags": {}

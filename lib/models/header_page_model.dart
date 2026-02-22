@@ -24,19 +24,16 @@ class HeaderPageModel {
     dynamic title1,
     dynamic title2,
     String? type,
-  }) =>
-      HeaderPageModel(
-        id: id ?? this.id,
-        imageUrl: imageUrl ?? this.imageUrl,
-        title: title1 ?? this.title,
-        title2: title1 ?? this.title2,
-        type: type ?? this.type,
-      );
+  }) => HeaderPageModel(
+    id: id ?? this.id,
+    imageUrl: imageUrl ?? this.imageUrl,
+    title: title1 ?? title,
+    title2: title1 ?? title2,
+    type: type ?? this.type,
+  );
 
   factory HeaderPageModel.fromRawJson(String str) =>
       HeaderPageModel.fromJson(json.decode(str));
-
-
 
   factory HeaderPageModel.fromJson(Map<String, dynamic>? json) =>
       HeaderPageModel(
@@ -46,5 +43,4 @@ class HeaderPageModel {
         title: json["title"] ?? '',
         title2: json["title2"] ?? '',
       );
-
 }

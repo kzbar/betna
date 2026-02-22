@@ -22,171 +22,54 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(year) => "© ${year} بيتنا. جميع الحقوق محفوظة.";
 
-  static String m1(value) => "منذ ${value} أيام";
-
-  static String m2(value) => "هل تريد حذف الملف ${value}";
-
-  static String m3(value) => "منذ ${value} ساعات";
-
-  static String m4(path) => "تم حفظ الصورة بنجاح ${path}";
-
-  static String m5(value) => "منذ دقائق";
-
-  static String m6(value) => "منذ ${value} أشهر";
-
-  static String m7(number) => "عدد الاعلانات ${number}";
-
-  static String m8(value) => "عدد العقود ${value}";
-
-  static String m9(count) => "عدد العروض ${count}";
-
-  static String m10(value) => "البحث عبر ${value}";
-
-  static String m11(value) => "البحث بواسطة ${value}";
-
-  static String m12(number) => "عنوان ${number}";
-
-  static String m13(value) => "منذ ${value} أسابيع";
-
-  static String m14(value) => "منذ ${value} سنوات";
-
-  static String m15(value) => "يجب أخد موعد من ${value}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "AdInformation": MessageLookupByLibrary.simpleMessage("معلومات الاعلان"),
-    "Ad_information": MessageLookupByLibrary.simpleMessage("معلومات الاعلان"),
-    "Continue": MessageLookupByLibrary.simpleMessage("متابعة"),
-    "Current_status_aforementioned": MessageLookupByLibrary.simpleMessage(
-      "حالة العقار",
+    "kAboutPageTitle": MessageLookupByLibrary.simpleMessage("من نحن"),
+    "kAboutUsSectionText": MessageLookupByLibrary.simpleMessage(
+      "شركة بيتنا العقارية هي شركة استشارات ووساطة رائدة تقدم خدمات عقارية موثوقة واحترافية وشاملة. متخصصون في العقارات السكنية والتجارية، ونقدم مجموعة واسعة من العقارات للبيع والإيجار مصممة لتلبية احتياجاتك الفريدة. سواء كنت تبحث عن منزل أحلامك أو مكان عمل استراتيجي، فريقنا المخصص هنا لإرشادك في كل خطوة على الطريق. بناءً على المبادئ الأساسية للثقة التي لا تتزعزع، والشفافية المطلقة، ورضا العملاء الاستثنائي، نحن ملتزمون بتحويل أهدافك العقارية إلى واقع ملموس.",
     ),
-    "DISMISS": MessageLookupByLibrary.simpleMessage("اغلاق"),
-    "Detail_Ad": MessageLookupByLibrary.simpleMessage("تفاصيل الاعلان"),
-    "Kira": MessageLookupByLibrary.simpleMessage("الإيجار"),
-    "LocationTile": MessageLookupByLibrary.simpleMessage("موقع العقار"),
-    "RENTERHOSTED": MessageLookupByLibrary.simpleMessage("المؤجر - صاحب الملك"),
-    "RentalList": MessageLookupByLibrary.simpleMessage("شقق للايجار"),
-    "TENANT": MessageLookupByLibrary.simpleMessage("المستأجر"),
-    "TENANTContact": MessageLookupByLibrary.simpleMessage("التواصل"),
-    "TENANTid": MessageLookupByLibrary.simpleMessage("الرقم الوطني"),
-    "TENANTnameSurname": MessageLookupByLibrary.simpleMessage("الاسم والكنية"),
-    "TENANTplaceResidenceOwner": MessageLookupByLibrary.simpleMessage(
-      "موقع السكن الحالي",
-    ),
-    "ToContinue": MessageLookupByLibrary.simpleMessage(
-      "للمتابعة يرجى كتابة البريد الالكتروني وكلمة السر",
-    ),
-    "WhatWillUsedForTheRented": MessageLookupByLibrary.simpleMessage(
-      "لاي غرض سوف يستخدم العقار",
-    ),
-    "adNo": MessageLookupByLibrary.simpleMessage("رقم الاعلان"),
-    "adPhoto": MessageLookupByLibrary.simpleMessage("صور الاعلان"),
-    "addPerson": MessageLookupByLibrary.simpleMessage("اضافة شخص"),
-    "add_photo": MessageLookupByLibrary.simpleMessage("اضف صورة"),
-    "annualRent": MessageLookupByLibrary.simpleMessage(
-      "قيمة الايجار في السنة رقما",
-    ),
-    "annualRentSummer": MessageLookupByLibrary.simpleMessage(
-      "قيمة الايجار في السنة كتابة",
-    ),
-    "apartman": MessageLookupByLibrary.simpleMessage("رقم الشقة"),
-    "appName": MessageLookupByLibrary.simpleMessage("E-Contract"),
-    "applicationDeveloper": MessageLookupByLibrary.simpleMessage(
-      "مطور التطبيق",
-    ),
-    "balcony": MessageLookupByLibrary.simpleMessage("بلكون-شرفة"),
-    "beginningofrent": MessageLookupByLibrary.simpleMessage("تاريخ بدا العقد"),
-    "bina": MessageLookupByLibrary.simpleMessage("البناء"),
-    "blok": MessageLookupByLibrary.simpleMessage("البناء : "),
-    "blokNo": MessageLookupByLibrary.simpleMessage("رقم البناء"),
-    "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
-    "contract": MessageLookupByLibrary.simpleMessage("كتابة عقد جديد"),
-    "daire": MessageLookupByLibrary.simpleMessage("الشقة"),
-    "date": MessageLookupByLibrary.simpleMessage("التاريخ : "),
-    "dateAd": MessageLookupByLibrary.simpleMessage("تاريخ الاعلان"),
-    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
-    "deleteFileMessage": MessageLookupByLibrary.simpleMessage(
-      "هل تريد حذف الملف !!",
-    ),
-    "deposit": MessageLookupByLibrary.simpleMessage("التأمين رقما"),
-    "depositSummer": MessageLookupByLibrary.simpleMessage("التأمين كتابة"),
-    "district": MessageLookupByLibrary.simpleMessage("المنطقة"),
-    "downpayment": MessageLookupByLibrary.simpleMessage("الدفعة الأولى رقما"),
-    "downpaymentSummer": MessageLookupByLibrary.simpleMessage(
-      "الذفعة الأولى كتابة",
-    ),
-    "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
-    "example": MessageLookupByLibrary.simpleMessage("مثال عن العقد"),
-    "fee": MessageLookupByLibrary.simpleMessage("العائدات الشهرية"),
-    "fieldEmpty": MessageLookupByLibrary.simpleMessage(
-      "هذا المجال لا يمكن أن يكون فارغا.",
-    ),
-    "fieldEmptyMessage": MessageLookupByLibrary.simpleMessage(
-      "يرجى التأكد من ان جميع البيانات مدخلة ",
-    ),
-    "fieldEmptyTitle": MessageLookupByLibrary.simpleMessage("تنبيه ⚠︎ ⛔️"),
-    "fieldError": MessageLookupByLibrary.simpleMessage(
-      "هذا الحقل لا يمكن ان يكون فارغا",
-    ),
-    "finalResult": MessageLookupByLibrary.simpleMessage("النتيجة النهائية"),
-    "flat": MessageLookupByLibrary.simpleMessage("رقم الشقة : "),
-    "flatNumbers": MessageLookupByLibrary.simpleMessage("عدد الشقق : "),
-    "flat_add": MessageLookupByLibrary.simpleMessage("اضافة شقة"),
-    "flat_add_photo": MessageLookupByLibrary.simpleMessage("اضافة صورالشقة"),
-    "flat_list": MessageLookupByLibrary.simpleMessage("لائحةالشقق"),
-    "forSaleList": MessageLookupByLibrary.simpleMessage("شقق للبيع"),
-    "furniture": MessageLookupByLibrary.simpleMessage(
-      "الأشياء التي تم تسليمها مع المنزل",
-    ),
-    "houseLocation": MessageLookupByLibrary.simpleMessage("موقع العقار"),
-    "id": MessageLookupByLibrary.simpleMessage("الرقم الوطني"),
-    "k1DayAgo": MessageLookupByLibrary.simpleMessage("قبل يوم واحد"),
-    "k1HourAgo": MessageLookupByLibrary.simpleMessage("قبل ساعة واحدة"),
-    "k1MinuteAgo": MessageLookupByLibrary.simpleMessage("قبل دقيقة واحدة"),
-    "k1MonthAgo": MessageLookupByLibrary.simpleMessage(" قبل شهر واحد"),
-    "k1WeekAgo": MessageLookupByLibrary.simpleMessage(" قبل أسبوع واحد"),
-    "k1yearAgo": MessageLookupByLibrary.simpleMessage("منذ سنة واحدة"),
-    "kAMinuteAgo": MessageLookupByLibrary.simpleMessage("قبل دقيقة"),
-    "kAbout": MessageLookupByLibrary.simpleMessage("من نحن"),
-    "kAdId": MessageLookupByLibrary.simpleMessage("رقم الاعلان"),
-    "kAdInfo": MessageLookupByLibrary.simpleMessage("تفاصيل الاعلان"),
-    "kAddNewAd": MessageLookupByLibrary.simpleMessage("اضافة اعلان"),
-    "kAddPhoto": MessageLookupByLibrary.simpleMessage("اضافة صورة"),
-    "kAddProject": MessageLookupByLibrary.simpleMessage("اضافة مشروع جديد"),
-    "kAddRenters": MessageLookupByLibrary.simpleMessage("اضافة مؤجر"),
-    "kAddThing": MessageLookupByLibrary.simpleMessage("اضافة اشياء"),
-    "kAffordableHomes": MessageLookupByLibrary.simpleMessage("عروض مناسبة"),
-    "kAgeBuilding": MessageLookupByLibrary.simpleMessage("عمر البناء"),
-    "kAllHouses": MessageLookupByLibrary.simpleMessage("جميع العروض"),
-    "kAnHourAgo": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
-    "kApartmentsPrices": MessageLookupByLibrary.simpleMessage("الشقق والاسعار"),
-    "kAppName": MessageLookupByLibrary.simpleMessage("بيتنا "),
-    "kAppName1": MessageLookupByLibrary.simpleMessage("العقارية"),
-    "kAppointmentDate": MessageLookupByLibrary.simpleMessage("تاريخ الموعد"),
-    "kAppointmentMessageSend": MessageLookupByLibrary.simpleMessage(
-      "شكرا لكم سوف يتم التواصل معكم لتأكيد وتحديد ساعة الموعد",
-    ),
-    "kArea": MessageLookupByLibrary.simpleMessage("المساحة"),
-    "kAreaAll": MessageLookupByLibrary.simpleMessage("المساحة الكلية"),
-    "kAreaNet": MessageLookupByLibrary.simpleMessage("المساحة الصافية"),
-    "kAskClientIsInTurkey": MessageLookupByLibrary.simpleMessage(
-      "هل متواجدون في تركيا ؟",
-    ),
-    "kBackToHome": MessageLookupByLibrary.simpleMessage(
-      "العودة الى الصفحة الرئيسية",
-    ),
-    "kBalcony": MessageLookupByLibrary.simpleMessage("بلكون-شرفة"),
-    "kBath": MessageLookupByLibrary.simpleMessage("الحمام"),
-    "kBathrooms": MessageLookupByLibrary.simpleMessage("غرفة النوم"),
+    "kAboutUsSectionTitle": MessageLookupByLibrary.simpleMessage("عن بيتنا"),
+    "kBetnaHomePageAbout": MessageLookupByLibrary.simpleMessage("حول بيتنا"),
     "kBetnaHomePageBrowseOffers": MessageLookupByLibrary.simpleMessage(
       "تصفح العروض",
     ),
+    "kBetnaHomePageCollections": MessageLookupByLibrary.simpleMessage("مميزة"),
+    "kBetnaHomePageContact": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+    "kBetnaHomePageCtaDesc": MessageLookupByLibrary.simpleMessage(
+      "يقوم فريقنا بتقييم شقتك وتسويقها للمشترين المناسبين. املأ نموذجاً بسيطاً وسنتصل بك خلال 24 ساعة.",
+    ),
+    "kBetnaHomePageCtaTitle": MessageLookupByLibrary.simpleMessage(
+      "هل أنت مستعد لبيع\nعقارك؟",
+    ),
+    "kBetnaHomePageFacebook": MessageLookupByLibrary.simpleMessage("فيسبوك"),
+    "kBetnaHomePageFilterAll": MessageLookupByLibrary.simpleMessage("الكل"),
+    "kBetnaHomePageFilterForSale": MessageLookupByLibrary.simpleMessage(
+      "للبيع",
+    ),
+    "kBetnaHomePageFilterLocationHint": MessageLookupByLibrary.simpleMessage(
+      "الموقع (مثال: بشكتاش)",
+    ),
+    "kBetnaHomePageFilterMaxPrice": MessageLookupByLibrary.simpleMessage(
+      "السعر الأقصى",
+    ),
+    "kBetnaHomePageFilterProjects": MessageLookupByLibrary.simpleMessage(
+      "مشاريع",
+    ),
     "kBetnaHomePageFooter": m0,
+    "kBetnaHomePageFooterDesc": MessageLookupByLibrary.simpleMessage(
+      "خدمات عقارية متميزة\nفي إسطنبول، تركيا.",
+    ),
     "kBetnaHomePageHeroIllustrationTag": MessageLookupByLibrary.simpleMessage(
       "العقارات في اسطنبول",
     ),
     "kBetnaHomePageHeroIllustrationText": MessageLookupByLibrary.simpleMessage(
       "بيتنا للعقارات",
+    ),
+    "kBetnaHomePageHeroPrimaryButton": MessageLookupByLibrary.simpleMessage(
+      "عرض العقارات",
+    ),
+    "kBetnaHomePageHeroSecondaryButton": MessageLookupByLibrary.simpleMessage(
+      "بيع / إدارة",
     ),
     "kBetnaHomePageHeroTextBlockBadge": MessageLookupByLibrary.simpleMessage(
       "خدمة عقارية موثوقة في اسطنبول",
@@ -194,7 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kBetnaHomePageHeroTextBlockFreeConsultation":
         MessageLookupByLibrary.simpleMessage("استشارة مجانية قريبا"),
     "kBetnaHomePageHeroTextBlockSubtitle": MessageLookupByLibrary.simpleMessage(
-      "قم بملء نموذج بسيط بتفاصيل شقتك، ودع فريقنا يتواصل معك لتقييم العقار ومساعدتك في الحصول على أفضل عرض ممكن.",
+      "ابحث عن منزل أحلامك، أو بع عقارك، أو دعنا ندير استثماراتك من خلال خدماتنا العقارية الشاملة في إسطنبول.",
     ),
     "kBetnaHomePageHeroTextBlockTitle": MessageLookupByLibrary.simpleMessage(
       "بيع شقتك بسهولة واحترافية مع بيتنا للعقارات",
@@ -217,6 +100,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "kBetnaHomePageInfoCard3Title": MessageLookupByLibrary.simpleMessage(
       "الموثوقية والأمان",
     ),
+    "kBetnaHomePageInstagram": MessageLookupByLibrary.simpleMessage("انستغرام"),
+    "kBetnaHomePageProperties": MessageLookupByLibrary.simpleMessage(
+      "العقارات",
+    ),
+    "kBetnaHomePageScrollDown": MessageLookupByLibrary.simpleMessage("تمرير"),
+    "kBetnaHomePageSelected": MessageLookupByLibrary.simpleMessage("مختارات"),
     "kBetnaHomePageSlide1Badge": MessageLookupByLibrary.simpleMessage(
       "خدمة مبيعات العقارات",
     ),
@@ -259,159 +148,80 @@ class MessageLookup extends MessageLookupByLibrary {
     "kBetnaHomePageSubmitSaleRequest": MessageLookupByLibrary.simpleMessage(
       "طلب بيع",
     ),
-    "kCallNow": MessageLookupByLibrary.simpleMessage("اتصل الآن"),
-    "kCancelSearch": MessageLookupByLibrary.simpleMessage("الغاء البحث"),
-    "kCash": MessageLookupByLibrary.simpleMessage("نقدي"),
-    "kChangeCurrency": MessageLookupByLibrary.simpleMessage("تغير العملة"),
-    "kChangeLang": MessageLookupByLibrary.simpleMessage("تغير اللغة"),
+    "kBetnaHomePageViewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
+    "kBetnaHomePageWhatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
+    "kBetnaHomePageWhatsappUs": MessageLookupByLibrary.simpleMessage(
+      "تواصل عبر واتساب",
+    ),
+    "kBetnaHomePageWhyBetna": MessageLookupByLibrary.simpleMessage(
+      "لماذا\nبيتنا",
+    ),
+    "kBetnaHomePageWhyBetnaDesc": MessageLookupByLibrary.simpleMessage(
+      "الشريك العقاري الأكثر ثقة في إسطنبول لشراء وبيع وإدارة العقارات الشاملة في كل منطقة.",
+    ),
+    "kBetnaHomePageWhyBetnaRow": MessageLookupByLibrary.simpleMessage(
+      "لماذا بيتنا",
+    ),
     "kCity": MessageLookupByLibrary.simpleMessage("المدينة"),
-    "kClose": MessageLookupByLibrary.simpleMessage("اغلاق"),
-    "kCommunication": MessageLookupByLibrary.simpleMessage("التواصل"),
-    "kConstructionYear": MessageLookupByLibrary.simpleMessage("تاريخ البناء"),
-    "kContact": MessageLookupByLibrary.simpleMessage("التواصل"),
-    "kContractDate": MessageLookupByLibrary.simpleMessage("تاريخ العقد"),
-    "kContractInformation": MessageLookupByLibrary.simpleMessage(
-      "بيانات عقد الايجار",
-    ),
-    "kContractList": MessageLookupByLibrary.simpleMessage("عقود الايجار"),
-    "kContractValidity": MessageLookupByLibrary.simpleMessage("مد العقد"),
     "kCountry": MessageLookupByLibrary.simpleMessage("البلد"),
-    "kDateAdded": MessageLookupByLibrary.simpleMessage("تاريخ الاعلان"),
-    "kDaysAgo": m1,
-    "kDeleteMessage": m2,
-    "kDeliveryDate": MessageLookupByLibrary.simpleMessage("تاريخ التسليم"),
-    "kDeposit": MessageLookupByLibrary.simpleMessage("التامين"),
-    "kDescription": MessageLookupByLibrary.simpleMessage("الشرح"),
-    "kDetailInformation": MessageLookupByLibrary.simpleMessage(
-      "المعلومات التفصيلية",
+    "kEidsFooterNote": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن إدخال إعلان بدون تفويض.",
     ),
-    "kDirectCall": MessageLookupByLibrary.simpleMessage("مكالمة مباشرة"),
-    "kDoYouBuy": MessageLookupByLibrary.simpleMessage("هل تريد الشراء ؟"),
-    "kDoYouSell": MessageLookupByLibrary.simpleMessage("هل تريد البيع ؟"),
-    "kDownPayment": MessageLookupByLibrary.simpleMessage("الدفعة الاولى"),
-    "kEmail": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
-    "kExplanation": MessageLookupByLibrary.simpleMessage("الشرح"),
-    "kExternalFeatures": MessageLookupByLibrary.simpleMessage(
-      "الميزات الخارجية",
+    "kEidsGoToEDevlet": MessageLookupByLibrary.simpleMessage(
+      "الذهاب إلى e-Devlet",
     ),
-    "kFee": MessageLookupByLibrary.simpleMessage("العائدات الشهرية"),
-    "kFewSecondsAgo": MessageLookupByLibrary.simpleMessage("قبل بضع ثوان"),
-    "kFloor": MessageLookupByLibrary.simpleMessage("الطابق"),
-    "kFloors": MessageLookupByLibrary.simpleMessage("عدد الطوابق"),
-    "kFontType": MessageLookupByLibrary.simpleMessage("نوغ الخط"),
-    "kForRentTitle": MessageLookupByLibrary.simpleMessage("شقق للإيجار"),
-    "kForSaleTitle": MessageLookupByLibrary.simpleMessage("شقق للبيع"),
-    "kGeneralInformation": MessageLookupByLibrary.simpleMessage(
-      "المعلومات العامة",
+    "kEidsImportant": MessageLookupByLibrary.simpleMessage("هام"),
+    "kEidsPageQuestion": MessageLookupByLibrary.simpleMessage(
+      "كيفية تفويض إعلانات العقارات عبر EİDS؟",
     ),
-    "kHeaderPageTitle": MessageLookupByLibrary.simpleMessage(
-      "تحديد راس الصفحة",
+    "kEidsPageSubtitle": MessageLookupByLibrary.simpleMessage(
+      "إشعار هام لأصحاب العقارات",
     ),
-    "kHome": MessageLookupByLibrary.simpleMessage("الرئيسية"),
-    "kHoursAgo": m3,
-    "kHouseNew": MessageLookupByLibrary.simpleMessage("جديد غير مستخدم"),
-    "kHouseOld": MessageLookupByLibrary.simpleMessage("مستخدم"),
-    "kHouseState1": MessageLookupByLibrary.simpleMessage("فارغ"),
-    "kHouseState2": MessageLookupByLibrary.simpleMessage("مؤجر"),
-    "kHouseState3": MessageLookupByLibrary.simpleMessage("صاحب العقار"),
-    "kImages": MessageLookupByLibrary.simpleMessage("الصور"),
-    "kInSideImages": MessageLookupByLibrary.simpleMessage("الصور الداخلية"),
-    "kInSideSite": MessageLookupByLibrary.simpleMessage("داخل مجمع"),
-    "kInstallment": MessageLookupByLibrary.simpleMessage("تقسيط"),
-    "kInternalFeatures": MessageLookupByLibrary.simpleMessage(
-      "الميزات الداخلية",
+    "kEidsPageTitle": MessageLookupByLibrary.simpleMessage("دليل تفويض EİDS"),
+    "kEidsPageWarning": MessageLookupByLibrary.simpleMessage(
+      "بعد 15 فبراير، لا يمكن نشر الإعلانات بدون تفويض!",
     ),
-    "kInvestmentProjects": MessageLookupByLibrary.simpleMessage(
-      "مشاريع استثمارية",
+    "kEidsStep1": MessageLookupByLibrary.simpleMessage(
+      "قم بتسجيل الدخول إلى e-Devlet.",
     ),
-    "kJustNow": MessageLookupByLibrary.simpleMessage("في هذة اللحظة"),
-    "kLang": MessageLookupByLibrary.simpleMessage("اللغة"),
-    "kLastModified": MessageLookupByLibrary.simpleMessage("تاريخ التعديل"),
-    "kLastMonth": MessageLookupByLibrary.simpleMessage("الشهر الماضي"),
-    "kLastWeek": MessageLookupByLibrary.simpleMessage("الاسبوع الماضى"),
-    "kLastYear": MessageLookupByLibrary.simpleMessage("العام الماضي"),
-    "kLatestHighest": MessageLookupByLibrary.simpleMessage("الأحدث/الأعلى"),
-    "kLogin": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-    "kLogoPath": MessageLookupByLibrary.simpleMessage("logo_no_background_ar"),
-    "kLogout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
-    "kLuxuryHomes": MessageLookupByLibrary.simpleMessage("منازل فاخرة"),
-    "kMessage": MessageLookupByLibrary.simpleMessage("رسالتك لنا"),
-    "kMessage1": MessageLookupByLibrary.simpleMessage("اتصال الآن"),
-    "kMessage2": MessageLookupByLibrary.simpleMessage("عروض مميزة"),
-    "kMessage3": MessageLookupByLibrary.simpleMessage("شقق للبيع في اسطنبول"),
-    "kMessage4": MessageLookupByLibrary.simpleMessage("مشاريع استثمارية"),
-    "kMessage5": MessageLookupByLibrary.simpleMessage("استشارة عقارية مجانية"),
-    "kMessageContact": MessageLookupByLibrary.simpleMessage(
-      "يمكنكم التواصل معنا من خلال الروابط التالية عبر الضغط على ايقونة التواصل المناسبة لكم",
+    "kEidsStep2": MessageLookupByLibrary.simpleMessage(
+      "اكتب \"EİDS Taşınmaz İlanı Yetkilendirme\" في شريط البحث.",
     ),
-    "kMessageContactToHelp": MessageLookupByLibrary.simpleMessage(
-      "اتصل بنا للحصول على المساعدة",
+    "kEidsStep3": MessageLookupByLibrary.simpleMessage(
+      "حدد العقار الذي تريد الإعلان عنه.",
     ),
-    "kMessageSaveImageTrue": m4,
-    "kMessenger": MessageLookupByLibrary.simpleMessage("محادثة مسنجر"),
-    "kMinutesAgo": m5,
-    "kMonthlyRent": MessageLookupByLibrary.simpleMessage("الايجار الشهري"),
-    "kMonthsAgo": m6,
-    "kNameSurname": MessageLookupByLibrary.simpleMessage("الاسم والكنية"),
-    "kNeighborhood": MessageLookupByLibrary.simpleMessage("المرافق العامة"),
-    "kNew": MessageLookupByLibrary.simpleMessage("جديد"),
-    "kNext": MessageLookupByLibrary.simpleMessage("التالي"),
-    "kNo": MessageLookupByLibrary.simpleMessage("لا"),
-    "kNoOffer": MessageLookupByLibrary.simpleMessage("لا يوجد عروض حاليا"),
-    "kNote": MessageLookupByLibrary.simpleMessage("ملاحظات"),
-    "kNoteExchangeRate": MessageLookupByLibrary.simpleMessage(
-      " العروض الموجودة ضمن الموقع  مسعرة على الليرة التركية ، عند تغير العملة من العملة التركية الى عملة اخرى يتم حساب سعر الصرف بشكل تقريبي على اساس اسعار صرف البنك المركزي العالمي .",
+    "kEidsStep4": MessageLookupByLibrary.simpleMessage(
+      "أضف الوكالة العقارية التي ترغب في تفويضها (باستخدام رقم وثيقة التفويض).",
     ),
-    "kNumberAds": m7,
-    "kNumberContracts": m8,
-    "kOfferLength": m9,
-    "kOffers": MessageLookupByLibrary.simpleMessage("العروض"),
-    "kOldLess": MessageLookupByLibrary.simpleMessage("الأقل/الأقدم"),
-    "kOwnerID": MessageLookupByLibrary.simpleMessage("رقم الهوية-المالك"),
-    "kOwnerInfo": MessageLookupByLibrary.simpleMessage("معلومات المالك"),
-    "kOwnerNameSurName": MessageLookupByLibrary.simpleMessage(
-      "الاسم والكنية-المالك",
+    "kEidsStep4Note": MessageLookupByLibrary.simpleMessage(
+      "رقم وثيقة تفويض Betna Gayrimenkul: ",
     ),
-    "kOwnerPhone": MessageLookupByLibrary.simpleMessage("رقم الهاتف-المالك"),
-    "kPDFSaved": MessageLookupByLibrary.simpleMessage("العناصر المحفوظة"),
-    "kPageNotFound": MessageLookupByLibrary.simpleMessage("الصفحة غير موجودة"),
-    "kPassword": MessageLookupByLibrary.simpleMessage("كلمة السر"),
-    "kPayment": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
-    "kPaymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
-    "kPhoneNumber": MessageLookupByLibrary.simpleMessage(
-      "رقم الهاتف مع رمز البلد",
+    "kEidsStep5": MessageLookupByLibrary.simpleMessage(
+      "حدد فترة التفويض (3 أشهر كحد أدنى).",
     ),
-    "kPrice": MessageLookupByLibrary.simpleMessage("السعر"),
-    "kPriceStarts": MessageLookupByLibrary.simpleMessage("السعر يبدأ"),
-    "kProjectAll": MessageLookupByLibrary.simpleMessage("جميع المشاريع"),
-    "kProjectType": MessageLookupByLibrary.simpleMessage("نوع المشروع"),
-    "kProjects1": MessageLookupByLibrary.simpleMessage("مشاريع سكنية"),
-    "kProjectsUnderConstruction": MessageLookupByLibrary.simpleMessage(
-      "مشاريع قيد الانشاء",
+    "kEidsStep6": MessageLookupByLibrary.simpleMessage("وافق واحفظ."),
+    "kEidsStep7": MessageLookupByLibrary.simpleMessage(
+      "ستقوم منصة الإعلانات بنشر الإعلان بتفويض تم التحقق منه.",
     ),
-    "kPropertyCase": MessageLookupByLibrary.simpleMessage("حالة العقار"),
-    "kReadyForHousingProjects": MessageLookupByLibrary.simpleMessage(
-      "مشاريع جاهزة للسكن",
+    "kNoPropertiesMatch": MessageLookupByLibrary.simpleMessage(
+      "لا توجد عقارات تطابق بحثك.",
     ),
-    "kRent": MessageLookupByLibrary.simpleMessage("للايجار"),
-    "kRentForWhat": MessageLookupByLibrary.simpleMessage("الايجار من أجل "),
-    "kRentList": MessageLookupByLibrary.simpleMessage("قائمة الايجارات"),
-    "kRentPaymentMethod": MessageLookupByLibrary.simpleMessage("طريق الدفع"),
-    "kRentType": MessageLookupByLibrary.simpleMessage("نوع الايجار"),
-    "kRenterId": MessageLookupByLibrary.simpleMessage("رقم الهوية-المؤجر"),
-    "kRenterInfo": MessageLookupByLibrary.simpleMessage("معلومات المؤجر"),
-    "kRenterNameSurName": MessageLookupByLibrary.simpleMessage(
-      "الاسم والكنية-المؤجر",
+    "kProjectsSectionText": MessageLookupByLibrary.simpleMessage(
+      "اكتشف مجموعتنا من المشاريع المتميزة في جميع أنحاء إسطنبول.",
     ),
-    "kRenterPhone": MessageLookupByLibrary.simpleMessage("رقم الهاتف-المؤجر"),
-    "kRequestCall": MessageLookupByLibrary.simpleMessage("طلب اتصال"),
-    "kRequiredErrorText": MessageLookupByLibrary.simpleMessage(
-      "هذا المجال لا يمكن أن يكون فارغا.",
+    "kProjectsSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "المشاريع العقارية",
     ),
-    "kRoom": MessageLookupByLibrary.simpleMessage("عدد الغرف"),
-    "kRoomPlan": MessageLookupByLibrary.simpleMessage("النماذج والمساحات"),
-    "kSale": MessageLookupByLibrary.simpleMessage("للبيع"),
-    "kSaleList": MessageLookupByLibrary.simpleMessage("قائمة البيع"),
+    "kPropertySold": MessageLookupByLibrary.simpleMessage("تم البيع"),
+    "kResaleSectionSubtitle": MessageLookupByLibrary.simpleMessage(
+      "ابحث عن منزل أحلامك الجاهز للانتقال",
+    ),
+    "kResaleSectionText": MessageLookupByLibrary.simpleMessage(
+      "ابحث عن منزلك القادم أو استثمارك في عقارات إعادة البيع الخاصة بنا.",
+    ),
+    "kResaleSectionTitle": MessageLookupByLibrary.simpleMessage(
+      "عقارات إعادة البيع",
+    ),
     "kSaleRequestSuccessfulMessageButtonReturn":
         MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
     "kSaleRequestSuccessfulMessageTitle": MessageLookupByLibrary.simpleMessage(
@@ -640,88 +450,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "kSaleRequestTextVerificationTitle": MessageLookupByLibrary.simpleMessage(
       "طريقة التحقق عبر",
     ),
-    "kSearch": m10,
-    "kSearchBy": m11,
-    "kSeeAllListing": MessageLookupByLibrary.simpleMessage("شاهد جميع العروض"),
-    "kSelect": MessageLookupByLibrary.simpleMessage("حدد"),
-    "kSend": MessageLookupByLibrary.simpleMessage("ارسال"),
-    "kSetLocation": MessageLookupByLibrary.simpleMessage("حدد الموقع"),
-    "kSetting": MessageLookupByLibrary.simpleMessage("ضبط"),
-    "kShare": MessageLookupByLibrary.simpleMessage("مشاركة"),
-    "kSpeedDial": MessageLookupByLibrary.simpleMessage("اتصال سريع"),
-    "kStreet": MessageLookupByLibrary.simpleMessage(
-      "الشارع / العنوان التفصيلي",
+    "kServicesContactUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+    "kServicesOurExpertise": MessageLookupByLibrary.simpleMessage("خبراتنا"),
+    "kServicesPremiumServices": MessageLookupByLibrary.simpleMessage(
+      "خدمات عقارية متميزة",
     ),
-    "kTakeAppointment": MessageLookupByLibrary.simpleMessage("احجز موعد الآن"),
-    "kTakeAppointmentToWatch": MessageLookupByLibrary.simpleMessage(
-      "موعد مشاهدة العقار",
+    "kServicesPropertyManagement": MessageLookupByLibrary.simpleMessage(
+      "إدارة العقارات",
     ),
-    "kThereIs": MessageLookupByLibrary.simpleMessage("موجود"),
-    "kThereIsNot": MessageLookupByLibrary.simpleMessage("غير موجود"),
-    "kThings": MessageLookupByLibrary.simpleMessage("الأشياء"),
-    "kTitle": m12,
-    "kTown": MessageLookupByLibrary.simpleMessage("المقاطعة"),
-    "kTransportation": MessageLookupByLibrary.simpleMessage("وسائل النقل"),
-    "kType": MessageLookupByLibrary.simpleMessage("نوع الاعلان"),
-    "kTypeProperty": MessageLookupByLibrary.simpleMessage("نوع العقار"),
-    "kTypesHeating": MessageLookupByLibrary.simpleMessage("نوع التدفئة"),
-    "kUrgent": MessageLookupByLibrary.simpleMessage("للبيع عاجل"),
-    "kUrgent1": MessageLookupByLibrary.simpleMessage("عاجل"),
-    "kUrgent2": MessageLookupByLibrary.simpleMessage("فرصة"),
-    "kUrgentTitle": MessageLookupByLibrary.simpleMessage("العروض العاجلة"),
-    "kUsersList": MessageLookupByLibrary.simpleMessage("قائمة المستخدمين"),
-    "kView": MessageLookupByLibrary.simpleMessage("الاطلالة"),
-    "kWeeksAgo": m13,
-    "kWelcomeMessage": MessageLookupByLibrary.simpleMessage(
-      "اهلا وسهلا في موقع بيتنا الموقع حاليا قيد الانشاء . للمزيد من المعلومات يرجى التواصل على الرقم التالي",
+    "kServicesPropertyManagementDesc": MessageLookupByLibrary.simpleMessage(
+      "عِهد لنا بعقارك. نحن نتعامل مع كل شيء بدءًا من فحص المستأجرين وحتى الصيانة، مما يعظم عائد الاستثمار الخاص بك ويحمي استثمارك.",
     ),
-    "kWhatsApp": MessageLookupByLibrary.simpleMessage("محادثة واتس إب"),
-    "kWithBackground": MessageLookupByLibrary.simpleMessage("خلفية"),
-    "kWithLogo": MessageLookupByLibrary.simpleMessage("مع شعار"),
-    "kYearsAgo": m14,
-    "kYes": MessageLookupByLibrary.simpleMessage("نعم"),
-    "kYesterday": MessageLookupByLibrary.simpleMessage("البارحة"),
-    "kYouShouldTakeDate": m15,
-    "kempty": MessageLookupByLibrary.simpleMessage("فارغ"),
-    "kira": MessageLookupByLibrary.simpleMessage("الايجار : "),
-    "kira_title": MessageLookupByLibrary.simpleMessage("عقد إيجار"),
-    "leaseContracts": MessageLookupByLibrary.simpleMessage("عقود الايجار"),
-    "listEmpty": MessageLookupByLibrary.simpleMessage("القائمة فارغة"),
-    "location": MessageLookupByLibrary.simpleMessage("الموقع"),
-    "monthlyRent": MessageLookupByLibrary.simpleMessage("الايجار الشهري رقما"),
-    "monthlyRentSummer": MessageLookupByLibrary.simpleMessage(
-      "الايجار الشهري كتابة",
+    "kServicesPropertySales": MessageLookupByLibrary.simpleMessage(
+      "مبيعات العقارات",
     ),
-    "name": MessageLookupByLibrary.simpleMessage("الاسم"),
-    "nameSurname": MessageLookupByLibrary.simpleMessage("الاسم والكنية"),
-    "net_area": MessageLookupByLibrary.simpleMessage("المساحة الصافية"),
-    "noPhotoFlat": MessageLookupByLibrary.simpleMessage("لا يوجد صور حاليا"),
-    "numara": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "kServicesPropertySalesDesc": MessageLookupByLibrary.simpleMessage(
+      "نساعدك على بيع عقارك بسرعة وبأفضل سعر في السوق من خلال استراتيجيات التسويق الشاملة الخاصة بنا وشبكة المشترين الواسعة.",
+    ),
     "occupancyOwner": MessageLookupByLibrary.simpleMessage("يسكنه المالك"),
     "occupancyRented": MessageLookupByLibrary.simpleMessage("مؤجر"),
     "occupancyVacant": MessageLookupByLibrary.simpleMessage("فارغ"),
-    "payRent": MessageLookupByLibrary.simpleMessage("طريقة دفع الايجار"),
-    "photoFlat": MessageLookupByLibrary.simpleMessage("صور الشقة"),
-    "placeResidenceOwner": MessageLookupByLibrary.simpleMessage(
-      "موقع السكن الحالي",
-    ),
-    "prices": MessageLookupByLibrary.simpleMessage(
-      "الايجار , التأمين , والدفعة الأولى",
-    ),
-    "province": MessageLookupByLibrary.simpleMessage("المدينة"),
-    "rent": MessageLookupByLibrary.simpleMessage("الإيجار"),
-    "rentTitleTimeState": MessageLookupByLibrary.simpleMessage(
-      "الأيجار : المدة,البدء,الحالة,الدفع",
-    ),
-    "rentalPeriod": MessageLookupByLibrary.simpleMessage("مدة العقد"),
-    "showPdf": MessageLookupByLibrary.simpleMessage("شاهد الملف"),
-    "singIn": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
-    "site_name": MessageLookupByLibrary.simpleMessage("اسم المجمع : "),
-    "state": MessageLookupByLibrary.simpleMessage("مفروش"),
-    "tarih": MessageLookupByLibrary.simpleMessage("تاريخ"),
-    "uploading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
-    "user_id": MessageLookupByLibrary.simpleMessage("معرف المستخدم"),
-    "viewAll": MessageLookupByLibrary.simpleMessage("مشاهدة الكل"),
-    "yse": MessageLookupByLibrary.simpleMessage("نعم"),
   };
 }

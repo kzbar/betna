@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 enum FirebaseCollection {
   SalesCollection,
   RentsCollection,
@@ -23,4 +25,5 @@ class FirebaseCollectionNames {
   static const SettingAppCollection = 'setting_app_collection';
   static const AppointmentCollection = 'appointment_collection';
   static const QRCodeSocial = 'qr_code_social';
+  static const ResaleCollection = 'resale_collection';
 }

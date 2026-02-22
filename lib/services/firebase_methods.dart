@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 abstract class FirebaseMethod<T> {
-  static Future<void> update(
-      {@required String? co, @required String? doc, dynamic value}) {
+  static Future<void> update({
+    required String? co,
+    required String? doc,
+    dynamic value,
+  }) {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).update(value);
     } catch (error) {
@@ -15,8 +17,11 @@ abstract class FirebaseMethod<T> {
     }
   }
 
-  static Future add(
-      {@required String? co, @required String? doc, dynamic value}) {
+  static Future add({
+    required String? co,
+    required String? doc,
+    dynamic value,
+  }) {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).set(value);
     } catch (error) {
@@ -27,7 +32,7 @@ abstract class FirebaseMethod<T> {
     }
   }
 
-  static Future delete({@required String? co, @required String? doc}) {
+  static Future delete({required String? co, required String? doc}) {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).delete();
     } catch (error) {
@@ -38,7 +43,7 @@ abstract class FirebaseMethod<T> {
     }
   }
 
-  static Future get({@required String? co, @required String? doc}) {
+  static Future get({required String? co, required String? doc}) {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).get();
     } catch (error) {
@@ -49,7 +54,7 @@ abstract class FirebaseMethod<T> {
     }
   }
 
-  static Future gets({@required String? co}) {
+  static Future gets({required String? co}) {
     try {
       return FirebaseFirestore.instance.collection(co!).get();
     } catch (error) {
@@ -60,7 +65,9 @@ abstract class FirebaseMethod<T> {
     }
   }
 
-  static Stream<QuerySnapshot<Map<String,dynamic>>> streams({@required String? co}) {
+  static Stream<QuerySnapshot<Map<String, dynamic>>> streams({
+    required String? co,
+  }) {
     try {
       return FirebaseFirestore.instance.collection(co!).snapshots();
     } catch (error) {
@@ -71,7 +78,7 @@ abstract class FirebaseMethod<T> {
     }
   }
 
-  static Stream stream({@required String? co, @required String? doc}) {
+  static Stream stream({required String? co, required String? doc}) {
     try {
       return FirebaseFirestore.instance.collection(co!).doc(doc!).snapshots();
     } catch (error) {

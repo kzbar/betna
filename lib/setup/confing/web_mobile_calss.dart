@@ -10,7 +10,7 @@ if (dart.library.html) 'package:betna/setup/confing/web.dart';
 
 
 abstract class WM{
-  configureApp();
+  void configureApp();
   factory WM() => getWBClass();
 
 }

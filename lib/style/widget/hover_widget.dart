@@ -9,19 +9,22 @@ class HoverWidget extends StatefulWidget {
   final Widget widget;
   final double borderRadius;
 
-  const HoverWidget(
-      {Key? key,
-      this.height,
-      this.width,
-      this.backgroundColorHover,
-      this.backgroundColor, this.direction, required this.widget, this.borderRadius = 0})
-      : super(key: key);
+  const HoverWidget({
+    super.key,
+    this.height,
+    this.width,
+    this.backgroundColorHover,
+    this.backgroundColor,
+    this.direction,
+    required this.widget,
+    this.borderRadius = 0,
+  });
 
   @override
-  State<StatefulWidget> createState() => _HoverWidget();
+  State<HoverWidget> createState() => _HoverWidgetState();
 }
 
-class _HoverWidget extends State<HoverWidget> {
+class _HoverWidgetState extends State<HoverWidget> {
   bool isHover = false;
 
   @override

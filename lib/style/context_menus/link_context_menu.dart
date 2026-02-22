@@ -7,31 +7,39 @@ import 'core/context_menu_button.dart';
 import 'core/context_menu_card.dart';
 
 class LinkContextMenu extends BaseContextMenu {
-  const LinkContextMenu({Key? key, required this.url}) : super(key: key);
+  const LinkContextMenu({super.key, required this.url});
   final String url;
 
   String getUrl() {
     String url = this.url;
     bool needsPrefix = !url.contains("http://") && !url.contains("https://");
-    return (needsPrefix) ? "https://" + url : url;
+    return needsPrefix ? "https://$url" : url;
   }
 
   void _handleNewWindowPressed() async {
     try {
-      launch(getUrl());
+      final uri = Uri.parse(getUrl());
+      launchUrl(uri);
     } catch (e) {
       print("$e");
     }
   }
 
-  void _handleClipboardPressed() async => Clipboard.setData(ClipboardData(text: getUrl()));
+  void _handleClipboardPressed() async =>
+      Clipboard.setData(ClipboardData(text: getUrl()));
 
   @override
   Widget build(BuildContext context) {
     return ContextMenuCard(
       children: [
-        ContextMenuBtn("Open link in new window", onPressed: () => handlePressed(context, _handleNewWindowPressed)),
-        ContextMenuBtn("Copy link address", onPressed: () => handlePressed(context, _handleClipboardPressed))
+        ContextMenuBtn(
+          "Open link in new window",
+          onPressed: () => handlePressed(context, _handleNewWindowPressed),
+        ),
+        ContextMenuBtn(
+          "Copy link address",
+          onPressed: () => handlePressed(context, _handleClipboardPressed),
+        ),
       ],
     );
   }
